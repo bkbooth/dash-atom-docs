@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/Cursor.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+<head>
+  <meta charset='UTF-8'>
+  <title>Atom API Documentation</title>
+  <link rel='stylesheet' href='../assets/biscotto.css' type='text/css'>
+  <script src='../assets/biscotto.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../docs/README.md.html' title='Atom'>Atom</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Cursor</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class
+        Cursor
+      </h1>
+      <div class='stability-1'>
+        <span class='heading'></span>
+        <div class='message'></div>
+      </div>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;cursor.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='Model.html'>Model</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>The <code>Cursor</code> class represents the little blinking line identifying where text can be inserted.</p><p>Cursors belong to <a href='Editor.html'>Editor</a>s and have some metadata attached in the form
+of a <a href='Marker.html'>Marker</a>. </p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#clearAutoscroll-instance'>
+        ::<strong>clearAutoscroll</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Prevents this cursor from causing scrolling.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#clearSelection-instance'>
+        ::<strong>clearSelection</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Deselects the current selection.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getBeginningOfCurrentWordBufferPosition-instance'>
+        Range ::<strong>getBeginningOfCurrentWordBufferPosition</strong>(options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves the buffer position of where the current word starts.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getBeginningOfNextWordBufferPosition-instance'>
+        Range ::<strong>getBeginningOfNextWordBufferPosition</strong>(options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves the buffer position of where the next word starts.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getBufferColumn-instance'>
+        ::<strong>getBufferColumn</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the cursor&#39;s current buffer column.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getBufferPosition-instance'>
+        ::<strong>getBufferPosition</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the current buffer position as an Array.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getBufferRow-instance'>
+        ::<strong>getBufferRow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves the cursor&#39;s current buffer row.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCurrentBufferLine-instance'>
+        ::<strong>getCurrentBufferLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the cursor&#39;s current buffer row of text excluding its line ending.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCurrentLineBufferRange-instance'>
+        ::<strong>getCurrentLineBufferRange</strong>(options)
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the buffer Range for the current line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCurrentParagraphBufferRange-instance'>
+        Range ::<strong>getCurrentParagraphBufferRange</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves the range for the current paragraph.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCurrentWordBufferRange-instance'>
+        ::<strong>getCurrentWordBufferRange</strong>(options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the buffer Range occupied by the word located under the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCurrentWordPrefix-instance'>
+        ::<strong>getCurrentWordPrefix</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the characters preceding the cursor in the current word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getEndOfCurrentWordBufferPosition-instance'>
+        Range ::<strong>getEndOfCurrentWordBufferPosition</strong>(options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves the buffer position of where the current word ends.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getIndentLevel-instance'>
+        ::<strong>getIndentLevel</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the indentation level of the current line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getMoveNextWordBoundaryBufferPosition-instance'>
+        ::<strong>getMoveNextWordBoundaryBufferPosition</strong>(options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves buffer position of the next word boundary.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getPreviousWordBoundaryBufferPosition-instance'>
+        ::<strong>getPreviousWordBoundaryBufferPosition</strong>(options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves buffer position of previous word boundary.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getScopes-instance'>
+        Array ::<strong>getScopes</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves the grammar&#39;s token scopes for the line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getScreenColumn-instance'>
+        ::<strong>getScreenColumn</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the cursor&#39;s current screen column.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getScreenPosition-instance'>
+        ::<strong>getScreenPosition</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the screen position of the cursor as an Array.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getScreenRow-instance'>
+        ::<strong>getScreenRow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the cursor&#39;s current screen row.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#hasPrecedingCharactersOnLine-instance'>
+        ::<strong>hasPrecedingCharactersOnLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns true if this cursor has no non-whitespace characters before its current position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isAtBeginningOfLine-instance'>
+        ::<strong>isAtBeginningOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns whether the cursor is at the start of a line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isAtEndOfLine-instance'>
+        ::<strong>isAtEndOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns whether the cursor is on the line return character.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isBetweenWordAndNonWord-instance'>
+        ::<strong>isBetweenWordAndNonWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns whether the cursor is currently between a word and non-word character.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isInsideWord-instance'>
+        ::<strong>isInsideWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns whether this cursor is between a word&#39;s start and end.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isLastCursor-instance'>
+        Boolean ::<strong>isLastCursor</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Identifies if this cursor is the last in the <a href='Editor.html'>Editor</a>.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isSurroundedByWhitespace-instance'>
+        Boolean ::<strong>isSurroundedByWhitespace</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Identifies if the cursor is surrounded by whitespace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isVisible-instance'>
+        ::<strong>isVisible</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the visibility of the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveDown-instance'>
+        ::<strong>moveDown</strong>(rowCount = 1, {}={})
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor down one screen row.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveLeft-instance'>
+        ::<strong>moveLeft</strong>({moveToEndOfSelection}={})
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor left one screen column.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveRight-instance'>
+        ::<strong>moveRight</strong>({moveToEndOfSelection}={})
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor right one screen column.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToBeginningOfLine-instance'>
+        ::<strong>moveToBeginningOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the beginning of the buffer line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToBeginningOfNextParagraph-instance'>
+        ::<strong>moveToBeginningOfNextParagraph</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the beginning of the next paragraph
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToBeginningOfNextWord-instance'>
+        ::<strong>moveToBeginningOfNextWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the beginning of the next word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToBeginningOfPreviousParagraph-instance'>
+        ::<strong>moveToBeginningOfPreviousParagraph</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the beginning of the previous paragraph
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToBeginningOfScreenLine-instance'>
+        ::<strong>moveToBeginningOfScreenLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the beginning of the line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToBeginningOfWord-instance'>
+        ::<strong>moveToBeginningOfWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the beginning of the word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToBottom-instance'>
+        ::<strong>moveToBottom</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the bottom of the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToEndOfLine-instance'>
+        ::<strong>moveToEndOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the end of the buffer line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToEndOfScreenLine-instance'>
+        ::<strong>moveToEndOfScreenLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the end of the line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToEndOfWord-instance'>
+        ::<strong>moveToEndOfWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the end of the word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToFirstCharacterOfLine-instance'>
+        ::<strong>moveToFirstCharacterOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the beginning of the first character in the line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToNextWordBoundary-instance'>
+        ::<strong>moveToNextWordBoundary</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the next word boundary.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToPreviousWordBoundary-instance'>
+        ::<strong>moveToPreviousWordBoundary</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the previous word boundary.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveToTop-instance'>
+        ::<strong>moveToTop</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the top of the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveUp-instance'>
+        ::<strong>moveUp</strong>(rowCount = 1, {}={})
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor up one screen row.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setBufferPosition-instance'>
+        ::<strong>setBufferPosition</strong>(bufferPosition, options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Moves a cursor to a given buffer position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setScreenPosition-instance'>
+        ::<strong>setScreenPosition</strong>(screenPosition, options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Moves a cursor to a given screen position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setVisible-instance'>
+        ::<strong>setVisible</strong>(visible)
+      </a>
+    </span>
+    <span class='desc'>
+      Sets whether the cursor is visible.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#skipLeadingWhitespace-instance'>
+        ::<strong>skipLeadingWhitespace</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Moves the cursor to the beginning of the buffer line, skipping all whitespace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#updateVisibility-instance'>
+        ::<strong>updateVisibility</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      If the marker range is empty, the cursor is marked as being visible.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#wordRegExp-instance'>
+        RegExp ::<strong>wordRegExp</strong>({includeNonWordCharacters}={})
+      </a>
+    </span>
+    <span class='desc'>
+      Get the RegExp used by the cursor to determine what a &quot;word&quot; is.
+    </span>
+  </li>
+</ul>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='clearAutoscroll-instance'>
+      ::<strong>clearAutoscroll</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L176'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Prevents this cursor from causing scrolling.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='clearSelection-instance'>
+      ::<strong>clearSelection</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L180'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Deselects the current selection.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getBeginningOfCurrentWordBufferPosition-instance'>
+      Range ::<strong>getBeginningOfCurrentWordBufferPosition</strong>(options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L336'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves the buffer position of where the current word starts.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(RegExp)</span>
+        <span class='name'>wordRegex</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/RegExp'>RegExp</a> indicating what constitutes a &quot;word&quot; (default: <a href='Cursor.html#wordRegExp-instance'>::wordRegExp</a>).</span>
+      </li>
+      <li>
+        <span class='type'>(Boolean)</span>
+        <span class='name'>includeNonWordCharacters</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether to include non-word characters in the default word regex. Has no effect if wordRegex is set.</span>
+      </li>
+      <li>
+        <span class='type'>(Boolean)</span>
+        <span class='name'>allowPrevious</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether the beginning of the previous word can be returned.</span>
+      </li>
+    </ul>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getBeginningOfNextWordBufferPosition-instance'>
+      Range ::<strong>getBeginningOfNextWordBufferPosition</strong>(options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L430'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves the buffer position of where the next word starts.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options -</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(RegExp)</span>
+        <span class='name'>wordRegex</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/RegExp'>RegExp</a> indicating what constitutes a &quot;word&quot; (default: <a href='Cursor.html#wordRegExp-instance'>::wordRegExp</a>).</span>
+      </li>
+    </ul>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getBufferColumn-instance'>
+      ::<strong>getBufferColumn</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L196'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the cursor&#39;s current buffer column.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getBufferPosition-instance'>
+      ::<strong>getBufferPosition</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L94'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the current buffer position as an Array.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getBufferRow-instance'>
+      ::<strong>getBufferRow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L192'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves the cursor&#39;s current buffer row.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCurrentBufferLine-instance'>
+      ::<strong>getCurrentBufferLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L201'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the cursor&#39;s current buffer row of text excluding its line ending.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCurrentLineBufferRange-instance'>
+      ::<strong>getCurrentLineBufferRange</strong>(options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L457'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the buffer Range for the current line.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options -</span>
+    </li>
+    <li>
+      <span class='type'>(Boolean)</span>
+      <span class='name'>:includeNewline:</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> which controls whether the Range should include the newline.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCurrentParagraphBufferRange-instance'>
+      Range ::<strong>getCurrentParagraphBufferRange</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L502'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves the range for the current paragraph.</p><p>A paragraph is defined as a block of text surrounded by empty lines.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCurrentWordBufferRange-instance'>
+      ::<strong>getCurrentWordBufferRange</strong>(options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L447'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the buffer Range occupied by the word located under the cursor.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options -</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(RegExp)</span>
+        <span class='name'>wordRegex</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/RegExp'>RegExp</a> indicating what constitutes a &quot;word&quot; (default: <a href='Cursor.html#wordRegExp-instance'>::wordRegExp</a>).</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCurrentWordPrefix-instance'>
+      ::<strong>getCurrentWordPrefix</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L506'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the characters preceding the cursor in the current word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getEndOfCurrentWordBufferPosition-instance'>
+      Range ::<strong>getEndOfCurrentWordBufferPosition</strong>(options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L409'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves the buffer position of where the current word ends.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(RegExp)</span>
+        <span class='name'>wordRegex</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/RegExp'>RegExp</a> indicating what constitutes a &quot;word&quot; (default: <a href='Cursor.html#wordRegExp-instance'>::wordRegExp</a>)</span>
+      </li>
+      <li>
+        <span class='name'>includeNonWordCharacters</span>
+        &mdash;
+        <span class='desc'>A Boolean indicating whether to include non-word characters in the default word regex. Has no effect if wordRegex is set.</span>
+      </li>
+    </ul>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getIndentLevel-instance'>
+      ::<strong>getIndentLevel</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L514'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the indentation level of the current line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getMoveNextWordBoundaryBufferPosition-instance'>
+      ::<strong>getMoveNextWordBoundaryBufferPosition</strong>(options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L380'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves buffer position of the next word boundary. It might be on the current word, or the previous word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getPreviousWordBoundaryBufferPosition-instance'>
+      ::<strong>getPreviousWordBoundaryBufferPosition</strong>(options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L358'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves buffer position of previous word boundary. It might be on the current word, or the previous word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getScopes-instance'>
+      Array ::<strong>getScopes</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L527'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves the grammar&#39;s token scopes for the line.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getScreenColumn-instance'>
+      ::<strong>getScreenColumn</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L188'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the cursor&#39;s current screen column.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getScreenPosition-instance'>
+      ::<strong>getScreenPosition</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L75'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the screen position of the cursor as an Array.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getScreenRow-instance'>
+      ::<strong>getScreenRow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L184'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the cursor&#39;s current screen row.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='hasPrecedingCharactersOnLine-instance'>
+      ::<strong>hasPrecedingCharactersOnLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L532'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns true if this cursor has no non-whitespace characters before its current position.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isAtBeginningOfLine-instance'>
+      ::<strong>isAtBeginningOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L510'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns whether the cursor is at the start of a line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isAtEndOfLine-instance'>
+      ::<strong>isAtEndOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L521'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns whether the cursor is on the line return character.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isBetweenWordAndNonWord-instance'>
+      ::<strong>isBetweenWordAndNonWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L158'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns whether the cursor is currently between a word and non-word character. The non-word characters are defined by the <code>editor.nonWordCharacters</code> config value.</p><p>This method returns false if the character before or after the cursor is
+whitespace.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns a Boolean.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isInsideWord-instance'>
+      ::<strong>isInsideWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L170'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns whether this cursor is between a word&#39;s start and end.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isLastCursor-instance'>
+      Boolean ::<strong>isLastCursor</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L136'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Identifies if this cursor is the last in the <a href='Editor.html'>Editor</a>.</p><p>&quot;Last&quot; is defined as the most recently added cursor.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isSurroundedByWhitespace-instance'>
+      Boolean ::<strong>isSurroundedByWhitespace</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L145'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Identifies if the cursor is surrounded by whitespace.</p><p>&quot;Surrounded&quot; here means that the character directly before and after the
+cursor are both whitespace.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isVisible-instance'>
+      ::<strong>isVisible</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L112'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the visibility of the cursor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveDown-instance'>
+      ::<strong>moveDown</strong>(rowCount = 1, {}={})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L217'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor down one screen row.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveLeft-instance'>
+      ::<strong>moveLeft</strong>({moveToEndOfSelection}={})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L233'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor left one screen column.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='name'>moveToEndOfSelection</span>
+        &mdash;
+        <span class='desc'>if true, move to the left of the selection if a selection exists.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveRight-instance'>
+      ::<strong>moveRight</strong>({moveToEndOfSelection}={})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L247'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor right one screen column.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='name'>moveToEndOfSelection</span>
+        &mdash;
+        <span class='desc'>if true, move to the right of the selection if a selection exists.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToBeginningOfLine-instance'>
+      ::<strong>moveToBeginningOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L268'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the beginning of the buffer line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToBeginningOfNextParagraph-instance'>
+      ::<strong>moveToBeginningOfNextParagraph</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L461'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the beginning of the next paragraph</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToBeginningOfNextWord-instance'>
+      ::<strong>moveToBeginningOfNextWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L310'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the beginning of the next word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToBeginningOfPreviousParagraph-instance'>
+      ::<strong>moveToBeginningOfPreviousParagraph</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L466'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the beginning of the previous paragraph</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToBeginningOfScreenLine-instance'>
+      ::<strong>moveToBeginningOfScreenLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L264'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the beginning of the line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToBeginningOfWord-instance'>
+      ::<strong>moveToBeginningOfWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L301'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the beginning of the word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToBottom-instance'>
+      ::<strong>moveToBottom</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L260'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the bottom of the buffer.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToEndOfLine-instance'>
+      ::<strong>moveToEndOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L297'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the end of the buffer line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToEndOfScreenLine-instance'>
+      ::<strong>moveToEndOfScreenLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L293'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the end of the line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToEndOfWord-instance'>
+      ::<strong>moveToEndOfWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L305'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the end of the word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToFirstCharacterOfLine-instance'>
+      ::<strong>moveToFirstCharacterOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L273'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the beginning of the first character in the line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToNextWordBoundary-instance'>
+      ::<strong>moveToNextWordBoundary</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L320'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the next word boundary.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToPreviousWordBoundary-instance'>
+      ::<strong>moveToPreviousWordBoundary</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L315'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the previous word boundary.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveToTop-instance'>
+      ::<strong>moveToTop</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L256'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the top of the buffer.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveUp-instance'>
+      ::<strong>moveUp</strong>(rowCount = 1, {}={})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L205'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor up one screen row.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setBufferPosition-instance'>
+      ::<strong>setBufferPosition</strong>(bufferPosition, options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L89'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves a cursor to a given buffer position.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Array)</span>
+      <span class='name'>bufferPosition</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of two numbers: the buffer row, and the buffer column.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(Editor)</span>
+        <span class='name'>autoscroll</span>
+        &mdash;
+        <span class='desc'>A Boolean which, if <code>true</code>, scrolls the <a href='Editor.html'>Editor</a> to wherever the cursor moves to.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setScreenPosition-instance'>
+      ::<strong>setScreenPosition</strong>(screenPosition, options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L70'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves a cursor to a given screen position.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Array)</span>
+      <span class='name'>screenPosition</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of two numbers: the screen row, and the screen column.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(Editor)</span>
+        <span class='name'>autoscroll</span>
+        &mdash;
+        <span class='desc'>A Boolean which, if <code>true</code>, scrolls the <a href='Editor.html'>Editor</a> to wherever the cursor moves to.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setVisible-instance'>
+      ::<strong>setVisible</strong>(visible)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L105'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Sets whether the cursor is visible.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='skipLeadingWhitespace-instance'>
+      ::<strong>skipLeadingWhitespace</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L283'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Moves the cursor to the beginning of the buffer line, skipping all whitespace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='updateVisibility-instance'>
+      ::<strong>updateVisibility</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L101'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>If the marker range is empty, the cursor is marked as being visible.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='wordRegExp-instance'>
+      RegExp ::<strong>wordRegExp</strong>({includeNonWordCharacters}={})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/cursor.coffee#L122'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the RegExp used by the cursor to determine what a &quot;word&quot; is.</p><p>options: An optional <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:
+:includeNonWordCharacters - A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether to include
+                            non-word characters in the regex.
+                            (default: true)</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>RegExp</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/RegExp'>RegExp</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Mon Jul 28 2014 14:36:42 GMT-0700 (PDT)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v2.1.1
+  (Node.js v0.10.21).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/Cursor.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+</html>

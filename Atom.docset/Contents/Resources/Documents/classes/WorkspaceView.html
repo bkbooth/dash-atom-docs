@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/WorkspaceView.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:44 GMT -->
+<head>
+  <meta charset='UTF-8'>
+  <title>Atom API Documentation</title>
+  <link rel='stylesheet' href='../assets/biscotto.css' type='text/css'>
+  <script src='../assets/biscotto.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../docs/README.md.html' title='Atom'>Atom</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>WorkspaceView</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class
+        WorkspaceView
+      </h1>
+      <div class='stability-1'>
+        <span class='heading'></span>
+        <div class='message'></div>
+      </div>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;workspace-view.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='View.html'>View</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>The top-level view for the entire window. An instance of this class is available via the <code>atom.workspaceView</code> global.</p><p>It is backed by a model object, an instance of <a href='Workspace.html'>Workspace</a>, which is available
+via the <code>atom.workspace</code> global or <a href='WorkspaceView.html#getModel-instance'>::getModel</a>. You should prefer to interact
+with the model object when possible, but it won&#39;t always be possible with the
+current API.</p><h2 id="adding-perimeter-panels">Adding Perimeter Panels</h2><p>Use the following methods if possible to attach panels to the perimeter of the
+workspace rather than manipulating the DOM directly to better insulate you to
+changes in the workspace markup:</p><ul>
+<li><a href='WorkspaceView.html#prependToTop-instance'>::prependToTop</a></li>
+<li><a href='WorkspaceView.html#appendToTop-instance'>::appendToTop</a></li>
+<li><a href='WorkspaceView.html#prependToBottom-instance'>::prependToBottom</a></li>
+<li><a href='WorkspaceView.html#appendToBottom-instance'>::appendToBottom</a></li>
+<li><a href='WorkspaceView.html#prependToLeft-instance'>::prependToLeft</a></li>
+<li><a href='WorkspaceView.html#appendToLeft-instance'>::appendToLeft</a></li>
+<li><a href='WorkspaceView.html#prependToRight-instance'>::prependToRight</a></li>
+<li><a href='WorkspaceView.html#appendToRight-instance'>::appendToRight</a></li>
+</ul>
+<h2 id="requiring-in-package-specs">Requiring in package specs</h2><p>If you need a <code>WorkspaceView</code> instance to test your package, require it via
+the built-in <code>atom</code> module.</p><pre><code class="lang-coffee">  {WorkspaceView} = require &#39;atom&#39;
+</code></pre><p>You can assign it to the <code>atom.workspaceView</code> global in the spec or just use
+it as a local, depending on what you&#39;re trying to accomplish. Building the
+<code>WorkspaceView</code> is currently expensive, so you should try build a <a href='Workspace.html'>Workspace</a>
+instead if possible. </p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#appendToBottom-instance'>
+        ::<strong>appendToBottom</strong>(element)
+      </a>
+    </span>
+    <span class='desc'>
+      Append an element or view to the panels at the bottom of the workspace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#appendToLeft-instance'>
+        ::<strong>appendToLeft</strong>(element)
+      </a>
+    </span>
+    <span class='desc'>
+      Append an element or view to the panels at the left of the workspace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#appendToRight-instance'>
+        ::<strong>appendToRight</strong>(element)
+      </a>
+    </span>
+    <span class='desc'>
+      Append an element or view to the panels at the right of the workspace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#appendToTop-instance'>
+        ::<strong>appendToTop</strong>(element)
+      </a>
+    </span>
+    <span class='desc'>
+      Append an element or view to the panels at the top of the workspace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#eachEditorView-instance'>
+        ::<strong>eachEditorView</strong>(callback)
+      </a>
+    </span>
+    <span class='desc'>
+      Register a function to be called for every current and future editor view in the workspace (only includes <a href='EditorView.html'>EditorView</a>s that are pane items).
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#eachPaneView-instance'>
+        ::<strong>eachPaneView</strong>(callback)
+      </a>
+    </span>
+    <span class='desc'>
+      Register a function to be called for every current and future pane view in the workspace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#focusPaneViewAbove-instance'>
+        ::<strong>focusPaneViewAbove</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Focus the pane directly above the active pane.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#focusPaneViewBelow-instance'>
+        ::<strong>focusPaneViewBelow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Focus the pane directly below the active pane.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#focusPaneViewOnLeft-instance'>
+        ::<strong>focusPaneViewOnLeft</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Focus the pane directly to the left of the active pane.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#focusPaneViewOnRight-instance'>
+        ::<strong>focusPaneViewOnRight</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Focus the pane directly to the right of the active pane.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getActivePaneView-instance'>
+        PaneView ::<strong>getActivePaneView</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the active pane view.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getActiveView-instance'>
+        ::<strong>getActiveView</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the view associated with the active pane item.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getModel-instance'>
+        Workspace ::<strong>getModel</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the underlying model object.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getPaneViews-instance'>
+        PaneView ::<strong>getPaneViews</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get all existing pane views.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#installShellCommands-instance'>
+        ::<strong>installShellCommands</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Install the Atom shell commands on the user&#39;s system.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#prependToBottom-instance'>
+        ::<strong>prependToBottom</strong>(element)
+      </a>
+    </span>
+    <span class='desc'>
+      Prepend an element or view to the panels at the bottom of the workspace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#prependToLeft-instance'>
+        ::<strong>prependToLeft</strong>(element)
+      </a>
+    </span>
+    <span class='desc'>
+      Prepend an element or view to the panels at the left of the workspace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#prependToRight-instance'>
+        ::<strong>prependToRight</strong>(element)
+      </a>
+    </span>
+    <span class='desc'>
+      Prepend an element or view to the panels at the right of the workspace.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#prependToTop-instance'>
+        ::<strong>prependToTop</strong>(element)
+      </a>
+    </span>
+    <span class='desc'>
+      Prepend an element or view to the panels at the top of the workspace.
+    </span>
+  </li>
+</ul>
+      <h2>
+        <small>Inherited Method Summary</small>
+      </h2>
+      <h3 class='inherited'>
+        Methods inherited from
+        <a href='View.html'>View</a>
+      </h3>
+      <p class='inherited'>
+                <a href='View.html#subview-class'>@subview</a>,
+                <a href='View.html#text-class'>@text</a>,
+                <a href='View.html#tag-class'>@tag</a>,
+                <a href='View.html#raw-class'>@raw</a>,
+                <a href='View.html#command-instance'>.command</a>,
+        <a href='View.html#preempt-instance'>.preempt</a>
+      </p>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='appendToBottom-instance'>
+      ::<strong>appendToBottom</strong>(element)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L248'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Append an element or view to the panels at the bottom of the workspace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='appendToLeft-instance'>
+      ::<strong>appendToLeft</strong>(element)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L258'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Append an element or view to the panels at the left of the workspace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='appendToRight-instance'>
+      ::<strong>appendToRight</strong>(element)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L268'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Append an element or view to the panels at the right of the workspace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='appendToTop-instance'>
+      ::<strong>appendToTop</strong>(element)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L238'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Append an element or view to the panels at the top of the workspace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='eachEditorView-instance'>
+      ::<strong>eachEditorView</strong>(callback)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L332'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Register a function to be called for every current and future editor view in the workspace (only includes <a href='EditorView.html'>EditorView</a>s that are pane items).</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>callback</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> with an <a href='EditorView.html'>EditorView</a> as its only argument.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns a subscription object with an <code>.off</code> method that you can call to
+unregister the callback.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='eachPaneView-instance'>
+      ::<strong>eachPaneView</strong>(callback)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L311'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Register a function to be called for every current and future pane view in the workspace.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>callback</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> with a <a href='PaneView.html'>PaneView</a> as its only argument.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns a subscription object with an <code>.off</code> method that you can call to
+unregister the callback.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='focusPaneViewAbove-instance'>
+      ::<strong>focusPaneViewAbove</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L293'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Focus the pane directly above the active pane.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='focusPaneViewBelow-instance'>
+      ::<strong>focusPaneViewBelow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L296'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Focus the pane directly below the active pane.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='focusPaneViewOnLeft-instance'>
+      ::<strong>focusPaneViewOnLeft</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L299'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Focus the pane directly to the left of the active pane.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='focusPaneViewOnRight-instance'>
+      ::<strong>focusPaneViewOnRight</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L302'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Focus the pane directly to the right of the active pane.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getActivePaneView-instance'>
+      PaneView ::<strong>getActivePaneView</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L277'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the active pane view.</p><p>Prefer <a href='Workspace.html#getActivePane-instance'>Workspace::getActivePane</a> if you don&#39;t actually need access to the
+view.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='PaneView.html'>PaneView</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='PaneView.html'>PaneView</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getActiveView-instance'>
+      ::<strong>getActiveView</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L283'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the view associated with the active pane item.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns a view.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getModel-instance'>
+      Workspace ::<strong>getModel</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L164'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the underlying model object.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Workspace.html'>Workspace</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Workspace.html'>Workspace</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getPaneViews-instance'>
+      PaneView ::<strong>getPaneViews</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L321'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get all existing pane views.</p><p>Prefer <a href='Workspace.html#getPanes-instance'>Workspace::getPanes</a> if you don&#39;t need access to the view objects.
+Also consider using <a href='WorkspaceView.html#eachPaneView-instance'>::eachPaneView</a> if you want to register a callback for
+all current and <em>future</em> pane views.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='PaneView.html'>PaneView</a></tt>)
+      &mdash;
+      <span class='desc'>Returns an Array of all open <a href='PaneView.html'>PaneView</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='installShellCommands-instance'>
+      ::<strong>installShellCommands</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L167'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Install the Atom shell commands on the user&#39;s system.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='prependToBottom-instance'>
+      ::<strong>prependToBottom</strong>(element)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L243'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Prepend an element or view to the panels at the bottom of the workspace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='prependToLeft-instance'>
+      ::<strong>prependToLeft</strong>(element)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L253'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Prepend an element or view to the panels at the left of the workspace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='prependToRight-instance'>
+      ::<strong>prependToRight</strong>(element)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L263'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Prepend an element or view to the panels at the right of the workspace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='prependToTop-instance'>
+      ::<strong>prependToTop</strong>(element)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/workspace-view.coffee#L234'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Prepend an element or view to the panels at the top of the workspace.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Mon Jul 28 2014 14:36:42 GMT-0700 (PDT)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v2.1.1
+  (Node.js v0.10.21).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/WorkspaceView.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:44 GMT -->
+</html>

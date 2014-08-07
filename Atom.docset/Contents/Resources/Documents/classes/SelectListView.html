@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/SelectListView.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+<head>
+  <meta charset='UTF-8'>
+  <title>Atom API Documentation</title>
+  <link rel='stylesheet' href='../assets/biscotto.css' type='text/css'>
+  <script src='../assets/biscotto.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../docs/README.md.html' title='Atom'>Atom</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>SelectListView</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class
+        SelectListView
+      </h1>
+      <div class='stability-1'>
+        <span class='heading'></span>
+        <div class='message'></div>
+      </div>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;select-list-view.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='View.html'>View</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>Provides a view that renders a list of items with an editor that filters the items. Used by many packages such as the fuzzy-finder, command-palette, symbols-view and autocomplete.</p><p>Subclasses must implement the following methods:</p><ul>
+<li><a href='SelectListView.html#viewForItem-instance'>::viewForItem</a></li>
+<li><a href='SelectListView.html#confirmed-instance'>::confirmed</a></li>
+</ul>
+<h2 id="requiring-in-packages">Requiring in packages</h2>
+<pre><code class="lang-coffee">{SelectListView} = require &#39;atom&#39;
+
+class MySelectListView extends SelectListView
+  initialize: -&gt;
+    super
+    @addClass(&#39;overlay from-top&#39;)
+    @setItems([&#39;Hello&#39;, &#39;World&#39;])
+    atom.workspaceView.append(this)
+    @focusFilterEditor()
+
+  viewForItem: (item) -&gt;
+    &quot;&lt;li&gt;#{item}&lt;/li&gt;&quot;
+
+  confirmed: (item) -&gt;
+    console.log(&quot;#{item} was selected&quot;)
+</code></pre>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#cancel-instance'>
+        ::<strong>cancel</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Cancel and close this select list view.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#confirmed-instance'>
+        View ::<strong>confirmed</strong>(item)
+      </a>
+    </span>
+    <span class='desc'>
+      Callback function for when an item is selected.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#focusFilterEditor-instance'>
+        ::<strong>focusFilterEditor</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Focus the fuzzy filter editor view.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getEmptyMessage-instance'>
+        String ::<strong>getEmptyMessage</strong>(itemCount, filteredItemCount)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the message to display when there are no items.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getFilterKey-instance'>
+        ::<strong>getFilterKey</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the property name to use when filtering items.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getFilterQuery-instance'>
+        String ::<strong>getFilterQuery</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the filter query to use when fuzzy filtering the visible elements.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelectedItem-instance'>
+        ::<strong>getSelectedItem</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the model item that is currently selected in the list view.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#initialize-instance'>
+        ::<strong>initialize</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Initialize the select list view.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#populateList-instance'>
+        ::<strong>populateList</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Populate the list view with the model items previously set by calling <a href='SelectListView.html#setItems-instance'>::setItems</a>.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setError-instance'>
+        ::<strong>setError</strong>(message = '')
+      </a>
+    </span>
+    <span class='desc'>
+      Set the error message to display.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setItems-instance'>
+        ::<strong>setItems</strong>(items = [])
+      </a>
+    </span>
+    <span class='desc'>
+      Set the array of items to display in the list.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setLoading-instance'>
+        ::<strong>setLoading</strong>(message = '')
+      </a>
+    </span>
+    <span class='desc'>
+      Set the loading message to display.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setMaxItems-instance'>
+        ::<strong>setMaxItems</strong>(maxItems)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the maximum numbers of items to display in the list.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#storeFocusedElement-instance'>
+        ::<strong>storeFocusedElement</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Store the currently focused element.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#viewForItem-instance'>
+        ::<strong>viewForItem</strong>(item)
+      </a>
+    </span>
+    <span class='desc'>
+      Create a view for the given model item.
+    </span>
+  </li>
+</ul>
+      <h2>
+        <small>Inherited Method Summary</small>
+      </h2>
+      <h3 class='inherited'>
+        Methods inherited from
+        <a href='View.html'>View</a>
+      </h3>
+      <p class='inherited'>
+                <a href='View.html#subview-class'>@subview</a>,
+                <a href='View.html#text-class'>@text</a>,
+                <a href='View.html#tag-class'>@tag</a>,
+                <a href='View.html#raw-class'>@raw</a>,
+                <a href='View.html#command-instance'>.command</a>,
+        <a href='View.html#preempt-instance'>.preempt</a>
+      </p>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='cancel-instance'>
+      ::<strong>cancel</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L282'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Cancel and close this select list view.</p><p>This restores focus to the previously focused element if
+<a href='SelectListView.html#storeFocusedElement-instance'>::storeFocusedElement</a> was called prior to this view being attached. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='confirmed-instance'>
+      View ::<strong>confirmed</strong>(item)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L243'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Callback function for when an item is selected.</p><p>This method must be overridden by subclasses.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>item</span>
+      &mdash;
+      <span class='desc'>The selected model item. This will always be one of the items previously passed to <a href='SelectListView.html#setItems-instance'>::setItems</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='View.html'>View</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a DOM element, jQuery object, or <a href='View.html'>View</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='focusFilterEditor-instance'>
+      ::<strong>focusFilterEditor</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L260'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Focus the fuzzy filter editor view.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getEmptyMessage-instance'>
+      String ::<strong>getEmptyMessage</strong>(itemCount, filteredItemCount)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L173'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the message to display when there are no items.</p><p>Subclasses may override this method to customize the message.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>itemCount</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of items in the array specified to <a href='SelectListView.html#setItems-instance'>::setItems</a></span>
+    </li>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>filteredItemCount</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of items that pass the fuzzy filter test.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> message (default: &#39;No matches found&#39;).</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getFilterKey-instance'>
+      ::<strong>getFilterKey</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L257'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the property name to use when filtering items.</p><p>This method may be overridden by classes to allow fuzzy filtering based
+on a specific property of the item objects.</p><p>For example if the objects you pass to <a href='SelectListView.html#setItems-instance'>::setItems</a> are of the type
+<code>{&quot;id&quot;: 3, &quot;name&quot;: &quot;Atom&quot;}</code> then you would return <code>&quot;name&quot;</code> from this method
+to fuzzy filter by that property when text is entered into this view&#39;s
+editor.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns the property name to fuzzy filter by.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getFilterQuery-instance'>
+      String ::<strong>getFilterQuery</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L135'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the filter query to use when fuzzy filtering the visible elements.</p><p>By default this method returns the text in the mini editor but it can be
+overridden by subclasses if needed.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> to use when fuzzy filtering the elements to display.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelectedItem-instance'>
+      ::<strong>getSelectedItem</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L212'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the model item that is currently selected in the list view.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns a model item.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='initialize-instance'>
+      ::<strong>initialize</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L56'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Initialize the select list view.</p><p>This method can be overridden by subclasses but <code>super</code> should always
+be called. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='populateList-instance'>
+      ::<strong>populateList</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L142'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Populate the list view with the model items previously set by calling <a href='SelectListView.html#setItems-instance'>::setItems</a>.</p><p>Subclasses may override this method but should always call <code>super</code>. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setError-instance'>
+      ::<strong>setError</strong>(message = '')
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L108'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the error message to display.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>message</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> error message (default: &#39;&#39;).</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setItems-instance'>
+      ::<strong>setItems</strong>(items = [])
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L101'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the array of items to display in the list.</p><p>This should be model items not actual views. <a href='SelectListView.html#viewForItem-instance'>::viewForItem</a> will be
+called to render the item when it is being appended to the list view.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Array)</span>
+      <span class='name'>items</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of model items to display in the list (default: []).</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setLoading-instance'>
+      ::<strong>setLoading</strong>(message = '')
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L118'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the loading message to display.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>message</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> loading message (default: &#39;&#39;).</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setMaxItems-instance'>
+      ::<strong>setMaxItems</strong>(maxItems)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L178'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the maximum numbers of items to display in the list.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>maxItems</span>
+      &mdash;
+      <span class='desc'>The maximum <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of items to display.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='storeFocusedElement-instance'>
+      ::<strong>storeFocusedElement</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L265'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Store the currently focused element. This element will be given back focus when <a href='SelectListView.html#cancel-instance'>::cancel</a> is called.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='viewForItem-instance'>
+      ::<strong>viewForItem</strong>(item)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/select-list-view.coffee#L232'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Create a view for the given model item.</p><p>This method must be overridden by subclasses.</p><p>This is called when the item is about to appended to the list view.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>item</span>
+      &mdash;
+      <span class='desc'>The model item being rendered. This will always be one of the items previously passed to <a href='SelectListView.html#setItems-instance'>::setItems</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns a String of HTML, DOM element, jQuery object, or View.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Mon Jul 28 2014 14:36:42 GMT-0700 (PDT)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v2.1.1
+  (Node.js v0.10.21).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/SelectListView.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/Decoration.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+<head>
+  <meta charset='UTF-8'>
+  <title>Atom API Documentation</title>
+  <link rel='stylesheet' href='../assets/biscotto.css' type='text/css'>
+  <script src='../assets/biscotto.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../docs/README.md.html' title='Atom'>Atom</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Decoration</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class
+        Decoration
+      </h1>
+      <div class='stability-1'>
+        <span class='heading'></span>
+        <div class='message'></div>
+      </div>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;decoration.coffee</td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>Represents a decoration that follows a <a href='Marker.html'>Marker</a>. A decoration is basically a visual representation of a marker. It allows you to add CSS classes to line numbers in the gutter, lines, and add selection-line regions around marked ranges of text.</p><p><a href='Decoration.html'>Decoration</a> objects are not meant to be created directly, but created with
+<a href='Editor.html#decorateMarker-instance'>Editor::decorateMarker</a>. eg.</p><pre><code class="lang-coffee">range = editor.getSelectedBufferRange() # any range you like
+marker = editor.markBufferRange(range)
+decoration = editor.decorateMarker(marker, {type: &#39;line&#39;, class: &#39;my-line-class&#39;})
+</code></pre><p>Best practice for destorying the decoration is by destroying the <a href='Marker.html'>Marker</a>.</p><pre><code>marker.destroy()
+</code></pre><p>You should only use <a href='Decoration.html#destroy-instance'>Decoration::destroy</a> when you still need or do not own
+the marker.</p><h3 id="ids">IDs</h3><p>Each <a href='Decoration.html'>Decoration</a> has a unique ID available via <code>decoration.id</code>.</p><h3 id="events">Events</h3><p>A couple of events are emitted:</p><ul>
+<li><code>destroyed</code>: When the <a href='Decoration.html'>Decoration</a> is destroyed</li>
+<li><code>updated</code>: When the <a href='Decoration.html'>Decoration</a> is updated via <a href='Decoration.html#update-instance'>Decoration::update</a>.
+  Event object has properties <code>oldParams</code> and <code>newParams</code></li>
+</ul>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#destroy-instance'>
+        ::<strong>destroy</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Destroy this marker.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getMarker-instance'>
+        ::<strong>getMarker</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the marker associated with this <a href='Decoration.html'>Decoration</a>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getParams-instance'>
+        ::<strong>getParams</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the <a href='Decoration.html'>Decoration</a>&#39;s params.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isType-instance'>
+        Boolean ::<strong>isType</strong>(type)
+      </a>
+    </span>
+    <span class='desc'>
+      Check if this decoration is of type <code>type</code>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#update-instance'>
+        ::<strong>update</strong>(newParams)
+      </a>
+    </span>
+    <span class='desc'>
+      Update the marker with new params.
+    </span>
+  </li>
+</ul>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='destroy-instance'>
+      ::<strong>destroy</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/decoration.coffee#L60'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Destroy this marker.</p><p>If you own the marker, you should use <a href='Marker.html#destroy-instance'>Marker::destroy</a> which will destroy
+this decoration. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getMarker-instance'>
+      ::<strong>getMarker</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/decoration.coffee#L80'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the marker associated with this <a href='Decoration.html'>Decoration</a></p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getParams-instance'>
+      ::<strong>getParams</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/decoration.coffee#L83'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the <a href='Decoration.html'>Decoration</a>&#39;s params.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isType-instance'>
+      Boolean ::<strong>isType</strong>(type)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/decoration.coffee#L90'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Check if this decoration is of type <code>type</code></p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>type</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> type like <code>&#39;gutter&#39;</code></span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a></span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='update-instance'>
+      ::<strong>update</strong>(newParams)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/decoration.coffee#L71'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Update the marker with new params. Allows you to change the decoration&#39;s class.</p><pre><code>decoration.update({type: &#39;gutter&#39;, class: &#39;my-new-class&#39;})
+</code></pre>
+</div>
+<div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Mon Jul 28 2014 14:36:42 GMT-0700 (PDT)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v2.1.1
+  (Node.js v0.10.21).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/Decoration.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+</html>

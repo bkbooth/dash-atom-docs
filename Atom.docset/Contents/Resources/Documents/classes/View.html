@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/View.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:43 GMT -->
+<head>
+  <meta charset='UTF-8'>
+  <title>Atom API Documentation</title>
+  <link rel='stylesheet' href='../assets/biscotto.css' type='text/css'>
+  <script src='../assets/biscotto.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../docs/README.md.html' title='Atom'>Atom</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>View</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class
+        View
+      </h1>
+      <div class='stability-1'>
+        <span class='heading'></span>
+        <div class='message'></div>
+      </div>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>docs&#47;includes&#47;space-pen&#47;src&#47;space-pen.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='jQuery.html'>jQuery</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>View class that extends the jQuery prototype.</p><p>Extending classes must implement a <code>@content</code> method.</p><h2 id="example">Example</h2>
+<pre><code class="lang-coffee">class Spacecraft extends View
+  @content: -&gt;
+    @div =&gt;
+      @h1 &#39;Spacecraft&#39;
+      @ol =&gt;
+        @li &#39;Apollo&#39;
+        @li &#39;Soyuz&#39;
+        @li &#39;Space Shuttle&#39;
+</code></pre><p>Each view instance will have all the methods from the jQuery prototype
+available on it.</p><pre><code class="lang-coffee">  craft = new Spacecraft()
+  craft.find(&#39;h1&#39;).text() # &#39;Spacecraft&#39;
+  craft.appendTo(document.body) # View is now a child of the &lt;body&gt; tag
+</code></pre>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Subclasses</h2>
+      <p class='children'>
+                <a href='CursorView.html'>CursorView</a>,
+                <a href='EditorView.html'>EditorView</a>,
+                <a href='GutterView.html'>GutterView</a>,
+                <a href='PaneAxisView.html'>PaneAxisView</a>,
+                <a href='PaneContainerView.html'>PaneContainerView</a>,
+                <a href='PaneView.html'>PaneView</a>,
+                <a href='ReactEditorView.html'>ReactEditorView</a>,
+                <a href='ScrollView.html'>ScrollView</a>,
+                <a href='SelectListView.html'>SelectListView</a>,
+                <a href='SelectionView.html'>SelectionView</a>,
+        <a href='WorkspaceView.html'>WorkspaceView</a>
+      </p>
+      <h2>Class Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#raw-class'>
+        .<strong>raw</strong>(string)
+      </a>
+    </span>
+    <span class='desc'>
+      Add new child DOM nodes from the given raw HTML string.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#subview-class'>
+        .<strong>subview</strong>(name, view)
+      </a>
+    </span>
+    <span class='desc'>
+      Add the given subview wired to an outlet with the given name
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#tag-class'>
+        .<strong>tag</strong>(tagName, args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Add a new tag with the given name
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#text-class'>
+        .<strong>text</strong>(string)
+      </a>
+    </span>
+    <span class='desc'>
+      Add a text node with the given text content
+    </span>
+  </li>
+</ul>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#command-instance'>
+        ::<strong>command</strong>(commandName, selector, options, handler)
+      </a>
+    </span>
+    <span class='desc'>
+      Calls the given handler when commandName is triggered on the <a href='View.html'>View</a>.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#preempt-instance'>
+        ::<strong>preempt</strong>(eventName, handler)
+      </a>
+    </span>
+    <span class='desc'>
+      Preempt events registered with jQuery&#39;s <code>::on</code>.
+    </span>
+  </li>
+</ul>
+      <h2>Class Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='raw-class'>
+      .<strong>raw</strong>(string)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/docs/includes/space-pen/src/space-pen.coffee#L76'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add new child DOM nodes from the given raw HTML string.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='subview-class'>
+      .<strong>subview</strong>(name, view)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/docs/includes/space-pen/src/space-pen.coffee#L66'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add the given subview wired to an outlet with the given name</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='tag-class'>
+      .<strong>tag</strong>(tagName, args...)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/docs/includes/space-pen/src/space-pen.coffee#L73'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add a new tag with the given name</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='text-class'>
+      .<strong>text</strong>(string)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/docs/includes/space-pen/src/space-pen.coffee#L70'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add a text node with the given text content</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='command-instance'>
+      ::<strong>command</strong>(commandName, selector, options, handler)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/docs/includes/space-pen/src/space-pen.coffee#L168'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Calls the given handler when commandName is triggered on the <a href='View.html'>View</a>.</p><p>This is enhanced version of jQuery&#39;s <code>::on</code> method. It listens for a custom
+DOM event and adds metadata to the DOM to maintain a list of all commands.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>commandName</span>
+      &mdash;
+      <span class='desc'>A namespaced <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> describing the command, such as <code>find-and-replace:toggle</code>.</span>
+    </li>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>selector</span>
+      &mdash;
+      <span class='desc'>An optional selector <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> to filter the descendants of the elements that trigger the event.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An optional options <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with an <code>data</code> key.</span>
+    </li>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>handler</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to execute when the command is triggered.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='preempt-instance'>
+      ::<strong>preempt</strong>(eventName, handler)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/docs/includes/space-pen/src/space-pen.coffee#L175'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Preempt events registered with jQuery&#39;s <code>::on</code>.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>eventName</span>
+      &mdash;
+      <span class='desc'>A event name <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>handler</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to execute when the eventName is triggered.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Mon Jul 28 2014 14:36:42 GMT-0700 (PDT)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v2.1.1
+  (Node.js v0.10.21).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/View.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:44 GMT -->
+</html>

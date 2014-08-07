@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/Atom.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:41 GMT -->
+<head>
+  <meta charset='UTF-8'>
+  <title>Atom API Documentation</title>
+  <link rel='stylesheet' href='../assets/biscotto.css' type='text/css'>
+  <script src='../assets/biscotto.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../docs/README.md.html' title='Atom'>Atom</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Atom</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class
+        Atom
+      </h1>
+      <div class='stability-1'>
+        <span class='heading'></span>
+        <div class='message'></div>
+      </div>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;atom.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='Model.html'>Model</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>Atom global for dealing with packages, themes, menus, and the window.</p><p>An instance of this class is always available as the <code>atom</code> global.</p><h2 id="useful-properties-available-">Useful properties available:</h2>
+<ul>
+<li><code>atom.clipboard</code>     - A <a href='Clipboard.html'>Clipboard</a> instance</li>
+<li><code>atom.config</code>        - A <a href='Config.html'>Config</a> instance</li>
+<li><code>atom.contextMenu</code>   - A <a href='ContextMenuManager.html'>ContextMenuManager</a> instance</li>
+<li><code>atom.deserializers</code> - A <a href='DeserializerManager.html'>DeserializerManager</a> instance</li>
+<li><code>atom.keymaps</code>        - A <a href='KeymapManager.html'>KeymapManager</a> instance</li>
+<li><code>atom.menu</code>          - A <a href='MenuManager.html'>MenuManager</a> instance</li>
+<li><code>atom.packages</code>      - A <a href='PackageManager.html'>PackageManager</a> instance</li>
+<li><code>atom.project</code>       - A <a href='Project.html'>Project</a> instance</li>
+<li><code>atom.syntax</code>        - A <a href='Syntax.html'>Syntax</a> instance</li>
+<li><code>atom.themes</code>        - A <a href='ThemeManager.html'>ThemeManager</a> instance</li>
+<li><code>atom.workspace</code>     - A <a href='Workspace.html'>Workspace</a> instance</li>
+<li><code>atom.workspaceView</code> - A <a href='WorkspaceView.html'>WorkspaceView</a> instance </li>
+</ul>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Class Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#loadOrCreate-class'>
+        .<strong>loadOrCreate</strong>(mode)
+      </a>
+    </span>
+    <span class='desc'>
+      Load or create the Atom environment in the given mode.
+    </span>
+  </li>
+</ul>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#beep-instance'>
+        ::<strong>beep</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Visually and audibly trigger a beep.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#center-instance'>
+        ::<strong>center</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move current window to the center of the screen.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#close-instance'>
+        ::<strong>close</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Close the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#confirm-instance'>
+        Number ::<strong>confirm</strong>({message, detailedMessage, buttons}={})
+      </a>
+    </span>
+    <span class='desc'>
+      Open a confirm dialog.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#executeJavaScriptInDevTools-instance'>
+        ::<strong>executeJavaScriptInDevTools</strong>(code)
+      </a>
+    </span>
+    <span class='desc'>
+      Execute code in dev tools.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#focus-instance'>
+        ::<strong>focus</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Focus the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getConfigDirPath-instance'>
+        ::<strong>getConfigDirPath</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the directory path to Atom&#39;s configuration area.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCurrentWindow-instance'>
+        ::<strong>getCurrentWindow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the current window
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getLoadSettings-instance'>
+        ::<strong>getLoadSettings</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the load settings for the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getVersion-instance'>
+        String ::<strong>getVersion</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the version of the Atom application.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getWindowDimensions-instance'>
+        ::<strong>getWindowDimensions</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the dimensions of this window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getWindowLoadTime-instance'>
+        ::<strong>getWindowLoadTime</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the time taken to completely load the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#hide-instance'>
+        ::<strong>hide</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Hide the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#inDevMode-instance'>
+        ::<strong>inDevMode</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Is the current window in development mode?
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#inSpecMode-instance'>
+        ::<strong>inSpecMode</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Is the current window running specs?
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#initialize-instance'>
+        ::<strong>initialize</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Sets up the basic services that should be available in all modes (both spec and application).
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isFullScreen-instance'>
+        ::<strong>isFullScreen</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Is the current window in full screen mode?
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isReleasedVersion-instance'>
+        ::<strong>isReleasedVersion</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Determine whether the current version is an official release.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#open-instance'>
+        ::<strong>open</strong>(options)
+      </a>
+    </span>
+    <span class='desc'>
+      Open a new Atom window using the given options.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#openDevTools-instance'>
+        ::<strong>openDevTools</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Open the dev tools for the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#reload-instance'>
+        ::<strong>reload</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Reload the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#requireWithGlobals-instance'>
+        ::<strong>requireWithGlobals</strong>(id, globals = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Require the module with the given globals.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setFullScreen-instance'>
+        ::<strong>setFullScreen</strong>(fullScreen = false)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the full screen state of the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setPosition-instance'>
+        ::<strong>setPosition</strong>(x, y)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the position of current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setSize-instance'>
+        ::<strong>setSize</strong>(width, height)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the size of current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setWindowDimensions-instance'>
+        ::<strong>setWindowDimensions</strong>({x, y, width, height})
+      </a>
+    </span>
+    <span class='desc'>
+      Set the dimensions of the window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#show-instance'>
+        ::<strong>show</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Show the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#toggleDevTools-instance'>
+        ::<strong>toggleDevTools</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Toggle the visibility of the dev tools for the current window.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#toggleFullScreen-instance'>
+        ::<strong>toggleFullScreen</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Toggle the full screen state of the current window.
+    </span>
+  </li>
+</ul>
+      <h2>Class Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='loadOrCreate-class'>
+      .<strong>loadOrCreate</strong>(mode)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L45'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Load or create the Atom environment in the given mode.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>mode</span>
+      &mdash;
+      <span class='desc'>Pass &#39;editor&#39; or &#39;spec&#39; depending on the kind of environment you want to build.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns an Atom instance, fully initialized</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='beep-instance'>
+      ::<strong>beep</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L531'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Visually and audibly trigger a beep.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='center-instance'>
+      ::<strong>center</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L448'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move current window to the center of the screen.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='close-instance'>
+      ::<strong>close</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L462'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Close the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='confirm-instance'>
+      Number ::<strong>confirm</strong>({message, detailedMessage, buttons}={})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L375'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Open a confirm dialog.</p><h2 id="example">Example</h2>
+<pre><code class="lang-coffee">atom.confirm
+  message: &#39;How you feeling?&#39;
+  detailedMessage: &#39;Be honest.&#39;
+  buttons:
+    Good: -&gt; window.alert(&#39;good to hear&#39;)
+    Bad:  -&gt; window.alert(&#39;bummer&#39;)
+</code></pre>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(String)</span>
+        <span class='name'>message</span>
+        &mdash;
+        <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> message to display.</span>
+      </li>
+      <li>
+        <span class='type'>(String)</span>
+        <span class='name'>detailedMessage</span>
+        &mdash;
+        <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> detailed message to display.</span>
+      </li>
+      <li>
+        <span class='name'>buttons</span>
+        &mdash;
+        <span class='desc'>Either an array of strings or an object where keys are button names and the values are callbacks to invoke when clicked.</span>
+      </li>
+    </ul>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Number</tt>)
+      &mdash;
+      <span class='desc'>Returns the chosen button index <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> if the buttons option was an array.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='executeJavaScriptInDevTools-instance'>
+      ::<strong>executeJavaScriptInDevTools</strong>(code)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L413'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Execute code in dev tools.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='focus-instance'>
+      ::<strong>focus</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L421'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Focus the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getConfigDirPath-instance'>
+      ::<strong>getConfigDirPath</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L504'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the directory path to Atom&#39;s configuration area.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns the absolute path to <code>~/.atom</code>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCurrentWindow-instance'>
+      ::<strong>getCurrentWindow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L187'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the current window</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getLoadSettings-instance'>
+      ::<strong>getLoadSettings</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L258'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the load settings for the current window.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns an object containing all the load setting key/value pairs.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getVersion-instance'>
+      String ::<strong>getVersion</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L494'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the version of the Atom application.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns the version text <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getWindowDimensions-instance'>
+      ::<strong>getWindowDimensions</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L193'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the dimensions of this window.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns an object with x, y, width, and height keys.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getWindowLoadTime-instance'>
+      ::<strong>getWindowLoadTime</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L521'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the time taken to completely load the current window.</p><p>This time include things like loading and activating packages, creating
+DOM elements for the editor, and reading the config.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns the number of milliseconds taken to load the window or null
+if the window hasn't finished loading yet.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='hide-instance'>
+      ::<strong>hide</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L430'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Hide the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='inDevMode-instance'>
+      ::<strong>inDevMode</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L471'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Is the current window in development mode?</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='inSpecMode-instance'>
+      ::<strong>inSpecMode</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L475'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Is the current window running specs?</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='initialize-instance'>
+      ::<strong>initialize</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L123'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Sets up the basic services that should be available in all modes (both spec and application). Call after this instance has been assigned to the <code>atom</code> global.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isFullScreen-instance'>
+      ::<strong>isFullScreen</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L488'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Is the current window in full screen mode?</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isReleasedVersion-instance'>
+      ::<strong>isReleasedVersion</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L498'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine whether the current version is an official release.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='open-instance'>
+      ::<strong>open</strong>(options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L351'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Open a new Atom window using the given options.</p><p>Calling this method without an options parameter will open a prompt to pick
+a file/folder to open in the new window.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(Array)</span>
+        <span class='name'>pathsToOpen</span>
+        &mdash;
+        <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> paths to open.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='openDevTools-instance'>
+      ::<strong>openDevTools</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L405'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Open the dev tools for the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='reload-instance'>
+      ::<strong>reload</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L417'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Reload the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='requireWithGlobals-instance'>
+      ::<strong>requireWithGlobals</strong>(id, globals = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L553'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Require the module with the given globals.</p><p>The globals will be set on the <code>window</code> object and removed after the
+require completes.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>id</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> module name or path.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>globals</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> to set as globals during require (default: {})</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setFullScreen-instance'>
+      ::<strong>setFullScreen</strong>(fullScreen = false)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L483'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the full screen state of the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setPosition-instance'>
+      ::<strong>setPosition</strong>(x, y)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L444'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the position of current window.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>x</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of pixels.</span>
+    </li>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>y</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of pixels.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setSize-instance'>
+      ::<strong>setSize</strong>(width, height)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L437'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the size of current window.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>width</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of pixels.</span>
+    </li>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>height</span>
+      &mdash;
+      <span class='desc'>The <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> of pixels.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setWindowDimensions-instance'>
+      ::<strong>setWindowDimensions</strong>({x, y, width, height})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L210'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the dimensions of the window.</p><p>The window will be centered if either the x or y coordinate is not set
+in the dimensions parameter. If x or y are omitted the window will be
+centered. If height or width are omitted only the position will be changed.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>dimensions</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='name'>x</span>
+        &mdash;
+        <span class='desc'>The new x coordinate.</span>
+      </li>
+      <li>
+        <span class='name'>y</span>
+        &mdash;
+        <span class='desc'>The new y coordinate.</span>
+      </li>
+      <li>
+        <span class='name'>width</span>
+        &mdash;
+        <span class='desc'>The new width.</span>
+      </li>
+      <li>
+        <span class='name'>height</span>
+        &mdash;
+        <span class='desc'>The new height.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='show-instance'>
+      ::<strong>show</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L426'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Show the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='toggleDevTools-instance'>
+      ::<strong>toggleDevTools</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L409'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Toggle the visibility of the dev tools for the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='toggleFullScreen-instance'>
+      ::<strong>toggleFullScreen</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/atom.coffee#L479'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Toggle the full screen state of the current window.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Mon Jul 28 2014 14:36:42 GMT-0700 (PDT)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v2.1.1
+  (Node.js v0.10.21).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/Atom.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+</html>

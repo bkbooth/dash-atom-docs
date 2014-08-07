@@ -1,0 +1,4837 @@
+<!DOCTYPE html>
+<html>
+  
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/Editor.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+<head>
+  <meta charset='UTF-8'>
+  <title>Atom API Documentation</title>
+  <link rel='stylesheet' href='../assets/biscotto.css' type='text/css'>
+  <script src='../assets/biscotto.js'></script>
+  <script src='../assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../docs/README.md.html' title='Atom'>Atom</a>
+    &raquo;
+    <a href='../class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>Editor</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='../class_list.html'>Classes</a>
+      <a id='file_list_link' href='../file_list.html'>Files</a>
+      <a id='method_list_link' href='../method_list.html'>Methods</a>
+      <a id='extra_list_link' href='../extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class
+        Editor
+      </h1>
+      <div class='stability-1'>
+        <span class='heading'></span>
+        <div class='message'></div>
+      </div>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;editor.coffee</td>
+        </tr>
+        <tr>
+          <td>Inherits:</td>
+          <td>
+            <a href='Model.html'>Model</a>
+          </td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>This class represents all essential editing state for a single <a href='TextBuffer.html'>TextBuffer</a>, including cursor and selection positions, folds, and soft wraps. If you&#39;re manipulating the state of an editor, use this class. If you&#39;re interested in the visual appearance of editors, use <a href='EditorView.html'>EditorView</a> instead.</p><p>A single <a href='TextBuffer.html'>TextBuffer</a> can belong to multiple editors. For example, if the
+same file is open in two different panes, Atom creates a separate editor for
+each pane. If the buffer is manipulated the changes are reflected in both
+editors, but each maintains its own cursor position, folded lines, etc.</p><h2 id="accessing-editor-instances">Accessing Editor Instances</h2><p>The easiest way to get hold of <code>Editor</code> objects is by registering a callback
+with <code>::eachEditor</code> on the <code>atom.workspace</code> global. Your callback will then
+be called with all current editor instances and also when any editor is
+created in the future.</p><pre><code class="lang-coffeescript">  atom.workspace.eachEditor (editor) -&gt;
+    editor.insertText(&#39;Hello World&#39;)
+</code></pre>
+<h2 id="buffer-vs-screen-coordinates">Buffer vs. Screen Coordinates</h2><p>Because editors support folds and soft-wrapping, the lines on screen don&#39;t
+always match the lines in the buffer. For example, a long line that soft wraps
+twice renders as three lines on screen, but only represents one line in the
+buffer. Similarly, if rows 5-10 are folded, then row 6 on screen corresponds
+to row 11 in the buffer.</p><p>Your choice of coordinates systems will depend on what you&#39;re trying to
+achieve. For example, if you&#39;re writing a command that jumps the cursor up or
+down by 10 lines, you&#39;ll want to use screen coordinates because the user
+probably wants to skip lines <em>on screen</em>. However, if you&#39;re writing a package
+that jumps between method definitions, you&#39;ll want to work in buffer
+coordinates.</p><p><strong>When in doubt, just default to buffer coordinates</strong>, then experiment with
+soft wraps and folds to ensure your code interacts with them correctly.</p><h2 id="common-tasks">Common Tasks</h2><p>This is a subset of methods on this class. Refer to the complete summary for
+its full capabilities.</p><h3 id="cursors">Cursors</h3>
+<ul>
+<li><a href='Editor.html#setCursorBufferPosition-instance'>::setCursorBufferPosition</a></li>
+<li><a href='Editor.html#setCursorScreenPosition-instance'>::setCursorScreenPosition</a></li>
+<li><a href='Editor.html#moveCursorUp-instance'>::moveCursorUp</a></li>
+<li><a href='Editor.html#moveCursorDown-instance'>::moveCursorDown</a></li>
+<li><a href='Editor.html#moveCursorLeft-instance'>::moveCursorLeft</a></li>
+<li><a href='Editor.html#moveCursorRight-instance'>::moveCursorRight</a></li>
+<li><a href='Editor.html#moveCursorToBeginningOfWord-instance'>::moveCursorToBeginningOfWord</a></li>
+<li><a href='Editor.html#moveCursorToEndOfWord-instance'>::moveCursorToEndOfWord</a></li>
+<li><a href='Editor.html#moveCursorToPreviousWordBoundary-instance'>::moveCursorToPreviousWordBoundary</a></li>
+<li><a href='Editor.html#moveCursorToNextWordBoundary-instance'>::moveCursorToNextWordBoundary</a></li>
+<li><a href='Editor.html#moveCursorToBeginningOfNextWord-instance'>::moveCursorToBeginningOfNextWord</a></li>
+<li><a href='Editor.html#moveCursorToBeginningOfLine-instance'>::moveCursorToBeginningOfLine</a></li>
+<li><a href='Editor.html#moveCursorToEndOfLine-instance'>::moveCursorToEndOfLine</a></li>
+<li><a href='Editor.html#moveCursorToFirstCharacterOfLine-instance'>::moveCursorToFirstCharacterOfLine</a></li>
+<li><a href='Editor.html#moveCursorToTop-instance'>::moveCursorToTop</a></li>
+<li><a href='Editor.html#moveCursorToBottom-instance'>::moveCursorToBottom</a></li>
+</ul>
+<h3 id="selections">Selections</h3>
+<ul>
+<li><a href='Editor.html#getSelectedBufferRange-instance'>::getSelectedBufferRange</a></li>
+<li><a href='Editor.html#getSelectedBufferRanges-instance'>::getSelectedBufferRanges</a></li>
+<li><a href='Editor.html#setSelectedBufferRange-instance'>::setSelectedBufferRange</a></li>
+<li><a href='Editor.html#setSelectedBufferRanges-instance'>::setSelectedBufferRanges</a></li>
+<li><a href='Editor.html#selectUp-instance'>::selectUp</a></li>
+<li><a href='Editor.html#selectDown-instance'>::selectDown</a></li>
+<li><a href='Editor.html#selectLeft-instance'>::selectLeft</a></li>
+<li><a href='Editor.html#selectRight-instance'>::selectRight</a></li>
+<li><a href='Editor.html#selectToBeginningOfWord-instance'>::selectToBeginningOfWord</a></li>
+<li><a href='Editor.html#selectToEndOfWord-instance'>::selectToEndOfWord</a></li>
+<li><a href='Editor.html#selectToPreviousWordBoundary-instance'>::selectToPreviousWordBoundary</a></li>
+<li><a href='Editor.html#selectToNextWordBoundary-instance'>::selectToNextWordBoundary</a></li>
+<li><a href='Editor.html#selectWord-instance'>::selectWord</a></li>
+<li><a href='Editor.html#selectToBeginningOfLine-instance'>::selectToBeginningOfLine</a></li>
+<li><a href='Editor.html#selectToEndOfLine-instance'>::selectToEndOfLine</a></li>
+<li><a href='Editor.html#selectToFirstCharacterOfLine-instance'>::selectToFirstCharacterOfLine</a></li>
+<li><a href='Editor.html#selectToTop-instance'>::selectToTop</a></li>
+<li><a href='Editor.html#selectToBottom-instance'>::selectToBottom</a></li>
+<li><a href='Editor.html#selectAll-instance'>::selectAll</a></li>
+<li><a href='Editor.html#addSelectionForBufferRange-instance'>::addSelectionForBufferRange</a></li>
+<li><a href='Editor.html#addSelectionAbove-instance'>::addSelectionAbove</a></li>
+<li><a href='Editor.html#addSelectionBelow-instance'>::addSelectionBelow</a></li>
+<li><a href='Editor.html#splitSelectionsIntoLines-instance'>::splitSelectionsIntoLines</a></li>
+</ul>
+<h3 id="manipulating-text">Manipulating Text</h3>
+<ul>
+<li><a href='Editor.html#getText-instance'>::getText</a></li>
+<li><a href='Editor.html#getSelectedText-instance'>::getSelectedText</a></li>
+<li><a href='Editor.html#setText-instance'>::setText</a></li>
+<li><a href='Editor.html#setTextInBufferRange-instance'>::setTextInBufferRange</a></li>
+<li><a href='Editor.html#insertText-instance'>::insertText</a></li>
+<li><a href='Editor.html#insertNewline-instance'>::insertNewline</a></li>
+<li><a href='Editor.html#insertNewlineAbove-instance'>::insertNewlineAbove</a></li>
+<li><a href='Editor.html#insertNewlineBelow-instance'>::insertNewlineBelow</a></li>
+<li><a href='Editor.html#backspace-instance'>::backspace</a></li>
+<li><a href='Editor.html#deleteToBeginningOfWord-instance'>::deleteToBeginningOfWord</a></li>
+<li><a href='Editor.html#deleteToBeginningOfLine-instance'>::deleteToBeginningOfLine</a></li>
+<li><a href='Editor.html#delete-instance'>::delete</a></li>
+<li><a href='Editor.html#deleteToEndOfLine-instance'>::deleteToEndOfLine</a></li>
+<li><a href='Editor.html#deleteToEndOfWord-instance'>::deleteToEndOfWord</a></li>
+<li><a href='Editor.html#deleteLine-instance'>::deleteLine</a></li>
+<li><a href='Editor.html#cutSelectedText-instance'>::cutSelectedText</a></li>
+<li><a href='Editor.html#cutToEndOfLine-instance'>::cutToEndOfLine</a></li>
+<li><a href='Editor.html#copySelectedText-instance'>::copySelectedText</a></li>
+<li><a href='Editor.html#pasteText-instance'>::pasteText</a></li>
+</ul>
+<h3 id="undo-redo-and-transactions">Undo, Redo, and Transactions</h3>
+<ul>
+<li><a href='Editor.html#undo-instance'>::undo</a></li>
+<li><a href='Editor.html#redo-instance'>::redo</a></li>
+<li><a href='Editor.html#transact-instance'>::transact</a></li>
+<li><a href='Editor.html#abortTransaction-instance'>::abortTransaction</a></li>
+</ul>
+<h3 id="markers">Markers</h3>
+<ul>
+<li><a href='Editor.html#markBufferRange-instance'>::markBufferRange</a></li>
+<li><a href='Editor.html#markScreenRange-instance'>::markScreenRange</a></li>
+<li><a href='Editor.html#getMarker-instance'>::getMarker</a></li>
+<li><a href='Editor.html#findMarkers-instance'>::findMarkers</a></li>
+</ul>
+<h3 id="decorations">Decorations</h3>
+<ul>
+<li><a href='Editor.html#decorateMarker-instance'>::decorateMarker</a></li>
+<li><a href='Editor.html#decorationsForScreenRowRange-instance'>::decorationsForScreenRowRange</a> </li>
+</ul>
+
+</div>
+<div class='tags'>
+</div>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#abortTransaction-instance'>
+        ::<strong>abortTransaction</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Abort an open transaction, undoing any operations performed so far within the transaction.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addCursorAtBufferPosition-instance'>
+        Cursor ::<strong>addCursorAtBufferPosition</strong>(bufferPosition)
+      </a>
+    </span>
+    <span class='desc'>
+      Add a cursor at the given position in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addCursorAtScreenPosition-instance'>
+        Cursor ::<strong>addCursorAtScreenPosition</strong>(screenPosition)
+      </a>
+    </span>
+    <span class='desc'>
+      Add a cursor at the position in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addSelectionAbove-instance'>
+        ::<strong>addSelectionAbove</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Add a similarly-shaped selection to the next eligible line above each selection.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addSelectionBelow-instance'>
+        ::<strong>addSelectionBelow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Add a similarly-shaped selection to the next eligible line below each selection.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addSelectionForBufferRange-instance'>
+        Selection ::<strong>addSelectionForBufferRange</strong>(bufferRange, options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Add a selection for the given range in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#autoIndentSelectedRows-instance'>
+        ::<strong>autoIndentSelectedRows</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Indent rows intersecting selections based on the grammar&#39;s suggested indent level.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#backspace-instance'>
+        ::<strong>backspace</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, if the selection is empty, delete the character preceding the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#beginTransaction-instance'>
+        ::<strong>beginTransaction</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Start an open-ended transaction.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#bufferPositionForScreenPosition-instance'>
+        Point ::<strong>bufferPositionForScreenPosition</strong>(screenPosition, options)
+      </a>
+    </span>
+    <span class='desc'>
+      Convert a position in screen-coordinates to buffer-coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#bufferRangeForScopeAtCursor-instance'>
+        Range ::<strong>bufferRangeForScopeAtCursor</strong>(selector)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the range in buffer coordinates of all tokens surrounding the cursor that match the given scope selector.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#bufferRangeForScreenRange-instance'>
+        Range ::<strong>bufferRangeForScreenRange</strong>(screenRange)
+      </a>
+    </span>
+    <span class='desc'>
+      Convert a range in screen-coordinates to buffer-coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#clipBufferPosition-instance'>
+        Point ::<strong>clipBufferPosition</strong>(bufferPosition)
+      </a>
+    </span>
+    <span class='desc'>
+      Clip the given <a href='Point.html'>Point</a> to a valid position in the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#clipBufferRange-instance'>
+        Range ::<strong>clipBufferRange</strong>(range)
+      </a>
+    </span>
+    <span class='desc'>
+      Clip the start and end of the given range to valid positions in the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#clipScreenPosition-instance'>
+        Point ::<strong>clipScreenPosition</strong>(screenPosition, options)
+      </a>
+    </span>
+    <span class='desc'>
+      Clip the given <a href='Point.html'>Point</a> to a valid position on screen.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#commitTransaction-instance'>
+        ::<strong>commitTransaction</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Commit an open-ended transaction started with <a href='Editor.html#beginTransaction-instance'>::beginTransaction</a> and push it to the undo stack.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#copySelectedText-instance'>
+        ::<strong>copySelectedText</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, copy the selected text.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#cutSelectedText-instance'>
+        ::<strong>cutSelectedText</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, cut the selected text.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#cutToEndOfLine-instance'>
+        ::<strong>cutToEndOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, if the selection is empty, cut all characters of the containing line following the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#decorateMarker-instance'>
+        Decoration ::<strong>decorateMarker</strong>(marker, decorationParams)
+      </a>
+    </span>
+    <span class='desc'>
+      Adds a decoration that tracks a <a href='Marker.html'>Marker</a>.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#decorationsForScreenRowRange-instance'>
+        Object| ::<strong>decorationsForScreenRowRange</strong>(startScreenRow, endScreenRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Get all the decorations within a screen row range.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#delete-instance'>
+        ::<strong>delete</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, if the selection is empty, delete the character preceding the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#deleteLine-instance'>
+        ::<strong>deleteLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Delete all lines intersecting selections.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#deleteToBeginningOfLine-instance'>
+        ::<strong>deleteToBeginningOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, if the selection is empty, delete all characters of the containing line that precede the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#deleteToBeginningOfWord-instance'>
+        ::<strong>deleteToBeginningOfWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, if the selection is empty, delete all characters of the containing word that precede the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#deleteToEndOfLine-instance'>
+        ::<strong>deleteToEndOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, if the selection is not empty, deletes the selection; otherwise, deletes all characters of the containing line following the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#deleteToEndOfWord-instance'>
+        ::<strong>deleteToEndOfWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, if the selection is empty, delete all characters of the containing word following the cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#findMarkers-instance'>
+        ::<strong>findMarkers</strong>(properties)
+      </a>
+    </span>
+    <span class='desc'>
+      Find all <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a>s that match the given properties.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#foldAll-instance'>
+        ::<strong>foldAll</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Fold all foldable lines.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#foldAllAtIndentLevel-instance'>
+        ::<strong>foldAllAtIndentLevel</strong>(level)
+      </a>
+    </span>
+    <span class='desc'>
+      Fold all foldable lines at the given indent level.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#foldBufferRow-instance'>
+        ::<strong>foldBufferRow</strong>(bufferRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Fold the given row in buffer coordinates based on its indentation level.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#foldCurrentRow-instance'>
+        ::<strong>foldCurrentRow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Fold the most recent cursor&#39;s row based on its indentation level.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#foldSelectedLines-instance'>
+        ::<strong>foldSelectedLines</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, fold the rows it intersects.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCurrentParagraphBufferRange-instance'>
+        Range ::<strong>getCurrentParagraphBufferRange</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the <a href='Range.html'>Range</a> of the paragraph surrounding the most recently added cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCursor-instance'>
+        ::<strong>getCursor</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the most recently added <a href='Cursor.html'>Cursor</a>.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCursorBufferPosition-instance'>
+        Point ::<strong>getCursorBufferPosition</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the position of the most recently added cursor in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCursorScopes-instance'>
+        Array ::<strong>getCursorScopes</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the syntactic scopes for the most recently added cursor&#39;s position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCursorScreenPosition-instance'>
+        Point ::<strong>getCursorScreenPosition</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the position of the most recently added cursor in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCursorScreenRow-instance'>
+        Number ::<strong>getCursorScreenRow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the row of the most recently added cursor in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getCursors-instance'>
+        ::<strong>getCursors</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get an Array of all <a href='Cursor.html'>Cursor</a>s.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getGrammar-instance'>
+        ::<strong>getGrammar</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the current <a href='Grammar.html'>Grammar</a> of this editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getLastBufferRow-instance'>
+        ::<strong>getLastBufferRow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> representing the last zero-indexed buffer row number of the editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getLastSelection-instance'>
+        Selection ::<strong>getLastSelection</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the most recently added <a href='Selection.html'>Selection</a>.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getLastSelectionInBuffer-instance'>
+        Selection ::<strong>getLastSelectionInBuffer</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the last <a href='Selection.html'>Selection</a> based on its position in the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getLineCount-instance'>
+        ::<strong>getLineCount</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> representing the number of lines in the editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getLongTitle-instance'>
+        String ::<strong>getLongTitle</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the editor&#39;s long title for display in other parts of the UI such as the window title.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getMarker-instance'>
+        ::<strong>getMarker</strong>(id)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a> for the given marker id.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getMarkerCount-instance'>
+        Number ::<strong>getMarkerCount</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the number of markers in this editor&#39;s buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getMarkers-instance'>
+        ::<strong>getMarkers</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get all <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a>s.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getPath-instance'>
+        ::<strong>getPath</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> path of this editor&#39;s text buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelectedBufferRange-instance'>
+        Range ::<strong>getSelectedBufferRange</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the <a href='Range.html'>Range</a> of the most recently added selection in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelectedBufferRanges-instance'>
+        Array ::<strong>getSelectedBufferRanges</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the <a href='Range.html'>Range</a>s of all selections in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelectedScreenRange-instance'>
+        Range ::<strong>getSelectedScreenRange</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the <a href='Range.html'>Range</a> of the most recently added selection in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelectedScreenRanges-instance'>
+        Array ::<strong>getSelectedScreenRanges</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the <a href='Range.html'>Range</a>s of all selections in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelectedText-instance'>
+        String ::<strong>getSelectedText</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the selected text of the most recently added selection.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelection-instance'>
+        Selection ::<strong>getSelection</strong>(index)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the most recent <a href='Selection.html'>Selection</a> or the selection at the given index.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelections-instance'>
+        Array ::<strong>getSelections</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get current <a href='Selection.html'>Selection</a>s.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSelectionsOrderedByBufferPosition-instance'>
+        Array ::<strong>getSelectionsOrderedByBufferPosition</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get all <a href='Selection.html'>Selection</a>s, ordered by their position in the buffer instead of the order in which they were added.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSoftTabs-instance'>
+        ::<strong>getSoftTabs</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether softTabs are enabled for this editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSoftWrap-instance'>
+        ::<strong>getSoftWrap</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get whether soft wrap is enabled for this editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getSoftWrapColumn-instance'>
+        ::<strong>getSoftWrapColumn</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Sets the column at which column will soft wrap
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getTabLength-instance'>
+        Number ::<strong>getTabLength</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the on-screen length of tab characters.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getTabText-instance'>
+        String ::<strong>getTabText</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the text representing a single level of indent.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getText-instance'>
+        ::<strong>getText</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the entire contents of the editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getTextInBufferRange-instance'>
+        String ::<strong>getTextInBufferRange</strong>(range)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the text in the given <a href='Range.html'>Range</a> in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getTitle-instance'>
+        String ::<strong>getTitle</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Get the title the editor&#39;s title for display in other parts of the UI such as the tabs.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getUri-instance'>
+        ::<strong>getUri</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Retrieves the current buffer&#39;s URI.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getWordUnderCursor-instance'>
+        ::<strong>getWordUnderCursor</strong>(options)
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the word surrounding the most recently added cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#hasMultipleCursors-instance'>
+        ::<strong>hasMultipleCursors</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Determine if there are multiple cursors.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#indentLevelForLine-instance'>
+        Number ::<strong>indentLevelForLine</strong>(line)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the indentation level of the given line of text.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#indentSelectedRows-instance'>
+        ::<strong>indentSelectedRows</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Indent rows intersecting selections by one level.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#indentationForBufferRow-instance'>
+        Number ::<strong>indentationForBufferRow</strong>(bufferRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the indentation level of the given a buffer row.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#insertNewline-instance'>
+        ::<strong>insertNewline</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, replace the selected text with a newline.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#insertNewlineAbove-instance'>
+        ::<strong>insertNewlineAbove</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each cursor, insert a newline at the end of the preceding line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#insertNewlineBelow-instance'>
+        ::<strong>insertNewlineBelow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each cursor, insert a newline at beginning the following line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#insertText-instance'>
+        ::<strong>insertText</strong>(text, options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, replace the selected text with the given text.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isBufferRowCommented-instance'>
+        ::<strong>isBufferRowCommented</strong>(bufferRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Determine if the given row is entirely a comment
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isFoldableAtBufferRow-instance'>
+        Boolean ::<strong>isFoldableAtBufferRow</strong>(bufferRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Determine whether the given row in buffer coordinates is foldable.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isFoldedAtBufferRow-instance'>
+        Boolean ::<strong>isFoldedAtBufferRow</strong>(bufferRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Determine whether the given row in buffer coordinates is folded.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isFoldedAtCursorRow-instance'>
+        Boolean ::<strong>isFoldedAtCursorRow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Determine whether the most recently added cursor&#39;s row is folded.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isFoldedAtScreenRow-instance'>
+        Boolean ::<strong>isFoldedAtScreenRow</strong>(screenRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Determine whether the given row in screen coordinates is folded.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#lineForBufferRow-instance'>
+        ::<strong>lineForBufferRow</strong>(row)
+      </a>
+    </span>
+    <span class='desc'>
+      Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the contents of the line at the given buffer row.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#lineLengthForBufferRow-instance'>
+        ::<strong>lineLengthForBufferRow</strong>(row)
+      </a>
+    </span>
+    <span class='desc'>
+      Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> representing the line length for the given buffer row, exclusive of its line-ending character(s).
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#lowerCase-instance'>
+        ::<strong>lowerCase</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Convert the selected text to lower case.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#markBufferPosition-instance'>
+        DisplayBufferMarker ::<strong>markBufferPosition</strong>(args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Mark the given position in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#markBufferRange-instance'>
+        DisplayBufferMarker ::<strong>markBufferRange</strong>(args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Mark the given range in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#markScreenPosition-instance'>
+        DisplayBufferMarker ::<strong>markScreenPosition</strong>(args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Mark the given position in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#markScreenRange-instance'>
+        DisplayBufferMarker ::<strong>markScreenRange</strong>(args...)
+      </a>
+    </span>
+    <span class='desc'>
+      Mark the given range in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorDown-instance'>
+        ::<strong>moveCursorDown</strong>(lineCount)
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor down one row in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorLeft-instance'>
+        ::<strong>moveCursorLeft</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor left one column.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorRight-instance'>
+        ::<strong>moveCursorRight</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor right one column.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToBeginningOfLine-instance'>
+        ::<strong>moveCursorToBeginningOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the beginning of its line in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToBeginningOfNextParagraph-instance'>
+        ::<strong>moveCursorToBeginningOfNextParagraph</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the beginning of the next paragraph.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToBeginningOfNextWord-instance'>
+        ::<strong>moveCursorToBeginningOfNextWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the beginning of the next word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToBeginningOfPreviousParagraph-instance'>
+        ::<strong>moveCursorToBeginningOfPreviousParagraph</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the beginning of the previous paragraph.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToBeginningOfScreenLine-instance'>
+        ::<strong>moveCursorToBeginningOfScreenLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the beginning of its line in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToBeginningOfWord-instance'>
+        ::<strong>moveCursorToBeginningOfWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the beginning of its surrounding word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToBottom-instance'>
+        ::<strong>moveCursorToBottom</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the bottom of the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToEndOfLine-instance'>
+        ::<strong>moveCursorToEndOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the end of its line in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToEndOfScreenLine-instance'>
+        ::<strong>moveCursorToEndOfScreenLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the end of its line in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToEndOfWord-instance'>
+        ::<strong>moveCursorToEndOfWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the end of its surrounding word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToFirstCharacterOfLine-instance'>
+        ::<strong>moveCursorToFirstCharacterOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the first non-whitespace character of its line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToNextWordBoundary-instance'>
+        ::<strong>moveCursorToNextWordBoundary</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the next word boundary.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToPreviousWordBoundary-instance'>
+        ::<strong>moveCursorToPreviousWordBoundary</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the previous word boundary.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorToTop-instance'>
+        ::<strong>moveCursorToTop</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor to the top of the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#moveCursorUp-instance'>
+        ::<strong>moveCursorUp</strong>(lineCount)
+      </a>
+    </span>
+    <span class='desc'>
+      Move every cursor up one row in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#mutateSelectedText-instance'>
+        ::<strong>mutateSelectedText</strong>(fn)
+      </a>
+    </span>
+    <span class='desc'>
+      Mutate the text of all the selections in a single transaction.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#outdentSelectedRows-instance'>
+        ::<strong>outdentSelectedRows</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Outdent rows intersecting selections by one level.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#pasteText-instance'>
+        ::<strong>pasteText</strong>(options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, replace the selected text with the contents of the clipboard.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#redo-instance'>
+        ::<strong>redo</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Redo the last change.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#save-instance'>
+        ::<strong>save</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Saves the editor&#39;s text buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#saveAs-instance'>
+        ::<strong>saveAs</strong>(filePath)
+      </a>
+    </span>
+    <span class='desc'>
+      Saves the editor&#39;s text buffer as the given path.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#scopesForBufferPosition-instance'>
+        Array ::<strong>scopesForBufferPosition</strong>(bufferPosition)
+      </a>
+    </span>
+    <span class='desc'>
+      Get the syntactic scopes for the given position in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#screenPositionForBufferPosition-instance'>
+        Point ::<strong>screenPositionForBufferPosition</strong>(bufferPosition, options)
+      </a>
+    </span>
+    <span class='desc'>
+      Convert a position in buffer-coordinates to screen-coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#screenRangeForBufferRange-instance'>
+        Range ::<strong>screenRangeForBufferRange</strong>(bufferRange)
+      </a>
+    </span>
+    <span class='desc'>
+      Convert a range in buffer-coordinates to screen-coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectAll-instance'>
+        ::<strong>selectAll</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Select all text in the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectDown-instance'>
+        ::<strong>selectDown</strong>(rowCount)
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor of each selection one character downward while preserving the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectLeft-instance'>
+        ::<strong>selectLeft</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor of each selection one character leftward while preserving the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectLine-instance'>
+        ::<strong>selectLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each cursor, select the containing line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectMarker-instance'>
+        Range ::<strong>selectMarker</strong>(marker)
+      </a>
+    </span>
+    <span class='desc'>
+      Select the range of the given marker if it is valid.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectRight-instance'>
+        ::<strong>selectRight</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor of each selection one character rightward while preserving the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToBeginningOfLine-instance'>
+        ::<strong>selectToBeginningOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor of each selection to the beginning of its line while preserving the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToBeginningOfNextParagraph-instance'>
+        ::<strong>selectToBeginningOfNextParagraph</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Expand selections to the beginning of the next paragraph.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToBeginningOfNextWord-instance'>
+        ::<strong>selectToBeginningOfNextWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Expand selections to the beginning of the next word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToBeginningOfPreviousParagraph-instance'>
+        ::<strong>selectToBeginningOfPreviousParagraph</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Expand selections to the beginning of the next paragraph.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToBeginningOfWord-instance'>
+        ::<strong>selectToBeginningOfWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Expand selections to the beginning of their containing word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToBottom-instance'>
+        ::<strong>selectToBottom</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Selects from the top of the first selection in the buffer to the end of the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToEndOfLine-instance'>
+        ::<strong>selectToEndOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor of each selection to the end of its line while preserving the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToEndOfWord-instance'>
+        ::<strong>selectToEndOfWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Expand selections to the end of their containing word.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToFirstCharacterOfLine-instance'>
+        ::<strong>selectToFirstCharacterOfLine</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor of each selection to the first non-whitespace character of its line while preserving the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToNextWordBoundary-instance'>
+        ::<strong>selectToNextWordBoundary</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, move its cursor to the next word boundary while maintaining the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToPreviousWordBoundary-instance'>
+        ::<strong>selectToPreviousWordBoundary</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, move its cursor to the preceding word boundary while maintaining the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToScreenPosition-instance'>
+        ::<strong>selectToScreenPosition</strong>(position)
+      </a>
+    </span>
+    <span class='desc'>
+      Select from the current cursor position to the given position in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectToTop-instance'>
+        ::<strong>selectToTop</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Select from the top of the buffer to the end of the last selection in the buffer.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectUp-instance'>
+        ::<strong>selectUp</strong>(rowCount)
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor of each selection one character upward while preserving the selection&#39;s tail position.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectWord-instance'>
+        ::<strong>selectWord</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Select the word containing each cursor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#selectionIntersectsBufferRange-instance'>
+        Boolean ::<strong>selectionIntersectsBufferRange</strong>(bufferRange)
+      </a>
+    </span>
+    <span class='desc'>
+      Determine if a given range in buffer coordinates intersects a selection.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setCursorBufferPosition-instance'>
+        ::<strong>setCursorBufferPosition</strong>(position, options)
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor to the given position in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setCursorScreenPosition-instance'>
+        ::<strong>setCursorScreenPosition</strong>(position, options)
+      </a>
+    </span>
+    <span class='desc'>
+      Move the cursor to the given position in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setGrammar-instance'>
+        ::<strong>setGrammar</strong>(grammar)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the current <a href='Grammar.html'>Grammar</a> of this editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setIndentationForBufferRow-instance'>
+        ::<strong>setIndentationForBufferRow</strong>(bufferRow, newLevel, {}={})
+      </a>
+    </span>
+    <span class='desc'>
+      Set the indentation level for the given buffer row.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setSelectedBufferRange-instance'>
+        ::<strong>setSelectedBufferRange</strong>(bufferRange, options)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the selected range in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setSelectedBufferRanges-instance'>
+        ::<strong>setSelectedBufferRanges</strong>(bufferRanges, options = {})
+      </a>
+    </span>
+    <span class='desc'>
+      Set the selected ranges in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setSelectedScreenRange-instance'>
+        ::<strong>setSelectedScreenRange</strong>(screenRange, options)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the selected range in screen coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setSoftTabs-instance'>
+        ::<strong>setSoftTabs</strong>(softTabs)
+      </a>
+    </span>
+    <span class='desc'>
+      Enable or disable soft tabs for this editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setSoftWrap-instance'>
+        ::<strong>setSoftWrap</strong>(softWrap)
+      </a>
+    </span>
+    <span class='desc'>
+      Enable or disable soft wrap for this editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setTabLength-instance'>
+        ::<strong>setTabLength</strong>(tabLength)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the on-screen length of tab characters.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setText-instance'>
+        ::<strong>setText</strong>(text)
+      </a>
+    </span>
+    <span class='desc'>
+      Replaces the entire contents of the buffer with the given <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#setTextInBufferRange-instance'>
+        Range ::<strong>setTextInBufferRange</strong>(range, text, normalizeLineEndings)
+      </a>
+    </span>
+    <span class='desc'>
+      Set the text in the given <a href='Range.html'>Range</a> in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#shouldPromptToSave-instance'>
+        ::<strong>shouldPromptToSave</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Determine whether the user should be prompted to save before closing this editor.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#splitSelectionsIntoLines-instance'>
+        ::<strong>splitSelectionsIntoLines</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Split multi-line selections into one selection per line.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#toggleFoldAtBufferRow-instance'>
+        ::<strong>toggleFoldAtBufferRow</strong>(bufferRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Fold the given buffer row if it isn&#39;t currently folded, and unfold it otherwise.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#toggleLineCommentsInSelection-instance'>
+        Array ::<strong>toggleLineCommentsInSelection</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Toggle line comments for rows intersecting selections.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#toggleSoftTabs-instance'>
+        ::<strong>toggleSoftTabs</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Toggle soft tabs for this editor
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#toggleSoftWrap-instance'>
+        ::<strong>toggleSoftWrap</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Toggle soft wrap for this editor
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#transact-instance'>
+        ::<strong>transact</strong>(fn)
+      </a>
+    </span>
+    <span class='desc'>
+      Batch multiple operations as a single undo/redo step.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#transpose-instance'>
+        ::<strong>transpose</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      For each selection, transpose the selected text.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#undo-instance'>
+        ::<strong>undo</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Undo the last change.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#unfoldAll-instance'>
+        ::<strong>unfoldAll</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Unfold all existing folds.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#unfoldBufferRow-instance'>
+        ::<strong>unfoldBufferRow</strong>(bufferRow)
+      </a>
+    </span>
+    <span class='desc'>
+      Unfold all folds containing the given row in buffer coordinates.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#unfoldCurrentRow-instance'>
+        ::<strong>unfoldCurrentRow</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Unfold the most recent cursor&#39;s row by one level.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#upperCase-instance'>
+        ::<strong>upperCase</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Convert the selected text to upper case.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#usesSoftTabs-instance'>
+        Boolean ::<strong>usesSoftTabs</strong>()
+      </a>
+    </span>
+    <span class='desc'>
+      Determine if the buffer uses hard or soft tabs.
+    </span>
+  </li>
+</ul>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='abortTransaction-instance'>
+      ::<strong>abortTransaction</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1953'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Abort an open transaction, undoing any operations performed so far within the transaction.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addCursorAtBufferPosition-instance'>
+      Cursor ::<strong>addCursorAtBufferPosition</strong>(bufferPosition)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1237'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add a cursor at the given position in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Cursor.html'>Cursor</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Cursor.html'>Cursor</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addCursorAtScreenPosition-instance'>
+      Cursor ::<strong>addCursorAtScreenPosition</strong>(screenPosition)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1230'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add a cursor at the position in screen coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Cursor.html'>Cursor</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Cursor.html'>Cursor</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addSelectionAbove-instance'>
+      ::<strong>addSelectionAbove</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1742'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add a similarly-shaped selection to the next eligible line above each selection.</p><p>Operates on all selections. If the selection is empty, adds an empty
+selection to the next preceding non-empty line as close to the current
+selection&#39;s column as possible. If the selection is non-empty, adds a
+selection to the next line that is long enough for a non-empty selection
+starting at the same column as the current selection to be added to it. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addSelectionBelow-instance'>
+      ::<strong>addSelectionBelow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1731'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add a similarly-shaped selection to the next eligible line below each selection.</p><p>Operates on all selections. If the selection is empty, adds an empty
+selection to the next following non-empty line as close to the current
+selection&#39;s column as possible. If the selection is non-empty, adds a
+selection to the next line that is long enough for a non-empty selection
+starting at the same column as the current selection to be added to it. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addSelectionForBufferRange-instance'>
+      Selection ::<strong>addSelectionForBufferRange</strong>(bufferRange, options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1285'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Add a selection for the given range in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>bufferRange</span>
+      &mdash;
+      <span class='desc'>A <a href='Range.html'>Range</a></span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An options <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(Boolean)</span>
+        <span class='name'>reversed</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether to create the selection in a reversed orientation.</span>
+      </li>
+    </ul>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Selection.html'>Selection</a></tt>)
+      &mdash;
+      <span class='desc'>Returns the added <a href='Selection.html'>Selection</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='autoIndentSelectedRows-instance'>
+      ::<strong>autoIndentSelectedRows</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L740'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Indent rows intersecting selections based on the grammar&#39;s suggested indent level.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='backspace-instance'>
+      ::<strong>backspace</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L675'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, if the selection is empty, delete the character preceding the cursor. Otherwise delete the selected text.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='beginTransaction-instance'>
+      ::<strong>beginTransaction</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1943'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Start an open-ended transaction.</p><p>Call <a href='Editor.html#commitTransaction-instance'>::commitTransaction</a> or <a href='Editor.html#abortTransaction-instance'>::abortTransaction</a> to terminate the
+transaction. If you nest calls to transactions, only the outermost
+transaction is considered. You must match every begin with a matching
+commit, but a single call to abort will cancel all nested transactions. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='bufferPositionForScreenPosition-instance'>
+      Point ::<strong>bufferPositionForScreenPosition</strong>(screenPosition, options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L547'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Convert a position in screen-coordinates to buffer-coordinates.</p><p>The position is clipped via <a href='Editor.html#clipScreenPosition-instance'>::clipScreenPosition</a> prior to the conversion.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>bufferPosition</span>
+      &mdash;
+      <span class='desc'>A <a href='Point.html'>Point</a> or <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of [row, column].</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An options hash for <a href='Editor.html#clipScreenPosition-instance'>::clipScreenPosition</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Point.html'>Point</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Point.html'>Point</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='bufferRangeForScopeAtCursor-instance'>
+      Range ::<strong>bufferRangeForScopeAtCursor</strong>(selector)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L615'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the range in buffer coordinates of all tokens surrounding the cursor that match the given scope selector.</p><p>For example, if you wanted to find the string surrounding the cursor, you
+could call <code>editor.bufferRangeForScopeAtCursor(&quot;.string.quoted&quot;)</code>.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='bufferRangeForScreenRange-instance'>
+      Range ::<strong>bufferRangeForScreenRange</strong>(screenRange)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L557'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Convert a range in screen-coordinates to buffer-coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='clipBufferPosition-instance'>
+      Point ::<strong>clipBufferPosition</strong>(bufferPosition)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L362'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Clip the given <a href='Point.html'>Point</a> to a valid position in the buffer.</p><p>If the given <a href='Point.html'>Point</a> describes a position that is actually reachable by the
+cursor based on the current contents of the buffer, it is returned
+unchanged. If the <a href='Point.html'>Point</a> does not describe a valid position, the closest
+valid position is returned instead.</p><p>For example:</p><ul>
+<li><code>[-1, -1]</code> is converted to <code>[0, 0]</code>.</li>
+<li>If the line at row 2 is 10 long, <code>[2, Infinity]</code> is converted to
+<code>[2, 10]</code>.</li>
+</ul>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>bufferPosition</span>
+      &mdash;
+      <span class='desc'>The <a href='Point.html'>Point</a> representing the position to clip.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Point.html'>Point</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Point.html'>Point</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='clipBufferRange-instance'>
+      Range ::<strong>clipBufferRange</strong>(range)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L370'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Clip the start and end of the given range to valid positions in the buffer. See <a href='Editor.html#clipBufferPosition-instance'>::clipBufferPosition</a> for more information.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>range</span>
+      &mdash;
+      <span class='desc'>The <a href='Range.html'>Range</a> to clip.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='clipScreenPosition-instance'>
+      Point ::<strong>clipScreenPosition</strong>(screenPosition, options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L574'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Clip the given <a href='Point.html'>Point</a> to a valid position on screen.</p><p>If the given <a href='Point.html'>Point</a> describes a position that is actually reachable by the
+cursor based on the current contents of the screen, it is returned
+unchanged. If the <a href='Point.html'>Point</a> does not describe a valid position, the closest
+valid position is returned instead.</p><p>For example:</p><ul>
+<li><code>[-1, -1]</code> is converted to <code>[0, 0]</code>.</li>
+<li>If the line at screen row 2 is 10 long, <code>[2, Infinity]</code> is converted to
+<code>[2, 10]</code>.</li>
+</ul>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>bufferPosition</span>
+      &mdash;
+      <span class='desc'>The <a href='Point.html'>Point</a> representing the position to clip.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Point.html'>Point</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Point.html'>Point</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='commitTransaction-instance'>
+      ::<strong>commitTransaction</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1949'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Commit an open-ended transaction started with <a href='Editor.html#beginTransaction-instance'>::beginTransaction</a> and push it to the undo stack.</p><p>If transactions are nested, only the outermost commit takes effect. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='copySelectedText-instance'>
+      ::<strong>copySelectedText</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L766'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, copy the selected text.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='cutSelectedText-instance'>
+      ::<strong>cutSelectedText</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L759'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, cut the selected text.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='cutToEndOfLine-instance'>
+      ::<strong>cutToEndOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L752'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, if the selection is empty, cut all characters of the containing line following the cursor. Otherwise cut the selected text.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='decorateMarker-instance'>
+      Decoration ::<strong>decorateMarker</strong>(marker, decorationParams)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1134'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Adds a decoration that tracks a <a href='Marker.html'>Marker</a>. When the marker moves, is invalidated, or is destroyed, the decoration will be updated to reflect the marker&#39;s state.</p><p>There are three types of supported decorations:</p><ul>
+<li><code>line</code>: Adds your CSS <code>class</code> to the line nodes within the range
+marked by the marker</li>
+<li><code>gutter</code>: Adds your CSS <code>class</code> to the line number nodes within the
+range marked by the marker</li>
+<li><code>highlight</code>: Adds a new highlight div to the editor surrounding the
+range marked by the marker. When the user selects text, the selection is
+visualized with a highlight decoration internally. The structure of this
+highlight will be:<pre><code class="lang-html">&lt;div class=&quot;highlight &lt;your-class&gt;&quot;&gt;
+  &lt;!-- Will be one region for each row in the range. Spans 2 lines? There will be 2 regions. --&gt;
+  &lt;div class=&quot;region&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
+</ul>
+
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Marker)</span>
+      <span class='name'>marker</span>
+      &mdash;
+      <span class='desc'>A <a href='Marker.html'>Marker</a> you want this decoration to follow.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>decorationParams</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> representing the decoration eg. <code>{type: &#39;gutter&#39;, class: &#39;linter-error&#39;}</code></span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='name'>type</span>
+        &mdash;
+        <span class='desc'>There are a few supported decoration types: <ul>
+<li><code>gutter</code>: Applies the decoration to the line numbers spanned by the marker.</li>
+</ul>
+ <ul>
+<li><code>line</code>: Applies the decoration to the lines spanned by the marker.</li>
+</ul>
+ <ul>
+<li><code>highlight</code>: Applies the decoration to a &quot;highlight&quot; behind the marked range.</li>
+</ul>
+</span>
+      </li>
+      <li>
+        <span class='name'>class</span>
+        &mdash;
+        <span class='desc'>This CSS class will be applied to the decorated line number, line, or highlight.</span>
+      </li>
+      <li>
+        <span class='name'>onlyHead</span>
+        &mdash;
+        <span class='desc'>If <code>true</code>, the decoration will only be applied to the head of the marker. Only applicable to the <code>line</code> and <code>gutter</code> types.</span>
+      </li>
+      <li>
+        <span class='name'>onlyEmpty</span>
+        &mdash;
+        <span class='desc'>If <code>true</code>, the decoration will only be applied if the associated marker is empty. Only applicable to the <code>line</code> and <code>gutter</code> types.</span>
+      </li>
+      <li>
+        <span class='name'>onlyNonEmpty</span>
+        &mdash;
+        <span class='desc'>If <code>true</code>, the decoration will only be applied if the associated marker is non-empty.  Only applicable to the <code>line</code> and gutter types.</span>
+      </li>
+    </ul>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Decoration.html'>Decoration</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Decoration.html'>Decoration</a> object</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='decorationsForScreenRowRange-instance'>
+      Object| ::<strong>decorationsForScreenRowRange</strong>(startScreenRow, endScreenRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1093'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get all the decorations within a screen row range.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>startScreenRow</span>
+      &mdash;
+      <span class='desc'>the <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> beginning screen row</span>
+    </li>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>endScreenRow</span>
+      &mdash;
+      <span class='desc'>the <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> end screen row (inclusive)</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Object</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> of decorations in the form
+`{1: [{id: 10, type: 'gutter', class: 'someclass'}], 2: ...}`
+where the keys are <a href='Marker.html'>Marker</a> IDs, and the values are an array of decoration
+params objects attached to the marker.</span>
+    </li>
+    <li>
+      <span class='type'></span>
+      <span class='desc'>Returns an empty object when no decorations are found</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='delete-instance'>
+      ::<strong>delete</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L702'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, if the selection is empty, delete the character preceding the cursor. Otherwise delete the selected text.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='deleteLine-instance'>
+      ::<strong>deleteLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L719'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Delete all lines intersecting selections.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='deleteToBeginningOfLine-instance'>
+      ::<strong>deleteToBeginningOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L697'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, if the selection is empty, delete all characters of the containing line that precede the cursor. Otherwise delete the selected text.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='deleteToBeginningOfWord-instance'>
+      ::<strong>deleteToBeginningOfWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L691'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, if the selection is empty, delete all characters of the containing word that precede the cursor. Otherwise delete the selected text.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='deleteToEndOfLine-instance'>
+      ::<strong>deleteToEndOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L709'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, if the selection is not empty, deletes the selection; otherwise, deletes all characters of the containing line following the cursor. If the cursor is already at the end of the line, deletes the following newline.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='deleteToEndOfWord-instance'>
+      ::<strong>deleteToEndOfWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L715'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, if the selection is empty, delete all characters of the containing word following the cursor. Otherwise delete the selected text.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='findMarkers-instance'>
+      ::<strong>findMarkers</strong>(properties)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1167'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Find all <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a>s that match the given properties.</p><p>This method finds markers based on the given properties. Markers can be
+associated with custom properties that will be compared with basic equality.
+In addition, there are several special properties that will be compared
+with the range of the markers rather than their properties.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>properties</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> containing properties that each returned marker</span>
+    </li>
+    <li>
+      <span class='name'>must satisfy. Markers can be associated with custom properties, which are</span>
+    </li>
+    <li>
+      <span class='name'>compared with basic equality. In addition, several reserved properties</span>
+    </li>
+    <li>
+      <span class='name'>can be used to filter markers based on their current range:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='name'>startBufferRow</span>
+        &mdash;
+        <span class='desc'>Only include markers starting at this row in buffer coordinates.</span>
+      </li>
+      <li>
+        <span class='name'>endBufferRow</span>
+        &mdash;
+        <span class='desc'>Only include markers ending at this row in buffer coordinates.</span>
+      </li>
+      <li>
+        <span class='type'>(Range)</span>
+        <span class='name'>containsBufferRange</span>
+        &mdash;
+        <span class='desc'>Only include markers containing this <a href='Range.html'>Range</a> or in range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> in buffer coordinates.</span>
+      </li>
+      <li>
+        <span class='type'>(Point)</span>
+        <span class='name'>containsBufferPosition</span>
+        &mdash;
+        <span class='desc'>Only include markers containing this <a href='Point.html'>Point</a> or <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <code>[row, column]</code> in buffer coordinates.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='foldAll-instance'>
+      ::<strong>foldAll</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L827'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Fold all foldable lines.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='foldAllAtIndentLevel-instance'>
+      ::<strong>foldAllAtIndentLevel</strong>(level)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L837'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Fold all foldable lines at the given indent level.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>level</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='foldBufferRow-instance'>
+      ::<strong>foldBufferRow</strong>(bufferRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L847'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Fold the given row in buffer coordinates based on its indentation level.</p><p>If the given row is foldable, the fold will begin there. Otherwise, it will
+begin at the first foldable row preceding the given row.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>bufferRow</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='foldCurrentRow-instance'>
+      ::<strong>foldCurrentRow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L813'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Fold the most recent cursor&#39;s row based on its indentation level.</p><p>The fold will extend from the nearest preceding line with a lower
+indentation level up to the nearest following row with a lower indentation
+level. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='foldSelectedLines-instance'>
+      ::<strong>foldSelectedLines</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L823'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, fold the rows it intersects.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCurrentParagraphBufferRange-instance'>
+      Range ::<strong>getCurrentParagraphBufferRange</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1502'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the <a href='Range.html'>Range</a> of the paragraph surrounding the most recently added cursor.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCursor-instance'>
+      ::<strong>getCursor</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1224'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the most recently added <a href='Cursor.html'>Cursor</a>.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCursorBufferPosition-instance'>
+      Point ::<strong>getCursorBufferPosition</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1443'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the position of the most recently added cursor in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Point.html'>Point</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Point.html'>Point</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCursorScopes-instance'>
+      Array ::<strong>getCursorScopes</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L625'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the syntactic scopes for the most recently added cursor&#39;s position. See <a href='Editor.html#scopesForBufferPosition-instance'>::scopesForBufferPosition</a> for more information.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCursorScreenPosition-instance'>
+      Point ::<strong>getCursorScreenPosition</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1419'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the position of the most recently added cursor in screen coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Point.html'>Point</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Point.html'>Point</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCursorScreenRow-instance'>
+      Number ::<strong>getCursorScreenRow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1425'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the row of the most recently added cursor in screen coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Number</tt>)
+      &mdash;
+      <span class='desc'>Returns the screen row <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getCursors-instance'>
+      ::<strong>getCursors</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1221'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get an Array of all <a href='Cursor.html'>Cursor</a>s.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getGrammar-instance'>
+      ::<strong>getGrammar</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1910'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the current <a href='Grammar.html'>Grammar</a> of this editor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getLastBufferRow-instance'>
+      ::<strong>getLastBufferRow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L487'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> representing the last zero-indexed buffer row number of the editor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getLastSelection-instance'>
+      Selection ::<strong>getLastSelection</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1378'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the most recently added <a href='Selection.html'>Selection</a>.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Selection.html'>Selection</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Selection.html'>Selection</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getLastSelectionInBuffer-instance'>
+      Selection ::<strong>getLastSelectionInBuffer</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1391'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the last <a href='Selection.html'>Selection</a> based on its position in the buffer.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Selection.html'>Selection</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Selection.html'>Selection</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getLineCount-instance'>
+      ::<strong>getLineCount</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L462'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> representing the number of lines in the editor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getLongTitle-instance'>
+      String ::<strong>getLongTitle</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L272'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the editor&#39;s long title for display in other parts of the UI such as the window title.</p><p>If the editor&#39;s buffer is saved, its long title is formatted as
+&quot;<filename> - <directory>&quot;. If it is unsaved, its title is &quot;untitled&quot;</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getMarker-instance'>
+      ::<strong>getMarker</strong>(id)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1141'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a> for the given marker id.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getMarkerCount-instance'>
+      Number ::<strong>getMarkerCount</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1213'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the number of markers in this editor&#39;s buffer.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Number</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getMarkers-instance'>
+      ::<strong>getMarkers</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1145'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get all <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a>s.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getPath-instance'>
+      ::<strong>getPath</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L448'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> path of this editor&#39;s text buffer.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelectedBufferRange-instance'>
+      Range ::<strong>getSelectedBufferRange</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1457'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the <a href='Range.html'>Range</a> of the most recently added selection in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelectedBufferRanges-instance'>
+      Array ::<strong>getSelectedBufferRanges</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1465'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the <a href='Range.html'>Range</a>s of all selections in buffer coordinates.</p><p>The ranges are sorted by their position in the buffer.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='Range.html'>Range</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelectedScreenRange-instance'>
+      Range ::<strong>getSelectedScreenRange</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1450'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the <a href='Range.html'>Range</a> of the most recently added selection in screen coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelectedScreenRanges-instance'>
+      Array ::<strong>getSelectedScreenRanges</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1473'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the <a href='Range.html'>Range</a>s of all selections in screen coordinates.</p><p>The ranges are sorted by their position in the buffer.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='Range.html'>Range</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelectedText-instance'>
+      String ::<strong>getSelectedText</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1479'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the selected text of the most recently added selection.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelection-instance'>
+      Selection ::<strong>getSelection</strong>(index)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1371'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the most recent <a href='Selection.html'>Selection</a> or the selection at the given index.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>index</span>
+      &mdash;
+      <span class='desc'>Optional. The index of the selection to return, based on the order</span>
+    </li>
+    <li>
+      <span class='name'>in which the selections were added.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Selection.html'>Selection</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Selection.html'>Selection</a>.
+or the  at the specified index.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelections-instance'>
+      Array ::<strong>getSelections</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1358'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get current <a href='Selection.html'>Selection</a>s.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns: An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='Selection.html'>Selection</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSelectionsOrderedByBufferPosition-instance'>
+      Array ::<strong>getSelectionsOrderedByBufferPosition</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1385'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get all <a href='Selection.html'>Selection</a>s, ordered by their position in the buffer instead of the order in which they were added.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='Selection.html'>Selection</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSoftTabs-instance'>
+      ::<strong>getSoftTabs</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L297'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether softTabs are enabled for this editor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSoftWrap-instance'>
+      ::<strong>getSoftWrap</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L308'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get whether soft wrap is enabled for this editor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getSoftWrapColumn-instance'>
+      ::<strong>getSoftWrapColumn</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L293'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Sets the column at which column will soft wrap</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getTabLength-instance'>
+      Number ::<strong>getTabLength</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L329'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the on-screen length of tab characters.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Number</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getTabText-instance'>
+      String ::<strong>getTabText</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L324'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the text representing a single level of indent.</p><p>If soft tabs are enabled, the text is composed of N spaces, where N is the
+tab length. Otherwise the text is a tab character (<code>\t</code>).</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getText-instance'>
+      ::<strong>getText</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L451'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the entire contents of the editor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getTextInBufferRange-instance'>
+      String ::<strong>getTextInBufferRange</strong>(range)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1487'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the text in the given <a href='Range.html'>Range</a> in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>range</span>
+      &mdash;
+      <span class='desc'>A <a href='Range.html'>Range</a> or range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getTitle-instance'>
+      String ::<strong>getTitle</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L259'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the title the editor&#39;s title for display in other parts of the UI such as the tabs.</p><p>If the editor&#39;s buffer is saved, its title is the file name. If it is
+unsaved, its title is &quot;untitled&quot;.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>String</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getUri-instance'>
+      ::<strong>getUri</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L468'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Retrieves the current buffer&#39;s URI.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getWordUnderCursor-instance'>
+      ::<strong>getWordUnderCursor</strong>(options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1508'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns the word surrounding the most recently added cursor.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>See <a href='Cursor.html#getBeginningOfCurrentWordBufferPosition-instance'>Cursor::getBeginningOfCurrentWordBufferPosition</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='hasMultipleCursors-instance'>
+      ::<strong>hasMultipleCursors</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1217'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine if there are multiple cursors.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='indentLevelForLine-instance'>
+      Number ::<strong>indentLevelForLine</strong>(line)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L415'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the indentation level of the given line of text.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>line</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing a line of text.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Number</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='indentSelectedRows-instance'>
+      ::<strong>indentSelectedRows</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L723'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Indent rows intersecting selections by one level.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='indentationForBufferRow-instance'>
+      Number ::<strong>indentationForBufferRow</strong>(bufferRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L382'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the indentation level of the given a buffer row.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>bufferRow</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> indicating the buffer row.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Number</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='insertNewline-instance'>
+      ::<strong>insertNewline</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L640'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, replace the selected text with a newline.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='insertNewlineAbove-instance'>
+      ::<strong>insertNewlineAbove</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L650'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each cursor, insert a newline at the end of the preceding line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='insertNewlineBelow-instance'>
+      ::<strong>insertNewlineBelow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L644'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each cursor, insert a newline at beginning the following line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='insertText-instance'>
+      ::<strong>insertText</strong>(text, options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L634'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, replace the selected text with the given text.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>text</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the text to insert.</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>See <a href='Selection.html#insertText-instance'>Selection::insertText</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isBufferRowCommented-instance'>
+      ::<strong>isBufferRowCommented</strong>(bufferRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L474'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine if the given row is entirely a comment</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isFoldableAtBufferRow-instance'>
+      Boolean ::<strong>isFoldableAtBufferRow</strong>(bufferRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L863'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine whether the given row in buffer coordinates is foldable.</p><p>A <em>foldable</em> row is a row that <em>starts</em> a row range that can be folded.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>bufferRow</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a></span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isFoldedAtBufferRow-instance'>
+      Boolean ::<strong>isFoldedAtBufferRow</strong>(bufferRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L902'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine whether the given row in buffer coordinates is folded.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>bufferRow</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a></span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isFoldedAtCursorRow-instance'>
+      Boolean ::<strong>isFoldedAtCursorRow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L894'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine whether the most recently added cursor&#39;s row is folded.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isFoldedAtScreenRow-instance'>
+      Boolean ::<strong>isFoldedAtScreenRow</strong>(screenRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L910'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine whether the given row in screen coordinates is folded.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>screenRow</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a></span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='lineForBufferRow-instance'>
+      ::<strong>lineForBufferRow</strong>(row)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L501'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> representing the contents of the line at the given buffer row.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>row</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> representing a zero-indexed buffer row.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='lineLengthForBufferRow-instance'>
+      ::<strong>lineLengthForBufferRow</strong>(row)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L507'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> representing the line length for the given buffer row, exclusive of its line-ending character(s).</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>row</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> indicating the buffer row.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='lowerCase-instance'>
+      ::<strong>lowerCase</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1789'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Convert the selected text to lower case.</p><p>For each selection, if the selection is empty, converts the containing word
+to upper case. Otherwise convert the selected text to upper case. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='markBufferPosition-instance'>
+      DisplayBufferMarker ::<strong>markBufferPosition</strong>(args...)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1203'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Mark the given position in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>position</span>
+      &mdash;
+      <span class='desc'>A <a href='Point.html'>Point</a> or <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <code>[row, column]</code>.</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>See <a href='TextBuffer.html#markRange-instance'>TextBuffer::markRange</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='DisplayBufferMarker.html'>DisplayBufferMarker</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='markBufferRange-instance'>
+      DisplayBufferMarker ::<strong>markBufferRange</strong>(args...)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1185'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Mark the given range in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>range</span>
+      &mdash;
+      <span class='desc'>A <a href='Range.html'>Range</a> or range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>See <a href='TextBuffer.html#markRange-instance'>TextBuffer::markRange</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='DisplayBufferMarker.html'>DisplayBufferMarker</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='markScreenPosition-instance'>
+      DisplayBufferMarker ::<strong>markScreenPosition</strong>(args...)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1194'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Mark the given position in screen coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>position</span>
+      &mdash;
+      <span class='desc'>A <a href='Point.html'>Point</a> or <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <code>[row, column]</code>.</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>See <a href='TextBuffer.html#markRange-instance'>TextBuffer::markRange</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='DisplayBufferMarker.html'>DisplayBufferMarker</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='markScreenRange-instance'>
+      DisplayBufferMarker ::<strong>markScreenRange</strong>(args...)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1176'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Mark the given range in screen coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>range</span>
+      &mdash;
+      <span class='desc'>A <a href='Range.html'>Range</a> or range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>See <a href='TextBuffer.html#markRange-instance'>TextBuffer::markRange</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='DisplayBufferMarker.html'>DisplayBufferMarker</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorDown-instance'>
+      ::<strong>moveCursorDown</strong>(lineCount)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1516'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor down one row in screen coordinates.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorLeft-instance'>
+      ::<strong>moveCursorLeft</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1520'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor left one column.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorRight-instance'>
+      ::<strong>moveCursorRight</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1524'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor right one column.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToBeginningOfLine-instance'>
+      ::<strong>moveCursorToBeginningOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1544'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the beginning of its line in buffer coordinates.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToBeginningOfNextParagraph-instance'>
+      ::<strong>moveCursorToBeginningOfNextParagraph</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1580'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the beginning of the next paragraph.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToBeginningOfNextWord-instance'>
+      ::<strong>moveCursorToBeginningOfNextWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1568'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the beginning of the next word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToBeginningOfPreviousParagraph-instance'>
+      ::<strong>moveCursorToBeginningOfPreviousParagraph</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1584'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the beginning of the previous paragraph.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToBeginningOfScreenLine-instance'>
+      ::<strong>moveCursorToBeginningOfScreenLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1540'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the beginning of its line in screen coordinates.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToBeginningOfWord-instance'>
+      ::<strong>moveCursorToBeginningOfWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1560'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the beginning of its surrounding word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToBottom-instance'>
+      ::<strong>moveCursorToBottom</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1536'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the bottom of the buffer.</p><p>If there are multiple cursors, they will be merged into a single cursor. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToEndOfLine-instance'>
+      ::<strong>moveCursorToEndOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1556'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the end of its line in buffer coordinates.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToEndOfScreenLine-instance'>
+      ::<strong>moveCursorToEndOfScreenLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1552'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the end of its line in screen coordinates.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToEndOfWord-instance'>
+      ::<strong>moveCursorToEndOfWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1564'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the end of its surrounding word.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToFirstCharacterOfLine-instance'>
+      ::<strong>moveCursorToFirstCharacterOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1548'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the first non-whitespace character of its line.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToNextWordBoundary-instance'>
+      ::<strong>moveCursorToNextWordBoundary</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1576'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the next word boundary.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToPreviousWordBoundary-instance'>
+      ::<strong>moveCursorToPreviousWordBoundary</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1572'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the previous word boundary.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorToTop-instance'>
+      ::<strong>moveCursorToTop</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1530'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor to the top of the buffer.</p><p>If there are multiple cursors, they will be merged into a single cursor. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='moveCursorUp-instance'>
+      ::<strong>moveCursorUp</strong>(lineCount)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1512'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move every cursor up one row in screen coordinates.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='mutateSelectedText-instance'>
+      ::<strong>mutateSelectedText</strong>(fn)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1069'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Mutate the text of all the selections in a single transaction.</p><p>All the changes made inside the given <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> can be reverted with a
+single call to <a href='Editor.html#undo-instance'>::undo</a>.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>fn</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> that will be called once for each <a href='Selection.html'>Selection</a>. The first argument will be a <a href='Selection.html'>Selection</a> and the second argument will be the <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> index of that selection.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='outdentSelectedRows-instance'>
+      ::<strong>outdentSelectedRows</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L727'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Outdent rows intersecting selections by one level.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='pasteText-instance'>
+      ::<strong>pasteText</strong>(options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L780'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, replace the selected text with the contents of the clipboard.</p><p>If the clipboard contains the same number of selections as the current
+editor, each selection will be replaced with the content of the
+corresponding clipboard selection text.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>See <a href='Selection.html#insertText-instance'>Selection::insertText</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='redo-instance'>
+      ::<strong>redo</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L804'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Redo the last change.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='save-instance'>
+      ::<strong>save</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L429'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Saves the editor&#39;s text buffer.</p><p>See <a href='TextBuffer.html#save-instance'>TextBuffer::save</a> for more details. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='saveAs-instance'>
+      ::<strong>saveAs</strong>(filePath)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L436'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Saves the editor&#39;s text buffer as the given path.</p><p>See <a href='TextBuffer.html#saveAs-instance'>TextBuffer::saveAs</a> for more details.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>filePath</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a> path.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='scopesForBufferPosition-instance'>
+      Array ::<strong>scopesForBufferPosition</strong>(bufferPosition)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L606'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Get the syntactic scopes for the given position in buffer coordinates.</p><p>For example, if called with a position inside the parameter list of an
+anonymous CoffeeScript function, the method returns the following array:
+<code>[&quot;source.coffee&quot;, &quot;meta.inline.function.coffee&quot;, &quot;variable.parameter.function.coffee&quot;]</code></p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>bufferPosition</span>
+      &mdash;
+      <span class='desc'>A <a href='Point.html'>Point</a> or <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of [row, column].</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='screenPositionForBufferPosition-instance'>
+      Point ::<strong>screenPositionForBufferPosition</strong>(bufferPosition, options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L537'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Convert a position in buffer-coordinates to screen-coordinates.</p><p>The position is clipped via <a href='Editor.html#clipBufferPosition-instance'>::clipBufferPosition</a> prior to the conversion.
+The position is also clipped via <a href='Editor.html#clipScreenPosition-instance'>::clipScreenPosition</a> following the
+conversion, which only makes a difference when <code>options</code> are supplied.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>bufferPosition</span>
+      &mdash;
+      <span class='desc'>A <a href='Point.html'>Point</a> or <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of [row, column].</span>
+    </li>
+    <li>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An options hash for <a href='Editor.html#clipScreenPosition-instance'>::clipScreenPosition</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Point.html'>Point</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Point.html'>Point</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='screenRangeForBufferRange-instance'>
+      Range ::<strong>screenRangeForBufferRange</strong>(bufferRange)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L552'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Convert a range in buffer-coordinates to screen-coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='Range.html'>Range</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectAll-instance'>
+      ::<strong>selectAll</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1670'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Select all text in the buffer.</p><p>This method merges multiple selections into a single selection. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectDown-instance'>
+      ::<strong>selectDown</strong>(rowCount)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1657'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor of each selection one character downward while preserving the selection&#39;s tail position.</p><p>This method may merge selections that end up intesecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectLeft-instance'>
+      ::<strong>selectLeft</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1643'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor of each selection one character leftward while preserving the selection&#39;s tail position.</p><p>This method may merge selections that end up intesecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectLine-instance'>
+      ::<strong>selectLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1720'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each cursor, select the containing line.</p><p>This method merges selections on successive lines. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectMarker-instance'>
+      Range ::<strong>selectMarker</strong>(marker)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1847'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Select the range of the given marker if it is valid.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(DisplayBufferMarker)</span>
+      <span class='name'>marker</span>
+      &mdash;
+      <span class='desc'>A <a href='DisplayBufferMarker.html'>DisplayBufferMarker</a></span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns the selected <a href='Range.html'>Range</a> or <code>undefined</code> if the marker is invalid.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectRight-instance'>
+      ::<strong>selectRight</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1636'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor of each selection one character rightward while preserving the selection&#39;s tail position.</p><p>This method may merge selections that end up intesecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToBeginningOfLine-instance'>
+      ::<strong>selectToBeginningOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1684'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor of each selection to the beginning of its line while preserving the selection&#39;s tail position.</p><p>This method may merge selections that end up intesecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToBeginningOfNextParagraph-instance'>
+      ::<strong>selectToBeginningOfNextParagraph</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1832'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Expand selections to the beginning of the next paragraph.</p><p>Operates on all selections. Moves the cursor to the beginning of the next
+paragraph while preserving the selection&#39;s tail position. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToBeginningOfNextWord-instance'>
+      ::<strong>selectToBeginningOfNextWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1821'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Expand selections to the beginning of the next word.</p><p>Operates on all selections. Moves the cursor to the beginning of the next
+word while preserving the selection&#39;s tail position. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToBeginningOfPreviousParagraph-instance'>
+      ::<strong>selectToBeginningOfPreviousParagraph</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1839'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Expand selections to the beginning of the next paragraph.</p><p>Operates on all selections. Moves the cursor to the beginning of the next
+paragraph while preserving the selection&#39;s tail position. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToBeginningOfWord-instance'>
+      ::<strong>selectToBeginningOfWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1807'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Expand selections to the beginning of their containing word.</p><p>Operates on all selections. Moves the cursor to the beginning of the
+containing word while preserving the selection&#39;s tail position. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToBottom-instance'>
+      ::<strong>selectToBottom</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1677'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Selects from the top of the first selection in the buffer to the end of the buffer.</p><p>This method merges multiple selections into a single selection. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToEndOfLine-instance'>
+      ::<strong>selectToEndOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1700'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor of each selection to the end of its line while preserving the selection&#39;s tail position.</p><p>This method may merge selections that end up intersecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToEndOfWord-instance'>
+      ::<strong>selectToEndOfWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1814'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Expand selections to the end of their containing word.</p><p>Operates on all selections. Moves the cursor to the end of the containing
+word while preserving the selection&#39;s tail position. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToFirstCharacterOfLine-instance'>
+      ::<strong>selectToFirstCharacterOfLine</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1693'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor of each selection to the first non-whitespace character of its line while preserving the selection&#39;s tail position. If the cursor is already on the first character of the line, move it to the beginning of the line.</p><p>This method may merge selections that end up intersecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToNextWordBoundary-instance'>
+      ::<strong>selectToNextWordBoundary</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1714'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, move its cursor to the next word boundary while maintaining the selection&#39;s tail position.</p><p>This method may merge selections that end up intersecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToPreviousWordBoundary-instance'>
+      ::<strong>selectToPreviousWordBoundary</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1707'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, move its cursor to the preceding word boundary while maintaining the selection&#39;s tail position.</p><p>This method may merge selections that end up intersecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToScreenPosition-instance'>
+      ::<strong>selectToScreenPosition</strong>(position)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1627'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Select from the current cursor position to the given position in screen coordinates.</p><p>This method may merge selections that end up intesecting.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>position</span>
+      &mdash;
+      <span class='desc'>An instance of <a href='Point.html'>Point</a>, with a given <code>row</code> and <code>column</code>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectToTop-instance'>
+      ::<strong>selectToTop</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1664'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Select from the top of the buffer to the end of the last selection in the buffer.</p><p>This method merges multiple selections into a single selection. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectUp-instance'>
+      ::<strong>selectUp</strong>(rowCount)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1650'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor of each selection one character upward while preserving the selection&#39;s tail position.</p><p>This method may merge selections that end up intesecting. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectWord-instance'>
+      ::<strong>selectWord</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1825'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Select the word containing each cursor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='selectionIntersectsBufferRange-instance'>
+      Boolean ::<strong>selectionIntersectsBufferRange</strong>(bufferRange)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1400'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine if a given range in buffer coordinates intersects a selection.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>bufferRange</span>
+      &mdash;
+      <span class='desc'>A <a href='Range.html'>Range</a> or range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setCursorBufferPosition-instance'>
+      ::<strong>setCursorBufferPosition</strong>(position, options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1436'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor to the given position in buffer coordinates.</p><p>If there are multiple cursors, they will be consolidated to a single cursor.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>position</span>
+      &mdash;
+      <span class='desc'>A <a href='Point.html'>Point</a> or <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <code>[row, column]</code></span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> combining options for <a href='Editor.html#clipScreenPosition-instance'>::clipScreenPosition</a> with:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='name'>autoscroll</span>
+        &mdash;
+        <span class='desc'>Determines whether the editor scrolls to the new cursor&#39;s position. Defaults to true.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setCursorScreenPosition-instance'>
+      ::<strong>setCursorScreenPosition</strong>(position, options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1412'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Move the cursor to the given position in screen coordinates.</p><p>If there are multiple cursors, they will be consolidated to a single cursor.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Point)</span>
+      <span class='name'>position</span>
+      &mdash;
+      <span class='desc'>A <a href='Point.html'>Point</a> or <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <code>[row, column]</code></span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> combining options for <a href='Editor.html#clipScreenPosition-instance'>::clipScreenPosition</a> with:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='name'>autoscroll</span>
+        &mdash;
+        <span class='desc'>Determines whether the editor scrolls to the new cursor&#39;s position. Defaults to true.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setGrammar-instance'>
+      ::<strong>setGrammar</strong>(grammar)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1917'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the current <a href='Grammar.html'>Grammar</a> of this editor.</p><p>Assigning a grammar will cause the editor to re-tokenize based on the new
+grammar. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setIndentationForBufferRow-instance'>
+      ::<strong>setIndentationForBufferRow</strong>(bufferRow, newLevel, {}={})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L397'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the indentation level for the given buffer row.</p><p>Inserts or removes hard tabs or spaces based on the soft tabs and tab length
+settings of this editor in order to bring it to the given indentation level.
+Note that if soft tabs are enabled and the tab length is 2, a row with 4
+leading spaces would have an indentation level of 2.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>bufferRow</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> indicating the buffer row.</span>
+    </li>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>newLevel</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a> indicating the new indentation level.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a> with the following keys:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='name'>preserveLeadingWhitespace</span>
+        &mdash;
+        <span class='desc'>true to preserve any whitespace already at the beginning of the line (default: false).</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setSelectedBufferRange-instance'>
+      ::<strong>setSelectedBufferRange</strong>(bufferRange, options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1298'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the selected range in buffer coordinates. If there are multiple selections, they are reduced to a single selection with the given range.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>bufferRange</span>
+      &mdash;
+      <span class='desc'>A <a href='Range.html'>Range</a> or range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An options <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(Boolean)</span>
+        <span class='name'>reversed</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether to create the selection in a reversed orientation.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setSelectedBufferRanges-instance'>
+      ::<strong>setSelectedBufferRanges</strong>(bufferRanges, options = {})
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1318'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the selected ranges in buffer coordinates. If there are multiple selections, they are replaced by new selections with the given ranges.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Array)</span>
+      <span class='name'>bufferRanges</span>
+      &mdash;
+      <span class='desc'>An <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of <a href='Range.html'>Range</a>s or range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>s.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An options <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(Boolean)</span>
+        <span class='name'>reversed</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether to create the selection in a reversed orientation.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setSelectedScreenRange-instance'>
+      ::<strong>setSelectedScreenRange</strong>(screenRange, options)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1308'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the selected range in screen coordinates. If there are multiple selections, they are reduced to a single selection with the given range.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>screenRange</span>
+      &mdash;
+      <span class='desc'>A <a href='Range.html'>Range</a> or range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
+    </li>
+    <li>
+      <span class='type'>(Object)</span>
+      <span class='name'>options</span>
+      &mdash;
+      <span class='desc'>An options <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object'>Object</a>:</span>
+    </li>
+    <ul class='options'>
+      <li>
+        <span class='type'>(Boolean)</span>
+        <span class='name'>reversed</span>
+        &mdash;
+        <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a> indicating whether to create the selection in a reversed orientation.</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setSoftTabs-instance'>
+      ::<strong>setSoftTabs</strong>(softTabs)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L302'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Enable or disable soft tabs for this editor.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Boolean)</span>
+      <span class='name'>softTabs</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a></span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setSoftWrap-instance'>
+      ::<strong>setSoftWrap</strong>(softWrap)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L313'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Enable or disable soft wrap for this editor.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Boolean)</span>
+      <span class='name'>softWrap</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a></span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setTabLength-instance'>
+      ::<strong>setTabLength</strong>(tabLength)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L332'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the on-screen length of tab characters.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setText-instance'>
+      ::<strong>setText</strong>(text)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L454'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Replaces the entire contents of the buffer with the given <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a>.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='setTextInBufferRange-instance'>
+      Range ::<strong>setTextInBufferRange</strong>(range, text, normalizeLineEndings)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1496'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Set the text in the given <a href='Range.html'>Range</a> in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Range)</span>
+      <span class='name'>range</span>
+      &mdash;
+      <span class='desc'>A <a href='Range.html'>Range</a> or range-compatible <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a>.</span>
+    </li>
+    <li>
+      <span class='type'>(String)</span>
+      <span class='name'>text</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String'>String</a></span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt><a href='Range.html'>Range</a></tt>)
+      &mdash;
+      <span class='desc'>Returns the <a href='Range.html'>Range</a> of the newly-inserted text.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='shouldPromptToSave-instance'>
+      ::<strong>shouldPromptToSave</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L525'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine whether the user should be prompted to save before closing this editor.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='splitSelectionsIntoLines-instance'>
+      ::<strong>splitSelectionsIntoLines</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1750'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Split multi-line selections into one selection per line.</p><p>Operates on all selections. This method breaks apart all multi-line
+selections to create multiple single-line selections that cumulatively cover
+the same original area. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='toggleFoldAtBufferRow-instance'>
+      ::<strong>toggleFoldAtBufferRow</strong>(bufferRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L885'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Fold the given buffer row if it isn&#39;t currently folded, and unfold it otherwise.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='toggleLineCommentsInSelection-instance'>
+      Array ::<strong>toggleLineCommentsInSelection</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L735'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Toggle line comments for rows intersecting selections.</p><p>If the current grammar doesn&#39;t support comments, does nothing.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Array</tt>)
+      &mdash;
+      <span class='desc'>Returns an <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array'>Array</a> of the commented <a href='Range.html'>Range</a>s.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='toggleSoftTabs-instance'>
+      ::<strong>toggleSoftTabs</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L305'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Toggle soft tabs for this editor</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='toggleSoftWrap-instance'>
+      ::<strong>toggleSoftWrap</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L316'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Toggle soft wrap for this editor</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='transact-instance'>
+      ::<strong>transact</strong>(fn)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1935'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Batch multiple operations as a single undo/redo step.</p><p>Any group of operations that are logically grouped from the perspective of
+undoing and redoing should be performed in a transaction. If you want to
+abort the transaction, call <a href='Editor.html#abortTransaction-instance'>::abortTransaction</a> to terminate the function&#39;s
+execution and revert any changes performed up to the abortion.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Function)</span>
+      <span class='name'>fn</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function'>Function</a> to call inside the transaction.</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='transpose-instance'>
+      ::<strong>transpose</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1767'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>For each selection, transpose the selected text.</p><p>If the selection is empty, the characters preceding and following the cursor
+are swapped. Otherwise, the selected characters are reversed. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='undo-instance'>
+      ::<strong>undo</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L799'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Undo the last change.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='unfoldAll-instance'>
+      ::<strong>unfoldAll</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L831'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Unfold all existing folds.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='unfoldBufferRow-instance'>
+      ::<strong>unfoldBufferRow</strong>(bufferRow)
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L853'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Unfold all folds containing the given row in buffer coordinates.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='type'>(Number)</span>
+      <span class='name'>bufferRow</span>
+      &mdash;
+      <span class='desc'>A <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number'>Number</a></span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='unfoldCurrentRow-instance'>
+      ::<strong>unfoldCurrentRow</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L818'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Unfold the most recent cursor&#39;s row by one level.</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='upperCase-instance'>
+      ::<strong>upperCase</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L1782'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Convert the selected text to upper case.</p><p>For each selection, if the selection is empty, converts the containing word
+to upper case. Otherwise convert the selected text to upper case. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='usesSoftTabs-instance'>
+      Boolean ::<strong>usesSoftTabs</strong>()
+      <a class='gh-link' href='https://github.com/atom/atom//blob/v0.120.0/src/editor.coffee#L340'>Source</a>
+    </p>
+    <div class='docstring'>
+  <p>Determine if the buffer uses hard or soft tabs.</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (<tt>Boolean</tt>)
+      &mdash;
+      <span class='desc'>Returns a <a href='https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean'>Boolean</a>,</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Mon Jul 28 2014 14:36:42 GMT-0700 (PDT)
+  by
+  <a href='https://github.com/gjtorikian/biscotto' title='TomDoc-CoffeeScript API documentation generator'>Biscotto</a>
+  v2.1.1
+  (Node.js v0.10.21).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+</div>
+  </body>
+
+<!-- Mirrored from atom.io/docs/api/v0.120.0/api/classes/Editor.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2014 04:17:42 GMT -->
+</html>
