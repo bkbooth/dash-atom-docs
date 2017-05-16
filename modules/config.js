@@ -1,13 +1,16 @@
+const path = require('path');
+const basePath = path.join('', 'Atom.docset');
+
 module.exports = {
-    dbfile: 'Atom.docset/Contents/Resources/docSet.dsidx',
-    docsdir: 'Atom.docset/Contents/Resources/Documents/',
-    indices: [
-        { type: 'Class', file: 'class_list.html' },
-        { type: 'Method', file: 'method_list.html' },
-        { type: 'File', file: 'file_list.html' }
-    ],
-    files: [
-        { name: 'Info.plist', dest: 'Atom.docset/Contents/Info.plist' },
-        { name: 'icon.png', dest: 'Atom.docset/icon.png' }
-    ]
-}
+  dbFile: path.join(basePath, 'Contents', 'Resources', 'docSet.dsidx'),
+  docsDir: path.join(basePath, 'Contents', 'Resources', 'Documents'),
+  listIndexes: [
+    { type: 'Class', fileName: 'class_list.html' },
+    { type: 'Method', fileName: 'method_list.html' },
+    { type: 'File', fileName: 'file_list.html' },
+  ],
+  staticFiles: [
+    { name: 'Info.plist', dest: path.join(basePath, 'Contents', 'Info.plist') },
+    { name: 'icon.png', dest: path.join(basePath, 'icon.png') },
+  ],
+};
