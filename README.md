@@ -25,7 +25,7 @@ $ httrack https://atom.io/docs/api/ -O ~/Projects/atom-docs +https://atom.io/doc
 
 To re-scrape, just run `httrack` inside `~/Projects/atom-docs` (or wherever you scraped to).
 
-[1]: http://kapeli.com/dash
+[1]: https://kapeli.com/dash
 [2]: https://atom.io/
 [3]: https://atom.io/docs/api
-[4]: http://www.httrack.com/
+[4]: https://www.httrack.com/
