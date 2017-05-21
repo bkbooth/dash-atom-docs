@@ -14,8 +14,8 @@
   "license": "MIT",
   "scripts": {
     "scrape": "httrack https://atom.io/docs/api/v$npm_package_atom_version/ -O ./scraped +https://atom.io/docs/api/* +*github-atom-io-herokuapp-com.global.ssl.fastly.net/*",
-    "prescrape": "node ./modules/check-httrack",
-    "clean": "rimraf scraped"
+    "prescrape": "node ./modules/check-httrack && npm run clean:scrape",
+    "clean:scrape": "rimraf scraped"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
