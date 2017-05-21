@@ -2,12 +2,8 @@
   "name": "dash-atom-docs",
   "version": "0.1.0",
   "description": "Generate Dash docset for Atom.io API docs",
-  "author": "Ben Booth",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bkbooth/dash-atom-docs"
-  },
+  "author": "Ben Booth <bkbooth@gmail.com>",
+  "repository": "git@github.com:bkbooth/dash-atom-docs.git",
   "keywords": [
     "Dash",
     "atom",
@@ -16,14 +12,18 @@
     "docs"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bkbooth/dash-atom-docs/issues"
+  "scripts": {
+    "scrape": "httrack https://atom.io/docs/api/v$npm_package_atom_version/ -O ./scraped +https://atom.io/docs/api/* +*github-atom-io-herokuapp-com.global.ssl.fastly.net/*",
+    "prescrape": "node ./modules/check-httrack",
+    "clean": "rimraf scraped"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
+    "rimraf": "^2.6.1",
     "sqlite3": "^3.1.8"
   },
   "engines": {
     "node": ">=6"
-  }
+  },
+  "atom_version": "1.17.0"
 }
