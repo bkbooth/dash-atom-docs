@@ -48,7 +48,7 @@ function transformDocsHtml(config) {
     $.root().prepend(`
       <head>
         <meta charset="utf-8">
-        <title>${docsFileName}</title>
+        <title>${docsFileName.split('.')[0]}</title>
         <link rel="stylesheet" href="assets/${config.atomCssFilename}">
         <link rel="stylesheet" href="assets/${config.staticFiles[0].name}">
       </head>
