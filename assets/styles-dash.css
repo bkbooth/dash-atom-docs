@@ -1,3 +1,15 @@
+/* use local octicons */
+@font-face {
+  font-family: 'octicons';
+  src:
+    url(octicons.eot?#iefix) format("embedded-opentype"),
+    url(octicons.woff) format("woff"),
+    url(octicons.ttf) format("truetype"),
+    url(octicons.svg#octicons) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* un-collapse all blocks */
 .documents .api-entry .method-summary-wrapper,
 .documents .extended-methods-container .extended-methods {
