@@ -13,12 +13,17 @@
   ],
   "license": "MIT",
   "scripts": {
+    "build:docs": "node ./modules/build-docs",
+    "prebuild:docs": "npm run clean:docs",
+    "clean:docs": "rimraf Atom.docset/*",
     "scrape": "httrack https://atom.io/docs/api/v$npm_package_atom_version/ -O ./scraped +https://atom.io/docs/api/* +*github-atom-io-herokuapp-com.global.ssl.fastly.net/*",
     "prescrape": "node ./modules/check-httrack && npm run clean:scrape",
     "clean:scrape": "rimraf scraped"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
     "rimraf": "^2.6.1",
     "sqlite3": "^3.1.8"
   },

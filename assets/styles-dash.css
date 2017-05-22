@@ -1,0 +1,17 @@
+/* un-collapse all blocks */
+.documents .api-entry .method-summary-wrapper,
+.documents .extended-methods-container .extended-methods {
+  display: block;
+}
+
+/* hide collapse triggers */
+.documents .extended-toggle,
+.documents .no-methods-message {
+  display: none;
+}
+
+/* full-width content */
+.documents .column.main-column {
+  width: 100%;
+  padding: 0;
+}
