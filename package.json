@@ -13,6 +13,9 @@
   ],
   "license": "MIT",
   "scripts": {
+    "build:db": "node ./modules/build-db",
+    "prebuild:db": "npm run clean:docs",
+    "clean:db": "rimraf Atom.docset/Contents/Resources/docSet.dsidx",
     "build:docs": "node ./modules/build-docs",
     "prebuild:docs": "npm run clean:docs",
     "clean:docs": "rimraf Atom.docset/*",
