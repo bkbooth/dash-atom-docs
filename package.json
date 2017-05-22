@@ -13,8 +13,9 @@
   ],
   "license": "MIT",
   "scripts": {
+    "build": "npm-run-all scrape build:docs build:db",
     "build:db": "node ./modules/build-db",
-    "prebuild:db": "npm run clean:docs",
+    "prebuild:db": "npm run clean:db",
     "clean:db": "rimraf Atom.docset/Contents/Resources/docSet.dsidx",
     "build:docs": "node ./modules/build-docs",
     "prebuild:docs": "npm run clean:docs",
@@ -27,6 +28,7 @@
     "cheerio": "^0.22.0",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.0.2",
     "rimraf": "^2.6.1",
     "sqlite3": "^3.1.8"
   },
