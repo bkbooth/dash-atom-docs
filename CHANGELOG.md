@@ -1,3 +1,11 @@
+## 1.0.0 (22/05/2017)
+
+Features:
+
+* Completely new scraper and parsing scripts
+* Scraping is now handled by scripts but still requires [httrack](https://www.httrack.com/) to be installed first. Will fail if executable not in path.
+* All HTML documents transformed and copied into docset along with some basic style overrides
+
 ## 0.1.0 (07/08/2014)
 
 Features:
