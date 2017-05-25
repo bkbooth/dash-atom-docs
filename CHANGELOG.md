@@ -1,8 +1,15 @@
+## 1.0.2 (26/05/2017)
+
+Features:
+
+* Improve style overrides to better position docs within [Dash](https://kapeli.com/dash) viewer
+* Build Atom docset v1.17.2
+
 ## 1.0.1 (22/05/2017)
 
 Features:
 
-* Build Atom docset v0.17.0
+* Build Atom docset v1.17.0
 
 ## 1.0.0 (22/05/2017)
 
