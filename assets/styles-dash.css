@@ -23,7 +23,25 @@
 }
 
 /* full-width content */
+body {
+  min-width: initial;
+}
+.documents.content-push {
+  margin: initial;
+}
+.documents .wrapper {
+  width: initial;
+  margin: 40px auto;
+  padding: 0 24px;
+}
 .documents .column.main-column {
-  width: 100%;
-  padding: 0;
+  width: initial;
+  padding: initial;
+}
+
+/* undo footer push */
+.footer-push {
+  height: initial !important;
+  min-height: initial;
+  margin: initial;
 }
