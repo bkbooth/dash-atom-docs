@@ -2,6 +2,7 @@
 
 Features:
 
+* Build Atom docset v1.19.0
 * Update npm dependencies
 
 ## 1.0.3 (16/06/2017)
