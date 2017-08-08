@@ -1,3 +1,9 @@
+## 1.0.4 (09/08/2017)
+
+Features:
+
+* Update npm dependencies
+
 ## 1.0.3 (16/06/2017)
 
 Features:
