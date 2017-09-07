@@ -1,3 +1,8 @@
+## 1.0.10 (07/09/2017)
+
+* Build Atom docset v1.19.6
+* Update yarn dependencies
+
 ## 1.0.9 (02/09/2017)
 
 * Build Atom docset v1.19.5
