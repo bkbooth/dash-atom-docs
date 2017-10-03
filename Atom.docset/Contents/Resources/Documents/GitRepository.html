@@ -1,1 +1,1871 @@
- <head> <meta charset="utf-8"> <title>GitRepository</title> <link rel="stylesheet" href="assets/styles-atom.css"> <link rel="stylesheet" href="assets/styles-dash.css"> </head> <!DOCTYPE html> <html lang="en" prefix="og: http://ogp.me/ns#"> <!-- Mirrored from atom.io/docs/api/v1.20.1/GitRepository by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 11:45:48 GMT --> <!-- Added by HTTrack --><!-- /Added by HTTrack -->  <body> <div class="footer-push">  <div id="js-pjax-container"> <div class="documents content-push"> <div class="wrapper no-pad">  <div class="columns">  <div class="column main-column"> <h2 class="page-title"> GitRepository <span class="label label-extended" title="This class is in the extended API"> extended </span> <a class="document-source" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L44" title="View class source"> <span class="octicon octicon-file-code"></span> </a> </h2> <div class="document-description markdown-body"> <p>Represents the underlying git operations performed by Atom.</p> <p>This class shouldn&apos;t be instantiated directly but instead by accessing the <code>atom.project</code> global and calling <code>getRepositories()</code>. Note that this will only be available when the project is backed by a Git repository.</p> <p>This class handles submodules automatically by taking a <code>path</code> argument to many of the methods. This <code>path</code> argument will determine which underlying repository is used.</p> <p>For a repository with submodules this would have the following outcome:</p> <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>repo </span><span class="keyword operator coffee"><span>=</span></span></span></span><span> atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>project</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getRepositories</span><span class="meta brace round coffee"><span>(</span><span>)</span></span><span class="meta brace square coffee"><span>[</span></span><span class="constant numeric coffee"><span>0</span></span><span class="meta brace square coffee"><span>]</span></span></span></div><div class="line"><span class="source coffee"><span>repo</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getShortHead</span><span class="meta brace round coffee"><span>(</span><span>)</span></span><span> </span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span> &apos;master&apos;</span><span> </span></span></span></div><div class="line"><span class="source coffee"><span>repo</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getShortHead</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>vendor/path/to/a/submodule</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span> </span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span> &apos;dead1234&apos;</span><span> </span></span></span></div></pre> </div> <h2 class="section">Examples</h2> <div class="document-examples markdown-body"> <div class="example"> <div class="description markdown-body"> <h3> <a id="logging-the-url-of-the-origin-remote" class="anchor" href="#logging-the-url-of-the-origin-remote" aria-hidden="true"><span class="octicon octicon-link"></span></a>Logging the URL of the origin remote</h3> </div> <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>git </span><span class="keyword operator coffee"><span>=</span></span></span></span><span> atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>project</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getRepositories</span><span class="meta brace round coffee"><span>(</span><span>)</span></span><span class="meta brace square coffee"><span>[</span></span><span class="constant numeric coffee"><span>0</span></span><span class="meta brace square coffee"><span>]</span></span></span></div><div class="line"><span class="source coffee"><span class="entity name type object coffee"><span>console</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span class="support function console coffee"><span>log</span></span><span> git</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getOriginURL</span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div></pre> </div> <div class="example"> <div class="description markdown-body"> <h3> <a id="requiring-in-packages" class="anchor" href="#requiring-in-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requiring in packages</h3> </div> <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta variable assignment destructured object coffee"><span class="keyword operator coffee"><span>{</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>GitRepository</span></span></span><span class="keyword operator coffee"><span>} =</span></span></span><span> </span><span class="support function coffee"><span>require</span></span><span> </span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>atom</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div></pre> </div> </div> <a name="section-Construction and Destruction"></a> <h2 class="detail-section">Construction and Destruction</h2> <div class="api-entry js-api-entry essential" id="open"> <h3 class="name"> <a href="#open" class="js-api-name method-signature" name="open"> <span class="operator operator-class">.</span>open<span class="argument-list">(<span class="argument">path</span>, <span class="argument">options</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L64"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Creates a new GitRepository instance.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to the Git repository to open.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>options</code></td> <td> <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p> </td> </tr> <tr class="markdown-body argument-depth-1"> <td><code>.refreshOnWindowFocus</code></td> <td> <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a>, <code>true</code> to refresh the index and statuses when the window is focused.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="GitRepository.html">GitRepository<span class="operator"></span></a> instance or <code>null</code> if the repository could not be opened.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-destroy"> <h3 class="name"> <a href="#instance-destroy" class="js-api-name method-signature" name="instance-destroy"> <span class="operator operator-instance">::</span>destroy<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L103"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Destroy this <a class="reference-link" data-skip-pjax="yeahokiguess" href="GitRepository.html">GitRepository<span class="operator"></span></a> object.</p> </div> <div class="body markdown-body"> <div class="description"> <p>This destroys any tasks and subscriptions and releases the underlying libgit2 repository handle. This method is idempotent. </p> </div> </div> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isDestroyed"> <h3 class="name"> <a href="#instance-isDestroyed" class="js-api-name method-signature" name="instance-isDestroyed"> <span class="operator operator-instance">::</span>isDestroyed<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L122"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating if this repository has been destroyed.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-onDidDestroy"> <h3 class="name"> <a href="#instance-onDidDestroy" class="js-api-name method-signature" name="instance-onDidDestroy"> <span class="operator operator-instance">::</span>onDidDestroy<span class="argument-list">(<span class="argument">callback</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L131"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Invoke the given callback when this GitRepository&apos;s destroy() method is invoked.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>callback<span class="argument-list">()</span></code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a></p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td> </tr> </table> </div> </div> <a name="section-Event Subscription"></a> <h2 class="detail-section">Event Subscription</h2> <div class="api-entry js-api-entry essential" id="instance-onDidChangeStatus"> <h3 class="name"> <a href="#instance-onDidChangeStatus" class="js-api-name method-signature" name="instance-onDidChangeStatus"> <span class="operator operator-instance">::</span>onDidChangeStatus<span class="argument-list">(<span class="argument">callback</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L149"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Invoke the given callback when a specific file&apos;s status has changed. When a file is updated, reloaded, etc, and the status changes, this will be fired.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a></p> </td> </tr> <tr class="markdown-body argument-depth-1"> <td><code>event</code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p> </td> </tr> <tr class="markdown-body argument-depth-2"> <td><code>.path</code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> the old parameters the decoration used to have</p> </td> </tr> <tr class="markdown-body argument-depth-2"> <td><code>.pathStatus</code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status. This value can be passed to <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusModified"><span class="operator">::</span>isStatusModified</a> or <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusNew"><span class="operator">::</span>isStatusNew</a> to get more information.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-onDidChangeStatuses"> <h3 class="name"> <a href="#instance-onDidChangeStatuses" class="js-api-name method-signature" name="instance-onDidChangeStatuses"> <span class="operator operator-instance">::</span>onDidChangeStatuses<span class="argument-list">(<span class="argument">callback</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L160"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Invoke the given callback when a multiple files&apos; statuses have changed. For example, on window focus, the status of all the paths in the repo is checked. If any of them have changed, this will be fired. Call {::getPathStatus(path)} to get the status for your path of choice.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>callback<span class="argument-list">()</span></code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a></p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td> </tr> </table> </div> </div> <a name="section-Repository Details"></a> <h2 class="detail-section">Repository Details</h2> <div class="api-entry js-api-entry essential" id="instance-getType"> <h3 class="name"> <a href="#instance-getType" class="js-api-name method-signature" name="instance-getType"> <span class="operator operator-instance">::</span>getType<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L171"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> indicating the type of version control system used by this repository.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns <code>&quot;git&quot;</code>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getPath"> <h3 class="name"> <a href="#instance-getPath" class="js-api-name method-signature" name="instance-getPath"> <span class="operator operator-instance">::</span>getPath<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L174"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path of the repository.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getWorkingDirectory"> <h3 class="name"> <a href="#instance-getWorkingDirectory" class="js-api-name method-signature" name="instance-getWorkingDirectory"> <span class="operator operator-instance">::</span>getWorkingDirectory<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L178"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> working directory path of the repository.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isProjectAtRoot"> <h3 class="name"> <a href="#instance-isProjectAtRoot" class="js-api-name method-signature" name="instance-isProjectAtRoot"> <span class="operator operator-instance">::</span>isProjectAtRoot<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L182"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns true if at the root, false if in a subfolder of the repository.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-relativize"> <h3 class="name"> <a href="#instance-relativize" class="js-api-name method-signature" name="instance-relativize"> <span class="operator operator-instance">::</span>relativize<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L186"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Makes a path relative to the repository&apos;s working directory. </p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> </div> </div> <div class="api-entry js-api-entry essential" id="instance-hasBranch"> <h3 class="name"> <a href="#instance-hasBranch" class="js-api-name method-signature" name="instance-hasBranch"> <span class="operator operator-instance">::</span>hasBranch<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L189"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns true if the given branch exists.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getShortHead"> <h3 class="name"> <a href="#instance-getShortHead" class="js-api-name method-signature" name="instance-getShortHead"> <span class="operator operator-instance">::</span>getShortHead<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L201"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Retrieves a shortened version of the HEAD reference value.</p> </div> <div class="body markdown-body"> <div class="description"> <p>This removes the leading segments of <code>refs/heads</code>, <code>refs/tags</code>, or <code>refs/remotes</code>. It also shortens the SHA-1 of a detached <code>HEAD</code> to 7 characters.</p> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository contains submodules.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isSubmodule"> <h3 class="name"> <a href="#instance-isSubmodule" class="js-api-name method-signature" name="instance-isSubmodule"> <span class="operator operator-instance">::</span>isSubmodule<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L208"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Is the given path a submodule in the repository?</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getAheadBehindCount"> <h3 class="name"> <a href="#instance-getAheadBehindCount" class="js-api-name method-signature" name="instance-getAheadBehindCount"> <span class="operator operator-instance">::</span>getAheadBehindCount<span class="argument-list">(<span class="argument">reference</span>, <span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L224"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>reference</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> branch reference name.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository contains submodules. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns the number of commits behind the current branch is from the its upstream remote branch.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getCachedUpstreamAheadBehindCount"> <h3 class="name"> <a href="#instance-getCachedUpstreamAheadBehindCount" class="js-api-name method-signature" name="instance-getCachedUpstreamAheadBehindCount"> <span class="operator operator-instance">::</span>getCachedUpstreamAheadBehindCount<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L236"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Get the cached ahead/behind commit counts for the current branch&apos;s upstream branch.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository has submodules.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p> <ul> <li> <code>ahead</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of commits ahead.</li> <li> <code>behind</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of commits behind.</li> </ul></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getConfigValue"> <h3 class="name"> <a href="#instance-getConfigValue" class="js-api-name method-signature" name="instance-getConfigValue"> <span class="operator operator-instance">::</span>getConfigValue<span class="argument-list">(<span class="argument">key</span>, <span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L244"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>key</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> key for the configuration to lookup.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository has submodules. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns the git configuration value specified by the key.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getOriginURL"> <h3 class="name"> <a href="#instance-getOriginURL" class="js-api-name method-signature" name="instance-getOriginURL"> <span class="operator operator-instance">::</span>getOriginURL<span class="argument-list">(<span class="argument">[path]</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L250"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <span class="optional">optional</span> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository has submodules. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns the origin url of the repository.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getUpstreamBranch"> <h3 class="name"> <a href="#instance-getUpstreamBranch" class="js-api-name method-signature" name="instance-getUpstreamBranch"> <span class="operator operator-instance">::</span>getUpstreamBranch<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L259"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repo to get this information for, only needed if the repository contains submodules.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns the upstream branch for the current HEAD, or null if there is no upstream branch for the current HEAD.</p></td> </tr> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> branch name such as <code>refs/remotes/origin/master</code>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getReferences"> <h3 class="name"> <a href="#instance-getReferences" class="js-api-name method-signature" name="instance-getReferences"> <span class="operator operator-instance">::</span>getReferences<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L270"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Gets all the local and remote references.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository has submodules.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p> <ul> <li> <code>heads</code> An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of head reference names.</li> <li> <code>remotes</code> An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of remote reference names.</li> <li> <code>tags</code> An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of tag reference names.</li> </ul></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getReferenceTarget"> <h3 class="name"> <a href="#instance-getReferenceTarget" class="js-api-name method-signature" name="instance-getReferenceTarget"> <span class="operator operator-instance">::</span>getReferenceTarget<span class="argument-list">(<span class="argument">reference</span>, <span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L277"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>reference</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> reference to get the target of.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repo to get the reference target for. Only needed if the repository contains submodules. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns the current <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> SHA for the given reference.</p></td> </tr> </table> </div> </div> <a name="section-Reading Status"></a> <h2 class="detail-section">Reading Status</h2> <div class="api-entry js-api-entry essential" id="instance-isPathModified"> <h3 class="name"> <a href="#instance-isPathModified" class="js-api-name method-signature" name="instance-isPathModified"> <span class="operator operator-instance">::</span>isPathModified<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L289"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns true if the given path is modified.</p></td> </tr> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>path</code> is modified.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isPathNew"> <h3 class="name"> <a href="#instance-isPathNew" class="js-api-name method-signature" name="instance-isPathNew"> <span class="operator operator-instance">::</span>isPathNew<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L296"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns true if the given path is new.</p></td> </tr> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>path</code> is new.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isPathIgnored"> <h3 class="name"> <a href="#instance-isPathIgnored" class="js-api-name method-signature" name="instance-isPathIgnored"> <span class="operator operator-instance">::</span>isPathIgnored<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L303"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Is the given path ignored?</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>path</code> is ignored.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getDirectoryStatus"> <h3 class="name"> <a href="#instance-getDirectoryStatus" class="js-api-name method-signature" name="instance-getDirectoryStatus"> <span class="operator operator-instance">::</span>getDirectoryStatus<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L311"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Get the status of a directory in the repository&apos;s working directory.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status. This value can be passed to <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusModified"><span class="operator">::</span>isStatusModified</a> or <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusNew"><span class="operator">::</span>isStatusNew</a> to get more information.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getPathStatus"> <h3 class="name"> <a href="#instance-getPathStatus" class="js-api-name method-signature" name="instance-getPathStatus"> <span class="operator operator-instance">::</span>getPathStatus<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L324"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Get the status of a single path in the repository.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> repository-relative path.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status. This value can be passed to <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusModified"><span class="operator">::</span>isStatusModified</a> or <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusNew"><span class="operator">::</span>isStatusNew</a> to get more information.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getCachedPathStatus"> <h3 class="name"> <a href="#instance-getCachedPathStatus" class="js-api-name method-signature" name="instance-getCachedPathStatus"> <span class="operator operator-instance">::</span>getCachedPathStatus<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L344"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Get the cached status for the given path.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository, relative or absolute.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a status <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> or null if the path is not in the cache.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isStatusModified"> <h3 class="name"> <a href="#instance-isStatusModified" class="js-api-name method-signature" name="instance-isStatusModified"> <span class="operator operator-instance">::</span>isStatusModified<span class="argument-list">(<span class="argument">status</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L352"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>status</code></td> <td> <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns true if the given status indicates modification.</p></td> </tr> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>status</code> indicates modification.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isStatusNew"> <h3 class="name"> <a href="#instance-isStatusNew" class="js-api-name method-signature" name="instance-isStatusNew"> <span class="operator operator-instance">::</span>isStatusNew<span class="argument-list">(<span class="argument">status</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L359"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>status</code></td> <td> <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns true if the given status indicates a new path.</p></td> </tr> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>status</code> indicates a new path.</p></td> </tr> </table> </div> </div> <a name="section-Retrieving Diffs"></a> <h2 class="detail-section">Retrieving Diffs</h2> <div class="api-entry js-api-entry essential" id="instance-getDiffStats"> <h3 class="name"> <a href="#instance-getDiffStats" class="js-api-name method-signature" name="instance-getDiffStats"> <span class="operator operator-instance">::</span>getDiffStats<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L375"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Retrieves the number of lines added and removed to a path.</p> </div> <div class="body markdown-body"> <div class="description"> <p>This compares the working directory contents of the path to the <code>HEAD</code> version.</p> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p> <ul> <li> <code>added</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of added lines.</li> <li> <code>deleted</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of deleted lines.</li> </ul></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-getLineDiffs"> <h3 class="name"> <a href="#instance-getLineDiffs" class="js-api-name method-signature" name="instance-getLineDiffs"> <span class="operator operator-instance">::</span>getLineDiffs<span class="argument-list">(<span class="argument">path</span>, <span class="argument">text</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L390"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Retrieves the line diffs comparing the <code>HEAD</code> version of the given path and the given text.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path relative to the repository.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>text</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> to compare against the <code>HEAD</code> contents</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of hunk <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a>s with the following keys:</p> <ul> <li> <code>oldStart</code> The line <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of the old hunk.</li> <li> <code>newStart</code> The line <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of the new hunk.</li> <li> <code>oldLines</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of lines in the old hunk.</li> <li> <code>newLines</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of lines in the new hunk</li> </ul></td> </tr> </table> </div> </div> <a name="section-Checking Out"></a> <h2 class="detail-section">Checking Out</h2> <div class="api-entry js-api-entry essential" id="instance-checkoutHead"> <h3 class="name"> <a href="#instance-checkoutHead" class="js-api-name method-signature" name="instance-checkoutHead"> <span class="operator operator-instance">::</span>checkoutHead<span class="argument-list">(<span class="argument">path</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L414"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Restore the contents of a path in the working directory and index to the version at <code>HEAD</code>.</p> </div> <div class="body markdown-body"> <div class="description"> <p>This is essentially the same as running:</p> <pre class="editor editor-colors"><div class="line"><span class="source shell"><span> git reset HEAD -- </span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>path</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div><div class="line"><span class="source shell"><span> git checkout HEAD -- </span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>path</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div></pre> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>path</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to checkout.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the method was successful.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-checkoutReference"> <h3 class="name"> <a href="#instance-checkoutReference" class="js-api-name method-signature" name="instance-checkoutReference"> <span class="operator operator-instance">::</span>checkoutReference<span class="argument-list">(<span class="argument">reference</span>, <span class="argument">create</span>)</span> </a> <a class="source-link" href="https://github.com/atom/atom/blob/v1.20.1/src/git-repository.coffee#L427"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Checks out a branch in your repository.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>reference</code></td> <td> <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> reference to checkout.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>create</code></td> <td> <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> value which, if true creates the new reference if it doesn&apos;t exist.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a Boolean that&apos;s true if the method was successful.</p></td> </tr> </table> </div> </div> </div> </div> </div> </div> </div>  </div>  </body> <!-- Mirrored from atom.io/docs/api/v1.20.1/GitRepository by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 11:45:48 GMT --> </html> 
+
+      <head>
+        <meta charset="utf-8">
+        <title>GitRepository</title>
+        <link rel="stylesheet" href="assets/styles-atom.css">
+        <link rel="stylesheet" href="assets/styles-dash.css">
+      </head>
+    <!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from atom.io/docs/api/v1.21.0/GitRepository by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Oct 2017 22:52:34 GMT -->
+<!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+<body>
+  
+
+  <div class="footer-push">
+    
+
+
+    <div id="js-pjax-container">
+      <div class="documents content-push">
+  <div class="wrapper no-pad">
+
+    
+
+    <div class="columns">
+      
+      <div class="column main-column">
+          
+<h2 class="page-title">
+  GitRepository
+  <span class="label label-extended" title="This class is in the extended API">
+    extended
+  </span>
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L44" title="View class source">
+    <span class="octicon octicon-file-code"></span>
+  </a>
+</h2>
+
+<div class="document-description markdown-body">
+  <p>Represents the underlying git operations performed by Atom.</p>
+
+<p>This class shouldn&apos;t be instantiated directly but instead by accessing the
+<code>atom.project</code> global and calling <code>getRepositories()</code>. Note that this will
+only be available when the project is backed by a Git repository.</p>
+
+<p>This class handles submodules automatically by taking a <code>path</code> argument to many
+of the methods.  This <code>path</code> argument will determine which underlying
+repository is used.</p>
+
+<p>For a repository with submodules this would have the following outcome:</p>
+
+<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>repo&#xA0;</span><span class="keyword operator coffee"><span>=</span></span></span></span><span>&#xA0;atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>project</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getRepositories</span><span class="meta brace round coffee"><span>(</span><span>)</span></span><span class="meta brace square coffee"><span>[</span></span><span class="constant numeric coffee"><span>0</span></span><span class="meta brace square coffee"><span>]</span></span></span></div><div class="line"><span class="source coffee"><span>repo</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getShortHead</span><span class="meta brace round coffee"><span>(</span><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;&apos;master&apos;</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>repo</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getShortHead</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>vendor/path/to/a/submodule</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;&apos;dead1234&apos;</span><span>&#xA0;</span></span></span></div></pre>
+
+</div>
+
+  <h2 class="section">Examples</h2>
+  <div class="document-examples markdown-body">
+      <div class="example">
+    <div class="description markdown-body">
+      <h3>
+<a id="logging-the-url-of-the-origin-remote" class="anchor" href="#logging-the-url-of-the-origin-remote" aria-hidden="true"><span class="octicon octicon-link"></span></a>Logging the URL of the origin remote</h3>
+    </div>
+  <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>git&#xA0;</span><span class="keyword operator coffee"><span>=</span></span></span></span><span>&#xA0;atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>project</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getRepositories</span><span class="meta brace round coffee"><span>(</span><span>)</span></span><span class="meta brace square coffee"><span>[</span></span><span class="constant numeric coffee"><span>0</span></span><span class="meta brace square coffee"><span>]</span></span></span></div><div class="line"><span class="source coffee"><span class="entity name type object coffee"><span>console</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span class="support function console coffee"><span>log</span></span><span>&#xA0;git</span><span class="meta delimiter method period coffee"><span>.</span></span><span>getOriginURL</span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div></pre>
+
+</div>
+
+      <div class="example">
+    <div class="description markdown-body">
+      <h3>
+<a id="requiring-in-packages" class="anchor" href="#requiring-in-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requiring in packages</h3>
+    </div>
+  <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta variable assignment destructured object coffee"><span class="keyword operator coffee"><span>{</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>GitRepository</span></span></span><span class="keyword operator coffee"><span>}&#xA0;=</span></span></span><span>&#xA0;</span><span class="support function coffee"><span>require</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>atom</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div></pre>
+
+</div>
+
+  </div>
+
+
+
+
+
+  <a name="section-Construction and Destruction"></a>
+  <h2 class="detail-section">Construction and Destruction</h2>
+
+    
+
+
+    
+    
+<div class="api-entry js-api-entry essential" id="open">
+  <h3 class="name">
+    <a href="#open" class="js-api-name method-signature" name="open">
+      <span class="operator operator-class">.</span>open<span class="argument-list">(<span class="argument">path</span>, <span class="argument">options</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L64"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Creates a new GitRepository instance.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to the Git repository to open.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>options</code></td>
+    <td>
+      <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
+    </td>
+  </tr>
+      <tr class="markdown-body argument-depth-1">
+    <td><code>.refreshOnWindowFocus</code></td>
+    <td>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a>, <code>true</code> to refresh the index and statuses when the window is focused.</p>
+    </td>
+  </tr>
+
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="GitRepository.html">GitRepository<span class="operator"></span></a> instance or <code>null</code> if the repository could not be opened.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+    
+<div class="api-entry js-api-entry essential" id="instance-destroy">
+  <h3 class="name">
+    <a href="#instance-destroy" class="js-api-name method-signature" name="instance-destroy">
+      <span class="operator operator-instance">::</span>destroy<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L103"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Destroy this <a class="reference-link" data-skip-pjax="yeahokiguess" href="GitRepository.html">GitRepository<span class="operator"></span></a> object.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      <p>This destroys any tasks and subscriptions and releases the underlying
+libgit2 repository handle. This method is idempotent. </p>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isDestroyed">
+  <h3 class="name">
+    <a href="#instance-isDestroyed" class="js-api-name method-signature" name="instance-isDestroyed">
+      <span class="operator operator-instance">::</span>isDestroyed<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L122"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating if this repository has been destroyed.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-onDidDestroy">
+  <h3 class="name">
+    <a href="#instance-onDidDestroy" class="js-api-name method-signature" name="instance-onDidDestroy">
+      <span class="operator operator-instance">::</span>onDidDestroy<span class="argument-list">(<span class="argument">callback</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L131"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Invoke the given callback when this GitRepository&apos;s destroy() method
+is invoked.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>callback<span class="argument-list">()</span></code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a></p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Event Subscription"></a>
+  <h2 class="detail-section">Event Subscription</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-onDidChangeStatus">
+  <h3 class="name">
+    <a href="#instance-onDidChangeStatus" class="js-api-name method-signature" name="instance-onDidChangeStatus">
+      <span class="operator operator-instance">::</span>onDidChangeStatus<span class="argument-list">(<span class="argument">callback</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L149"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Invoke the given callback when a specific file&apos;s status has
+changed. When a file is updated, reloaded, etc, and the status changes, this
+will be fired.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a></p>
+    </td>
+  </tr>
+      <tr class="markdown-body argument-depth-1">
+    <td><code>event</code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p>
+    </td>
+  </tr>
+      <tr class="markdown-body argument-depth-2">
+    <td><code>.path</code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> the old parameters the decoration used to have</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-2">
+    <td><code>.pathStatus</code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status. This value can be passed to <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusModified"><span class="operator">::</span>isStatusModified</a> or <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusNew"><span class="operator">::</span>isStatusNew</a> to get more information.</p>
+    </td>
+  </tr>
+
+
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-onDidChangeStatuses">
+  <h3 class="name">
+    <a href="#instance-onDidChangeStatuses" class="js-api-name method-signature" name="instance-onDidChangeStatuses">
+      <span class="operator operator-instance">::</span>onDidChangeStatuses<span class="argument-list">(<span class="argument">callback</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L160"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Invoke the given callback when a multiple files&apos; statuses have
+changed. For example, on window focus, the status of all the paths in the
+repo is checked. If any of them have changed, this will be fired. Call
+{::getPathStatus(path)} to get the status for your path of choice.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>callback<span class="argument-list">()</span></code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a></p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Repository Details"></a>
+  <h2 class="detail-section">Repository Details</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getType">
+  <h3 class="name">
+    <a href="#instance-getType" class="js-api-name method-signature" name="instance-getType">
+      <span class="operator operator-instance">::</span>getType<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L171"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> indicating the type of version control system used by
+this repository.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns <code>&quot;git&quot;</code>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getPath">
+  <h3 class="name">
+    <a href="#instance-getPath" class="js-api-name method-signature" name="instance-getPath">
+      <span class="operator operator-instance">::</span>getPath<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L174"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path of the repository.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getWorkingDirectory">
+  <h3 class="name">
+    <a href="#instance-getWorkingDirectory" class="js-api-name method-signature" name="instance-getWorkingDirectory">
+      <span class="operator operator-instance">::</span>getWorkingDirectory<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L178"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> working directory path of the repository.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isProjectAtRoot">
+  <h3 class="name">
+    <a href="#instance-isProjectAtRoot" class="js-api-name method-signature" name="instance-isProjectAtRoot">
+      <span class="operator operator-instance">::</span>isProjectAtRoot<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L182"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns true if at the root, false if in a subfolder of the
+repository.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-relativize">
+  <h3 class="name">
+    <a href="#instance-relativize" class="js-api-name method-signature" name="instance-relativize">
+      <span class="operator operator-instance">::</span>relativize<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L186"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Makes a path relative to the repository&apos;s working directory. </p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-hasBranch">
+  <h3 class="name">
+    <a href="#instance-hasBranch" class="js-api-name method-signature" name="instance-hasBranch">
+      <span class="operator operator-instance">::</span>hasBranch<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L189"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns true if the given branch exists.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getShortHead">
+  <h3 class="name">
+    <a href="#instance-getShortHead" class="js-api-name method-signature" name="instance-getShortHead">
+      <span class="operator operator-instance">::</span>getShortHead<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L201"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Retrieves a shortened version of the HEAD reference value.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      <p>This removes the leading segments of <code>refs/heads</code>, <code>refs/tags</code>, or
+<code>refs/remotes</code>.  It also shortens the SHA-1 of a detached <code>HEAD</code> to 7
+characters.</p>
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository contains submodules.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isSubmodule">
+  <h3 class="name">
+    <a href="#instance-isSubmodule" class="js-api-name method-signature" name="instance-isSubmodule">
+      <span class="operator operator-instance">::</span>isSubmodule<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L208"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Is the given path a submodule in the repository?</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getAheadBehindCount">
+  <h3 class="name">
+    <a href="#instance-getAheadBehindCount" class="js-api-name method-signature" name="instance-getAheadBehindCount">
+      <span class="operator operator-instance">::</span>getAheadBehindCount<span class="argument-list">(<span class="argument">reference</span>, <span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L224"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>reference</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> branch reference name.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository contains submodules. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the number of commits behind the current branch is from the
+its upstream remote branch.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getCachedUpstreamAheadBehindCount">
+  <h3 class="name">
+    <a href="#instance-getCachedUpstreamAheadBehindCount" class="js-api-name method-signature" name="instance-getCachedUpstreamAheadBehindCount">
+      <span class="operator operator-instance">::</span>getCachedUpstreamAheadBehindCount<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L236"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Get the cached ahead/behind commit counts for the current branch&apos;s
+upstream branch.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository has submodules.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
+
+<ul>
+<li>
+<code>ahead</code>  The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of commits ahead.</li>
+<li>
+<code>behind</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of commits behind.</li>
+</ul></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getConfigValue">
+  <h3 class="name">
+    <a href="#instance-getConfigValue" class="js-api-name method-signature" name="instance-getConfigValue">
+      <span class="operator operator-instance">::</span>getConfigValue<span class="argument-list">(<span class="argument">key</span>, <span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L244"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>key</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> key for the configuration to lookup.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository has submodules. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the git configuration value specified by the key.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getOriginURL">
+  <h3 class="name">
+    <a href="#instance-getOriginURL" class="js-api-name method-signature" name="instance-getOriginURL">
+      <span class="operator operator-instance">::</span>getOriginURL<span class="argument-list">(<span class="argument">[path]</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L250"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+        <span class="optional">optional</span>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository has submodules. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the origin url of the repository.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getUpstreamBranch">
+  <h3 class="name">
+    <a href="#instance-getUpstreamBranch" class="js-api-name method-signature" name="instance-getUpstreamBranch">
+      <span class="operator operator-instance">::</span>getUpstreamBranch<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L259"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repo to get this information for, only needed if the repository contains submodules.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the upstream branch for the current HEAD, or null if there
+is no upstream branch for the current HEAD.</p></td>
+      </tr>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> branch name such as <code>refs/remotes/origin/master</code>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getReferences">
+  <h3 class="name">
+    <a href="#instance-getReferences" class="js-api-name method-signature" name="instance-getReferences">
+      <span class="operator operator-instance">::</span>getReferences<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L270"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Gets all the local and remote references.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository to get this information for, only needed if the repository has submodules.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
+
+<ul>
+<li>
+<code>heads</code>   An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of head reference names.</li>
+<li>
+<code>remotes</code> An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of remote reference names.</li>
+<li>
+<code>tags</code>    An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of tag reference names.</li>
+</ul></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getReferenceTarget">
+  <h3 class="name">
+    <a href="#instance-getReferenceTarget" class="js-api-name method-signature" name="instance-getReferenceTarget">
+      <span class="operator operator-instance">::</span>getReferenceTarget<span class="argument-list">(<span class="argument">reference</span>, <span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L277"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>reference</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> reference to get the target of.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>An optional <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repo to get the reference target for. Only needed if the repository contains submodules. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the current <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> SHA for the given reference.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Reading Status"></a>
+  <h2 class="detail-section">Reading Status</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isPathModified">
+  <h3 class="name">
+    <a href="#instance-isPathModified" class="js-api-name method-signature" name="instance-isPathModified">
+      <span class="operator operator-instance">::</span>isPathModified<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L289"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns true if the given path is modified.</p></td>
+      </tr>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>path</code> is modified.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isPathNew">
+  <h3 class="name">
+    <a href="#instance-isPathNew" class="js-api-name method-signature" name="instance-isPathNew">
+      <span class="operator operator-instance">::</span>isPathNew<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L296"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns true if the given path is new.</p></td>
+      </tr>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>path</code> is new.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isPathIgnored">
+  <h3 class="name">
+    <a href="#instance-isPathIgnored" class="js-api-name method-signature" name="instance-isPathIgnored">
+      <span class="operator operator-instance">::</span>isPathIgnored<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L303"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Is the given path ignored?</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>path</code> is ignored.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getDirectoryStatus">
+  <h3 class="name">
+    <a href="#instance-getDirectoryStatus" class="js-api-name method-signature" name="instance-getDirectoryStatus">
+      <span class="operator operator-instance">::</span>getDirectoryStatus<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L311"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Get the status of a directory in the repository&apos;s working directory.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status. This value can be passed to
+<a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusModified"><span class="operator">::</span>isStatusModified</a> or <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusNew"><span class="operator">::</span>isStatusNew</a> to get more information.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getPathStatus">
+  <h3 class="name">
+    <a href="#instance-getPathStatus" class="js-api-name method-signature" name="instance-getPathStatus">
+      <span class="operator operator-instance">::</span>getPathStatus<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L324"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Get the status of a single path in the repository.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> repository-relative path.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status. This value can be passed to
+<a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusModified"><span class="operator">::</span>isStatusModified</a> or <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-isStatusNew"><span class="operator">::</span>isStatusNew</a> to get more information.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getCachedPathStatus">
+  <h3 class="name">
+    <a href="#instance-getCachedPathStatus" class="js-api-name method-signature" name="instance-getCachedPathStatus">
+      <span class="operator operator-instance">::</span>getCachedPathStatus<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L344"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Get the cached status for the given path.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path in the repository, relative or absolute.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a status <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> or null if the path is not in the cache.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isStatusModified">
+  <h3 class="name">
+    <a href="#instance-isStatusModified" class="js-api-name method-signature" name="instance-isStatusModified">
+      <span class="operator operator-instance">::</span>isStatusModified<span class="argument-list">(<span class="argument">status</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L352"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>status</code></td>
+    <td>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns true if the given status indicates modification.</p></td>
+      </tr>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>status</code> indicates modification.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isStatusNew">
+  <h3 class="name">
+    <a href="#instance-isStatusNew" class="js-api-name method-signature" name="instance-isStatusNew">
+      <span class="operator operator-instance">::</span>isStatusNew<span class="argument-list">(<span class="argument">status</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L359"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>status</code></td>
+    <td>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the status.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns true if the given status indicates a new path.</p></td>
+      </tr>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the <code>status</code> indicates a new path.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Retrieving Diffs"></a>
+  <h2 class="detail-section">Retrieving Diffs</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getDiffStats">
+  <h3 class="name">
+    <a href="#instance-getDiffStats" class="js-api-name method-signature" name="instance-getDiffStats">
+      <span class="operator operator-instance">::</span>getDiffStats<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L375"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Retrieves the number of lines added and removed to a path.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      <p>This compares the working directory contents of the path to the <code>HEAD</code>
+version.</p>
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to check.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
+
+<ul>
+<li>
+<code>added</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of added lines.</li>
+<li>
+<code>deleted</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of deleted lines.</li>
+</ul></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-getLineDiffs">
+  <h3 class="name">
+    <a href="#instance-getLineDiffs" class="js-api-name method-signature" name="instance-getLineDiffs">
+      <span class="operator operator-instance">::</span>getLineDiffs<span class="argument-list">(<span class="argument">path</span>, <span class="argument">text</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L390"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Retrieves the line diffs comparing the <code>HEAD</code> version of the given
+path and the given text.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path relative to the repository.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>text</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> to compare against the <code>HEAD</code> contents</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of hunk <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a>s with the following keys:</p>
+
+<ul>
+<li>
+<code>oldStart</code> The line <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of the old hunk.</li>
+<li>
+<code>newStart</code> The line <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of the new hunk.</li>
+<li>
+<code>oldLines</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of lines in the old hunk.</li>
+<li>
+<code>newLines</code> The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> of lines in the new hunk</li>
+</ul></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Checking Out"></a>
+  <h2 class="detail-section">Checking Out</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-checkoutHead">
+  <h3 class="name">
+    <a href="#instance-checkoutHead" class="js-api-name method-signature" name="instance-checkoutHead">
+      <span class="operator operator-instance">::</span>checkoutHead<span class="argument-list">(<span class="argument">path</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L414"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Restore the contents of a path in the working directory and index
+to the version at <code>HEAD</code>.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      <p>This is essentially the same as running:</p>
+
+<pre class="editor editor-colors"><div class="line"><span class="source shell"><span>&#xA0;&#xA0;git&#xA0;reset&#xA0;HEAD&#xA0;--&#xA0;</span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>path</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div><div class="line"><span class="source shell"><span>&#xA0;&#xA0;git&#xA0;checkout&#xA0;HEAD&#xA0;--&#xA0;</span><span class="keyword operator redirect shell"><span>&lt;</span></span><span>path</span><span class="keyword operator redirect shell"><span>&gt;</span></span></span></div></pre>
+
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>path</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> path to checkout.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> that&apos;s true if the method was successful.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-checkoutReference">
+  <h3 class="name">
+    <a href="#instance-checkoutReference" class="js-api-name method-signature" name="instance-checkoutReference">
+      <span class="operator operator-instance">::</span>checkoutReference<span class="argument-list">(<span class="argument">reference</span>, <span class="argument">create</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.0/src/git-repository.coffee#L427"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Checks out a branch in your repository.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>reference</code></td>
+    <td>
+      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> reference to checkout.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>create</code></td>
+    <td>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> value which, if true creates the new reference if it doesn&apos;t exist.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a Boolean that&apos;s true if the method was successful.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+  </div>
+
+  
+
+</body>
+
+<!-- Mirrored from atom.io/docs/api/v1.21.0/GitRepository by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Oct 2017 22:52:34 GMT -->
+</html>

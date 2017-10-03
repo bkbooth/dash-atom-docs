@@ -1,1 +1,417 @@
- <head> <meta charset="utf-8"> <title>Emitter</title> <link rel="stylesheet" href="assets/styles-atom.css"> <link rel="stylesheet" href="assets/styles-dash.css"> </head> <!DOCTYPE html> <html lang="en" prefix="og: http://ogp.me/ns#"> <!-- Mirrored from atom.io/docs/api/v1.20.1/Emitter by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 11:45:38 GMT --> <!-- Added by HTTrack --><!-- /Added by HTTrack -->  <body> <div class="footer-push">  <div id="js-pjax-container"> <div class="documents content-push"> <div class="wrapper no-pad">  <div class="columns">  <div class="column main-column"> <h2 class="page-title"> Emitter <span class="label label-essential" title="This class is in the essential API"> essential </span> <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L25" title="View class source"> <span class="octicon octicon-file-code"></span> </a> </h2> <div class="document-description markdown-body"> <p>Utility class to be used when implementing event-based APIs that allows for handlers registered via <code>::on</code> to be invoked with calls to <code>::emit</code>. Instances of this class are intended to be used internally by classes that expose an event-based API.</p> <p>For example:</p> <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta class coffee"><span class="storage type class coffee"><span>class</span></span><span> </span><span class="entity name type class coffee"><span>User</span></span></span></span></div><div class="line"><span class="source coffee"><span> </span><span class="meta function coffee"><span class="entity name function coffee"><span>constructo</span><span class="entity name function coffee"><span>r</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span> </span><span class="storage type function coffee"><span>-&gt;</span></span></span></div><div class="line"><span class="source coffee"><span> </span><span class="variable other readwrite instance coffee"><span>@emitter</span></span><span> </span><span class="keyword operator coffee"><span>=</span></span><span> </span><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span> </span><span class="entity name type instance coffee"><span>Emitter</span></span></span></span></div><div class="line"><span class="source coffee"><span> </span></span></div><div class="line"><span class="source coffee"><span> </span><span class="meta function coffee"><span class="entity name function coffee"><span>onDidChangeNam</span><span class="entity name function coffee"><span>e</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span> </span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(callback)</span></span><span> </span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span> </span><span class="variable other readwrite instance coffee"><span>@emitter</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span>on </span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>did-change-name</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>, </span></span><span>callback</span></span></div><div class="line"><span class="source coffee"><span> </span></span></div><div class="line"><span class="source coffee"><span> </span><span class="meta function coffee"><span class="entity name function coffee"><span>setNam</span><span class="entity name function coffee"><span>e</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span> </span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(name)</span></span><span> </span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span> </span><span class="keyword control coffee"><span>if</span></span><span> name </span><span class="keyword operator coffee"><span>isnt</span></span><span> </span><span class="variable other readwrite instance coffee"><span>@name</span></span></span></div><div class="line"><span class="source coffee"><span> </span><span class="variable other readwrite instance coffee"><span>@name</span></span><span> </span><span class="keyword operator coffee"><span>=</span></span><span> name</span></span></div><div class="line"><span class="source coffee"><span> </span><span class="variable other readwrite instance coffee"><span>@emitter</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span>emit </span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>did-change-name</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>, </span></span><span>name</span></span></div><div class="line"><span class="source coffee"><span> </span><span class="variable other readwrite instance coffee"><span>@name</span></span></span></div></pre> </div> <a name="section-Construction and Destruction"></a> <h2 class="detail-section">Construction and Destruction</h2> <div class="api-entry js-api-entry essential" id="instance-constructor"> <h3 class="name"> <a href="#instance-constructor" class="js-api-name method-signature" name="instance-constructor"> <span class="operator operator-instance">::</span>constructor<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L62"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Construct an emitter.</p> </div> <div class="body markdown-body"> <div class="description"> <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable other readwrite instance coffee"><span>@emitter</span></span><span> </span><span class="keyword operator coffee"><span>=</span></span><span> </span><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span> </span><span class="entity name type instance coffee"><span>Emitter</span></span></span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div></pre> </div> </div> </div> </div> <div class="api-entry js-api-entry essential" id="instance-clear"> <h3 class="name"> <a href="#instance-clear" class="js-api-name method-signature" name="instance-clear"> <span class="operator operator-instance">::</span>clear<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L66"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Clear out any existing subscribers. </p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> </div> </div> <div class="api-entry js-api-entry essential" id="instance-dispose"> <h3 class="name"> <a href="#instance-dispose" class="js-api-name method-signature" name="instance-dispose"> <span class="operator operator-instance">::</span>dispose<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L70"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Unsubscribe all handlers. </p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> </div> </div> <a name="section-Event Subscription"></a> <h2 class="detail-section">Event Subscription</h2> <div class="api-entry js-api-entry essential" id="instance-on"> <h3 class="name"> <a href="#instance-on" class="js-api-name method-signature" name="instance-on"> <span class="operator operator-instance">::</span>on<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span> </a> <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L87"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Register the given handler function to be invoked whenever events by the given name are emitted via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a>.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>eventName</code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> naming the event that you want to invoke the handler when emitted.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>handler<span class="argument-list">()</span></code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to invoke when <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a> is called with the given event name.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-once"> <h3 class="name"> <a href="#instance-once" class="js-api-name method-signature" name="instance-once"> <span class="operator operator-instance">::</span>once<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span> </a> <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L113"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Register the given handler function to be invoked the next time an events with the given name is emitted via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a>.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>eventName</code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> naming the event that you want to invoke the handler when emitted.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>handler<span class="argument-list">()</span></code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to invoke when <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a> is called with the given event name.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-preempt"> <h3 class="name"> <a href="#instance-preempt" class="js-api-name method-signature" name="instance-preempt"> <span class="operator operator-instance">::</span>preempt<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span> </a> <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L136"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Register the given handler function to be invoked <em>before</em> all other handlers existing at the time of subscription whenever events by the given name are emitted via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a>.</p> </div> <div class="body markdown-body"> <div class="description"> <p>Use this method when you need to be the first to handle a given event. This could be required when a data structure in a parent object needs to be updated before third-party event handlers registered on a child object via a public API are invoked. Your handler could itself be preempted via subsequent calls to this method, but this can be controlled by keeping methods based on <code>::preempt</code> private.</p> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>eventName</code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> naming the event that you want to invoke the handler when emitted.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>handler<span class="argument-list">()</span></code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to invoke when <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a> is called with the given event name.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td> </tr> </table> </div> </div> <a name="section-Event Emission"></a> <h2 class="detail-section">Event Emission</h2> <div class="api-entry js-api-entry essential" id="instance-emit"> <h3 class="name"> <a href="#instance-emit" class="js-api-name method-signature" name="instance-emit"> <span class="operator operator-instance">::</span>emit<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">value</span>)</span> </a> <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L162"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Invoke handlers registered via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-on"><span class="operator">::</span>on</a> for the given event name.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>eventName</code></td> <td> <p>The name of the event to emit. Handlers registered with <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-on"><span class="operator">::</span>on</a> for the same name will be invoked.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>value</code></td> <td> <p>Callbacks will be invoked with this value as an argument. </p> </td> </tr> </table> </div> </div> </div> </div> </div> </div> </div>  </div>  </body> <!-- Mirrored from atom.io/docs/api/v1.20.1/Emitter by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 11:45:38 GMT --> </html> 
+
+      <head>
+        <meta charset="utf-8">
+        <title>Emitter</title>
+        <link rel="stylesheet" href="assets/styles-atom.css">
+        <link rel="stylesheet" href="assets/styles-dash.css">
+      </head>
+    <!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from atom.io/docs/api/v1.21.0/Emitter by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Oct 2017 22:52:21 GMT -->
+<!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+<body>
+  
+
+  <div class="footer-push">
+    
+
+
+    <div id="js-pjax-container">
+      <div class="documents content-push">
+  <div class="wrapper no-pad">
+
+    
+
+    <div class="columns">
+      
+      <div class="column main-column">
+          
+<h2 class="page-title">
+  Emitter
+  <span class="label label-essential" title="This class is in the essential API">
+    essential
+  </span>
+  <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L25" title="View class source">
+    <span class="octicon octicon-file-code"></span>
+  </a>
+</h2>
+
+<div class="document-description markdown-body">
+  <p>Utility class to be used when implementing event-based APIs that
+allows for handlers registered via <code>::on</code> to be invoked with calls to
+<code>::emit</code>. Instances of this class are intended to be used internally by
+classes that expose an event-based API.</p>
+
+<p>For example:</p>
+
+<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta class coffee"><span class="storage type class coffee"><span>class</span></span><span>&#xA0;</span><span class="entity name type class coffee"><span>User</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>constructo</span><span class="entity name function coffee"><span>r</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable other readwrite instance coffee"><span>@emitter</span></span><span>&#xA0;</span><span class="keyword operator coffee"><span>=</span></span><span>&#xA0;</span><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span>&#xA0;</span><span class="entity name type instance coffee"><span>Emitter</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>onDidChangeNam</span><span class="entity name function coffee"><span>e</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(callback)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable other readwrite instance coffee"><span>@emitter</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span>on&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>did-change-name</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span>callback</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>setNam</span><span class="entity name function coffee"><span>e</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(name)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="keyword control coffee"><span>if</span></span><span>&#xA0;name&#xA0;</span><span class="keyword operator coffee"><span>isnt</span></span><span>&#xA0;</span><span class="variable other readwrite instance coffee"><span>@name</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable other readwrite instance coffee"><span>@name</span></span><span>&#xA0;</span><span class="keyword operator coffee"><span>=</span></span><span>&#xA0;name</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable other readwrite instance coffee"><span>@emitter</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span>emit&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>did-change-name</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span>name</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable other readwrite instance coffee"><span>@name</span></span></span></div></pre>
+
+</div>
+
+
+
+
+
+
+  <a name="section-Construction and Destruction"></a>
+  <h2 class="detail-section">Construction and Destruction</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-constructor">
+  <h3 class="name">
+    <a href="#instance-constructor" class="js-api-name method-signature" name="instance-constructor">
+      <span class="operator operator-instance">::</span>constructor<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L62"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Construct an emitter.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable other readwrite instance coffee"><span>@emitter</span></span><span>&#xA0;</span><span class="keyword operator coffee"><span>=</span></span><span>&#xA0;</span><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span>&#xA0;</span><span class="entity name type instance coffee"><span>Emitter</span></span></span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div></pre>
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-clear">
+  <h3 class="name">
+    <a href="#instance-clear" class="js-api-name method-signature" name="instance-clear">
+      <span class="operator operator-instance">::</span>clear<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L66"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Clear out any existing subscribers. </p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-dispose">
+  <h3 class="name">
+    <a href="#instance-dispose" class="js-api-name method-signature" name="instance-dispose">
+      <span class="operator operator-instance">::</span>dispose<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L70"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Unsubscribe all handlers. </p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+
+
+  <a name="section-Event Subscription"></a>
+  <h2 class="detail-section">Event Subscription</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-on">
+  <h3 class="name">
+    <a href="#instance-on" class="js-api-name method-signature" name="instance-on">
+      <span class="operator operator-instance">::</span>on<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L87"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Register the given handler function to be invoked whenever events by
+the given name are emitted via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a>.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>eventName</code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> naming the event that you want to invoke the handler when emitted.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>handler<span class="argument-list">()</span></code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to invoke when <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a> is called with the given event name.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-once">
+  <h3 class="name">
+    <a href="#instance-once" class="js-api-name method-signature" name="instance-once">
+      <span class="operator operator-instance">::</span>once<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L113"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Register the given handler function to be invoked the next time an
+events with the given name is emitted via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a>.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>eventName</code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> naming the event that you want to invoke the handler when emitted.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>handler<span class="argument-list">()</span></code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to invoke when <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a> is called with the given event name.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-preempt">
+  <h3 class="name">
+    <a href="#instance-preempt" class="js-api-name method-signature" name="instance-preempt">
+      <span class="operator operator-instance">::</span>preempt<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L136"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Register the given handler function to be invoked <em>before</em> all
+other handlers existing at the time of subscription whenever events by the
+given name are emitted via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a>.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      <p>Use this method when you need to be the first to handle a given event. This
+could be required when a data structure in a parent object needs to be
+updated before third-party event handlers registered on a child object via a
+public API are invoked. Your handler could itself be preempted via
+subsequent calls to this method, but this can be controlled by keeping
+methods based on <code>::preempt</code> private.</p>
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>eventName</code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> naming the event that you want to invoke the handler when emitted.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>handler<span class="argument-list">()</span></code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to invoke when <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-emit"><span class="operator">::</span>emit</a> is called with the given event name.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Event Emission"></a>
+  <h2 class="detail-section">Event Emission</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-emit">
+  <h3 class="name">
+    <a href="#instance-emit" class="js-api-name method-signature" name="instance-emit">
+      <span class="operator operator-instance">::</span>emit<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">value</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/event-kit/blob/v2.3.0/src/emitter.coffee#L162"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Invoke handlers registered via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-on"><span class="operator">::</span>on</a> for the given event name.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>eventName</code></td>
+    <td>
+      <p>The name of the event to emit. Handlers registered with <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-on"><span class="operator">::</span>on</a> for the same name will be invoked.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>value</code></td>
+    <td>
+      <p>Callbacks will be invoked with this value as an argument. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+</div>
+
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+  </div>
+
+  
+
+</body>
+
+<!-- Mirrored from atom.io/docs/api/v1.21.0/Emitter by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Oct 2017 22:52:21 GMT -->
+</html>

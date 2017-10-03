@@ -1,1 +1,996 @@
- <head> <meta charset="utf-8"> <title>Point</title> <link rel="stylesheet" href="assets/styles-atom.css"> <link rel="stylesheet" href="assets/styles-dash.css"> </head> <!DOCTYPE html> <html lang="en" prefix="og: http://ogp.me/ns#"> <!-- Mirrored from atom.io/docs/api/v1.20.1/Point by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 11:45:40 GMT --> <!-- Added by HTTrack --><!-- /Added by HTTrack -->  <body> <div class="footer-push">  <div id="js-pjax-container"> <div class="documents content-push"> <div class="wrapper no-pad">  <div class="columns">  <div class="column main-column"> <h2 class="page-title"> Point <span class="label label-essential" title="This class is in the essential API"> essential </span> <a class="document-source" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L12" title="View class source"> <span class="octicon octicon-file-code"></span> </a> </h2> <div class="document-description markdown-body"> <p>Represents a point in a buffer in row/column coordinates.</p> <p>Every public method that takes a point also accepts a <em>point-compatible</em> <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. This means a 2-element array containing <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a>s representing the row and column. So the following are equivalent:</p> <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span> </span><span class="entity name type instance coffee"><span>Point</span></span></span><span class="meta brace round coffee"><span>(</span></span><span class="constant numeric coffee"><span>1</span></span><span class="meta delimiter object comma coffee"><span>, </span></span><span class="constant numeric coffee"><span>2</span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span class="meta brace square coffee"><span>[</span></span><span class="constant numeric coffee"><span>1</span></span><span class="meta delimiter object comma coffee"><span>, </span></span><span class="constant numeric coffee"><span>2</span></span><span class="meta brace square coffee"><span>] </span></span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span> Point compatible Array</span><span> </span></span></span></div></pre> </div> <a name="section-Properties"></a> <h2 class="detail-section">Properties</h2> <div class="api-entry js-api-entry essential" id="instance-row"> <h3 class="name"> <a href="#instance-row" class="js-api-name" name="instance-row"> <span class="operator operator-instance">::</span>row </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L18"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>A zero-indexed <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the row of the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>. </p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> </div> </div> <div class="api-entry js-api-entry essential" id="instance-column"> <h3 class="name"> <a href="#instance-column" class="js-api-name" name="instance-column"> <span class="operator operator-instance">::</span>column </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L21"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>A zero-indexed <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the column of the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>. </p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> </div> </div> <a name="section-Construction"></a> <h2 class="detail-section">Construction</h2> <div class="api-entry js-api-entry essential" id="fromObject"> <h3 class="name"> <a href="#fromObject" class="js-api-name method-signature" name="fromObject"> <span class="operator operator-class">.</span>fromObject<span class="argument-list">(<span class="argument">object</span>, <span class="argument">copy</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L36"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Convert any point-compatible object to a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>object</code></td> <td> <p>This can be an object that&apos;s already a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>, in which case it&apos;s simply returned, or an array containing two <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a>s representing the row and column.</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>copy</code></td> <td> <p>An optional boolean indicating whether to force the copying of objects that are already points.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns: A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> based on the given object.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-constructor"> <h3 class="name"> <a href="#instance-constructor" class="js-api-name method-signature" name="instance-constructor"> <span class="operator operator-instance">::</span>constructor<span class="argument-list">(<span class="argument">row</span>, <span class="argument">column</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L87"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Construct a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> object</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>row</code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> row</p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>column</code></td> <td> <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> column </p> </td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-copy"> <h3 class="name"> <a href="#instance-copy" class="js-api-name method-signature" name="instance-copy"> <span class="operator operator-instance">::</span>copy<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L94"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> with the same row and column.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-negate"> <h3 class="name"> <a href="#instance-negate" class="js-api-name method-signature" name="instance-negate"> <span class="operator operator-instance">::</span>negate<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L98"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> with the row and column negated.</p></td> </tr> </table> </div> </div> <a name="section-Comparison"></a> <h2 class="detail-section">Comparison</h2> <div class="api-entry js-api-entry essential" id="min"> <h3 class="name"> <a href="#min" class="js-api-name method-signature" name="min"> <span class="operator operator-class">.</span>min<span class="argument-list">(<span class="argument">point1</span>, <span class="argument">point2</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L55"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>point1</code></td> <td> <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a></p> </td> </tr> <tr class="markdown-body argument-depth-0"> <td><code>point2</code></td> <td> <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> that is earlier in the buffer.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-compare"> <h3 class="name"> <a href="#instance-compare" class="js-api-name method-signature" name="instance-compare"> <span class="operator operator-instance">::</span>compare<span class="argument-list">(<span class="argument">other</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L181"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>other</code></td> <td> <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns <code>-1</code> if this point precedes the argument.</p></td> </tr> <tr> <td class="markdown-body"><p>Returns <code>0</code> if this point is equivalent to the argument.</p></td> </tr> <tr> <td class="markdown-body"><p>Returns <code>1</code> if this point follows the argument.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isEqual"> <h3 class="name"> <a href="#instance-isEqual" class="js-api-name method-signature" name="instance-isEqual"> <span class="operator operator-instance">::</span>isEqual<span class="argument-list">(<span class="argument">other</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L199"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>other</code></td> <td> <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point has the same row and column as the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isLessThan"> <h3 class="name"> <a href="#instance-isLessThan" class="js-api-name method-signature" name="instance-isLessThan"> <span class="operator operator-instance">::</span>isLessThan<span class="argument-list">(<span class="argument">other</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L208"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>other</code></td> <td> <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point precedes the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isLessThanOrEqual"> <h3 class="name"> <a href="#instance-isLessThanOrEqual" class="js-api-name method-signature" name="instance-isLessThanOrEqual"> <span class="operator operator-instance">::</span>isLessThanOrEqual<span class="argument-list">(<span class="argument">other</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L215"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>other</code></td> <td> <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point precedes or is equal to the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isGreaterThan"> <h3 class="name"> <a href="#instance-isGreaterThan" class="js-api-name method-signature" name="instance-isGreaterThan"> <span class="operator operator-instance">::</span>isGreaterThan<span class="argument-list">(<span class="argument">other</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L222"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>other</code></td> <td> <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point follows the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-isGreaterThanOrEqual"> <h3 class="name"> <a href="#instance-isGreaterThanOrEqual" class="js-api-name method-signature" name="instance-isGreaterThanOrEqual"> <span class="operator operator-instance">::</span>isGreaterThanOrEqual<span class="argument-list">(<span class="argument">other</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L229"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>other</code></td> <td> <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point follows or is equal to the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td> </tr> </table> </div> </div> <a name="section-Operations"></a> <h2 class="detail-section">Operations</h2> <div class="api-entry js-api-entry essential" id="instance-freeze"> <h3 class="name"> <a href="#instance-freeze" class="js-api-name method-signature" name="instance-freeze"> <span class="operator operator-instance">::</span>freeze<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L108"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Makes this point immutable and returns itself.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns an immutable version of this <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a></p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-translate"> <h3 class="name"> <a href="#instance-translate" class="js-api-name method-signature" name="instance-translate"> <span class="operator operator-instance">::</span>translate<span class="argument-list">(<span class="argument">other</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L118"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Build and return a new point by adding the rows and columns of the given point.</p> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>other</code></td> <td> <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> whose row and column will be added to this point&apos;s row and column to build the returned point.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-traverse"> <h3 class="name"> <a href="#instance-traverse" class="js-api-name method-signature" name="instance-traverse"> <span class="operator operator-instance">::</span>traverse<span class="argument-list">(<span class="argument">other</span>)</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L142"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> <p>Build and return a new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> by traversing the rows and columns specified by the given point.</p> </div> <div class="body markdown-body"> <div class="description"> <p>This method differs from the direct, vector-style addition offered by <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-translate"><span class="operator">::</span>translate</a>. Rather than adding the rows and columns directly, it derives the new point from traversing in &quot;typewriter space&quot;. At the end of every row traversed, a carriage return occurs that returns the columns to 0 before continuing the traversal.</p> </div> </div> <table class="arguments"> <thead> <tr> <th>Argument</th> <th>Description</th> </tr> </thead> <tr class="markdown-body argument-depth-0"> <td><code>other</code></td> <td> <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> providing the rows and columns to traverse by.</p> </td> </tr> </table> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>.</p></td> </tr> </table> </div> </div> <a name="section-Conversion"></a> <h2 class="detail-section">Conversion</h2> <div class="api-entry js-api-entry essential" id="instance-toArray"> <h3 class="name"> <a href="#instance-toArray" class="js-api-name method-signature" name="instance-toArray"> <span class="operator operator-instance">::</span>toArray<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L256"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns an array of this point&apos;s row and column.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-serialize"> <h3 class="name"> <a href="#instance-serialize" class="js-api-name method-signature" name="instance-serialize"> <span class="operator operator-instance">::</span>serialize<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L260"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns an array of this point&apos;s row and column.</p></td> </tr> </table> </div> </div> <div class="api-entry js-api-entry essential" id="instance-toString"> <h3 class="name"> <a href="#instance-toString" class="js-api-name method-signature" name="instance-toString"> <span class="operator operator-instance">::</span>toString<span class="argument-list">()</span> </a> <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.1.15/src/point.coffee#L264"><span class="octicon octicon-file-code"></span></a> </h3> <div class="method-summary-wrapper js-method-summary-wrapper"> <div class="summary markdown-body"> </div> <div class="body markdown-body"> <div class="description"> </div> </div> <table class="return-values"> <thead> <tr> <th>Return values</th> </tr> </thead> <tr> <td class="markdown-body"><p>Returns a string representation of the point.</p></td> </tr> </table> </div> </div> </div> </div> </div> </div> </div>  </div>  </body> <!-- Mirrored from atom.io/docs/api/v1.20.1/Point by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Sep 2017 11:45:40 GMT --> </html> 
+
+      <head>
+        <meta charset="utf-8">
+        <title>Point</title>
+        <link rel="stylesheet" href="assets/styles-atom.css">
+        <link rel="stylesheet" href="assets/styles-dash.css">
+      </head>
+    <!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from atom.io/docs/api/v1.21.0/Point by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Oct 2017 22:52:25 GMT -->
+<!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+<body>
+  
+
+  <div class="footer-push">
+    
+
+
+    <div id="js-pjax-container">
+      <div class="documents content-push">
+  <div class="wrapper no-pad">
+
+    
+
+    <div class="columns">
+      
+      <div class="column main-column">
+          
+<h2 class="page-title">
+  Point
+  <span class="label label-essential" title="This class is in the essential API">
+    essential
+  </span>
+  <a class="document-source" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L12" title="View class source">
+    <span class="octicon octicon-file-code"></span>
+  </a>
+</h2>
+
+<div class="document-description markdown-body">
+  <p>Represents a point in a buffer in row/column coordinates.</p>
+
+<p>Every public method that takes a point also accepts a <em>point-compatible</em>
+<a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. This means a 2-element array containing <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a>s representing the
+row and column. So the following are equivalent:</p>
+
+<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span>&#xA0;</span><span class="entity name type instance coffee"><span>Point</span></span></span><span class="meta brace round coffee"><span>(</span></span><span class="constant numeric coffee"><span>1</span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="constant numeric coffee"><span>2</span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span class="meta brace square coffee"><span>[</span></span><span class="constant numeric coffee"><span>1</span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="constant numeric coffee"><span>2</span></span><span class="meta brace square coffee"><span>]&#xA0;</span></span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Point&#xA0;compatible&#xA0;Array</span><span>&#xA0;</span></span></span></div></pre>
+
+</div>
+
+
+
+
+
+
+  <a name="section-Properties"></a>
+  <h2 class="detail-section">Properties</h2>
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-row">
+  <h3 class="name">
+    <a href="#instance-row" class="js-api-name" name="instance-row">
+      <span class="operator operator-instance">::</span>row
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L18"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>A zero-indexed <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the row of the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>. </p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-column">
+  <h3 class="name">
+    <a href="#instance-column" class="js-api-name" name="instance-column">
+      <span class="operator operator-instance">::</span>column
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L21"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>A zero-indexed <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> representing the column of the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>. </p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+
+    
+
+
+
+  <a name="section-Construction"></a>
+  <h2 class="detail-section">Construction</h2>
+
+    
+
+
+    
+    
+<div class="api-entry js-api-entry essential" id="fromObject">
+  <h3 class="name">
+    <a href="#fromObject" class="js-api-name method-signature" name="fromObject">
+      <span class="operator operator-class">.</span>fromObject<span class="argument-list">(<span class="argument">object</span>, <span class="argument">copy</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L36"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Convert any point-compatible object to a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>object</code></td>
+    <td>
+      <p>This can be an object that&apos;s already a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>, in which case it&apos;s simply returned, or an array containing two <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a>s representing the row and column.</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>copy</code></td>
+    <td>
+      <p>An optional boolean indicating whether to force the copying of objects that are already points.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns: A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> based on the given object.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+    
+<div class="api-entry js-api-entry essential" id="instance-constructor">
+  <h3 class="name">
+    <a href="#instance-constructor" class="js-api-name method-signature" name="instance-constructor">
+      <span class="operator operator-instance">::</span>constructor<span class="argument-list">(<span class="argument">row</span>, <span class="argument">column</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L87"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Construct a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> object</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>row</code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> row</p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>column</code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> column </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-copy">
+  <h3 class="name">
+    <a href="#instance-copy" class="js-api-name method-signature" name="instance-copy">
+      <span class="operator operator-instance">::</span>copy<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L94"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> with the same row and column.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-negate">
+  <h3 class="name">
+    <a href="#instance-negate" class="js-api-name method-signature" name="instance-negate">
+      <span class="operator operator-instance">::</span>negate<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L98"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> with the row and column negated.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Comparison"></a>
+  <h2 class="detail-section">Comparison</h2>
+
+    
+
+
+    
+    
+<div class="api-entry js-api-entry essential" id="min">
+  <h3 class="name">
+    <a href="#min" class="js-api-name method-signature" name="min">
+      <span class="operator operator-class">.</span>min<span class="argument-list">(<span class="argument">point1</span>, <span class="argument">point2</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L55"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>point1</code></td>
+    <td>
+      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a></p>
+    </td>
+  </tr>
+  <tr class="markdown-body argument-depth-0">
+    <td><code>point2</code></td>
+    <td>
+      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> that is earlier in the buffer.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+    
+<div class="api-entry js-api-entry essential" id="instance-compare">
+  <h3 class="name">
+    <a href="#instance-compare" class="js-api-name method-signature" name="instance-compare">
+      <span class="operator operator-instance">::</span>compare<span class="argument-list">(<span class="argument">other</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L181"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>other</code></td>
+    <td>
+      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns <code>-1</code> if this point precedes the argument.</p></td>
+      </tr>
+      <tr>
+        <td class="markdown-body"><p>Returns <code>0</code> if this point is equivalent to the argument.</p></td>
+      </tr>
+      <tr>
+        <td class="markdown-body"><p>Returns <code>1</code> if this point follows the argument.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isEqual">
+  <h3 class="name">
+    <a href="#instance-isEqual" class="js-api-name method-signature" name="instance-isEqual">
+      <span class="operator operator-instance">::</span>isEqual<span class="argument-list">(<span class="argument">other</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L199"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>other</code></td>
+    <td>
+      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point has the same row
+and column as the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isLessThan">
+  <h3 class="name">
+    <a href="#instance-isLessThan" class="js-api-name method-signature" name="instance-isLessThan">
+      <span class="operator operator-instance">::</span>isLessThan<span class="argument-list">(<span class="argument">other</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L208"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>other</code></td>
+    <td>
+      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point precedes the given
+<a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isLessThanOrEqual">
+  <h3 class="name">
+    <a href="#instance-isLessThanOrEqual" class="js-api-name method-signature" name="instance-isLessThanOrEqual">
+      <span class="operator operator-instance">::</span>isLessThanOrEqual<span class="argument-list">(<span class="argument">other</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L215"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>other</code></td>
+    <td>
+      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point precedes or is
+equal to the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isGreaterThan">
+  <h3 class="name">
+    <a href="#instance-isGreaterThan" class="js-api-name method-signature" name="instance-isGreaterThan">
+      <span class="operator operator-instance">::</span>isGreaterThan<span class="argument-list">(<span class="argument">other</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L222"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>other</code></td>
+    <td>
+      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point follows the given
+<a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-isGreaterThanOrEqual">
+  <h3 class="name">
+    <a href="#instance-isGreaterThanOrEqual" class="js-api-name method-signature" name="instance-isGreaterThanOrEqual">
+      <span class="operator operator-instance">::</span>isGreaterThanOrEqual<span class="argument-list">(<span class="argument">other</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L229"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>other</code></td>
+    <td>
+      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>. </p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether this point follows or is
+equal to the given <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> or point-compatible <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Operations"></a>
+  <h2 class="detail-section">Operations</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-freeze">
+  <h3 class="name">
+    <a href="#instance-freeze" class="js-api-name method-signature" name="instance-freeze">
+      <span class="operator operator-instance">::</span>freeze<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L108"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Makes this point immutable and returns itself.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns an immutable version of this <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a></p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-translate">
+  <h3 class="name">
+    <a href="#instance-translate" class="js-api-name method-signature" name="instance-translate">
+      <span class="operator operator-instance">::</span>translate<span class="argument-list">(<span class="argument">other</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L118"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Build and return a new point by adding the rows and columns of
+the given point.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>other</code></td>
+    <td>
+      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> whose row and column will be added to this point&apos;s row and column to build the returned point.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-traverse">
+  <h3 class="name">
+    <a href="#instance-traverse" class="js-api-name method-signature" name="instance-traverse">
+      <span class="operator operator-instance">::</span>traverse<span class="argument-list">(<span class="argument">other</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L142"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Build and return a new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> by traversing the rows and columns
+specified by the given point.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      <p>This method differs from the direct, vector-style addition offered by
+<a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-translate"><span class="operator">::</span>translate</a>. Rather than adding the rows and columns directly, it derives
+the new point from traversing in &quot;typewriter space&quot;. At the end of every row
+traversed, a carriage return occurs that returns the columns to 0 before
+continuing the traversal.</p>
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>other</code></td>
+    <td>
+      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> providing the rows and columns to traverse by.</p>
+    </td>
+  </tr>
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a>.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+  <a name="section-Conversion"></a>
+  <h2 class="detail-section">Conversion</h2>
+
+    
+
+
+    
+
+    
+<div class="api-entry js-api-entry essential" id="instance-toArray">
+  <h3 class="name">
+    <a href="#instance-toArray" class="js-api-name method-signature" name="instance-toArray">
+      <span class="operator operator-instance">::</span>toArray<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L256"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns an array of this point&apos;s row and column.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-serialize">
+  <h3 class="name">
+    <a href="#instance-serialize" class="js-api-name method-signature" name="instance-serialize">
+      <span class="operator operator-instance">::</span>serialize<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L260"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns an array of this point&apos;s row and column.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+    
+<div class="api-entry js-api-entry essential" id="instance-toString">
+  <h3 class="name">
+    <a href="#instance-toString" class="js-api-name method-signature" name="instance-toString">
+      <span class="operator operator-instance">::</span>toString<span class="argument-list">()</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/text-buffer/blob/v13.3.4/src/point.coffee#L264"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a string representation of the point.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+  </div>
+
+  
+
+</body>
+
+<!-- Mirrored from atom.io/docs/api/v1.21.0/Point by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Oct 2017 22:52:25 GMT -->
+</html>
