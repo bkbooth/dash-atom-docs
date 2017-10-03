@@ -1,3 +1,8 @@
+## 1.0.14 (04/10/2017)
+
+* Fix indenting in code blocks
+* Build Atom docset v1.21.0
+
 ## 1.0.13 (21/09/2017)
 
 * Build Atom docset v1.20.1
