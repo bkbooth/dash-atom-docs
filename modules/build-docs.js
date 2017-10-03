@@ -29,9 +29,7 @@ function transformDocsHtml(config) {
 
   docsFilesList.forEach((docsFileName) => {
     const fileData = fs.readFileSync(path.join(docsFilesDir, docsFileName));
-    const $ = cheerio.load(fileData, {
-      normalizeWhitespace: true,
-    });
+    const $ = cheerio.load(fileData);
 
     // Exit if page is 404
     if (/404/.test($('head title').text())) {
