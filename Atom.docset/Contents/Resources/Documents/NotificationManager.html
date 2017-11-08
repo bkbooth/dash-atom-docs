@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.21.2/NotificationManager by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Oct 2017 23:38:52 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.22.0/NotificationManager by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Nov 2017 00:10:43 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body>
@@ -33,7 +33,7 @@
   <span class="label label-essential" title="This class is in the essential API">
     essential
   </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.21.2/src/notification-manager.coffee#L10" title="View class source">
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.22.0/src/notification-manager.js#L10" title="View class source">
     <span class="octicon octicon-file-code"></span>
   </a>
 </h2>
@@ -43,7 +43,7 @@
 to the user.</p>
 
 <p>An instance of this class is always available as the <code>atom.notifications</code>
-global. </p>
+global.</p>
 </div>
 
 
@@ -65,7 +65,7 @@ global. </p>
     <a href="#instance-onDidAddNotification" class="js-api-name method-signature" name="instance-onDidAddNotification">
       <span class="operator operator-instance">::</span>onDidAddNotification<span class="argument-list">(<span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.2/src/notification-manager.coffee#L25"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.22.0/src/notification-manager.js#L26"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -134,7 +134,7 @@ global. </p>
     <a href="#instance-addSuccess" class="js-api-name method-signature" name="instance-addSuccess">
       <span class="operator operator-instance">::</span>addSuccess<span class="argument-list">(<span class="argument">message</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.2/src/notification-manager.coffee#L54"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.22.0/src/notification-manager.js#L58"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -222,7 +222,7 @@ global. </p>
     <td><code>.icon</code></td>
     <td>
         <span class="optional">optional</span>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of an icon from Octicons to display in the notification header. Defaults to <code>&apos;check&apos;</code>. </p>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of an icon from Octicons to display in the notification header. Defaults to <code>&apos;check&apos;</code>.</p>
     </td>
   </tr>
 
@@ -230,6 +230,16 @@ global. </p>
     </table>
 
 
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Notification.html">Notification<span class="operator"></span></a> that was added.</p></td>
+      </tr>
+    </table>
 </div>
 
 </div>
@@ -240,7 +250,7 @@ global. </p>
     <a href="#instance-addInfo" class="js-api-name method-signature" name="instance-addInfo">
       <span class="operator operator-instance">::</span>addInfo<span class="argument-list">(<span class="argument">message</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.2/src/notification-manager.coffee#L79"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.22.0/src/notification-manager.js#L86"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -328,7 +338,7 @@ global. </p>
     <td><code>.icon</code></td>
     <td>
         <span class="optional">optional</span>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of an icon from Octicons to display in the notification header. Defaults to <code>&apos;info&apos;</code>. </p>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of an icon from Octicons to display in the notification header. Defaults to <code>&apos;info&apos;</code>.</p>
     </td>
   </tr>
 
@@ -336,6 +346,16 @@ global. </p>
     </table>
 
 
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Notification.html">Notification<span class="operator"></span></a> that was added.</p></td>
+      </tr>
+    </table>
 </div>
 
 </div>
@@ -346,7 +366,7 @@ global. </p>
     <a href="#instance-addWarning" class="js-api-name method-signature" name="instance-addWarning">
       <span class="operator operator-instance">::</span>addWarning<span class="argument-list">(<span class="argument">message</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.2/src/notification-manager.coffee#L104"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.22.0/src/notification-manager.js#L114"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -434,7 +454,7 @@ global. </p>
     <td><code>.icon</code></td>
     <td>
         <span class="optional">optional</span>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of an icon from Octicons to display in the notification header. Defaults to <code>&apos;alert&apos;</code>. </p>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of an icon from Octicons to display in the notification header. Defaults to <code>&apos;alert&apos;</code>.</p>
     </td>
   </tr>
 
@@ -442,6 +462,16 @@ global. </p>
     </table>
 
 
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Notification.html">Notification<span class="operator"></span></a> that was added.</p></td>
+      </tr>
+    </table>
 </div>
 
 </div>
@@ -452,7 +482,7 @@ global. </p>
     <a href="#instance-addError" class="js-api-name method-signature" name="instance-addError">
       <span class="operator operator-instance">::</span>addError<span class="argument-list">(<span class="argument">message</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.2/src/notification-manager.coffee#L131"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.22.0/src/notification-manager.js#L144"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -547,7 +577,7 @@ global. </p>
     <td><code>.stack</code></td>
     <td>
         <span class="optional">optional</span>
-      <p>A preformatted <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> with stack trace information describing the location of the error. </p>
+      <p>A preformatted <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> with stack trace information describing the location of the error.</p>
     </td>
   </tr>
 
@@ -555,6 +585,16 @@ global. </p>
     </table>
 
 
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Notification.html">Notification<span class="operator"></span></a> that was added.</p></td>
+      </tr>
+    </table>
 </div>
 
 </div>
@@ -565,7 +605,7 @@ global. </p>
     <a href="#instance-addFatalError" class="js-api-name method-signature" name="instance-addFatalError">
       <span class="operator operator-instance">::</span>addFatalError<span class="argument-list">(<span class="argument">message</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.2/src/notification-manager.coffee#L158"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.22.0/src/notification-manager.js#L174"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -660,7 +700,7 @@ global. </p>
     <td><code>.stack</code></td>
     <td>
         <span class="optional">optional</span>
-      <p>A preformatted <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> with stack trace information describing the location of the error. </p>
+      <p>A preformatted <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> with stack trace information describing the location of the error.</p>
     </td>
   </tr>
 
@@ -668,6 +708,16 @@ global. </p>
     </table>
 
 
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Notification.html">Notification<span class="operator"></span></a> that was added.</p></td>
+      </tr>
+    </table>
 </div>
 
 </div>
@@ -688,7 +738,7 @@ global. </p>
     <a href="#instance-getNotifications" class="js-api-name method-signature" name="instance-getNotifications">
       <span class="operator operator-instance">::</span>getNotifications<span class="argument-list">()</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.21.2/src/notification-manager.coffee#L176"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.22.0/src/notification-manager.js#L195"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -736,5 +786,5 @@ global. </p>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.21.2/NotificationManager by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Oct 2017 23:38:53 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.22.0/NotificationManager by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Nov 2017 00:10:44 GMT -->
 </html>
