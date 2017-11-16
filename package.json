@@ -1,6 +1,6 @@
 {
   "name": "dash-atom-docs",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Generate Dash docset for Atom.io API docs",
   "author": "Ben Booth <bkbooth@gmail.com>",
   "repository": "git@github.com:bkbooth/dash-atom-docs.git",
