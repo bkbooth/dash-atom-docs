@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.22.1/GrammarRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Nov 2017 02:27:34 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.23.0/GrammarRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Dec 2017 21:45:10 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body>
@@ -33,7 +33,7 @@
   <span class="label label-extended" title="This class is in the extended API">
     extended
   </span>
-  <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L11" title="View class source">
+  <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L11" title="View class source">
     <span class="octicon octicon-file-code"></span>
   </a>
 </h2>
@@ -61,7 +61,7 @@
     <a href="#instance-onDidAddGrammar" class="js-api-name method-signature" name="instance-onDidAddGrammar">
       <span class="operator operator-instance">::</span>onDidAddGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L39"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L39"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -120,7 +120,7 @@
     <a href="#instance-onDidUpdateGrammar" class="js-api-name method-signature" name="instance-onDidUpdateGrammar">
       <span class="operator operator-instance">::</span>onDidUpdateGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L49"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L49"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -174,6 +174,65 @@ it depends on being added or removed from the registry.</p>
 
 </div>
 
+    
+<div class="api-entry js-api-entry essential" id="instance-onDidRemoveGrammar">
+  <h3 class="name">
+    <a href="#instance-onDidRemoveGrammar" class="js-api-name method-signature" name="instance-onDidRemoveGrammar">
+      <span class="operator operator-instance">::</span>onDidRemoveGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
+    </a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L58"><span class="octicon octicon-file-code"></span></a>
+  </h3>
+
+  <div class="method-summary-wrapper js-method-summary-wrapper">
+  <div class="summary markdown-body">
+    <p>Invoke the given callback when a grammar is removed from the registry.</p>
+  </div>
+
+  <div class="body markdown-body">
+    <div class="description">
+      
+    </div>
+
+  </div>
+
+    <table class="arguments">
+      <thead>
+        <tr>
+          <th>Argument</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+        <tr class="markdown-body argument-depth-0">
+    <td><code>callback<span class="argument-list">(<span class="argument">grammar</span>)</span></code></td>
+    <td>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to call when a grammar is removed.</p>
+    </td>
+  </tr>
+      <tr class="markdown-body argument-depth-1">
+    <td><code>grammar</code></td>
+    <td>
+      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> that was removed.</p>
+    </td>
+  </tr>
+
+
+    </table>
+
+
+    <table class="return-values">
+      <thead>
+        <tr>
+          <th>Return values</th>
+        </tr>
+      </thead>
+      <tr>
+        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
+      </tr>
+    </table>
+</div>
+
+</div>
+
 
 
   <a name="section-Managing Grammars"></a>
@@ -190,7 +249,7 @@ it depends on being added or removed from the registry.</p>
     <a href="#instance-getGrammars" class="js-api-name method-signature" name="instance-getGrammars">
       <span class="operator operator-instance">::</span>getGrammars<span class="argument-list">()</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L59"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L68"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -227,7 +286,7 @@ it depends on being added or removed from the registry.</p>
     <a href="#instance-grammarForScopeName" class="js-api-name method-signature" name="instance-grammarForScopeName">
       <span class="operator operator-instance">::</span>grammarForScopeName<span class="argument-list">(<span class="argument">scopeName</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L67"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L76"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -279,7 +338,7 @@ it depends on being added or removed from the registry.</p>
     <a href="#instance-addGrammar" class="js-api-name method-signature" name="instance-addGrammar">
       <span class="operator operator-instance">::</span>addGrammar<span class="argument-list">(<span class="argument">grammar</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L79"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L88"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -332,7 +391,7 @@ grammar.</p></td>
     <a href="#instance-removeGrammarForScopeName" class="js-api-name method-signature" name="instance-removeGrammarForScopeName">
       <span class="operator operator-instance">::</span>removeGrammarForScopeName<span class="argument-list">(<span class="argument">scopeName</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L100"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L110"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -384,7 +443,7 @@ grammar.</p></td>
     <a href="#instance-readGrammarSync" class="js-api-name method-signature" name="instance-readGrammarSync">
       <span class="operator operator-instance">::</span>readGrammarSync<span class="argument-list">(<span class="argument">grammarPath</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L110"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L120"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -436,7 +495,7 @@ grammar.</p></td>
     <a href="#instance-readGrammar" class="js-api-name method-signature" name="instance-readGrammar">
       <span class="operator operator-instance">::</span>readGrammar<span class="argument-list">(<span class="argument">grammarPath</span>, <span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L125"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L135"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -507,7 +566,7 @@ grammar.</p></td>
     <a href="#instance-loadGrammarSync" class="js-api-name method-signature" name="instance-loadGrammarSync">
       <span class="operator operator-instance">::</span>loadGrammarSync<span class="argument-list">(<span class="argument">grammarPath</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L142"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L152"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -559,7 +618,7 @@ grammar.</p></td>
     <a href="#instance-loadGrammar" class="js-api-name method-signature" name="instance-loadGrammar">
       <span class="operator operator-instance">::</span>loadGrammar<span class="argument-list">(<span class="argument">grammarPath</span>, <span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.0.7/src/grammar-registry.coffee#L155"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.1.0/src/grammar-registry.coffee#L165"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -641,5 +700,5 @@ grammar.</p></td>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.22.1/GrammarRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Nov 2017 02:27:34 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.23.0/GrammarRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Dec 2017 21:45:10 GMT -->
 </html>
