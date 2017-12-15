@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.23.0/Config by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Dec 2017 21:45:00 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.23.1/Config by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Dec 2017 04:07:36 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body>
@@ -33,7 +33,7 @@
   <span class="label label-essential" title="This class is in the essential API">
     essential
   </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L369" title="View class source">
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L369" title="View class source">
     <span class="octicon octicon-file-code"></span>
   </a>
 </h2>
@@ -63,7 +63,7 @@
 <a id="value-coercion" class="anchor" href="#value-coercion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Value Coercion</h3>
 
 <p>Config settings each have a type specified by way of a
-<a href="https://atom.io/docs/v1.23.0/json-schema">schema</a>. For example we might an integer setting that only
+<a href="https://atom.io/docs/v1.23.1/json-schema">schema</a>. For example we might an integer setting that only
 allows integers greater than <code>0</code>:</p>
 
 <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;When&#xA0;no&#xA0;value&#xA0;has&#xA0;been&#xA0;set,&#xA0;`::get`&#xA0;returns&#xA0;the&#xA0;setting&apos;s&#xA0;default&#xA0;value</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;12</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;The&#xA0;string&#xA0;will&#xA0;be&#xA0;coerced&#xA0;to&#xA0;the&#xA0;integer&#xA0;123</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>123</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;123</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;The&#xA0;string&#xA0;will&#xA0;be&#xA0;coerced&#xA0;to&#xA0;an&#xA0;integer,&#xA0;but&#xA0;it&#xA0;must&#xA0;be&#xA0;greater&#xA0;than&#xA0;0,&#xA0;so&#xA0;is&#xA0;set&#xA0;to&#xA0;1</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>-20</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;1</span><span>&#xA0;</span></span></span></div></pre>
@@ -296,7 +296,7 @@ above.</p>
     <a href="#instance-observe" class="js-api-name method-signature" name="instance-observe">
       <span class="operator operator-instance">::</span>observe<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">[options]</span>, <span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L471"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L471"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -386,7 +386,7 @@ current value of the config entry.</p>
     <a href="#instance-onDidChange" class="js-api-name method-signature" name="instance-onDidChange">
       <span class="operator operator-instance">::</span>onDidChange<span class="argument-list">(<span class="argument">[keyPath]</span>, <span class="argument">[options]</span>, <span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L504"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L504"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -492,7 +492,7 @@ not specified, your callback will be called on changes to any key.</p>
     <a href="#instance-get" class="js-api-name method-signature" name="instance-get">
       <span class="operator operator-instance">::</span>get<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L577"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L577"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -604,7 +604,7 @@ file in the type specified by the configuration schema.</p></td>
     <a href="#instance-set" class="js-api-name method-signature" name="instance-set">
       <span class="operator operator-instance">::</span>set<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">value</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L655"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L655"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -705,7 +705,7 @@ file in the type specified by the configuration schema.</p></td>
     <a href="#instance-unset" class="js-api-name method-signature" name="instance-unset">
       <span class="operator operator-instance">::</span>unset<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L691"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L691"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -782,7 +782,7 @@ file in the type specified by the configuration schema.</p></td>
     <a href="#instance-getAll" class="js-api-name method-signature" name="instance-getAll">
       <span class="operator operator-instance">::</span>getAll<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">[options]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L600"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L600"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -849,7 +849,7 @@ associated scope selector.</p>
     <a href="#instance-getSources" class="js-api-name method-signature" name="instance-getSources">
       <span class="operator operator-instance">::</span>getSources<span class="argument-list">()</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L719"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L719"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -877,7 +877,7 @@ settings have been added via <a class="reference-link" data-skip-pjax="yeahokigu
     <a href="#instance-getSchema" class="js-api-name method-signature" name="instance-getSchema">
       <span class="operator operator-instance">::</span>getSchema<span class="argument-list">(<span class="argument">keyPath</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L731"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L731"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -935,7 +935,7 @@ from the root schema.</p></td>
     <a href="#instance-getUserConfigPath" class="js-api-name method-signature" name="instance-getUserConfigPath">
       <span class="operator operator-instance">::</span>getUserConfigPath<span class="argument-list">()</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L750"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L750"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -962,7 +962,7 @@ from the root schema.</p></td>
     <a href="#instance-transact" class="js-api-name method-signature" name="instance-transact">
       <span class="operator operator-instance">::</span>transact<span class="argument-list">(<span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.0/src/config.coffee#L758"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.23.1/src/config.coffee#L758"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -1018,5 +1018,5 @@ handlers will be called once if the value for their key-path has changed.</p>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.23.0/Config by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Dec 2017 21:45:00 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.23.1/Config by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Dec 2017 04:07:36 GMT -->
 </html>
