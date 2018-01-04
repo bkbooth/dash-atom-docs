@@ -35,5 +35,5 @@
   "engines": {
     "node": ">=6"
   },
-  "atom_version": "1.23.1"
+  "atom_version": "1.23.2"
 }
