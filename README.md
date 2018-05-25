@@ -15,7 +15,7 @@ under `Atom.docset`, they will be overwritten by the script.
 > yarn build
 ```
 
-This will scrape the [Atom.io API][4] docs into a local folder, copy and transform all of the HTML files, then parse the HTML files to get a list of classes, methods, events and properties to populate the docset database.
+This will scrape the [Atom.io API][3] docs into a local folder, copy and transform all of the HTML files, then parse the HTML files to get a list of classes, methods, events and properties to populate the docset database.
 
 The scraper will attempt to download the version of the API docs specified by `atom_version` in _package.json_.
 
