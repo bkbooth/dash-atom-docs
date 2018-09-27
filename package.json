@@ -20,7 +20,7 @@
     "build:docs": "node ./modules/build-docs",
     "prebuild:docs": "npm run clean:docs",
     "clean:docs": "rimraf Atom.docset/*",
-    "scrape": "httrack https://atom.io/docs/api/v$npm_package_atom_version/ -O ./scraped +https://atom.io/docs/api/* +*github-atom-io-herokuapp-com.global.ssl.fastly.net/*",
+    "scrape": "httrack https://atom.io/docs/api/v$npm_package_atom_version/ -O ./scraped +https://atom.io/docs/api/* +*github-atom-io-herokuapp-com.freetls.fastly.net/*",
     "prescrape": "node ./modules/check-httrack && npm run clean:scrape",
     "clean:scrape": "rimraf scraped"
   },

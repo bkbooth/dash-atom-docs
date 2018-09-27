@@ -60,7 +60,7 @@ function transformDocsHtml(config) {
 // Find and copy the Atom docs CSS into docset
 function copyDocsCss(config) {
   const docsCssRegex = /^application-[0-9a-zA-Z]+\.css$/;
-  const docsAssetsDir = path.join(config.scrapeDir, 'github-atom-io-herokuapp-com.global.ssl.fastly.net', 'assets');
+  const docsAssetsDir = path.join(config.scrapeDir, 'github-atom-io-herokuapp-com.freetls.fastly.net', 'assets');
   const docsAssetsFiles = fs.readdirSync(docsAssetsDir);
   const docsCssFile = docsAssetsFiles.find((docsAssetsFile) => docsCssRegex.test(docsAssetsFile));
   if (!docsCssFile) {
