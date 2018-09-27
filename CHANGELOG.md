@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.37 (27/09/2018)
+
+- Build Atom docset v1.31.0
+- Fix Atom docs assets location
+- Update dependencies
+
 ## 1.0.36 (29/08/2018)
 
 - Build Atom docset v1.30.0
