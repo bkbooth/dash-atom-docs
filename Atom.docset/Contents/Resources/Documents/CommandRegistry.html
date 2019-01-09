@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/CommandRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/CommandRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body class="">
@@ -34,7 +34,7 @@
   <span class="label label-essential" title="This class is in the essential API">
     essential
   </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.33.1/src/command-registry.js#L47" title="View class source">
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.34.0/src/command-registry.js#L47" title="View class source">
     <span class="octicon octicon-file-code"></span>
   </a>
 </h2>
@@ -44,7 +44,6 @@
 context-sensitive way using CSS selectors. You can access a global instance of
 this class via <code>atom.commands</code>, and commands registered there will be
 presented in the command palette.</p>
-
 <p>The global command registry facilitates a style of event handling known as
 <em>event delegation</em> that was popularized by jQuery. Atom commands are expressed
 as custom DOM events that can be invoked on the currently focused element via
@@ -52,13 +51,11 @@ a key binding or manually via the command palette. Rather than binding
 listeners for command events directly to DOM nodes, you instead register
 command event listeners globally on <code>atom.commands</code> and constrain them to
 specific kinds of elements with CSS selectors.</p>
-
 <p>Command names must follow the <code>namespace:action</code> pattern, where <code>namespace</code>
 will typically be the name of your package, and <code>action</code> describes the
 behavior of your command. If either part consists of multiple words, these
 must be separated by hyphens. E.g. <code>awesome-package:turn-it-up-to-eleven</code>.
 All words should be lowercased.</p>
-
 <p>As the event bubbles upward through the DOM, all registered event listeners
 with matching selectors are invoked in order of specificity. In the event of a
 specificity tie, the most recently registered listener is invoked first. This
@@ -67,12 +64,9 @@ context of the current DOM node, meaning <code>this</code> always points at
 <code>event.currentTarget</code>. As is normally the case with DOM events,
 <code>stopPropagation</code> and <code>stopImmediatePropagation</code> can be used to terminate the
 bubbling process and prevent invocation of additional listeners.</p>
-
 <h2>
-<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
-
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h2>
 <p>Here is a command that inserts the current date in an editor:</p>
-
 <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>commands</span><span class="meta delimiter method period coffee"><span>.</span></span><span>add&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>atom-text-editor</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>user:insert-date</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(event)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>editor&#xA0;</span><span class="keyword operator coffee"><span>=</span></span></span></span><span>&#xA0;</span><span class="variable other readwrite instance coffee"><span>@getModel</span></span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;editor</span><span class="meta delimiter method period coffee"><span>.</span></span><span>insertText</span><span class="meta brace round coffee"><span>(</span></span><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span>&#xA0;</span><span class="entity name type instance coffee"><span>Date</span></span></span><span class="meta brace round coffee"><span>(</span><span>)</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span class="support function method array coffee"><span>toLocaleString</span></span><span class="meta brace round coffee"><span>(</span><span>)</span><span>)</span></span></span></div></pre>
 
 </div>
@@ -92,7 +86,7 @@ bubbling process and prevent invocation of additional listeners.</p>
     <a href="#instance-add" class="js-api-name method-signature" name="instance-add">
       <span class="operator operator-instance">::</span>add<span class="argument-list">(<span class="argument">target</span>, <span class="argument">commandName</span>, <span class="argument">listener</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.33.1/src/command-registry.js#L130"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.34.0/src/command-registry.js#L130"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -215,7 +209,7 @@ added command handler(s).</p></td>
     <a href="#instance-findCommands" class="js-api-name method-signature" name="instance-findCommands">
       <span class="operator operator-instance">::</span>findCommands<span class="argument-list">(<span class="argument">params</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.33.1/src/command-registry.js#L223"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.34.0/src/command-registry.js#L223"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -262,7 +256,6 @@ added command handler(s).</p></td>
       </thead>
       <tr>
         <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <code>CommandDescriptor</code> <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a>s containing the following keys:</p>
-
 <ul>
 <li>
 <code>name</code> The name of the command. For example, <code>user:insert-date</code>.</li>
@@ -291,7 +284,7 @@ may also be present in the returned descriptor.</li>
     <a href="#instance-dispatch" class="js-api-name method-signature" name="instance-dispatch">
       <span class="operator operator-instance">::</span>dispatch<span class="argument-list">(<span class="argument">target</span>, <span class="argument">commandName</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.33.1/src/command-registry.js#L270"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.34.0/src/command-registry.js#L270"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -342,7 +335,7 @@ processed.</p>
     <a href="#instance-onWillDispatch" class="js-api-name method-signature" name="instance-onWillDispatch">
       <span class="operator operator-instance">::</span>onWillDispatch<span class="argument-list">(<span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.33.1/src/command-registry.js#L280"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.34.0/src/command-registry.js#L280"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -391,7 +384,7 @@ processed.</p>
     <a href="#instance-onDidDispatch" class="js-api-name method-signature" name="instance-onDidDispatch">
       <span class="operator operator-instance">::</span>onDidDispatch<span class="argument-list">(<span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.33.1/src/command-registry.js#L288"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.34.0/src/command-registry.js#L288"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -452,5 +445,5 @@ processed.</p>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/CommandRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/CommandRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 </html>

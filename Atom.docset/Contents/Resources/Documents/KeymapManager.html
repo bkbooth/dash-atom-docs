@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/KeymapManager by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/KeymapManager by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body class="">
@@ -43,17 +43,13 @@
   <p>Allows commands to be associated with keystrokes in a
 context-sensitive way. In Atom, you can access a global instance of this
 object via <code>atom.keymaps</code>.</p>
-
 <p>Key bindings are plain JavaScript objects containing <strong>CSS selectors</strong> as
 their top level keys, then <strong>keystroke patterns</strong> mapped to commands.</p>
-
 <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>.workspace</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>ctrl-l</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>package:do-something</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>ctrl-z</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>package:do-something-else</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>.mini.editor</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>enter</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>core:confirm</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div></pre>
-
 
 <p>When a keystroke sequence matches a binding in a given context, a custom DOM
 event with a type based on the command is dispatched on the target of the
 keyboard event.</p>
-
 <p>To match a keystroke sequence, the keymap starts at the target element for the
 keyboard event. It looks for key bindings associated with selectors that match
 the target element. If multiple match, the most specific is selected. If there
@@ -61,13 +57,11 @@ is a tie in specificity, the most recently added binding wins. If no bindings
 are found for the events target, the search is repeated again for the target&apos;s
 parent node and so on recursively until a binding is found or we traverse off
 the top of the document.</p>
-
 <p>When a binding is found, its command event is always dispatched on the
 original target of the keyboard event, even if the matching element is higher
 up in the DOM. In addition, <code>.preventDefault()</code> is called on the keyboard
 event to prevent the browser from taking action. <code>.preventDefault</code> is only
 called if a matching binding is found.</p>
-
 <p>Command event objects have a non-standard method called <code>.abortKeyBinding()</code>.
 If your command handler is invoked but you programmatically determine that no
 action can be taken and you want to allow other bindings to be matched, call
@@ -75,7 +69,6 @@ action can be taken and you want to allow other bindings to be matched, call
 is binding snippet expansion to <code>tab</code>. If <code>snippets:expand</code> is invoked when
 the cursor does not follow a valid snippet prefix, we abort the binding and
 allow <code>tab</code> to be handled by the default handler, which inserts whitespace.</p>
-
 <p>Multi-keystroke bindings are possible. If a sequence of one or more keystrokes
 <em>partially</em> matches a multi-keystroke binding, the keymap enters a pending
 state. The pending state is terminated on the next keystroke, or after
@@ -84,7 +77,7 @@ terminated via a timeout or a keystroke that leads to no matches, the longest
 ambiguous bindings that caused the pending state are temporarily disabled and
 the previous keystrokes are replayed. If there is ambiguity again during the
 replay, the next longest bindings are disabled and the keystrokes are replayed
-again. </p>
+again.</p>
 </div>
 
 
@@ -173,7 +166,7 @@ again. </p>
   <tr class="markdown-body argument-depth-1">
     <td><code>.target</code></td>
     <td>
-      <p>The target element of the event. </p>
+      <p>The target element of the event.</p>
     </td>
   </tr>
 
@@ -233,7 +226,7 @@ again. </p>
       <tr class="markdown-body argument-depth-1">
     <td><code>.defaultTarget</code></td>
     <td>
-      <p>This will be used as the target of events whose target is <code>document.body</code> to allow for a catch-all element when nothing is focused. </p>
+      <p>This will be used as the target of events whose target is <code>document.body</code> to allow for a catch-all element when nothing is focused.</p>
     </td>
   </tr>
 
@@ -257,7 +250,7 @@ again. </p>
   <div class="method-summary-wrapper js-method-summary-wrapper">
   <div class="summary markdown-body">
     <p>Clear all registered key bindings and enqueued keystrokes. For use
-in tests. </p>
+in tests.</p>
   </div>
 
   <div class="body markdown-body">
@@ -284,7 +277,7 @@ in tests. </p>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
   <div class="summary markdown-body">
-    <p>Unwatch all watched paths. </p>
+    <p>Unwatch all watched paths.</p>
   </div>
 
   <div class="body markdown-body">
@@ -666,7 +659,7 @@ any bindings.</p>
   <tr class="markdown-body argument-depth-0">
     <td><code>priority</code></td>
     <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity. Defaults to <code>0</code>. </p>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity. Defaults to <code>0</code>.</p>
     </td>
   </tr>
 
@@ -720,7 +713,7 @@ any bindings.</p>
   <tr class="markdown-body argument-depth-0">
     <td><code>priority</code></td>
     <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity. Defaults to <code>0</code>. </p>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity. Defaults to <code>0</code>.</p>
     </td>
   </tr>
 
@@ -908,7 +901,7 @@ any bindings.</p>
   <tr class="markdown-body argument-depth-1">
     <td><code>.priority</code></td>
     <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity. </p>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity.</p>
     </td>
   </tr>
 
@@ -965,7 +958,7 @@ that&apos;s what you&apos;re looking for, call <a class="reference-link" data-sk
       <tr class="markdown-body argument-depth-1">
     <td><code>.priority</code></td>
     <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity. </p>
+      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity.</p>
     </td>
   </tr>
 
@@ -1007,17 +1000,13 @@ the given <code>KeyboardEvent</code> if one can be found.</p>
       <p>If a matching binding is found on the event&apos;s target or one of its
 ancestors, <code>.preventDefault()</code> is called on the keyboard event and the
 binding&apos;s command is emitted as a custom event on the matching element.</p>
-
 <p>If the matching binding&apos;s command is &apos;native!&apos;, the method will terminate
 without calling <code>.preventDefault()</code> on the keyboard event, allowing the
 browser to handle it as normal.</p>
-
 <p>If the matching binding&apos;s command is &apos;unset!&apos;, the search will continue from
 the current element&apos;s parent.</p>
-
 <p>If the matching binding&apos;s command is &apos;abort!&apos;, the search will terminate
 without dispatching a command event.</p>
-
 <p>If the event&apos;s target is <code>document.body</code>, it will be treated as if its
 target is <code>.defaultTarget</code> if that property is assigned on the keymap.</p>
     </div>
@@ -1034,7 +1023,7 @@ target is <code>.defaultTarget</code> if that property is assigned on the keymap
         <tr class="markdown-body argument-depth-0">
     <td><code>event</code></td>
     <td>
-      <p>A <code>KeyboardEvent</code> of type &apos;keydown&apos; </p>
+      <p>A <code>KeyboardEvent</code> of type &apos;keydown&apos;</p>
     </td>
   </tr>
 
@@ -1233,5 +1222,5 @@ by partial matches of multi-keystroke bindings are terminated.</p>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/KeymapManager by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/KeymapManager by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 </html>

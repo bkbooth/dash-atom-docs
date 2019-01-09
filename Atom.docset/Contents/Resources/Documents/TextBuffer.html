@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/TextBuffer by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/TextBuffer by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body class="">
@@ -42,30 +42,24 @@
 <div class="document-description markdown-body">
   <p>A mutable text container with undo/redo support and the ability to
 annotate logical regions in the text.</p>
-
 <h2>
-<a id="observing-changes" class="anchor" href="#observing-changes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Observing Changes</h2>
-
+<a id="observing-changes" class="anchor" href="#observing-changes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Observing Changes</h2>
 <p>You can observe changes in a <a class="reference-link" data-skip-pjax="yeahokiguess" href="TextBuffer.html">TextBuffer<span class="operator"></span></a> using methods like <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-onDidChange"><span class="operator">::</span>onDidChange</a>,
 <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-onDidStopChanging"><span class="operator">::</span>onDidStopChanging</a>, and <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-getChangesSinceCheckpoint"><span class="operator">::</span>getChangesSinceCheckpoint</a>. These methods report
 aggregated buffer updates as arrays of change objects containing the following
 fields: <code>oldRange</code>, <code>newRange</code>, <code>oldText</code>, and <code>newText</code>. The <code>oldText</code>,
 <code>newText</code>, and <code>newRange</code> fields are self-explanatory, but the interepretation
 of <code>oldRange</code> is more nuanced:</p>
-
 <p>The reported <code>oldRange</code> is the range of the replaced text in the original
 contents of the buffer <em>irrespective of the spatial impact of any other
 reported change</em>. So, for example, if you wanted to apply all the changes made
 in a transaction to a clone of the observed buffer, the easiest approach would
 be to apply the changes in reverse:</p>
-
 <pre class="editor editor-colors"><div class="line"><span class="source js"><span>buffer1</span><span class="meta delimiter method period js"><span>.</span></span><span>onDidChange</span><span class="meta brace round js"><span>(</span><span>(</span></span><span class="meta brace curly js"><span>{</span></span><span>changes</span><span class="meta brace curly js"><span>}</span></span><span class="meta brace round js"><span>)</span></span><span>&#xA0;</span><span class="keyword operator js"><span>=</span><span>&gt;</span></span><span>&#xA0;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;</span><span class="keyword control js"><span>for</span></span><span>&#xA0;</span><span class="meta brace round js"><span>(</span></span><span class="storage modifier js"><span>const</span></span><span>&#xA0;</span><span class="meta brace curly js"><span>{</span></span><span>oldRange</span><span class="meta delimiter object comma js"><span>,&#xA0;</span></span><span>newText</span><span class="meta brace curly js"><span>}</span></span><span>&#xA0;of&#xA0;changes</span><span class="meta delimiter method period js"><span>.</span></span><span class="support function js"><span>reverse</span></span><span class="meta brace round js"><span>(</span><span>)</span><span>)</span></span><span>&#xA0;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;&#xA0;&#xA0;buffer2</span><span class="meta delimiter method period js"><span>.</span></span><span>setTextInRange</span><span class="meta brace round js"><span>(</span></span><span>oldRange</span><span class="meta delimiter object comma js"><span>,&#xA0;</span></span><span>newText</span><span class="meta brace round js"><span>)</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;</span><span class="meta brace curly js"><span>}</span></span></span></div><div class="line"><span class="source js"><span class="meta brace curly js"><span>}</span></span><span class="meta brace round js"><span>)</span></span></span></div></pre>
-
 
 <p>If you needed to apply the changes in the forwards order, you would need to
 incorporate the impact of preceding changes into the range passed to
 <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-setTextInRange"><span class="operator">::</span>setTextInRange</a>, as follows:</p>
-
 <pre class="editor editor-colors"><div class="line"><span class="source js"><span>buffer1</span><span class="meta delimiter method period js"><span>.</span></span><span>onDidChange</span><span class="meta brace round js"><span>(</span><span>(</span></span><span class="meta brace curly js"><span>{</span></span><span>changes</span><span class="meta brace curly js"><span>}</span></span><span class="meta brace round js"><span>)</span></span><span>&#xA0;</span><span class="keyword operator js"><span>=</span><span>&gt;</span></span><span>&#xA0;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;</span><span class="keyword control js"><span>for</span></span><span>&#xA0;</span><span class="meta brace round js"><span>(</span></span><span class="storage modifier js"><span>const</span></span><span>&#xA0;</span><span class="meta brace curly js"><span>{</span></span><span>oldRange</span><span class="meta delimiter object comma js"><span>,&#xA0;</span></span><span>newRange</span><span class="meta delimiter object comma js"><span>,&#xA0;</span></span><span>newText</span><span class="meta brace curly js"><span>}</span></span><span>&#xA0;of&#xA0;changes</span><span class="meta brace round js"><span>)</span></span><span>&#xA0;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="storage modifier js"><span>const</span></span><span>&#xA0;rangeToReplace&#xA0;</span><span class="keyword operator js"><span>=</span></span><span>&#xA0;Range</span><span class="meta brace round js"><span>(</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;newRange</span><span class="meta delimiter method period js"><span>.</span></span><span class="support constant dom js"><span>start</span></span><span class="meta delimiter object comma js"><span>,</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;newRange</span><span class="meta delimiter method period js"><span>.</span></span><span class="support constant dom js"><span>start</span></span><span class="meta delimiter method period js"><span>.</span></span><span>traverse</span><span class="meta brace round js"><span>(</span></span><span>oldRange</span><span class="meta delimiter method period js"><span>.</span></span><span>getExtent</span><span class="meta brace round js"><span>(</span><span>)</span><span>)</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta brace round js"><span>)</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;&#xA0;&#xA0;buffer2</span><span class="meta delimiter method period js"><span>.</span></span><span>setTextInRange</span><span class="meta brace round js"><span>(</span></span><span>rangeToReplace</span><span class="meta delimiter object comma js"><span>,&#xA0;</span></span><span>newText</span><span class="meta brace round js"><span>)</span></span></span></div><div class="line"><span class="source js"><span>&#xA0;&#xA0;</span><span class="meta brace curly js"><span>}</span></span></span></div><div class="line"><span class="source js"><span class="meta brace curly js"><span>}</span></span><span class="meta brace round js"><span>)</span></span></span></div></pre>
 
 </div>
@@ -758,7 +752,6 @@ observers have been notified following a change to the buffer.</p>
   <div class="body markdown-body">
     <div class="description">
       <p>The order of events following a buffer change is as follows:</p>
-
 <ul>
 <li>The text of the buffer is changed</li>
 <li>All markers are updated accordingly, but their <code>::onDidChange</code> observers
@@ -770,7 +763,6 @@ are not notified.</li>
 <li>
 <code>TextBuffer::onDidUpdateMarkers</code> observers are notified.</li>
 </ul>
-
 <p>Basically, this method gives you a way to take action after both a buffer
 change and all associated marker changes.</p>
     </div>
@@ -3006,7 +2998,6 @@ even if the word&apos;s location in the buffer changes.</p>
     <td>
         <span class="optional">optional</span>
       <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> Determines the rules by which changes to the buffer <em>invalidate</em> the marker. (default: &apos;overlap&apos;) It can be any of the following strategies, in order of fragility:</p>
-
 <ul>
 <li>
 <strong>never</strong>: The marker is never marked as invalid. This is a good choice for
@@ -3100,7 +3091,6 @@ marker layer.</p>
     <td>
         <span class="optional">optional</span>
       <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> Determines the rules by which changes to the buffer <em>invalidate</em> the marker. (default: &apos;overlap&apos;) It can be any of the following strategies, in order of fragility:</p>
-
 <ul>
 <li>
 <strong>never</strong>: The marker is never marked as invalid. This is a good choice for
@@ -3932,9 +3922,8 @@ method will return an empty <a href="https://developer.mozilla.org/en-US/docs/Ja
       </tr>
       <tr>
         <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a>s with the following fields that summarize
- the aggregated changes since the checkpoint. See <em>Working With Aggregated
+the aggregated changes since the checkpoint. See <em>Working With Aggregated
 Changes</em> in the description of the <a class="reference-link" data-skip-pjax="yeahokiguess" href="TextBuffer.html">TextBuffer<span class="operator"></span></a> class for details.</p>
-
 <ul>
 <li>
 <code>oldRange</code> The <a class="reference-link" data-skip-pjax="yeahokiguess" href="Range.html">Range<span class="operator"></span></a> of the deleted text in the text as it existed when
@@ -5154,5 +5143,5 @@ the given position.</p></td>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/TextBuffer by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/TextBuffer by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 </html>

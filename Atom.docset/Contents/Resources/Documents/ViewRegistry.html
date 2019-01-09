@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/ViewRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/ViewRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body class="">
@@ -34,7 +34,7 @@
   <span class="label label-essential" title="This class is in the essential API">
     essential
   </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.33.1/src/view-registry.js#L26" title="View class source">
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.34.0/src/view-registry.js#L26" title="View class source">
     <span class="octicon octicon-file-code"></span>
   </a>
 </h2>
@@ -44,20 +44,16 @@
 types in Atom. We call this association a View Provider. As in, for a given
 model, this class can provide a view via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-getView"><span class="operator">::</span>getView</a>, as long as the
 model/view association was registered via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-addViewProvider"><span class="operator">::</span>addViewProvider</a></p>
-
 <p>If you&apos;re adding your own kind of pane item, a good strategy for all but the
 simplest items is to separate the model and the view. The model handles
 application logic and is the primary point of API interaction. The view
 just handles presentation.</p>
-
 <p>Note: Models can be any object, but must implement a <code>getTitle()</code> function
 if they are to be displayed in a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a></p>
-
 <p>View providers inform the workspace how your model objects should be
 presented in the DOM. A view provider must always return a DOM node, which
 makes <a href="http://www.html5rocks.com/en/tutorials/webcomponents/customelements/">HTML 5 custom elements</a>
 an ideal tool for implementing views in Atom.</p>
-
 <p>You can access the <code>ViewRegistry</code> object via <code>atom.views</code>.</p>
 </div>
 
@@ -76,7 +72,7 @@ an ideal tool for implementing views in Atom.</p>
     <a href="#instance-addViewProvider" class="js-api-name method-signature" name="instance-addViewProvider">
       <span class="operator operator-instance">::</span>addViewProvider<span class="argument-list">(<span class="argument">[modelConstructor]</span>, <span class="argument">createView</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.33.1/src/view-registry.js#L69"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.34.0/src/view-registry.js#L69"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -148,7 +144,7 @@ added provider.</p></td>
     <a href="#instance-getView" class="js-api-name method-signature" name="instance-getView">
       <span class="operator operator-instance">::</span>getView<span class="argument-list">()</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.33.1/src/view-registry.js#L122"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.34.0/src/view-registry.js#L122"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -161,13 +157,10 @@ added provider.</p></td>
       <p>If you&apos;re just <em>using</em> the workspace, you shouldn&apos;t need to access the view
 layer, but view layer access may be necessary if you want to perform DOM
 manipulation that isn&apos;t supported via the model API.</p>
-
 <h2>
-<a id="view-resolution-algorithm" class="anchor" href="#view-resolution-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>View Resolution Algorithm</h2>
-
+<a id="view-resolution-algorithm" class="anchor" href="#view-resolution-algorithm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>View Resolution Algorithm</h2>
 <p>The view associated with the object is resolved using the following
 sequence</p>
-
 <ol>
 <li>Is the object an instance of <code>HTMLElement</code>? If true, return the object.</li>
 <li>Does the object have a method named <code>getElement</code> that returns an
@@ -180,7 +173,6 @@ property? If true, return the root DOM element (i.e. <code>object[0]</code>).</l
 provider to create a view associated with the object, and return the
 view.</li>
 </ol>
-
 <p>If no associated view is returned by the sequence an error is thrown.</p>
     </div>
 
@@ -220,5 +212,5 @@ view.</li>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/ViewRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/ViewRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 </html>

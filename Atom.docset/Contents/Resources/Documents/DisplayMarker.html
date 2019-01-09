@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/DisplayMarker by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/DisplayMarker by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body class="">
@@ -44,31 +44,24 @@
 even as the buffer changes. This is used to represent cursors, folds, snippet
 targets, misspelled words, and anything else that needs to track a logical
 location in the buffer over time.</p>
-
 <h3>
-<a id="displaymarker-creation" class="anchor" href="#displaymarker-creation" aria-hidden="true"><span class="octicon octicon-link"></span></a>DisplayMarker Creation</h3>
-
+<a id="displaymarker-creation" class="anchor" href="#displaymarker-creation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DisplayMarker Creation</h3>
 <p>Use <a class="reference-link" data-skip-pjax="yeahokiguess" href="DisplayMarkerLayer.html#instance-markBufferRange">DisplayMarkerLayer<span class="operator">::</span>markBufferRange</a> or <a class="reference-link" data-skip-pjax="yeahokiguess" href="DisplayMarkerLayer.html#instance-markScreenRange">DisplayMarkerLayer<span class="operator">::</span>markScreenRange</a>
 rather than creating Markers directly.</p>
-
 <h3>
-<a id="head-and-tail" class="anchor" href="#head-and-tail" aria-hidden="true"><span class="octicon octicon-link"></span></a>Head and Tail</h3>
-
+<a id="head-and-tail" class="anchor" href="#head-and-tail" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Head and Tail</h3>
 <p>Markers always have a <em>head</em> and sometimes have a <em>tail</em>. If you think of a
 marker as an editor selection, the tail is the part that&apos;s stationary and the
 head is the part that moves when the mouse is moved. A marker without a tail
 always reports an empty range at the head position. A marker with a head position
 greater than the tail is in a &quot;normal&quot; orientation. If the head precedes the
 tail the marker is in a &quot;reversed&quot; orientation.</p>
-
 <h3>
-<a id="validity" class="anchor" href="#validity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Validity</h3>
-
+<a id="validity" class="anchor" href="#validity" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validity</h3>
 <p>Markers are considered <em>valid</em> when they are first created. Depending on the
 invalidation strategy you choose, certain changes to the buffer can cause a
 marker to become invalid, for example if the text surrounding the marker is
 deleted. The strategies, in order of descending fragility:</p>
-
 <ul>
 <li>
 <strong>never</strong>: The marker is never marked as invalid. This is a good choice for
@@ -87,8 +80,7 @@ start at the marker&apos;s end do not invalidate the marker.</li>
 region in any way, including changes that end at the marker&apos;s
 start or start at the marker&apos;s end. This is the most fragile strategy.</li>
 </ul>
-
-<p>See <a class="reference-link" data-skip-pjax="yeahokiguess" href="TextBuffer.html#instance-markRange">TextBuffer<span class="operator">::</span>markRange</a> for usage. </p>
+<p>See <a class="reference-link" data-skip-pjax="yeahokiguess" href="TextBuffer.html#instance-markRange">TextBuffer<span class="operator">::</span>markRange</a> for usage.</p>
 </div>
 
 
@@ -116,7 +108,7 @@ start or start at the marker&apos;s end. This is the most fragile strategy.</li>
   <div class="method-summary-wrapper js-method-summary-wrapper">
   <div class="summary markdown-body">
     <p>Destroys the marker, causing it to emit the &apos;destroyed&apos; event. Once
-destroyed, a marker cannot be restored by undo/redo operations. </p>
+destroyed, a marker cannot be restored by undo/redo operations.</p>
   </div>
 
   <div class="body markdown-body">
@@ -674,7 +666,7 @@ existing properties.</p>
         <tr class="markdown-body argument-depth-0">
     <td><code>properties</code></td>
     <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p>
     </td>
   </tr>
 
@@ -816,7 +808,7 @@ parameters are the same as <a class="reference-link" data-skip-pjax="yeahokigues
         <tr class="markdown-body argument-depth-0">
     <td><code>other</code></td>
     <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="DisplayMarker.html">DisplayMarker<span class="operator"></span></a> other marker </p>
+      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="DisplayMarker.html">DisplayMarker<span class="operator"></span></a> other marker</p>
     </td>
   </tr>
 
@@ -966,7 +958,7 @@ another marker, meaning they have the same range and options.</p></td>
       <tr class="markdown-body argument-depth-1">
     <td><code>.reversed</code></td>
     <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> If true, the marker will to be in a reversed orientation. </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> If true, the marker will to be in a reversed orientation.</p>
     </td>
   </tr>
 
@@ -1028,7 +1020,7 @@ another marker, meaning they have the same range and options.</p></td>
   <tr class="markdown-body argument-depth-1">
     <td><code>.clipDirection</code></td>
     <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> If <code>&apos;backward&apos;</code>, returns the first valid position preceding an invalid position. If <code>&apos;forward&apos;</code>, returns the first valid position following an invalid position. If <code>&apos;closest&apos;</code>, returns the first valid position closest to an invalid position. Defaults to <code>&apos;closest&apos;</code>. Applies to the start and end of the given range. </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> If <code>&apos;backward&apos;</code>, returns the first valid position preceding an invalid position. If <code>&apos;forward&apos;</code>, returns the first valid position following an invalid position. If <code>&apos;closest&apos;</code>, returns the first valid position closest to an invalid position. Defaults to <code>&apos;closest&apos;</code>. Applies to the start and end of the given range.</p>
     </td>
   </tr>
 
@@ -1243,7 +1235,7 @@ greater than or equal to the result of <a class="reference-link" data-skip-pjax=
         <tr class="markdown-body argument-depth-0">
     <td><code>bufferPosition</code></td>
     <td>
-      <p>The new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> to use </p>
+      <p>The new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> to use</p>
     </td>
   </tr>
 
@@ -1358,7 +1350,7 @@ greater than or equal to the result of <a class="reference-link" data-skip-pjax=
       <tr class="markdown-body argument-depth-1">
     <td><code>.clipDirection</code></td>
     <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> If <code>&apos;backward&apos;</code>, returns the first valid position preceding an invalid position. If <code>&apos;forward&apos;</code>, returns the first valid position following an invalid position. If <code>&apos;closest&apos;</code>, returns the first valid position closest to an invalid position. Defaults to <code>&apos;closest&apos;</code>. Applies to the start and end of the given range. </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> If <code>&apos;backward&apos;</code>, returns the first valid position preceding an invalid position. If <code>&apos;forward&apos;</code>, returns the first valid position following an invalid position. If <code>&apos;closest&apos;</code>, returns the first valid position closest to an invalid position. Defaults to <code>&apos;closest&apos;</code>. Applies to the start and end of the given range.</p>
     </td>
   </tr>
 
@@ -1438,7 +1430,7 @@ greater than or equal to the result of <a class="reference-link" data-skip-pjax=
         <tr class="markdown-body argument-depth-0">
     <td><code>bufferPosition</code></td>
     <td>
-      <p>The new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> to use </p>
+      <p>The new <a class="reference-link" data-skip-pjax="yeahokiguess" href="Point.html">Point<span class="operator"></span></a> to use</p>
     </td>
   </tr>
 
@@ -1553,7 +1545,7 @@ greater than or equal to the result of <a class="reference-link" data-skip-pjax=
       <tr class="markdown-body argument-depth-1">
     <td><code>.clipDirection</code></td>
     <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> If <code>&apos;backward&apos;</code>, returns the first valid position preceding an invalid position. If <code>&apos;forward&apos;</code>, returns the first valid position following an invalid position. If <code>&apos;closest&apos;</code>, returns the first valid position closest to an invalid position. Defaults to <code>&apos;closest&apos;</code>. Applies to the start and end of the given range. </p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> If <code>&apos;backward&apos;</code>, returns the first valid position preceding an invalid position. If <code>&apos;forward&apos;</code>, returns the first valid position following an invalid position. If <code>&apos;closest&apos;</code>, returns the first valid position closest to an invalid position. Defaults to <code>&apos;closest&apos;</code>. Applies to the start and end of the given range.</p>
     </td>
   </tr>
 
@@ -1691,7 +1683,7 @@ greater than or equal to the result of <a class="reference-link" data-skip-pjax=
   <div class="summary markdown-body">
     <p>Plants the marker&apos;s tail at the current head position. After calling
 the marker&apos;s tail position will be its head position at the time of the
-call, regardless of where the marker&apos;s head is moved. </p>
+call, regardless of where the marker&apos;s head is moved.</p>
   </div>
 
   <div class="body markdown-body">
@@ -1720,7 +1712,7 @@ call, regardless of where the marker&apos;s head is moved. </p>
   <div class="summary markdown-body">
     <p>Removes the marker&apos;s tail. After calling the marker&apos;s head position
 will be reported as its current tail position until the tail is planted
-again. </p>
+again.</p>
   </div>
 
   <div class="body markdown-body">
@@ -1754,5 +1746,5 @@ again. </p>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.33.1/DisplayMarker by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Dec 2018 11:33:05 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.34.0/DisplayMarker by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Jan 2019 10:51:35 GMT -->
 </html>
