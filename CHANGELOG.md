@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.49 (29/04/2019)
+
+- Build Atom docset v1.36.1
+
 ## 1.0.48 (13/04/2019)
 
 - Build Atom docset v1.36.0
