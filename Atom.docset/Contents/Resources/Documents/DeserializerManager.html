@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.38.2/DeserializerManager by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jun 2019 22:40:46 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.39.0/DeserializerManager by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Jul 2019 06:35:54 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body class="">
@@ -34,7 +34,7 @@
   <span class="label label-extended" title="This class is in the extended API">
     extended
   </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.38.2/src/deserializer-manager.js#L23" title="View class source">
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.39.0/src/deserializer-manager.js#L22" title="View class source">
     <span class="octicon octicon-file-code"></span>
   </a>
 </h2>
@@ -48,7 +48,7 @@ global.</p>
   <h2 class="section">Examples</h2>
   <div class="document-examples markdown-body">
       <div class="example">
-  <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta class coffee"><span class="storage type class coffee"><span>class</span></span><span>&#xA0;</span><span class="entity name type class coffee"><span>MyPackageView</span></span><span>&#xA0;</span><span class="keyword control inheritance coffee"><span>extends</span></span><span>&#xA0;</span><span class="entity other inherited-class coffee"><span>View</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>deserializers</span><span class="meta delimiter method period coffee"><span>.</span></span><span>add</span><span class="meta brace round coffee"><span>(</span></span><span class="variable language coffee"><span>this</span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>@deserializ</span><span class="entity name function coffee"><span>e</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(state)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span>&#xA0;</span><span class="entity name type instance coffee"><span>MyPackageView</span></span></span><span class="meta brace round coffee"><span>(</span></span><span>state</span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>constructo</span><span class="entity name function coffee"><span>r</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(@state)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>serializ</span><span class="entity name function coffee"><span>e</span></span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable other readwrite instance coffee"><span>@state</span></span></span></div></pre>
+  <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta class coffee"><span class="storage type class coffee"><span>class</span></span><span>&#xA0;</span><span class="entity name type class coffee"><span>MyPackageView</span></span><span>&#xA0;</span><span class="keyword control inheritance coffee"><span>extends</span></span><span>&#xA0;</span><span class="entity other inherited-class coffee"><span>View</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>deserializers</span><span class="meta delimiter method period coffee"><span>.</span></span><span>add</span><span class="meta brace round coffee"><span>(</span></span><span class="variable language this coffee"><span>this</span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>@deserialize</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(state)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta class instance constructor"><span class="keyword operator new coffee"><span>new</span></span><span>&#xA0;</span><span class="entity name type instance coffee"><span>MyPackageView</span></span></span><span class="meta brace round coffee"><span>(</span></span><span>state</span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>constructor</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(@state)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>serialize</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable other readwrite instance coffee"><span>@state</span></span></span></div></pre>
 
 </div>
 
@@ -68,7 +68,7 @@ global.</p>
     <a href="#instance-add" class="js-api-name method-signature" name="instance-add">
       <span class="operator operator-instance">::</span>add<span class="argument-list">(<span class="argument">deserializers</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/deserializer-manager.js#L38"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/deserializer-manager.js#L37"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -110,7 +110,7 @@ global.</p>
     <a href="#instance-deserialize" class="js-api-name method-signature" name="instance-deserialize">
       <span class="operator operator-instance">::</span>deserialize<span class="argument-list">(<span class="argument">state</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/deserializer-manager.js#L59"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/deserializer-manager.js#L58"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -164,5 +164,5 @@ global.</p>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.38.2/DeserializerManager by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jun 2019 22:40:46 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.39.0/DeserializerManager by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Jul 2019 06:35:54 GMT -->
 </html>

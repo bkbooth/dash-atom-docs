@@ -8,7 +8,7 @@
     <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
-<!-- Mirrored from atom.io/docs/api/v1.38.2/Task by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jun 2019 22:40:46 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.39.0/Task by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Jul 2019 06:35:54 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
 <body class="">
@@ -34,7 +34,7 @@
   <span class="label label-extended" title="This class is in the extended API">
     extended
   </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L40" title="View class source">
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L40" title="View class source">
     <span class="octicon octicon-file-code"></span>
   </a>
 </h2>
@@ -60,7 +60,7 @@ and the <a href="https://github.com/atom/atom/blob/4a20f13162f65afc816b512ad7201
     <div class="description markdown-body">
       <p>In <code>&apos;/path/to/task-file.coffee&apos;</code>:</p>
     </div>
-  <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta function coffee"><span class="entity name function coffee"><span>module.export</span><span class="entity name function coffee"><span>s</span></span><span>&#xA0;</span></span></span><span class="keyword operator coffee"><span>=</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(parameter1,&#xA0;parameter2)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Indicates&#xA0;that&#xA0;this&#xA0;task&#xA0;will&#xA0;be&#xA0;async.</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Call&#xA0;the&#xA0;`callback`&#xA0;to&#xA0;finish&#xA0;the&#xA0;task</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>callback&#xA0;</span><span class="keyword operator coffee"><span>=</span></span></span></span><span>&#xA0;</span><span class="variable other readwrite instance coffee"><span>@async</span></span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;emit</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>some-event-from-the-task</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="meta brace curly coffee"><span>{</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someString</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>yep&#xA0;this&#xA0;is&#xA0;it</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace curly coffee"><span>}</span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;callback</span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div></pre>
+  <pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="meta function coffee"><span class="entity name function coffee"><span>module.exports&#xA0;</span></span></span><span class="keyword operator coffee"><span>=</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(parameter1,&#xA0;parameter2)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Indicates&#xA0;that&#xA0;this&#xA0;task&#xA0;will&#xA0;be&#xA0;async.</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Call&#xA0;the&#xA0;`callback`&#xA0;to&#xA0;finish&#xA0;the&#xA0;task</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>callback&#xA0;</span><span class="keyword operator coffee"><span>=</span></span></span></span><span>&#xA0;</span><span class="variable other readwrite instance coffee"><span>@async</span></span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;emit</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>some-event-from-the-task</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="meta brace curly coffee"><span>{</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someString</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>yep&#xA0;this&#xA0;is&#xA0;it</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace curly coffee"><span>}</span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;callback</span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div></pre>
 
 </div>
 
@@ -79,7 +79,7 @@ and the <a href="https://github.com/atom/atom/blob/4a20f13162f65afc816b512ad7201
     <a href="#once" class="js-api-name method-signature" name="once">
       <span class="operator operator-class">.</span>once<span class="argument-list">(<span class="argument">taskPath</span>, <span class="argument">args</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L48"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L48"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -138,7 +138,7 @@ and the <a href="https://github.com/atom/atom/blob/4a20f13162f65afc816b512ad7201
     <a href="#instance-constructor" class="js-api-name method-signature" name="instance-constructor">
       <span class="operator operator-instance">::</span>constructor<span class="argument-list">(<span class="argument">taskPath</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L66"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L66"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -180,7 +180,7 @@ and the <a href="https://github.com/atom/atom/blob/4a20f13162f65afc816b512ad7201
     <a href="#instance-start" class="js-api-name method-signature" name="instance-start">
       <span class="operator operator-instance">::</span>start<span class="argument-list">(<span class="argument">args</span>, <span class="argument">[callback]</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L113"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L113"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -230,7 +230,7 @@ message to the child process fails.</p>
     <a href="#instance-send" class="js-api-name method-signature" name="instance-send">
       <span class="operator operator-instance">::</span>send<span class="argument-list">(<span class="argument">message</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L130"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L130"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -273,7 +273,7 @@ message to the child process fails.</p>
     <a href="#instance-on" class="js-api-name method-signature" name="instance-on">
       <span class="operator operator-instance">::</span>on<span class="argument-list">(<span class="argument">eventName</span>, <span class="argument">callback</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L143"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L143"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -331,7 +331,7 @@ message to the child process fails.</p>
     <a href="#instance-once" class="js-api-name method-signature" name="instance-once">
       <span class="operator operator-instance">::</span>once<span class="argument-list">(<span class="argument">taskPath</span>, <span class="argument">args</span>)</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L145"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L145"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -389,7 +389,7 @@ message to the child process fails.</p>
     <a href="#instance-terminate" class="js-api-name method-signature" name="instance-terminate">
       <span class="operator operator-instance">::</span>terminate<span class="argument-list">()</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L153"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L153"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -416,7 +416,7 @@ message to the child process fails.</p>
     <a href="#instance-cancel" class="js-api-name method-signature" name="instance-cancel">
       <span class="operator operator-instance">::</span>cancel<span class="argument-list">()</span>
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.38.2/src/task.coffee#L169"><span class="octicon octicon-file-code"></span></a>
+    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.0/src/task.coffee#L169"><span class="octicon octicon-file-code"></span></a>
   </h3>
 
   <div class="method-summary-wrapper js-method-summary-wrapper">
@@ -465,5 +465,5 @@ message to the child process fails.</p>
 
 </body>
 
-<!-- Mirrored from atom.io/docs/api/v1.38.2/Task by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Jun 2019 22:40:46 GMT -->
+<!-- Mirrored from atom.io/docs/api/v1.39.0/Task by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Jul 2019 06:35:54 GMT -->
 </html>
