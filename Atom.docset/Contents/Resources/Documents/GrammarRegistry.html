@@ -1,705 +1,898 @@
 
-      <head>
-        <meta charset="utf-8">
-        <title>GrammarRegistry</title>
-        <link rel="stylesheet" href="assets/styles-atom.css">
-        <link rel="stylesheet" href="assets/styles-dash.css">
-      </head>
-    <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-
-<!-- Mirrored from atom.io/docs/api/v1.39.1/GrammarRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+        <head>
+          <meta charset="utf-8">
+          <title>GrammarRegistry</title>
+          <link rel="stylesheet" href="assets/styles-atom.css">
+          <link rel="stylesheet" href="assets/styles-dash.css">
+        </head>
+      <!DOCTYPE HTML>
+<html lang="en">
+  
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/GrammarRegistry/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
-<body class="">
-
-  
-
-  <div class="footer-push">
-    
-
-
-    <div id="js-pjax-container">
-      <div class="documents content-push">
-  <div class="wrapper no-pad">
-
-    
-
-    <div class="columns">
+  <body class="layout-api-class">
+    <div class="footer-push">
       
-      <div class="column main-column">
+
+      <div class="wrapper documents content-push wide">
+        
+
+
+
+
+
+
+
+
+        
+
+        <div class="content-column">
           
-<h2 class="page-title">
+          
+
+          <div class="document-content">
+            
+            <h2 class="page-title">
   GrammarRegistry
   <span class="label label-extended" title="This class is in the extended API">
-    extended
-  </span>
-  <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L11" title="View class source">
-    <span class="octicon octicon-file-code"></span>
-  </a>
+  Extended
+</span>
+
+  <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L11" title="View class source">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
 </h2>
-
-<div class="document-description markdown-body">
+<div class="markdown-body">
   <p>Registry containing one or more grammars.</p>
+
 </div>
+<h2 class="detail-section">Event Subscription</h2>
 
 
-
-
-
-
-  <a name="section-Event Subscription"></a>
-  <h2 class="detail-section">Event Subscription</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-onDidAddGrammar">
   <h3 class="name">
     <a href="#instance-onDidAddGrammar" class="js-api-name method-signature" name="instance-onDidAddGrammar">
-      <span class="operator operator-instance">::</span>onDidAddGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidAddGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L39"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L39">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a grammar is added to the registry.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a grammar is added to the registry.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">grammar</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to call when a grammar is added.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>grammar</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> that was added.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to call when a grammar is added.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>grammar</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="../Grammar/index.html">Grammar</a> that was added.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidUpdateGrammar">
   <h3 class="name">
     <a href="#instance-onDidUpdateGrammar" class="js-api-name method-signature" name="instance-onDidUpdateGrammar">
-      <span class="operator operator-instance">::</span>onDidUpdateGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidUpdateGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L49"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L49">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a grammar is updated due to a grammar
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a grammar is updated due to a grammar
 it depends on being added or removed from the registry.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">grammar</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to call when a grammar is updated.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>grammar</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> that was updated.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to call when a grammar is updated.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>grammar</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="../Grammar/index.html">Grammar</a> that was updated.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidRemoveGrammar">
   <h3 class="name">
     <a href="#instance-onDidRemoveGrammar" class="js-api-name method-signature" name="instance-onDidRemoveGrammar">
-      <span class="operator operator-instance">::</span>onDidRemoveGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidRemoveGrammar<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L58"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L58">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a grammar is removed from the registry.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a grammar is removed from the registry.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">grammar</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to call when a grammar is removed.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>grammar</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> that was removed.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to call when a grammar is removed.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>grammar</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="../Grammar/index.html">Grammar</a> that was removed.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Managing Grammars</h2>
 
 
-
-  <a name="section-Managing Grammars"></a>
-  <h2 class="detail-section">Managing Grammars</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-getGrammars">
   <h3 class="name">
     <a href="#instance-getGrammars" class="js-api-name method-signature" name="instance-getGrammars">
-      <span class="operator operator-instance">::</span>getGrammars<span class="argument-list">()</span>
+      ::getGrammars<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L68"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L68">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get all the grammars in this registry.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get all the grammars in this registry.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a non-empty <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> instances.</p></td>
-      </tr>
-    </table>
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a non-empty <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="../Grammar/index.html">Grammar</a> instances.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-grammarForScopeName">
   <h3 class="name">
     <a href="#instance-grammarForScopeName" class="js-api-name method-signature" name="instance-grammarForScopeName">
-      <span class="operator operator-instance">::</span>grammarForScopeName<span class="argument-list">(<span class="argument">scopeName</span>)</span>
+      ::grammarForScopeName<span class="argument-list">(<span class="argument">scopeName</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L76"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L76">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get a grammar with the given scope name.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get a grammar with the given scope name.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>scopeName</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> such as <code>&quot;source.js&quot;</code>.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>scopeName</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> such as <code>&quot;source.js&quot;</code>.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> or undefined.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Grammar/index.html">Grammar</a> or undefined.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-addGrammar">
   <h3 class="name">
     <a href="#instance-addGrammar" class="js-api-name method-signature" name="instance-addGrammar">
-      <span class="operator operator-instance">::</span>addGrammar<span class="argument-list">(<span class="argument">grammar</span>)</span>
+      ::addGrammar<span class="argument-list">(<span class="argument">grammar</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L88"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L88">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Add a grammar to this registry.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Add a grammar to this registry.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+<p>A &#x2018;grammar-added&#x2019; event is emitted after the grammar is added.</p>
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      <p>A &apos;grammar-added&apos; event is emitted after the grammar is added.</p>
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>grammar</code></td>
-    <td>
-      <p>The <a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> to add. This should be a value previously returned from <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-readGrammar"><span class="operator">::</span>readGrammar</a> or <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-readGrammarSync"><span class="operator">::</span>readGrammarSync</a>.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>grammar</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="../Grammar/index.html">Grammar</a> to add. This should be a value previously returned from <a href="#instance-readGrammar">::readGrammar</a> or <a href="#instance-readGrammarSync">::readGrammarSync</a>.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to remove the
-grammar.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to remove the
+grammar.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-removeGrammarForScopeName">
   <h3 class="name">
     <a href="#instance-removeGrammarForScopeName" class="js-api-name method-signature" name="instance-removeGrammarForScopeName">
-      <span class="operator operator-instance">::</span>removeGrammarForScopeName<span class="argument-list">(<span class="argument">scopeName</span>)</span>
+      ::removeGrammarForScopeName<span class="argument-list">(<span class="argument">scopeName</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L110"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L110">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Remove the grammar with the given scope name.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Remove the grammar with the given scope name.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>scopeName</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> such as <code>&quot;source.js&quot;</code>.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>scopeName</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> such as <code>&quot;source.js&quot;</code>.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns the removed <a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> or undefined.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns the removed <a href="../Grammar/index.html">Grammar</a> or undefined.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-readGrammarSync">
   <h3 class="name">
     <a href="#instance-readGrammarSync" class="js-api-name method-signature" name="instance-readGrammarSync">
-      <span class="operator operator-instance">::</span>readGrammarSync<span class="argument-list">(<span class="argument">grammarPath</span>)</span>
+      ::readGrammarSync<span class="argument-list">(<span class="argument">grammarPath</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L120"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L120">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Read a grammar synchronously but don&#x2019;t add it to the registry.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Read a grammar synchronously but don&apos;t add it to the registry.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>grammarPath</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> absolute file path to a grammar file.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>grammarPath</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> absolute file path to a grammar file.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a>.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Grammar/index.html">Grammar</a>.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-readGrammar">
   <h3 class="name">
     <a href="#instance-readGrammar" class="js-api-name method-signature" name="instance-readGrammar">
-      <span class="operator operator-instance">::</span>readGrammar<span class="argument-list">(<span class="argument">grammarPath</span>, <span class="argument">callback</span>)</span>
+      ::readGrammar<span class="argument-list">(<span class="argument">grammarPath</span>, <span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L135"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L135">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Read a grammar asynchronously but don&#x2019;t add it to the registry.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Read a grammar asynchronously but don&apos;t add it to the registry.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>grammarPath</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> absolute file path to a grammar file.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">error</span>, <span class="argument">grammar</span>)</span></code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to call when read with the following arguments:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>error</code></td>
-    <td>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error" class="external-link reference-link">Error</a>, may be null.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>grammar</code></td>
-    <td>
-      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> or null if an error occured.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>grammarPath</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> absolute file path to a grammar file.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to call when read with the following arguments:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>error</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>, may be null.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>grammar</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="../Grammar/index.html">Grammar</a> or null if an error occured.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns undefined.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns undefined.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-loadGrammarSync">
   <h3 class="name">
     <a href="#instance-loadGrammarSync" class="js-api-name method-signature" name="instance-loadGrammarSync">
-      <span class="operator operator-instance">::</span>loadGrammarSync<span class="argument-list">(<span class="argument">grammarPath</span>)</span>
+      ::loadGrammarSync<span class="argument-list">(<span class="argument">grammarPath</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L152"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L152">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Read a grammar synchronously and add it to this registry.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Read a grammar synchronously and add it to this registry.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>grammarPath</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> absolute file path to a grammar file.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>grammarPath</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> absolute file path to a grammar file.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a>.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Grammar/index.html">Grammar</a>.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-loadGrammar">
   <h3 class="name">
     <a href="#instance-loadGrammar" class="js-api-name method-signature" name="instance-loadGrammar">
-      <span class="operator operator-instance">::</span>loadGrammar<span class="argument-list">(<span class="argument">grammarPath</span>, <span class="argument">callback</span>)</span>
+      ::loadGrammar<span class="argument-list">(<span class="argument">grammarPath</span>, <span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/first-mate/blob/v7.3.0/src/grammar-registry.coffee#L165"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/first-mate/blob/v7.4.0/src/grammar-registry.coffee#L165">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Read a grammar asynchronously and add it to the registry.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Read a grammar asynchronously and add it to the registry.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>grammarPath</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> absolute file path to a grammar file.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">error</span>, <span class="argument">grammar</span>)</span></code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to call when loaded with the following arguments:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>error</code></td>
-    <td>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Error" class="external-link reference-link">Error</a>, may be null.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>grammar</code></td>
-    <td>
-      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Grammar.html">Grammar<span class="operator"></span></a> or null if an error occured.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>grammarPath</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> absolute file path to a grammar file.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to call when loaded with the following arguments:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>error</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>, may be null.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>grammar</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="../Grammar/index.html">Grammar</a> or null if an error occured.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns undefined.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns undefined.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
 
-
-
+          </div>
+        </div>
 
       </div>
-    </div>
-  </div>
-</div>
 
+      
     </div>
-
     
-  </div>
 
-  
+  </body>
 
-</body>
-
-<!-- Mirrored from atom.io/docs/api/v1.39.1/GrammarRegistry by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/GrammarRegistry/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 </html>

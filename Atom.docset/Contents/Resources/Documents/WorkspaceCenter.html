@@ -1,1398 +1,1785 @@
 
-      <head>
-        <meta charset="utf-8">
-        <title>WorkspaceCenter</title>
-        <link rel="stylesheet" href="assets/styles-atom.css">
-        <link rel="stylesheet" href="assets/styles-dash.css">
-      </head>
-    <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-
-<!-- Mirrored from atom.io/docs/api/v1.39.1/WorkspaceCenter by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+        <head>
+          <meta charset="utf-8">
+          <title>WorkspaceCenter</title>
+          <link rel="stylesheet" href="assets/styles-atom.css">
+          <link rel="stylesheet" href="assets/styles-dash.css">
+        </head>
+      <!DOCTYPE HTML>
+<html lang="en">
+  
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/WorkspaceCenter/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
-<body class="">
-
-  
-
-  <div class="footer-push">
-    
-
-
-    <div id="js-pjax-container">
-      <div class="documents content-push">
-  <div class="wrapper no-pad">
-
-    
-
-    <div class="columns">
+  <body class="layout-api-class">
+    <div class="footer-push">
       
-      <div class="column main-column">
+
+      <div class="wrapper documents content-push wide">
+        
+
+
+
+
+
+
+
+
+        
+
+        <div class="content-column">
           
-<h2 class="page-title">
+          
+
+          <div class="document-content">
+            
+            <h2 class="page-title">
   WorkspaceCenter
   <span class="label label-essential" title="This class is in the essential API">
-    essential
-  </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L7" title="View class source">
-    <span class="octicon octicon-file-code"></span>
-  </a>
+  Essential
+</span>
+
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L7" title="View class source">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
 </h2>
-
-<div class="document-description markdown-body">
+<div class="markdown-body">
   <p>Represents the workspace at the center of the entire window.</p>
+
 </div>
+<h2 class="detail-section">Event Subscription</h2>
 
 
-
-
-
-
-  <a name="section-Event Subscription"></a>
-  <h2 class="detail-section">Event Subscription</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-observeTextEditors">
   <h3 class="name">
     <a href="#instance-observeTextEditors" class="js-api-name method-signature" name="instance-observeTextEditors">
-      <span class="operator operator-instance">::</span>observeTextEditors<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::observeTextEditors<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L60"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L60">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback with all current and future text
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback with all current and future text
 editors in the workspace center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">editor</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called with current and future text editors.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>editor</code></td>
-    <td>
-      <p>An <a class="reference-link" data-skip-pjax="yeahokiguess" href="TextEditor.html">TextEditor<span class="operator"></span></a> that is present in <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-getTextEditors"><span class="operator">::</span>getTextEditors</a> at the time of subscription or that is added at some later time.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called with current and future text editors.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>editor</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="../TextEditor/index.html">TextEditor</a> that is present in <a href="#instance-getTextEditors">::getTextEditors</a> at the time of subscription or that is added at some later time.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-observePaneItems">
   <h3 class="name">
     <a href="#instance-observePaneItems" class="js-api-name method-signature" name="instance-observePaneItems">
-      <span class="operator operator-instance">::</span>observePaneItems<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::observePaneItems<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L75"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L75">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback with all current and future panes items
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback with all current and future panes items
 in the workspace center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">item</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called with current and future pane items.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>item</code></td>
-    <td>
-      <p>An item that is present in <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-getPaneItems"><span class="operator">::</span>getPaneItems</a> at the time of  subscription or that is added at some later time.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called with current and future pane items.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>item</code></p>
+
+  </td>
+  <td>
+    
+    <p>An item that is present in <a href="#instance-getPaneItems">::getPaneItems</a> at the time of  subscription or that is added at some later time.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidChangeActivePaneItem">
   <h3 class="name">
     <a href="#instance-onDidChangeActivePaneItem" class="js-api-name method-signature" name="instance-onDidChangeActivePaneItem">
-      <span class="operator operator-instance">::</span>onDidChangeActivePaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidChangeActivePaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L90"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L90">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when the active pane item changes.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when the active pane item changes.</p>
-  </div>
+</div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      <p>Because observers are invoked synchronously, it&apos;s important not to perform
+    <div class="body markdown-body">
+  <div class="description">
+    
+<p>Because observers are invoked synchronously, it&#x2019;s important not to perform
 any expensive operations via this method. Consider
-<a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-onDidStopChangingActivePaneItem"><span class="operator">::</span>onDidStopChangingActivePaneItem</a> to delay operations until after changes
+<a href="#instance-onDidStopChangingActivePaneItem">::onDidStopChangingActivePaneItem</a> to delay operations until after changes
 stop occurring.</p>
-    </div>
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">item</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when the active pane item changes.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>item</code></td>
-    <td>
-      <p>The active pane item.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when the active pane item changes.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>item</code></p>
+
+  </td>
+  <td>
+    
+    <p>The active pane item.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidStopChangingActivePaneItem">
   <h3 class="name">
     <a href="#instance-onDidStopChangingActivePaneItem" class="js-api-name method-signature" name="instance-onDidStopChangingActivePaneItem">
-      <span class="operator operator-instance">::</span>onDidStopChangingActivePaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidStopChangingActivePaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L108"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L108">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when the active pane item stops
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when the active pane item stops
 changing.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      <p>Observers are called asynchronously 100ms after the last active pane item
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+<p>Observers are called asynchronously 100ms after the last active pane item
 change. Handling changes here rather than in the synchronous
-<a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-onDidChangeActivePaneItem"><span class="operator">::</span>onDidChangeActivePaneItem</a> prevents unneeded work if the user is quickly
+<a href="#instance-onDidChangeActivePaneItem">::onDidChangeActivePaneItem</a> prevents unneeded work if the user is quickly
 changing or closing tabs and ensures critical UI feedback, like changing the
 highlighted tab, gets priority over work that can be done asynchronously.</p>
-    </div>
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">item</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when the active pane item stopts changing.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>item</code></td>
-    <td>
-      <p>The active pane item.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when the active pane item stopts changing.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>item</code></p>
+
+  </td>
+  <td>
+    
+    <p>The active pane item.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-observeActivePaneItem">
   <h3 class="name">
     <a href="#instance-observeActivePaneItem" class="js-api-name method-signature" name="instance-observeActivePaneItem">
-      <span class="operator operator-instance">::</span>observeActivePaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::observeActivePaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L119"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L119">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback with the current active pane item and
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback with the current active pane item and
 with all future active pane items in the workspace center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">item</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when the active pane item changes.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>item</code></td>
-    <td>
-      <p>The current active pane item.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when the active pane item changes.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>item</code></p>
+
+  </td>
+  <td>
+    
+    <p>The current active pane item.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
-
-</div>
-
-
-
-    <div class="extended-methods-container">
-      <a href="#" class="extended-toggle js-toggle-extended" data-skip-pjax="">
-        <span class="octicon octicon-chevron-right"></span>
-        Extended Methods
-      </a>
-      <div class="extended-methods">
-        
-
-
-        
-
-    
-<div class="api-entry js-api-entry extended" id="instance-onDidAddPane">
+<h4>Extended Methods</h4><div class="api-entry js-api-entry extended" id="instance-onDidAddPane">
   <h3 class="name">
     <a href="#instance-onDidAddPane" class="js-api-name method-signature" name="instance-onDidAddPane">
-      <span class="operator operator-instance">::</span>onDidAddPane<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidAddPane<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L131"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L131">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a pane is added to the workspace
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a pane is added to the workspace
 center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called panes are added.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.pane</code></td>
-    <td>
-      <p>The added pane.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called panes are added.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p>The added pane.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-onWillDestroyPane">
   <h3 class="name">
     <a href="#instance-onWillDestroyPane" class="js-api-name method-signature" name="instance-onWillDestroyPane">
-      <span class="operator operator-instance">::</span>onWillDestroyPane<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onWillDestroyPane<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L143"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L143">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback before a pane is destroyed in the
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback before a pane is destroyed in the
 workspace center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called before panes are destroyed.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.pane</code></td>
-    <td>
-      <p>The pane to be destroyed.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called before panes are destroyed.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p>The pane to be destroyed.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-onDidDestroyPane">
   <h3 class="name">
     <a href="#instance-onDidDestroyPane" class="js-api-name method-signature" name="instance-onDidDestroyPane">
-      <span class="operator operator-instance">::</span>onDidDestroyPane<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidDestroyPane<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L155"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L155">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a pane is destroyed in the
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a pane is destroyed in the
 workspace center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called panes are destroyed.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.pane</code></td>
-    <td>
-      <p>The destroyed pane.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called panes are destroyed.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p>The destroyed pane.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-observePanes">
   <h3 class="name">
     <a href="#instance-observePanes" class="js-api-name method-signature" name="instance-observePanes">
-      <span class="operator operator-instance">::</span>observePanes<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::observePanes<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L167"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L167">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback with all current and future panes in the
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback with all current and future panes in the
 workspace center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">pane</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called with current and future panes.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>pane</code></td>
-    <td>
-      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a> that is present in <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-getPanes"><span class="operator">::</span>getPanes</a> at the time of  subscription or that is added at some later time.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called with current and future panes.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="../Pane/index.html">Pane</a> that is present in <a href="#instance-getPanes">::getPanes</a> at the time of  subscription or that is added at some later time.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-onDidChangeActivePane">
   <h3 class="name">
     <a href="#instance-onDidChangeActivePane" class="js-api-name method-signature" name="instance-onDidChangeActivePane">
-      <span class="operator operator-instance">::</span>onDidChangeActivePane<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidChangeActivePane<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L177"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L177">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when the active pane changes.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when the active pane changes.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">pane</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when the active pane changes.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>pane</code></td>
-    <td>
-      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a> that is the current return value of <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-getActivePane"><span class="operator">::</span>getActivePane</a>.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when the active pane changes.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="../Pane/index.html">Pane</a> that is the current return value of <a href="#instance-getActivePane">::getActivePane</a>.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-observeActivePane">
   <h3 class="name">
     <a href="#instance-observeActivePane" class="js-api-name method-signature" name="instance-observeActivePane">
-      <span class="operator operator-instance">::</span>observeActivePane<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::observeActivePane<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L189"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L189">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback with the current active pane and when
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback with the current active pane and when
 the active pane changes.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">pane</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called with the current and future active# panes.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>pane</code></td>
-    <td>
-      <p>A <a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a> that is the current return value of <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-getActivePane"><span class="operator">::</span>getActivePane</a>.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called with the current and future active# panes.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="../Pane/index.html">Pane</a> that is the current return value of <a href="#instance-getActivePane">::getActivePane</a>.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-onDidAddPaneItem">
   <h3 class="name">
     <a href="#instance-onDidAddPaneItem" class="js-api-name method-signature" name="instance-onDidAddPaneItem">
-      <span class="operator operator-instance">::</span>onDidAddPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidAddPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L203"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L203">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a pane item is added to the
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a pane item is added to the
 workspace center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when pane items are added.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.item</code></td>
-    <td>
-      <p>The added pane item.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.pane</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a> containing the added item.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.index</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> indicating the index of the added item in its pane.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when pane items are added.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>item</code></p>
+
+  </td>
+  <td>
+    
+    <p>The added pane item.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="../Pane/index.html">Pane</a> containing the added item.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>index</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> indicating the index of the added item in its pane.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-onWillDestroyPaneItem">
   <h3 class="name">
     <a href="#instance-onWillDestroyPaneItem" class="js-api-name method-signature" name="instance-onWillDestroyPaneItem">
-      <span class="operator operator-instance">::</span>onWillDestroyPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onWillDestroyPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L218"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L218">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a pane item is about to be
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a pane item is about to be
 destroyed, before the user is prompted to save it.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called before pane items are destroyed.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.item</code></td>
-    <td>
-      <p>The item to be destroyed.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.pane</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a> containing the item to be destroyed.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.index</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> indicating the index of the item to be destroyed in its pane.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called before pane items are destroyed.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>item</code></p>
+
+  </td>
+  <td>
+    
+    <p>The item to be destroyed.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="../Pane/index.html">Pane</a> containing the item to be destroyed.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>index</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> indicating the index of the item to be destroyed in its pane.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-onDidDestroyPaneItem">
   <h3 class="name">
     <a href="#instance-onDidDestroyPaneItem" class="js-api-name method-signature" name="instance-onDidDestroyPaneItem">
-      <span class="operator operator-instance">::</span>onDidDestroyPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidDestroyPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L232"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L232">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a pane item is destroyed.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a pane item is destroyed.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when pane items are destroyed.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.item</code></td>
-    <td>
-      <p>The destroyed item.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.pane</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a> containing the destroyed item.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.index</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> indicating the index of the destroyed item in its pane.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when pane items are destroyed.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>item</code></p>
+
+  </td>
+  <td>
+    
+    <p>The destroyed item.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="../Pane/index.html">Pane</a> containing the destroyed item.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>index</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> indicating the index of the destroyed item in its pane.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-onDidAddTextEditor">
   <h3 class="name">
     <a href="#instance-onDidAddTextEditor" class="js-api-name method-signature" name="instance-onDidAddTextEditor">
-      <span class="operator operator-instance">::</span>onDidAddTextEditor<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidAddTextEditor<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L247"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L247">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a text editor is added to the
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a text editor is added to the
 workspace center.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when panes are added.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.textEditor</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="TextEditor.html">TextEditor<span class="operator"></span></a> that was added.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.pane</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a> containing the added text editor.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.index</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> indicating the index of the added text editor in its  pane.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when panes are added.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>textEditor</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="../TextEditor/index.html">TextEditor</a> that was added.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>pane</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="../Pane/index.html">Pane</a> containing the added text editor.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>index</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> indicating the index of the added text editor in its  pane.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Pane Items</h2>
 
 
-      </div>
-    </div>
-  <a name="section-Pane Items"></a>
-  <h2 class="detail-section">Pane Items</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-getPaneItems">
   <h3 class="name">
     <a href="#instance-getPaneItems" class="js-api-name method-signature" name="instance-getPaneItems">
-      <span class="operator operator-instance">::</span>getPaneItems<span class="argument-list">()</span>
+      ::getPaneItems<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L262"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L262">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get all pane items in the workspace center.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get all pane items in the workspace center.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of items.</p></td>
-      </tr>
-    </table>
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of items.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getActivePaneItem">
   <h3 class="name">
     <a href="#instance-getActivePaneItem" class="js-api-name method-signature" name="instance-getActivePaneItem">
-      <span class="operator operator-instance">::</span>getActivePaneItem<span class="argument-list">()</span>
+      ::getActivePaneItem<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L269"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L269">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the active <a href="../Pane/index.html">Pane</a>&#x2019;s active item.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the active <a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a>&apos;s active item.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an pane item <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a>.</p></td>
-      </tr>
-    </table>
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an pane item <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getTextEditors">
   <h3 class="name">
     <a href="#instance-getTextEditors" class="js-api-name method-signature" name="instance-getTextEditors">
-      <span class="operator operator-instance">::</span>getTextEditors<span class="argument-list">()</span>
+      ::getTextEditors<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L276"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L276">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get all text editors in the workspace center.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get all text editors in the workspace center.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a class="reference-link" data-skip-pjax="yeahokiguess" href="TextEditor.html">TextEditor<span class="operator"></span></a>s.</p></td>
-      </tr>
-    </table>
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="../TextEditor/index.html">TextEditor</a>s.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getActiveTextEditor">
   <h3 class="name">
     <a href="#instance-getActiveTextEditor" class="js-api-name method-signature" name="instance-getActiveTextEditor">
-      <span class="operator operator-instance">::</span>getActiveTextEditor<span class="argument-list">()</span>
+      ::getActiveTextEditor<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L284"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L284">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the active item if it is an <a class="reference-link" data-skip-pjax="yeahokiguess" href="TextEditor.html">TextEditor<span class="operator"></span></a>.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a class="reference-link" data-skip-pjax="yeahokiguess" href="TextEditor.html">TextEditor<span class="operator"></span></a> or <code>undefined</code> if the current active item is not an
-<a class="reference-link" data-skip-pjax="yeahokiguess" href="TextEditor.html">TextEditor<span class="operator"></span></a>.</p></td>
-      </tr>
-    </table>
-</div>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the active item if it is an <a href="../TextEditor/index.html">TextEditor</a>.</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
 
-
-  <a name="section-Panes"></a>
-  <h2 class="detail-section">Panes</h2>
-
-    <p class="no-methods-message">This section only has Extended methods.</p>
-
-    <div class="extended-methods-container">
-      <a href="#" class="extended-toggle js-toggle-extended" data-skip-pjax="">
-        <span class="octicon octicon-chevron-right"></span>
-        Extended Methods
-      </a>
-      <div class="extended-methods">
-        
-
-
-        
+  </div>
+</div>
 
     
-<div class="api-entry js-api-entry extended" id="instance-getPanes">
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="../TextEditor/index.html">TextEditor</a> or <code>undefined</code> if the current active item is not an
+<a href="../TextEditor/index.html">TextEditor</a>.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+
+<h2 class="detail-section">Panes</h2>
+
+
+<p class="no-methods-message">This section only has Extended methods.</p><h4>Extended Methods</h4><div class="api-entry js-api-entry extended" id="instance-getPanes">
   <h3 class="name">
     <a href="#instance-getPanes" class="js-api-name method-signature" name="instance-getPanes">
-      <span class="operator operator-instance">::</span>getPanes<span class="argument-list">()</span>
+      ::getPanes<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L307"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L307">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get all panes in the workspace center.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get all panes in the workspace center.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a>s.</p></td>
-      </tr>
-    </table>
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="../Pane/index.html">Pane</a>s.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-getActivePane">
   <h3 class="name">
     <a href="#instance-getActivePane" class="js-api-name method-signature" name="instance-getActivePane">
-      <span class="operator operator-instance">::</span>getActivePane<span class="argument-list">()</span>
+      ::getActivePane<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L314"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L314">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the active <a href="../Pane/index.html">Pane</a>.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the active <a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a>.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Pane.html">Pane<span class="operator"></span></a>.</p></td>
-      </tr>
-    </table>
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Pane/index.html">Pane</a>.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-activateNextPane">
   <h3 class="name">
     <a href="#instance-activateNextPane" class="js-api-name method-signature" name="instance-activateNextPane">
-      <span class="operator operator-instance">::</span>activateNextPane<span class="argument-list">()</span>
+      ::activateNextPane<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L319"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L319">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Make the next pane active.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Make the next pane active.</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-activatePreviousPane">
   <h3 class="name">
     <a href="#instance-activatePreviousPane" class="js-api-name method-signature" name="instance-activatePreviousPane">
-      <span class="operator operator-instance">::</span>activatePreviousPane<span class="argument-list">()</span>
+      ::activatePreviousPane<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/workspace-center.js#L324"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace-center.js#L324">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Make the previous pane active.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Make the previous pane active.</p>
 
 </div>
 
-</div>
+    <div class="body markdown-body">
+  <div class="description">
+    
 
-
-      </div>
-    </div>
-
-      </div>
-    </div>
   </div>
 </div>
-
-    </div>
 
     
+    
   </div>
+</div>
 
-  
 
-</body>
+          </div>
+        </div>
 
-<!-- Mirrored from atom.io/docs/api/v1.39.1/WorkspaceCenter by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+      </div>
+
+      
+    </div>
+    
+
+  </body>
+
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/WorkspaceCenter/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 </html>

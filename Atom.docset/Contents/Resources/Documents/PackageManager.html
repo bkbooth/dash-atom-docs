@@ -1,1252 +1,1504 @@
 
-      <head>
-        <meta charset="utf-8">
-        <title>PackageManager</title>
-        <link rel="stylesheet" href="assets/styles-atom.css">
-        <link rel="stylesheet" href="assets/styles-dash.css">
-      </head>
-    <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-
-<!-- Mirrored from atom.io/docs/api/v1.39.1/PackageManager by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+        <head>
+          <meta charset="utf-8">
+          <title>PackageManager</title>
+          <link rel="stylesheet" href="assets/styles-atom.css">
+          <link rel="stylesheet" href="assets/styles-dash.css">
+        </head>
+      <!DOCTYPE HTML>
+<html lang="en">
+  
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/PackageManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
-<body class="">
-
-  
-
-  <div class="footer-push">
-    
-
-
-    <div id="js-pjax-container">
-      <div class="documents content-push">
-  <div class="wrapper no-pad">
-
-    
-
-    <div class="columns">
+  <body class="layout-api-class">
+    <div class="footer-push">
       
-      <div class="column main-column">
+
+      <div class="wrapper documents content-push wide">
+        
+
+
+
+
+
+
+
+
+        
+
+        <div class="content-column">
           
-<h2 class="page-title">
+          
+
+          <div class="document-content">
+            
+            <h2 class="page-title">
   PackageManager
   <span class="label label-extended" title="This class is in the extended API">
-    extended
-  </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L30" title="View class source">
-    <span class="octicon octicon-file-code"></span>
-  </a>
-</h2>
+  Extended
+</span>
 
-<div class="document-description markdown-body">
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L30" title="View class source">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
+</h2>
+<div class="markdown-body">
   <p>Package manager for coordinating the lifecycle of Atom packages.</p>
+
 <p>An instance of this class is always available as the <code>atom.packages</code> global.</p>
+
 <p>Packages can be loaded, activated, and deactivated, and unloaded:</p>
+
 <ul>
-<li>Loading a package reads and parses the package&apos;s metadata and resources
+  <li>Loading a package reads and parses the package&#x2019;s metadata and resources
 such as keymaps, menus, stylesheets, etc.</li>
-<li>Activating a package registers the loaded resources and calls <code>activate()</code>
-on the package&apos;s main module.</li>
-<li>Deactivating a package unregisters the package&apos;s resources  and calls
-<code>deactivate()</code> on the package&apos;s main module.</li>
-<li>Unloading a package removes it completely from the package manager.</li>
+  <li>Activating a package registers the loaded resources and calls <code>activate()</code>
+on the package&#x2019;s main module.</li>
+  <li>Deactivating a package unregisters the package&#x2019;s resources  and calls
+<code>deactivate()</code> on the package&#x2019;s main module.</li>
+  <li>Unloading a package removes it completely from the package manager.</li>
 </ul>
+
 <p>Packages can be enabled/disabled via the <code>core.disabledPackages</code> config
 settings and also by calling <code>enablePackage()/disablePackage()</code>.</p>
+
 </div>
+<h2 class="detail-section">Event Subscription</h2>
 
 
-
-
-
-
-  <a name="section-Event Subscription"></a>
-  <h2 class="detail-section">Event Subscription</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-onDidLoadInitialPackages">
   <h3 class="name">
     <a href="#instance-onDidLoadInitialPackages" class="js-api-name method-signature" name="instance-onDidLoadInitialPackages">
-      <span class="operator operator-instance">::</span>onDidLoadInitialPackages<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidLoadInitialPackages<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L121"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L121">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when all packages have been loaded.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when all packages have been loaded.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">()</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a></p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidActivateInitialPackages">
   <h3 class="name">
     <a href="#instance-onDidActivateInitialPackages" class="js-api-name method-signature" name="instance-onDidActivateInitialPackages">
-      <span class="operator operator-instance">::</span>onDidActivateInitialPackages<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidActivateInitialPackages<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L130"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L130">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when all packages have been activated.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when all packages have been activated.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">()</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a></p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidActivatePackage">
   <h3 class="name">
     <a href="#instance-onDidActivatePackage" class="js-api-name method-signature" name="instance-onDidActivatePackage">
-      <span class="operator operator-instance">::</span>onDidActivatePackage<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidActivatePackage<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L148"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L148">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a package is activated.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a package is activated.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">package</span>)</span></code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be invoked when a package is activated.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>package</code></td>
-    <td>
-      <p>The <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> that was activated.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be invoked when a package is activated.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>package</code></p>
+
+  </td>
+  <td>
+    
+    <p>The <a href="../Package/index.html">Package</a> that was activated.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidDeactivatePackage">
   <h3 class="name">
     <a href="#instance-onDidDeactivatePackage" class="js-api-name method-signature" name="instance-onDidDeactivatePackage">
-      <span class="operator operator-instance">::</span>onDidDeactivatePackage<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidDeactivatePackage<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L158"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L158">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a package is deactivated.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a package is deactivated.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">package</span>)</span></code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be invoked when a package is deactivated.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>package</code></td>
-    <td>
-      <p>The <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> that was deactivated.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be invoked when a package is deactivated.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>package</code></p>
+
+  </td>
+  <td>
+    
+    <p>The <a href="../Package/index.html">Package</a> that was deactivated.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidLoadPackage">
   <h3 class="name">
     <a href="#instance-onDidLoadPackage" class="js-api-name method-signature" name="instance-onDidLoadPackage">
-      <span class="operator operator-instance">::</span>onDidLoadPackage<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidLoadPackage<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L168"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L168">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a package is loaded.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a package is loaded.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">package</span>)</span></code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be invoked when a package is loaded.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>package</code></td>
-    <td>
-      <p>The <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> that was loaded.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be invoked when a package is loaded.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>package</code></p>
+
+  </td>
+  <td>
+    
+    <p>The <a href="../Package/index.html">Package</a> that was loaded.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidUnloadPackage">
   <h3 class="name">
     <a href="#instance-onDidUnloadPackage" class="js-api-name method-signature" name="instance-onDidUnloadPackage">
-      <span class="operator operator-instance">::</span>onDidUnloadPackage<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidUnloadPackage<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L178"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L178">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a package is unloaded.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a package is unloaded.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">package</span>)</span></code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be invoked when a package is unloaded.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>package</code></td>
-    <td>
-      <p>The <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> that was unloaded.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be invoked when a package is unloaded.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>package</code></p>
+
+  </td>
+  <td>
+    
+    <p>The <a href="../Package/index.html">Package</a> that was unloaded.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Package system data</h2>
 
 
-
-  <a name="section-Package system data"></a>
-  <h2 class="detail-section">Package system data</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-getApmPath">
   <h3 class="name">
     <a href="#instance-getApmPath" class="js-api-name method-signature" name="instance-getApmPath">
-      <span class="operator operator-instance">::</span>getApmPath<span class="argument-list">()</span>
+      ::getApmPath<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L191"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L191">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the path to the apm command.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      <p>Uses the value of the <code>core.apmPath</code> config setting if it exists.</p>
-<p>Return a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> file path to apm.</p>
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the path to the apm command.</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+<p>Uses the value of the <code>core.apmPath</code> config setting if it exists.</p>
+
+<p>Return a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> file path to apm.</p>
+
+  </div>
 </div>
 
     
+    
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getPackageDirPaths">
   <h3 class="name">
     <a href="#instance-getPackageDirPaths" class="js-api-name method-signature" name="instance-getPackageDirPaths">
-      <span class="operator operator-instance">::</span>getPackageDirPaths<span class="argument-list">()</span>
+      ::getPackageDirPaths<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L215"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L215">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the paths being used to look for packages.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the paths being used to look for packages.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
+</div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
+    
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> directory paths.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> directory paths.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">General package data</h2>
 
 
-
-  <a name="section-General package data"></a>
-  <h2 class="detail-section">General package data</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-resolvePackagePath">
   <h3 class="name">
     <a href="#instance-resolvePackagePath" class="js-api-name method-signature" name="instance-resolvePackagePath">
-      <span class="operator operator-instance">::</span>resolvePackagePath<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::resolvePackagePath<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L228"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L228">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Resolve the given package name to a path on disk.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Resolve the given package name to a path on disk.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+<p>Return a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> folder path or undefined if it could not be resolved.</p>
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      <p>Return a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> folder path or undefined if it could not be resolved.</p>
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
+
+  </td>
+</tr>
 
 
-</div>
-
-</div>
+  </tbody>
+</table>
 
     
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-isBundledPackage">
   <h3 class="name">
     <a href="#instance-isBundledPackage" class="js-api-name method-signature" name="instance-isBundledPackage">
-      <span class="operator operator-instance">::</span>isBundledPackage<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::isBundledPackage<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L251"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L251">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Is the package with the given name bundled with Atom?</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Is the package with the given name bundled with Atom?</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a>.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Enabling and disabling packages</h2>
 
 
-
-  <a name="section-Enabling and disabling packages"></a>
-  <h2 class="detail-section">Enabling and disabling packages</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-enablePackage">
   <h3 class="name">
     <a href="#instance-enablePackage" class="js-api-name method-signature" name="instance-enablePackage">
-      <span class="operator operator-instance">::</span>enablePackage<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::enablePackage<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L287"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L287">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Enable the package with the given name.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Enable the package with the given name.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> that was enabled or null if it isn&apos;t loaded.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns the <a href="../Package/index.html">Package</a> that was enabled or null if it isn&#x2019;t loaded.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-disablePackage">
   <h3 class="name">
     <a href="#instance-disablePackage" class="js-api-name method-signature" name="instance-disablePackage">
-      <span class="operator operator-instance">::</span>disablePackage<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::disablePackage<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L300"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L300">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Disable the package with the given name.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Disable the package with the given name.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> that was disabled or null if it isn&apos;t loaded.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns the <a href="../Package/index.html">Package</a> that was disabled or null if it isn&#x2019;t loaded.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-isPackageDisabled">
   <h3 class="name">
     <a href="#instance-isPackageDisabled" class="js-api-name method-signature" name="instance-isPackageDisabled">
-      <span class="operator operator-instance">::</span>isPackageDisabled<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::isPackageDisabled<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L313"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L313">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Is the package with the given name disabled?</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Is the package with the given name disabled?</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a>.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Accessing active packages</h2>
 
 
-
-  <a name="section-Accessing active packages"></a>
-  <h2 class="detail-section">Accessing active packages</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-getActivePackages">
   <h3 class="name">
     <a href="#instance-getActivePackages" class="js-api-name method-signature" name="instance-getActivePackages">
-      <span class="operator operator-instance">::</span>getActivePackages<span class="argument-list">()</span>
+      ::getActivePackages<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L322"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L322">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of all the active <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a>s.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of all the active <a href="../Package/index.html">Package</a>s.</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getActivePackage">
   <h3 class="name">
     <a href="#instance-getActivePackage" class="js-api-name method-signature" name="instance-getActivePackage">
-      <span class="operator operator-instance">::</span>getActivePackage<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::getActivePackage<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L331"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L331">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the active <a href="../Package/index.html">Package</a> with the given name.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the active <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> with the given name.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> or undefined.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Package/index.html">Package</a> or undefined.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-isPackageActive">
   <h3 class="name">
     <a href="#instance-isPackageActive" class="js-api-name method-signature" name="instance-isPackageActive">
-      <span class="operator operator-instance">::</span>isPackageActive<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::isPackageActive<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L340"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L340">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Is the <a href="../Package/index.html">Package</a> with the given name active?</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Is the <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> with the given name active?</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a>.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-hasActivatedInitialPackages">
   <h3 class="name">
     <a href="#instance-hasActivatedInitialPackages" class="js-api-name method-signature" name="instance-hasActivatedInitialPackages">
-      <span class="operator operator-instance">::</span>hasActivatedInitialPackages<span class="argument-list">()</span>
+      ::hasActivatedInitialPackages<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L345"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L345">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
     
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
 
   </div>
+</div>
 
-
-
+    
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether package activation has occurred.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> indicating whether package activation has occurred.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Accessing loaded packages</h2>
 
 
-
-  <a name="section-Accessing loaded packages"></a>
-  <h2 class="detail-section">Accessing loaded packages</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-getLoadedPackages">
   <h3 class="name">
     <a href="#instance-getLoadedPackages" class="js-api-name method-signature" name="instance-getLoadedPackages">
-      <span class="operator operator-instance">::</span>getLoadedPackages<span class="argument-list">()</span>
+      ::getLoadedPackages<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L354"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L354">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of all the loaded <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a>s</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of all the loaded <a href="../Package/index.html">Package</a>s</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getLoadedPackage">
   <h3 class="name">
     <a href="#instance-getLoadedPackage" class="js-api-name method-signature" name="instance-getLoadedPackage">
-      <span class="operator operator-instance">::</span>getLoadedPackage<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::getLoadedPackage<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L370"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L370">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the loaded <a href="../Package/index.html">Package</a> with the given name.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the loaded <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> with the given name.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Package.html">Package<span class="operator"></span></a> or undefined.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Package/index.html">Package</a> or undefined.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-isPackageLoaded">
   <h3 class="name">
     <a href="#instance-isPackageLoaded" class="js-api-name method-signature" name="instance-isPackageLoaded">
-      <span class="operator operator-instance">::</span>isPackageLoaded<span class="argument-list">(<span class="argument">name</span>)</span>
+      ::isPackageLoaded<span class="argument-list">(<span class="argument">name</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L379"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L379">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Is the package with the given name loaded?</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Is the package with the given name loaded?</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>name</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> package name.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>name</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> package name.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a>.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-hasLoadedInitialPackages">
   <h3 class="name">
     <a href="#instance-hasLoadedInitialPackages" class="js-api-name method-signature" name="instance-hasLoadedInitialPackages">
-      <span class="operator operator-instance">::</span>hasLoadedInitialPackages<span class="argument-list">()</span>
+      ::hasLoadedInitialPackages<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L384"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L384">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
     
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
 
   </div>
+</div>
 
-
-
+    
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating whether package loading has occurred.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> indicating whether package loading has occurred.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Accessing available packages</h2>
 
 
-
-  <a name="section-Accessing available packages"></a>
-  <h2 class="detail-section">Accessing available packages</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-getAvailablePackagePaths">
   <h3 class="name">
     <a href="#instance-getAvailablePackagePaths" class="js-api-name method-signature" name="instance-getAvailablePackagePaths">
-      <span class="operator operator-instance">::</span>getAvailablePackagePaths<span class="argument-list">()</span>
+      ::getAvailablePackagePaths<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L393"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L393">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
     
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
 
   </div>
+</div>
 
-
-
+    
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>s of all the available package paths.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>s of all the available package paths.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getAvailablePackageNames">
   <h3 class="name">
     <a href="#instance-getAvailablePackageNames" class="js-api-name method-signature" name="instance-getAvailablePackageNames">
-      <span class="operator operator-instance">::</span>getAvailablePackageNames<span class="argument-list">()</span>
+      ::getAvailablePackageNames<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L398"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L398">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
     
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
 
   </div>
+</div>
 
-
-
+    
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>s of all the available package names.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>s of all the available package names.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getAvailablePackageMetadata">
   <h3 class="name">
     <a href="#instance-getAvailablePackageMetadata" class="js-api-name method-signature" name="instance-getAvailablePackageMetadata">
-      <span class="operator operator-instance">::</span>getAvailablePackageMetadata<span class="argument-list">()</span>
+      ::getAvailablePackageMetadata<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/package-manager.js#L403"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/package-manager.js#L403">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>s of all the available package metadata.</p></td>
-      </tr>
-    </table>
-</div>
-
-</div>
-
-
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-    </div>
-
-    
-  </div>
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
   
 
-</body>
+</div>
 
-<!-- Mirrored from atom.io/docs/api/v1.39.1/PackageManager by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
+</div>
+
+    
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>s of all the available package metadata.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+      
+    </div>
+    
+
+  </body>
+
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/PackageManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 </html>

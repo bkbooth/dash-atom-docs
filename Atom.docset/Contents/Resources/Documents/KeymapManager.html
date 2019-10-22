@@ -1,67 +1,82 @@
 
-      <head>
-        <meta charset="utf-8">
-        <title>KeymapManager</title>
-        <link rel="stylesheet" href="assets/styles-atom.css">
-        <link rel="stylesheet" href="assets/styles-dash.css">
-      </head>
-    <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-
-<!-- Mirrored from atom.io/docs/api/v1.39.1/KeymapManager by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+        <head>
+          <meta charset="utf-8">
+          <title>KeymapManager</title>
+          <link rel="stylesheet" href="assets/styles-atom.css">
+          <link rel="stylesheet" href="assets/styles-dash.css">
+        </head>
+      <!DOCTYPE HTML>
+<html lang="en">
+  
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/KeymapManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
-<body class="">
-
-  
-
-  <div class="footer-push">
-    
-
-
-    <div id="js-pjax-container">
-      <div class="documents content-push">
-  <div class="wrapper no-pad">
-
-    
-
-    <div class="columns">
+  <body class="layout-api-class">
+    <div class="footer-push">
       
-      <div class="column main-column">
+
+      <div class="wrapper documents content-push wide">
+        
+
+
+
+
+
+
+
+
+        
+
+        <div class="content-column">
           
-<h2 class="page-title">
+          
+
+          <div class="document-content">
+            
+            <h2 class="page-title">
   KeymapManager
   <span class="label label-extended" title="This class is in the extended API">
-    extended
-  </span>
-  <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L66" title="View class source">
-    <span class="octicon octicon-file-code"></span>
-  </a>
-</h2>
+  Extended
+</span>
 
-<div class="document-description markdown-body">
+  <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L66" title="View class source">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
+</h2>
+<div class="markdown-body">
   <p>Allows commands to be associated with keystrokes in a
 context-sensitive way. In Atom, you can access a global instance of this
 object via <code>atom.keymaps</code>.</p>
+
 <p>Key bindings are plain JavaScript objects containing <strong>CSS selectors</strong> as
 their top level keys, then <strong>keystroke patterns</strong> mapped to commands.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>.workspace</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>ctrl-l</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>package:do-something</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>ctrl-z</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>package:do-something-else</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>.mini.editor</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>enter</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>core:confirm</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div></pre>
+
+<pre><code class="language-cson">&apos;.workspace&apos;:
+  &apos;ctrl-l&apos;: &apos;package:do-something&apos;
+  &apos;ctrl-z&apos;: &apos;package:do-something-else&apos;
+&apos;.mini.editor&apos;:
+  &apos;enter&apos;: &apos;core:confirm&apos;
+</code></pre>
 
 <p>When a keystroke sequence matches a binding in a given context, a custom DOM
 event with a type based on the command is dispatched on the target of the
 keyboard event.</p>
+
 <p>To match a keystroke sequence, the keymap starts at the target element for the
 keyboard event. It looks for key bindings associated with selectors that match
 the target element. If multiple match, the most specific is selected. If there
 is a tie in specificity, the most recently added binding wins. If no bindings
-are found for the events target, the search is repeated again for the target&apos;s
+are found for the events target, the search is repeated again for the target&#x2019;s
 parent node and so on recursively until a binding is found or we traverse off
 the top of the document.</p>
+
 <p>When a binding is found, its command event is always dispatched on the
 original target of the keyboard event, even if the matching element is higher
 up in the DOM. In addition, <code>.preventDefault()</code> is called on the keyboard
 event to prevent the browser from taking action. <code>.preventDefault</code> is only
 called if a matching binding is found.</p>
+
 <p>Command event objects have a non-standard method called <code>.abortKeyBinding()</code>.
 If your command handler is invoked but you programmatically determine that no
 action can be taken and you want to allow other bindings to be matched, call
@@ -69,1158 +84,1518 @@ action can be taken and you want to allow other bindings to be matched, call
 is binding snippet expansion to <code>tab</code>. If <code>snippets:expand</code> is invoked when
 the cursor does not follow a valid snippet prefix, we abort the binding and
 allow <code>tab</code> to be handled by the default handler, which inserts whitespace.</p>
+
 <p>Multi-keystroke bindings are possible. If a sequence of one or more keystrokes
 <em>partially</em> matches a multi-keystroke binding, the keymap enters a pending
 state. The pending state is terminated on the next keystroke, or after
-<a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-getPartialMatchTimeout"><span class="operator">::</span>getPartialMatchTimeout</a> milliseconds has elapsed. When the pending state is
+<a href="#instance-getPartialMatchTimeout">::getPartialMatchTimeout</a> milliseconds has elapsed. When the pending state is
 terminated via a timeout or a keystroke that leads to no matches, the longest
 ambiguous bindings that caused the pending state are temporarily disabled and
 the previous keystrokes are replayed. If there is ambiguity again during the
 replay, the next longest bindings are disabled and the keystrokes are replayed
 again.</p>
+
+</div>
+<h2 class="detail-section">Class Methods</h2>
+<div class="api-entry js-api-entry essential" id="class-buildKeydownEvent">
+  <h3 class="name">
+    <a href="#class-buildKeydownEvent" class="js-api-name method-signature" name="class-buildKeydownEvent">
+      .buildKeydownEvent<span class="argument-list">(<span class="argument">key</span>, <span class="argument">options</span>)</span>
+
+    </a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L83">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
+  </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Create a keydown DOM event for testing purposes.</p>
+
 </div>
 
-
-
-
-
-
-  <a name="section-Class Methods"></a>
-  <h2 class="detail-section">Class Methods</h2>
-
+    <div class="body markdown-body">
+  <div class="description">
     
-
-
-    
-    
-<div class="api-entry js-api-entry essential" id="buildKeydownEvent">
-  <h3 class="name">
-    <a href="#buildKeydownEvent" class="js-api-name method-signature" name="buildKeydownEvent">
-      <span class="operator operator-class">.</span>buildKeydownEvent<span class="argument-list">(<span class="argument">key</span>, <span class="argument">[options]</span>)</span>
-    </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L83"><span class="octicon octicon-file-code"></span></a>
-  </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Create a keydown DOM event for testing purposes.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>key</code></td>
-    <td>
-      <p>The key or keyIdentifier of the event. For example, <code>&apos;a&apos;</code>, <code>&apos;1&apos;</code>, <code>&apos;escape&apos;</code>, <code>&apos;backspace&apos;</code>, etc.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> containing any of the following:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.ctrl</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating the ctrl modifier key</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.alt</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating the alt modifier key</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.shift</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating the shift modifier key</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.cmd</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> indicating the cmd modifier key</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.which</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> indicating <code>which</code> value of the event. See the docs for KeyboardEvent for more information.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.target</code></td>
-    <td>
-      <p>The target element of the event.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>key</code></p>
+
+  </td>
+  <td>
+    
+    <p>The key or keyIdentifier of the event. For example, <code>&apos;a&apos;</code>, <code>&apos;1&apos;</code>, <code>&apos;escape&apos;</code>, <code>&apos;backspace&apos;</code>, etc.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> containing any of the following:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>ctrl</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> indicating the ctrl modifier key</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>alt</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> indicating the alt modifier key</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>shift</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> indicating the shift modifier key</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>cmd</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> indicating the cmd modifier key</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>which</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> indicating <code>which</code> value of the event. See the docs for KeyboardEvent for more information.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>target</code></p>
+
+  </td>
+  <td>
+    
+    <p>The target element of the event.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
+    
+  </div>
 </div>
 
-</div>
 
 
 
-
-  <a name="section-Construction and Destruction"></a>
-  <h2 class="detail-section">Construction and Destruction</h2>
-
-    
+<h2 class="detail-section">Construction and Destruction</h2>
 
 
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-constructor">
   <h3 class="name">
     <a href="#instance-constructor" class="js-api-name method-signature" name="instance-constructor">
-      <span class="operator operator-instance">::</span>constructor<span class="argument-list">(<span class="argument">options</span>)</span>
+      ::constructor<span class="argument-list">(<span class="argument">options</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L112"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L112">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Create a new KeymapManager.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Create a new KeymapManager.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> containing properties to assign to the keymap.  You can pass custom properties to be used by extension methods. The following properties are also supported:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.defaultTarget</code></td>
-    <td>
-      <p>This will be used as the target of events whose target is <code>document.body</code> to allow for a catch-all element when nothing is focused.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> containing properties to assign to the keymap.  You can pass custom properties to be used by extension methods. The following properties are also supported:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>defaultTarget</code></p>
+
+  </td>
+  <td>
+    
+    <p>This will be used as the target of events whose target is <code>document.body</code> to allow for a catch-all element when nothing is focused.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
-
-</div>
-
-</div>
+  </tbody>
+</table>
 
     
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-clear">
   <h3 class="name">
     <a href="#instance-clear" class="js-api-name method-signature" name="instance-clear">
-      <span class="operator operator-instance">::</span>clear<span class="argument-list">()</span>
+      ::clear<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L120"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L120">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Clear all registered key bindings and enqueued keystrokes. For use
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Clear all registered key bindings and enqueued keystrokes. For use
 in tests.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-destroy">
   <h3 class="name">
     <a href="#instance-destroy" class="js-api-name method-signature" name="instance-destroy">
-      <span class="operator operator-instance">::</span>destroy<span class="argument-list">()</span>
+      ::destroy<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L128"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L128">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Unwatch all watched paths.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Unwatch all watched paths.</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
+</div>
+
+    
+    
+  </div>
 </div>
 
 
-
-  <a name="section-Event Subscription"></a>
-  <h2 class="detail-section">Event Subscription</h2>
-
-    
+<h2 class="detail-section">Event Subscription</h2>
 
 
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-onDidMatchBinding">
   <h3 class="name">
     <a href="#instance-onDidMatchBinding" class="js-api-name method-signature" name="instance-onDidMatchBinding">
-      <span class="operator operator-instance">::</span>onDidMatchBinding<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidMatchBinding<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L149"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L149">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when one or more keystrokes completely
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when one or more keystrokes completely
 match a key binding.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when keystrokes match a binding.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.keystrokes</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> of keystrokes that matched the binding.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.binding</code></td>
-    <td>
-      <p><code>KeyBinding</code> that the keystrokes matched.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.keyboardEventTarget</code></td>
-    <td>
-      <p>DOM element that was the target of the most  recent keyboard event.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when keystrokes match a binding.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>keystrokes</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> of keystrokes that matched the binding.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>binding</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/KeyBinding">KeyBinding</a> that the keystrokes matched.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>keyboardEventTarget</code></p>
+
+  </td>
+  <td>
+    
+    <p>DOM element that was the target of the most  recent keyboard event.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidPartiallyMatchBindings">
   <h3 class="name">
     <a href="#instance-onDidPartiallyMatchBindings" class="js-api-name method-signature" name="instance-onDidPartiallyMatchBindings">
-      <span class="operator operator-instance">::</span>onDidPartiallyMatchBindings<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidPartiallyMatchBindings<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L165"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L165">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when one or more keystrokes partially
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when one or more keystrokes partially
 match a binding.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when keystrokes partially match a binding.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.keystrokes</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> of keystrokes that matched the binding.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.partiallyMatchedBindings</code></td>
-    <td>
-      <p><code>KeyBinding</code>s that the keystrokes partially matched.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.keyboardEventTarget</code></td>
-    <td>
-      <p>DOM element that was the target of the most recent keyboard event.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when keystrokes partially match a binding.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>keystrokes</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> of keystrokes that matched the binding.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>partiallyMatchedBindings</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/KeyBinding">KeyBinding</a>s that the keystrokes partially matched.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>keyboardEventTarget</code></p>
+
+  </td>
+  <td>
+    
+    <p>DOM element that was the target of the most recent keyboard event.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidFailToMatchBinding">
   <h3 class="name">
     <a href="#instance-onDidFailToMatchBinding" class="js-api-name method-signature" name="instance-onDidFailToMatchBinding">
-      <span class="operator operator-instance">::</span>onDidFailToMatchBinding<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidFailToMatchBinding<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L179"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L179">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when one or more keystrokes fail to match
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when one or more keystrokes fail to match
 any bindings.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when keystrokes fail to match any bindings.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.keystrokes</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> of keystrokes that matched the binding.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.keyboardEventTarget</code></td>
-    <td>
-      <p>DOM element that was the target of the most  recent keyboard event.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when keystrokes fail to match any bindings.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>keystrokes</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> of keystrokes that matched the binding.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>keyboardEventTarget</code></p>
+
+  </td>
+  <td>
+    
+    <p>DOM element that was the target of the most  recent keyboard event.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidFailToReadFile">
   <h3 class="name">
     <a href="#instance-onDidFailToReadFile" class="js-api-name method-signature" name="instance-onDidFailToReadFile">
-      <span class="operator operator-instance">::</span>onDidFailToReadFile<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidFailToReadFile<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L210"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L210">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when a keymap file not able to be loaded.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when a keymap file not able to be loaded.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">error</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when a keymap file is unloaded.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>error</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> with the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.message</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> the error message.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.stack</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> the error stack trace.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when a keymap file is unloaded.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>error</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> with the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>message</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> the error message.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>stack</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> the error stack trace.</p>
+
+  </td>
+</tr>
 
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-
-
-  <a name="section-Adding and Removing Bindings"></a>
-  <h2 class="detail-section">Adding and Removing Bindings</h2>
-
-    
-
-
-    
-
-    
-<div class="api-entry js-api-entry extended" id="instance-build">
-  <h3 class="name">
-    <a href="#instance-build" class="js-api-name method-signature" name="instance-build">
-      <span class="operator operator-instance">::</span>build<span class="argument-list">(<span class="argument">source</span>, <span class="argument">bindings</span>, <span class="argument">priority</span>)</span>
-    </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L225"><span class="octicon octicon-file-code"></span></a>
-  </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Construct <code>KeyBinding</code>s from an object grouping them by CSS selector.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+  </tbody>
+</table>
 
   </div>
-
-    <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>source</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> (usually a path) uniquely identifying the given bindings so they can be removed later.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>bindings</code></td>
-    <td>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> whose top-level keys point at sub-objects mapping keystroke patterns to commands.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>priority</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity. Defaults to <code>0</code>.</p>
-    </td>
-  </tr>
-
-    </table>
-
-
 </div>
 
-</div>
 
-    
+<h2 class="detail-section">Adding and Removing Bindings</h2>
+
+
 <div class="api-entry js-api-entry essential" id="instance-add">
   <h3 class="name">
     <a href="#instance-add" class="js-api-name method-signature" name="instance-add">
-      <span class="operator operator-instance">::</span>add<span class="argument-list">(<span class="argument">source</span>, <span class="argument">bindings</span>, <span class="argument">priority</span>)</span>
+      ::add<span class="argument-list">(<span class="argument">source</span>, <span class="argument">bindings</span>, <span class="argument">priority</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L258"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L258">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Add sets of key bindings grouped by CSS selector.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Add sets of key bindings grouped by CSS selector.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>source</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> (usually a path) uniquely identifying the given bindings so they can be removed later.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>bindings</code></td>
-    <td>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> whose top-level keys point at sub-objects mapping keystroke patterns to commands.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>priority</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity. Defaults to <code>0</code>.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>source</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> (usually a path) uniquely identifying the given bindings so they can be removed later.</p>
 
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>bindings</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> whose top-level keys point at sub-objects mapping keystroke patterns to commands.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>priority</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> used to sort keybindings which have the same specificity. Defaults to <code>0</code>.</p>
+
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
+
+    
+  </div>
+</div>
+<h4>Extended Methods</h4><div class="api-entry js-api-entry extended" id="instance-build">
+  <h3 class="name">
+    <a href="#instance-build" class="js-api-name method-signature" name="instance-build">
+      ::build<span class="argument-list">(<span class="argument">source</span>, <span class="argument">bindings</span>, <span class="argument">priority</span>)</span>
+
+    </a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L225">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
+  </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Construct <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/KeyBinding">KeyBinding</a>s from an object grouping them by CSS selector.</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
+</div>
+
+    <table class="arguments">
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>source</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> (usually a path) uniquely identifying the given bindings so they can be removed later.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>bindings</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> whose top-level keys point at sub-objects mapping keystroke patterns to commands.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>priority</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> used to sort keybindings which have the same specificity. Defaults to <code>0</code>.</p>
+
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
+
+    
+  </div>
 </div>
 
 
-
-  <a name="section-Accessing Bindings"></a>
-  <h2 class="detail-section">Accessing Bindings</h2>
-
-    
+<h2 class="detail-section">Accessing Bindings</h2>
 
 
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-getKeyBindings">
   <h3 class="name">
     <a href="#instance-getKeyBindings" class="js-api-name method-signature" name="instance-getKeyBindings">
-      <span class="operator operator-instance">::</span>getKeyBindings<span class="argument-list">()</span>
+      ::getKeyBindings<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L278"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L278">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get all current key bindings.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get all current key bindings.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <code>KeyBinding</code>s.</p></td>
-      </tr>
-    </table>
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/KeyBinding">KeyBinding</a>s.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-findKeyBindings">
   <h3 class="name">
     <a href="#instance-findKeyBindings" class="js-api-name method-signature" name="instance-findKeyBindings">
-      <span class="operator operator-instance">::</span>findKeyBindings<span class="argument-list">(<span class="argument">params</span>)</span>
+      ::findKeyBindings<span class="argument-list">(<span class="argument">params</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L293"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L293">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the key bindings for a given command and optional target.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the key bindings for a given command and optional target.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>params</code></td>
-    <td>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> whose keys constrain the binding search:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.keystrokes</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> representing one or more keystrokes, such as &apos;ctrl-x ctrl-s&apos;</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.command</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> representing the name of a command, such as &apos;editor:backspace&apos;</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.target</code></td>
-    <td>
-      <p>An optional DOM element constraining the search. If this parameter is supplied, the call will only return bindings that can be invoked by a KeyboardEvent originating from the target element.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>params</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> whose keys constrain the binding search:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>keystrokes</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> representing one or more keystrokes, such as &#x2018;ctrl-x ctrl-s&#x2019;</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>command</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> representing the name of a command, such as &#x2018;editor:backspace&#x2019;</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>target</code></p>
+
+  </td>
+  <td>
+    
+    <p>An optional DOM element constraining the search. If this parameter is supplied, the call will only return bindings that can be invoked by a KeyboardEvent originating from the target element.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of key bindings.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of key bindings.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Managing Keymap Files</h2>
 
 
-
-  <a name="section-Managing Keymap Files"></a>
-  <h2 class="detail-section">Managing Keymap Files</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-loadKeymap">
   <h3 class="name">
     <a href="#instance-loadKeymap" class="js-api-name method-signature" name="instance-loadKeymap">
-      <span class="operator operator-instance">::</span>loadKeymap<span class="argument-list">(<span class="argument">path</span>, <span class="argument">options</span>)</span>
+      ::loadKeymap<span class="argument-list">(<span class="argument">path</span>, <span class="argument">options</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L330"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L330">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Load the key bindings from the given path.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Load the key bindings from the given path.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>path</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> containing a path to a file or a directory. If the path is a directory, all files inside it will be loaded.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> containing the following optional keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.watch</code></td>
-    <td>
-      <p>If <code>true</code>, the keymap will also reload the file at the given path whenever it changes. This option cannot be used with directory paths.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.priority</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>path</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> containing a path to a file or a directory. If the path is a directory, all files inside it will be loaded.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> containing the following optional keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>watch</code></p>
+
+  </td>
+  <td>
+    
+    <p>If <code>true</code>, the keymap will also reload the file at the given path whenever it changes. This option cannot be used with directory paths.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>priority</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> used to sort keybindings which have the same specificity.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
-
-</div>
-
-</div>
+  </tbody>
+</table>
 
     
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-watchKeymap">
   <h3 class="name">
     <a href="#instance-watchKeymap" class="js-api-name method-signature" name="instance-watchKeymap">
-      <span class="operator operator-instance">::</span>watchKeymap<span class="argument-list">(<span class="argument">path</span>, <span class="argument">options</span>)</span>
+      ::watchKeymap<span class="argument-list">(<span class="argument">path</span>, <span class="argument">options</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L353"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L353">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Cause the keymap to reload the key bindings file at the given path
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Cause the keymap to reload the key bindings file at the given path
 whenever it changes.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      <p>This method doesn&apos;t perform the initial load of the key bindings file. If
-that&apos;s what you&apos;re looking for, call <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-loadKeymap"><span class="operator">::</span>loadKeymap</a> with <code>watch: true</code>.</p>
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+<p>This method doesn&#x2019;t perform the initial load of the key bindings file. If
+that&#x2019;s what you&#x2019;re looking for, call <a href="#instance-loadKeymap">::loadKeymap</a> with <code>watch: true</code>.</p>
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>path</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> containing a path to a file or a directory. If the path is a directory, all files inside it will be loaded.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-      <p>An <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> containing the following optional keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.priority</code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> used to sort keybindings which have the same specificity.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>path</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> containing a path to a file or a directory. If the path is a directory, all files inside it will be loaded.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    
+    <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> containing the following optional keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>priority</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> used to sort keybindings which have the same specificity.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
+    
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Managing Keyboard Events</h2>
 
 
-
-  <a name="section-Managing Keyboard Events"></a>
-  <h2 class="detail-section">Managing Keyboard Events</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-handleKeyboardEvent">
   <h3 class="name">
     <a href="#instance-handleKeyboardEvent" class="js-api-name method-signature" name="instance-handleKeyboardEvent">
-      <span class="operator operator-instance">::</span>handleKeyboardEvent<span class="argument-list">(<span class="argument">event</span>)</span>
+      ::handleKeyboardEvent<span class="argument-list">(<span class="argument">event</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L425"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L425">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Dispatch a custom event associated with the matching key binding for
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Dispatch a custom event associated with the matching key binding for
 the given <code>KeyboardEvent</code> if one can be found.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      <p>If a matching binding is found on the event&apos;s target or one of its
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+<p>If a matching binding is found on the event&#x2019;s target or one of its
 ancestors, <code>.preventDefault()</code> is called on the keyboard event and the
-binding&apos;s command is emitted as a custom event on the matching element.</p>
-<p>If the matching binding&apos;s command is &apos;native!&apos;, the method will terminate
+binding&#x2019;s command is emitted as a custom event on the matching element.</p>
+
+<p>If the matching binding&#x2019;s command is &#x2018;native!&#x2019;, the method will terminate
 without calling <code>.preventDefault()</code> on the keyboard event, allowing the
 browser to handle it as normal.</p>
-<p>If the matching binding&apos;s command is &apos;unset!&apos;, the search will continue from
-the current element&apos;s parent.</p>
-<p>If the matching binding&apos;s command is &apos;abort!&apos;, the search will terminate
+
+<p>If the matching binding&#x2019;s command is &#x2018;unset!&#x2019;, the search will continue from
+the current element&#x2019;s parent.</p>
+
+<p>If the matching binding&#x2019;s command is &#x2018;abort!&#x2019;, the search will terminate
 without dispatching a command event.</p>
-<p>If the event&apos;s target is <code>document.body</code>, it will be treated as if its
+
+<p>If the event&#x2019;s target is <code>document.body</code>, it will be treated as if its
 target is <code>.defaultTarget</code> if that property is assigned on the keymap.</p>
-    </div>
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>event</code></td>
-    <td>
-      <p>A <code>KeyboardEvent</code> of type &apos;keydown&apos;</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>event</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>A <code>KeyboardEvent</code> of type &#x2018;keydown&#x2019;</p>
+
+  </td>
+</tr>
 
 
-</div>
-
-</div>
+  </tbody>
+</table>
 
     
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-keystrokeForKeyboardEvent">
   <h3 class="name">
     <a href="#instance-keystrokeForKeyboardEvent" class="js-api-name method-signature" name="instance-keystrokeForKeyboardEvent">
-      <span class="operator operator-instance">::</span>keystrokeForKeyboardEvent<span class="argument-list">(<span class="argument">event</span>)</span>
+      ::keystrokeForKeyboardEvent<span class="argument-list">(<span class="argument">event</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L655"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L655">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Translate a keydown event to a keystroke string.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Translate a keydown event to a keystroke string.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>event</code></td>
-    <td>
-      <p>A <code>KeyboardEvent</code> of type &apos;keydown&apos;</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>event</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>A <code>KeyboardEvent</code> of type &#x2018;keydown&#x2019;</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> describing the keystroke.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> describing the keystroke.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-addKeystrokeResolver">
   <h3 class="name">
     <a href="#instance-addKeystrokeResolver" class="js-api-name method-signature" name="instance-addKeystrokeResolver">
-      <span class="operator operator-instance">::</span>addKeystrokeResolver<span class="argument-list">(<span class="argument">resolver</span>)</span>
-    </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L676"><span class="octicon octicon-file-code"></span></a>
-  </h3>
+      ::addKeystrokeResolver<span class="argument-list">(<span class="argument">resolver</span>)</span>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Customize translation of raw keyboard events to keystroke strings.
+    </a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L676">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
+  </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Customize translation of raw keyboard events to keystroke strings.
 This API is useful for working around Chrome bugs or changing how Atom
 resolves certain key combinations. If multiple resolvers are installed,
 the most recently-added resolver returning a string for a given keystroke
 takes precedence.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>resolver<span class="argument-list">(<span class="argument">keystroke</span>, <span class="argument">event</span>, <span class="argument">layoutName</span>, <span class="argument">keymap</span>)</span></code></td>
-    <td>
-      <p>A <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> that returns a keystroke <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> and is called  with an object containing the following keys:</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>keystroke</code></td>
-    <td>
-      <p>The currently resolved keystroke string. If your function returns a falsy value, this is how Atom will resolve your keystroke.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p>The raw DOM 3 <code>KeyboardEvent</code> being resolved. See the DOM API documentation for more details.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>layoutName</code></td>
-    <td>
-      <p>The OS-specific name of the current keyboard layout.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>keymap</code></td>
-    <td>
-      <p>An object mapping DOM 3 <code>KeyboardEvent.code</code> values to objects with the typed character for that key in each modifier state, based on the current operating system layout.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>resolver</code></p>
+
+  </td>
+  <td>
+    
+    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> that returns a keystroke <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> and is called  with an object containing the following keys:</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>keystroke</code></p>
+
+  </td>
+  <td>
+    
+    <p>The currently resolved keystroke string. If your function returns a falsy value, this is how Atom will resolve your keystroke.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p>The raw DOM 3 <code>KeyboardEvent</code> being resolved. See the DOM API documentation for more details.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>layoutName</code></p>
+
+  </td>
+  <td>
+    
+    <p>The OS-specific name of the current keyboard layout.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>keymap</code></p>
+
+  </td>
+  <td>
+    
+    <p>An object mapping DOM 3 <code>KeyboardEvent.code</code> values to objects with the typed character for that key in each modifier state, based on the current operating system layout.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> that removes the added resolver.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> that removes the added resolver.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getPartialMatchTimeout">
   <h3 class="name">
     <a href="#instance-getPartialMatchTimeout" class="js-api-name method-signature" name="instance-getPartialMatchTimeout">
-      <span class="operator operator-instance">::</span>getPartialMatchTimeout<span class="argument-list">()</span>
+      ::getPartialMatchTimeout<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L686"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom-keymap/blob/v8.2.14/src/keymap-manager.coffee#L686">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get the number of milliseconds allowed before pending states caused
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get the number of milliseconds allowed before pending states caused
 by partial matches of multi-keystroke bindings are terminated.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
-
-    <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a></p></td>
-      </tr>
-    </table>
-</div>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
 
-
-
-      </div>
-    </div>
   </div>
 </div>
-
-    </div>
 
     
+    <table class="return-values">
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
   </div>
+</div>
 
-  
 
-</body>
+          </div>
+        </div>
 
-<!-- Mirrored from atom.io/docs/api/v1.39.1/KeymapManager by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+      </div>
+
+      
+    </div>
+    
+
+  </body>
+
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/KeymapManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 </html>

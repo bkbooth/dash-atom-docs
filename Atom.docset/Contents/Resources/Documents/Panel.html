@@ -1,412 +1,458 @@
 
-      <head>
-        <meta charset="utf-8">
-        <title>Panel</title>
-        <link rel="stylesheet" href="assets/styles-atom.css">
-        <link rel="stylesheet" href="assets/styles-dash.css">
-      </head>
-    <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-
-<!-- Mirrored from atom.io/docs/api/v1.39.1/Panel by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+        <head>
+          <meta charset="utf-8">
+          <title>Panel</title>
+          <link rel="stylesheet" href="assets/styles-atom.css">
+          <link rel="stylesheet" href="assets/styles-dash.css">
+        </head>
+      <!DOCTYPE HTML>
+<html lang="en">
+  
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Panel/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
-<body class="">
-
-  
-
-  <div class="footer-push">
-    
-
-
-    <div id="js-pjax-container">
-      <div class="documents content-push">
-  <div class="wrapper no-pad">
-
-    
-
-    <div class="columns">
+  <body class="layout-api-class">
+    <div class="footer-push">
       
-      <div class="column main-column">
+
+      <div class="wrapper documents content-push wide">
+        
+
+
+
+
+
+
+
+
+        
+
+        <div class="content-column">
           
-<h2 class="page-title">
+          
+
+          <div class="document-content">
+            
+            <h2 class="page-title">
   Panel
   <span class="label label-extended" title="This class is in the extended API">
-    extended
-  </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L10" title="View class source">
-    <span class="octicon octicon-file-code"></span>
-  </a>
-</h2>
+  Extended
+</span>
 
-<div class="document-description markdown-body">
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L10" title="View class source">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
+</h2>
+<div class="markdown-body">
   <p>A container representing a panel on the edges of the editor window.
-You should not create a <code>Panel</code> directly, instead use <a class="reference-link" data-skip-pjax="yeahokiguess" href="Workspace.html#instance-addTopPanel">Workspace<span class="operator">::</span>addTopPanel</a>
+You should not create a <code>Panel</code> directly, instead use <a href="../Workspace/index.html#instance-addTopPanel">Workspace::addTopPanel</a>
 and friends to add panels.</p>
+
 <p>Examples: <a href="https://github.com/atom/status-bar">status-bar</a>
 and <a href="https://github.com/atom/find-and-replace">find-and-replace</a> both use
 panels.</p>
+
 </div>
+<h2 class="detail-section">Construction and Destruction</h2>
 
 
-
-
-
-
-  <a name="section-Construction and Destruction"></a>
-  <h2 class="detail-section">Construction and Destruction</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-destroy">
   <h3 class="name">
     <a href="#instance-destroy" class="js-api-name method-signature" name="instance-destroy">
-      <span class="operator operator-instance">::</span>destroy<span class="argument-list">()</span>
+      ::destroy<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L27"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L27">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Destroy and remove this panel from the UI.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Destroy and remove this panel from the UI.</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
+</div>
+
+    
+    
+  </div>
 </div>
 
 
-
-  <a name="section-Event Subscription"></a>
-  <h2 class="detail-section">Event Subscription</h2>
-
-    
+<h2 class="detail-section">Event Subscription</h2>
 
 
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-onDidChangeVisible">
   <h3 class="name">
     <a href="#instance-onDidChangeVisible" class="js-api-name method-signature" name="instance-onDidChangeVisible">
-      <span class="operator operator-instance">::</span>onDidChangeVisible<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidChangeVisible<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L57"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L57">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when the pane hidden or shown.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when the pane hidden or shown.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">visible</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when the pane is destroyed.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>visible</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> true when the panel has been shown</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when the pane is destroyed.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>visible</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> true when the panel has been shown</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidDestroy">
   <h3 class="name">
     <a href="#instance-onDidDestroy" class="js-api-name method-signature" name="instance-onDidDestroy">
-      <span class="operator operator-instance">::</span>onDidDestroy<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::onDidDestroy<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L67"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L67">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Invoke the given callback when the pane is destroyed.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Invoke the given callback when the pane is destroyed.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">panel</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to be called when the pane is destroyed.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>panel</code></td>
-    <td>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="Panel.html">Panel<span class="operator"></span></a> this panel</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to be called when the pane is destroyed.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>panel</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="index.html">Panel</a> this panel</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> on which <code>.dispose()</code> can be called to unsubscribe.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> on which <code>.dispose()</code> can be called to unsubscribe.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Panel Details</h2>
 
 
-
-  <a name="section-Panel Details"></a>
-  <h2 class="detail-section">Panel Details</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-getItem">
   <h3 class="name">
     <a href="#instance-getItem" class="js-api-name method-signature" name="instance-getItem">
-      <span class="operator operator-instance">::</span>getItem<span class="argument-list">()</span>
+      ::getItem<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L76"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L76">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
     
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
 
   </div>
+</div>
 
-
-
+    
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns the panel&apos;s item.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns the panel&#x2019;s item.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-getPriority">
   <h3 class="name">
     <a href="#instance-getPriority" class="js-api-name method-signature" name="instance-getPriority">
-      <span class="operator operator-instance">::</span>getPriority<span class="argument-list">()</span>
+      ::getPriority<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L81"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L81">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
     
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
 
   </div>
+</div>
 
-
-
+    
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Number" class="external-link reference-link">Number</a> indicating this panel&apos;s priority.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> indicating this panel&#x2019;s priority.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-isVisible">
   <h3 class="name">
     <a href="#instance-isVisible" class="js-api-name method-signature" name="instance-isVisible">
-      <span class="operator operator-instance">::</span>isVisible<span class="argument-list">()</span>
+      ::isVisible<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L90"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L90">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
     
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
 
   </div>
+</div>
 
-
-
+    
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a> true when the panel is visible.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a> true when the panel is visible.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-hide">
   <h3 class="name">
     <a href="#instance-hide" class="js-api-name method-signature" name="instance-hide">
-      <span class="operator operator-instance">::</span>hide<span class="argument-list">()</span>
+      ::hide<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L95"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L95">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Hide this panel</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Hide this panel</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-show">
   <h3 class="name">
     <a href="#instance-show" class="js-api-name method-signature" name="instance-show">
-      <span class="operator operator-instance">::</span>show<span class="argument-list">()</span>
+      ::show<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/panel.js#L103"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/panel.js#L103">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Show this panel</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Show this panel</p>
 
 </div>
 
-</div>
+    <div class="body markdown-body">
+  <div class="description">
+    
 
-
-
-
-      </div>
-    </div>
   </div>
 </div>
-
-    </div>
 
     
+    
   </div>
+</div>
 
-  
 
-</body>
+          </div>
+        </div>
 
-<!-- Mirrored from atom.io/docs/api/v1.39.1/Panel by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+      </div>
+
+      
+    </div>
+    
+
+  </body>
+
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Panel/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 </html>

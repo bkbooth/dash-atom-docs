@@ -1,912 +1,1308 @@
 
-      <head>
-        <meta charset="utf-8">
-        <title>Config</title>
-        <link rel="stylesheet" href="assets/styles-atom.css">
-        <link rel="stylesheet" href="assets/styles-dash.css">
-      </head>
-    <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-
-<!-- Mirrored from atom.io/docs/api/v1.39.1/Config by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+        <head>
+          <meta charset="utf-8">
+          <title>Config</title>
+          <link rel="stylesheet" href="assets/styles-atom.css">
+          <link rel="stylesheet" href="assets/styles-dash.css">
+        </head>
+      <!DOCTYPE HTML>
+<html lang="en">
+  
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Config/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:35 GMT -->
 <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
-<body class="">
-
-  
-
-  <div class="footer-push">
-    
-
-
-    <div id="js-pjax-container">
-      <div class="documents content-push">
-  <div class="wrapper no-pad">
-
-    
-
-    <div class="columns">
+  <body class="layout-api-class">
+    <div class="footer-push">
       
-      <div class="column main-column">
+
+      <div class="wrapper documents content-push wide">
+        
+
+
+
+
+
+
+
+
+        
+
+        <div class="content-column">
           
-<h2 class="page-title">
+          
+
+          <div class="document-content">
+            
+            <h2 class="page-title">
   Config
   <span class="label label-essential" title="This class is in the essential API">
-    essential
-  </span>
-  <a class="document-source" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L383" title="View class source">
-    <span class="octicon octicon-file-code"></span>
-  </a>
+  Essential
+</span>
+
+  <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L383" title="View class source">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
 </h2>
+<div class="markdown-body">
+  <p>Used to access all of Atom&#x2019;s configuration details.</p>
 
-<div class="document-description markdown-body">
-  <p>Used to access all of Atom&apos;s configuration details.</p>
 <p>An instance of this class is always available as the <code>atom.config</code> global.</p>
-<h2>
-<a id="getting-and-setting-config-settings" class="anchor" href="#getting-and-setting-config-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting and setting config settings.</h2>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Note&#xA0;that&#xA0;with&#xA0;no&#xA0;value&#xA0;set,&#xA0;::get&#xA0;returns&#xA0;the&#xA0;setting&apos;s&#xA0;default&#xA0;value.</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.myKey</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;&apos;defaultValue&apos;</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.myKey</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>value</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.myKey</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;&apos;value&apos;</span><span>&#xA0;</span></span></span></div></pre>
 
-<p>You may want to watch for changes. Use <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-observe"><span class="operator">::</span>observe</a> to catch changes to the setting.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.myKey</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>value</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>observe&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.myKey</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(newValue)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;`observe`&#xA0;calls&#xA0;immediately&#xA0;and&#xA0;every&#xA0;time&#xA0;the&#xA0;value&#xA0;is&#xA0;changed</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="entity name type object coffee"><span>console</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span class="support function console coffee"><span>log</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>My&#xA0;configuration&#xA0;changed:</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span>newValue</span></span></div></pre>
+<h2 id="getting-and-setting-config-settings">Getting and setting config settings.</h2>
 
-<p>If you want a notification only when the value changes, use <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-onDidChange"><span class="operator">::</span>onDidChange</a>.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>onDidChange&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.myKey</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>({newValue,&#xA0;oldValue})</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="entity name type object coffee"><span>console</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span class="support function console coffee"><span>log</span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>My&#xA0;configuration&#xA0;changed:</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span>newValue</span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span>oldValue</span></span></div></pre>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Note that with no value set, ::get returns the setting&apos;s default value.</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.myKey&apos;</span><span class="p">)</span> <span class="c1"># -&gt; &apos;defaultValue&apos;</span>
 
-<h3>
-<a id="value-coercion" class="anchor" href="#value-coercion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Value Coercion</h3>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.myKey&apos;</span><span class="p">,</span> <span class="s">&apos;value&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.myKey&apos;</span><span class="p">)</span> <span class="c1"># -&gt; &apos;value&apos;</span>
+</code></pre></div></div>
+
+<p>You may want to watch for changes. Use <a href="#instance-observe">::observe</a> to catch changes to the setting.</p>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.myKey&apos;</span><span class="p">,</span> <span class="s">&apos;value&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">observe</span> <span class="s">&apos;my-package.myKey&apos;</span><span class="p">,</span> <span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="c1"># `observe` calls immediately and every time the value is changed</span>
+  <span class="nx">console</span><span class="p">.</span><span class="na">log</span> <span class="s">&apos;My configuration changed:&apos;</span><span class="p">,</span> <span class="nx">newValue</span>
+</code></pre></div></div>
+
+<p>If you want a notification only when the value changes, use <a href="#instance-onDidChange">::onDidChange</a>.</p>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">onDidChange</span> <span class="s">&apos;my-package.myKey&apos;</span><span class="p">,</span> <span class="p">({</span><span class="nx">newValue</span><span class="p">,</span> <span class="nx">oldValue</span><span class="p">})</span> <span class="o">-&gt;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="na">log</span> <span class="s">&apos;My configuration changed:&apos;</span><span class="p">,</span> <span class="nx">newValue</span><span class="p">,</span> <span class="nx">oldValue</span>
+</code></pre></div></div>
+
+<h3 id="value-coercion">Value Coercion</h3>
+
 <p>Config settings each have a type specified by way of a
-<a href="https://atom.io/docs/v1.39.1/json-schema">schema</a>. For example we might want an integer setting that only
+<a href="json-schema.html">schema</a>. For example we might want an integer setting that only
 allows integers greater than <code>0</code>:</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;When&#xA0;no&#xA0;value&#xA0;has&#xA0;been&#xA0;set,&#xA0;`::get`&#xA0;returns&#xA0;the&#xA0;setting&apos;s&#xA0;default&#xA0;value</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;12</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;The&#xA0;string&#xA0;will&#xA0;be&#xA0;coerced&#xA0;to&#xA0;the&#xA0;integer&#xA0;123</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>123</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;123</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;The&#xA0;string&#xA0;will&#xA0;be&#xA0;coerced&#xA0;to&#xA0;an&#xA0;integer,&#xA0;but&#xA0;it&#xA0;must&#xA0;be&#xA0;greater&#xA0;than&#xA0;0,&#xA0;so&#xA0;is&#xA0;set&#xA0;to&#xA0;1</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>-20</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.anInt</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;1</span><span>&#xA0;</span></span></span></div></pre>
 
-<h2>
-<a id="defining-settings-for-your-package" class="anchor" href="#defining-settings-for-your-package" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Defining settings for your package</h2>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># When no value has been set, `::get` returns the setting&apos;s default value</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.anInt&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 12</span>
+
+<span class="c1"># The string will be coerced to the integer 123</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.anInt&apos;</span><span class="p">,</span> <span class="s">&apos;123&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.anInt&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 123</span>
+
+<span class="c1"># The string will be coerced to an integer, but it must be greater than 0, so is set to 1</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.anInt&apos;</span><span class="p">,</span> <span class="s">&apos;-20&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.anInt&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 1</span>
+</code></pre></div></div>
+
+<h2 id="defining-settings-for-your-package">Defining settings for your package</h2>
+
 <p>Define a schema under a <code>config</code> key in your package main.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>module.exports&#xA0;</span><span class="keyword operator coffee"><span>=</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Your&#xA0;config&#xA0;schema</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someInt</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>23</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>minimum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>1</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="meta function coffee"><span class="entity name function coffee"><span>activate</span></span></span><span class="keyword operator coffee"><span>:</span></span><span>&#xA0;</span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(state)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;...</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;...</span><span>&#xA0;</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="na">exports</span> <span class="o">=</span>
+  <span class="c1"># Your config schema</span>
+  <span class="na">config</span><span class="o">:</span>
+    <span class="na">someInt</span><span class="o">:</span>
+      <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+      <span class="na">default</span><span class="o">:</span> <span class="mi">23</span>
+      <span class="na">minimum</span><span class="o">:</span> <span class="mi">1</span>
+
+  <span class="na">activate</span><span class="o">:</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="c1"># ...</span>
+  <span class="c1"># ...</span>
+</code></pre></div></div>
 
 <p>See <a href="http://flight-manual.atom.io/hacking-atom/sections/package-word-count/">package docs</a> for
 more info.</p>
-<h2>
-<a id="config-schemas" class="anchor" href="#config-schemas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Config Schemas</h2>
-<p>We use <a href="http://json-schema.org/">json schema</a> which allows you to define your value&apos;s
+
+<h2 id="config-schemas">Config Schemas</h2>
+
+<p>We use <a href="http://json-schema.org/">json schema</a> which allows you to define your value&#x2019;s
 default, the type it should be, etc. A simple example:</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;We&#xA0;want&#xA0;to&#xA0;provide&#xA0;an&#xA0;`enableThing`,&#xA0;and&#xA0;a&#xA0;`thingVolume`</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>enableThing</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>boolean</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant language boolean false coffee"><span>false</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>thingVolume</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>5</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>minimum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>1</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>maximum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>11</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># We want to provide an `enableThing`, and a `thingVolume`</span>
+<span class="na">config</span><span class="o">:</span>
+  <span class="na">enableThing</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;boolean&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="no">false</span>
+  <span class="na">thingVolume</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="mi">5</span>
+    <span class="na">minimum</span><span class="o">:</span> <span class="mi">1</span>
+    <span class="na">maximum</span><span class="o">:</span> <span class="mi">11</span>
+</code></pre></div></div>
 
 <p>The type keyword allows for type coercion and validation. If a <code>thingVolume</code> is
 set to a string <code>&apos;10&apos;</code>, it will be coerced into an integer.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.thingVolume</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>10</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.thingVolume</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;10</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;It&#xA0;respects&#xA0;the&#xA0;min&#xA0;/&#xA0;max</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.thingVolume</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>400</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.thingVolume</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;11</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;If&#xA0;it&#xA0;cannot&#xA0;be&#xA0;coerced,&#xA0;the&#xA0;value&#xA0;will&#xA0;not&#xA0;be&#xA0;set</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.thingVolume</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>cats</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.thingVolume</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;11</span><span>&#xA0;</span></span></span></div></pre>
 
-<h3>
-<a id="supported-types" class="anchor" href="#supported-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported Types</h3>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.thingVolume&apos;</span><span class="p">,</span> <span class="s">&apos;10&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.thingVolume&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 10</span>
+
+<span class="c1"># It respects the min / max</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.thingVolume&apos;</span><span class="p">,</span> <span class="s">&apos;400&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.thingVolume&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 11</span>
+
+<span class="c1"># If it cannot be coerced, the value will not be set</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.thingVolume&apos;</span><span class="p">,</span> <span class="s">&apos;cats&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.thingVolume&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 11</span>
+</code></pre></div></div>
+
+<h3 id="supported-types">Supported Types</h3>
+
 <p>The <code>type</code> keyword can be a string with any one of the following. You can also
 chain them by specifying multiple in an an array. For example</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>boolean</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace square coffee"><span>]</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>5</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Then</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>true</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;true</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>12</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;12</span><span>&#xA0;</span></span></span></div></pre>
 
-<h4>
-<a id="string" class="anchor" href="#string" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>string</h4>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="p">[</span><span class="s">&apos;boolean&apos;</span><span class="p">,</span> <span class="s">&apos;integer&apos;</span><span class="p">]</span>
+    <span class="na">default</span><span class="o">:</span> <span class="mi">5</span>
+
+<span class="c1"># Then</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">,</span> <span class="s">&apos;true&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">)</span> <span class="c1"># -&gt; true</span>
+
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">,</span> <span class="s">&apos;12&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 12</span>
+</code></pre></div></div>
+
+<h4 id="string">string</h4>
+
 <p>Values must be a string.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>string</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>hello</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div></pre>
 
-<h4>
-<a id="integer" class="anchor" href="#integer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>integer</h4>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;string&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="s">&apos;hello&apos;</span>
+</code></pre></div></div>
+
+<h4 id="integer">integer</h4>
+
 <p>Values will be coerced into integer. Supports the (optional) <code>minimum</code> and
 <code>maximum</code> keys.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>5</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>minimum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>1</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>maximum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>11</span></span></span></div></pre>
 
-<h4>
-<a id="number" class="anchor" href="#number" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>number</h4>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="na">config</span><span class="o">:</span>
+    <span class="na">someSetting</span><span class="o">:</span>
+      <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+      <span class="na">default</span><span class="o">:</span> <span class="mi">5</span>
+      <span class="na">minimum</span><span class="o">:</span> <span class="mi">1</span>
+      <span class="na">maximum</span><span class="o">:</span> <span class="mi">11</span>
+</code></pre></div></div>
+
+<h4 id="number">number</h4>
+
 <p>Values will be coerced into a number, including real numbers. Supports the
 (optional) <code>minimum</code> and <code>maximum</code> keys.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>number</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>5.3</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>minimum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>1.5</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>maximum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>11.5</span></span></span></div></pre>
 
-<h4>
-<a id="boolean" class="anchor" href="#boolean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>boolean</h4>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;number&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="mf">5.3</span>
+    <span class="na">minimum</span><span class="o">:</span> <span class="mf">1.5</span>
+    <span class="na">maximum</span><span class="o">:</span> <span class="mf">11.5</span>
+</code></pre></div></div>
+
+<h4 id="boolean">boolean</h4>
+
 <p>Values will be coerced into a Boolean. <code>&apos;true&apos;</code> and <code>&apos;false&apos;</code> will be coerced into
 a boolean. Numbers, arrays, objects, and anything else will not be coerced.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>boolean</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant language boolean false coffee"><span>false</span></span></span></div></pre>
 
-<h4>
-<a id="array" class="anchor" href="#array" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>array</h4>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;boolean&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<h4 id="array">array</h4>
+
 <p>Value must be an Array. The types of the values can be specified by a
 subschema in the <code>items</code> key.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>array</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="constant numeric coffee"><span>1</span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="constant numeric coffee"><span>2</span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="constant numeric coffee"><span>3</span></span><span class="meta brace square coffee"><span>]</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>items</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>minimum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>1.5</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>maximum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>11.5</span></span></span></div></pre>
 
-<h4>
-<a id="color" class="anchor" href="#color" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>color</h4>
-<p>Values will be coerced into a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Color.html">Color<span class="operator"></span></a> with <code>red</code>, <code>green</code>, <code>blue</code>, and <code>alpha</code>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;array&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="na">items</span><span class="o">:</span>
+      <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+      <span class="na">minimum</span><span class="o">:</span> <span class="mf">1.5</span>
+      <span class="na">maximum</span><span class="o">:</span> <span class="mf">11.5</span>
+</code></pre></div></div>
+
+<h4 id="color">color</h4>
+
+<p>Values will be coerced into a <a href="../Color/index.html">Color</a> with <code>red</code>, <code>green</code>, <code>blue</code>, and <code>alpha</code>
 properties that all have numeric values. <code>red</code>, <code>green</code>, <code>blue</code> will be in
 the range 0 to 255 and <code>value</code> will be in the range 0 to 1. Values can be any
 valid CSS color format such as <code>#abc</code>, <code>#abcdef</code>, <code>white</code>,
 <code>rgb(50, 100, 150)</code>, and <code>rgba(25, 75, 125, .75)</code>.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>color</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>white</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div></pre>
 
-<h4>
-<a id="object--grouping-other-types" class="anchor" href="#object--grouping-other-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>object / Grouping other types</h4>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;color&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="s">&apos;white&apos;</span>
+</code></pre></div></div>
+
+<h4 id="object--grouping-other-types">object / Grouping other types</h4>
+
 <p>A config setting with the type <code>object</code> allows grouping a set of config
 settings. The group will be visually separated and has its own group headline.
 The sub options must be listed under a <code>properties</code> key.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>object</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>properties</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>myChildIntOption</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>minimum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>1.5</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>maximum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>11.5</span></span></span></div></pre>
 
-<h3>
-<a id="other-supported-keys" class="anchor" href="#other-supported-keys" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other Supported Keys</h3>
-<h4>
-<a id="enum" class="anchor" href="#enum" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>enum</h4>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;object&apos;</span>
+    <span class="na">properties</span><span class="o">:</span>
+      <span class="na">myChildIntOption</span><span class="o">:</span>
+        <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+        <span class="na">minimum</span><span class="o">:</span> <span class="mf">1.5</span>
+        <span class="na">maximum</span><span class="o">:</span> <span class="mf">11.5</span>
+</code></pre></div></div>
+
+<h3 id="other-supported-keys">Other Supported Keys</h3>
+
+<h4 id="enum">enum</h4>
+
 <p>All types support an <code>enum</code> key, which lets you specify all the values the
 setting can take. <code>enum</code> may be an array of allowed values (of the specified
 type), or an array of objects with <code>value</code> and <code>description</code> properties, where
 the <code>value</code> is an allowed value, and the <code>description</code> is a descriptive string
 used in the settings view.</p>
-<p>In this example, the setting must be one of the 4 integers:</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>4</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>enum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="constant numeric coffee"><span>2</span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="constant numeric coffee"><span>4</span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="constant numeric coffee"><span>6</span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="constant numeric coffee"><span>8</span></span><span class="meta brace square coffee"><span>]</span></span></span></div></pre>
 
-<p>In this example, the setting must be either &apos;foo&apos; or &apos;bar&apos;, which are
+<p>In this example, the setting must be one of the 4 integers:</p>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="mi">4</span>
+    <span class="na">enum</span><span class="o">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>In this example, the setting must be either &#x2018;foo&#x2019; or &#x2018;bar&#x2019;, which are
 presented using the provided descriptions in the settings pane:</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>string</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>foo</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>enum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta brace curly coffee"><span>{</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>value</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>foo</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>description</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>Foo&#xA0;mode.&#xA0;You&#xA0;want&#xA0;this.</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace curly coffee"><span>}</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta brace curly coffee"><span>{</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>value</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>bar</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>description</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>Bar&#xA0;mode.&#xA0;Nobody&#xA0;wants&#xA0;that!</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace curly coffee"><span>}</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta brace square coffee"><span>]</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;string&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="s">&apos;foo&apos;</span>
+    <span class="na">enum</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span><span class="na">value</span><span class="o">:</span> <span class="s">&apos;foo&apos;</span><span class="p">,</span> <span class="na">description</span><span class="o">:</span> <span class="s">&apos;Foo mode. You want this.&apos;</span><span class="p">}</span>
+      <span class="p">{</span><span class="na">value</span><span class="o">:</span> <span class="s">&apos;bar&apos;</span><span class="p">,</span> <span class="na">description</span><span class="o">:</span> <span class="s">&apos;Bar mode. Nobody wants that!&apos;</span><span class="p">}</span>
+    <span class="p">]</span>
+</code></pre></div></div>
 
 <p>If you only have a few elements, you can display your enum as a list of
 radio buttons in the settings view rather than a select list. To do so,
 specify <code>radio: true</code> as a sibling property to the <code>enum</code> array.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>string</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>foo</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>enum</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta brace curly coffee"><span>{</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>value</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>foo</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>description</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>Foo&#xA0;mode.&#xA0;You&#xA0;want&#xA0;this.</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace curly coffee"><span>}</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta brace curly coffee"><span>{</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>value</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>bar</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>description</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>Bar&#xA0;mode.&#xA0;Nobody&#xA0;wants&#xA0;that!</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace curly coffee"><span>}</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="meta brace square coffee"><span>]</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>radio</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant language boolean true coffee"><span>true</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;string&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="s">&apos;foo&apos;</span>
+    <span class="na">enum</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span><span class="na">value</span><span class="o">:</span> <span class="s">&apos;foo&apos;</span><span class="p">,</span> <span class="na">description</span><span class="o">:</span> <span class="s">&apos;Foo mode. You want this.&apos;</span><span class="p">}</span>
+      <span class="p">{</span><span class="na">value</span><span class="o">:</span> <span class="s">&apos;bar&apos;</span><span class="p">,</span> <span class="na">description</span><span class="o">:</span> <span class="s">&apos;Bar mode. Nobody wants that!&apos;</span><span class="p">}</span>
+    <span class="p">]</span>
+    <span class="na">radio</span><span class="o">:</span> <span class="no">true</span>
+</code></pre></div></div>
 
 <p>Usage:</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>2</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;2</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;will&#xA0;not&#xA0;set&#xA0;values&#xA0;outside&#xA0;of&#xA0;the&#xA0;enum&#xA0;values</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>3</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;2</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;If&#xA0;it&#xA0;cannot&#xA0;be&#xA0;coerced,&#xA0;the&#xA0;value&#xA0;will&#xA0;not&#xA0;be&#xA0;set</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>4</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>my-package.someSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;-&gt;&#xA0;4</span><span>&#xA0;</span></span></span></div></pre>
 
-<h4>
-<a id="title-and-description" class="anchor" href="#title-and-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>title and description</h4>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">,</span> <span class="s">&apos;2&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 2</span>
+
+<span class="c1"># will not set values outside of the enum values</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">,</span> <span class="s">&apos;3&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 2</span>
+
+<span class="c1"># If it cannot be coerced, the value will not be set</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">,</span> <span class="s">&apos;4&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;my-package.someSetting&apos;</span><span class="p">)</span> <span class="c1"># -&gt; 4</span>
+</code></pre></div></div>
+
+<h4 id="title-and-description">title and description</h4>
+
 <p>The settings view will use the <code>title</code> and <code>description</code> keys to display your
 config setting in a readable way. By default the settings view humanizes your
 config key, so <code>someSetting</code> becomes <code>Some Setting</code>. In some cases, this is
 confusing for users, and a more descriptive title is useful.</p>
+
 <p>Descriptions will be displayed below the title in the settings view.</p>
+
 <p>For a group of config settings the humanized key or the title and the
 description are used for the group headline.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>title</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>Setting&#xA0;Magnitude</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>description</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>This&#xA0;will&#xA0;affect&#xA0;the&#xA0;blah&#xA0;and&#xA0;the&#xA0;other&#xA0;blah</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>4</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">someSetting</span><span class="o">:</span>
+    <span class="na">title</span><span class="o">:</span> <span class="s">&apos;Setting Magnitude&apos;</span>
+    <span class="na">description</span><span class="o">:</span> <span class="s">&apos;This will affect the blah and the other blah&apos;</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="mi">4</span>
+</code></pre></div></div>
 
 <p><strong>Note</strong>: You should strive to be so clear in your naming of the setting that
 you do not need to specify a title or description!</p>
+
 <p>Descriptions allow a subset of
 <a href="https://help.github.com/articles/github-flavored-markdown/">Markdown formatting</a>.
 Specifically, you may use the following in configuration setting descriptions:</p>
+
 <ul>
-<li>
-<strong>bold</strong> - <code>**bold**</code>
-</li>
-<li>
-<em>italics</em> - <code>*italics*</code>
-</li>
-<li>
-<a href="https://atom.io/">links</a> - <code>[links](https://atom.io)</code>
-</li>
-<li>
-<code>code spans</code> - <code>`code spans`</code>
-</li>
-<li>line breaks - <code>line breaks&lt;br/&gt;</code>
-</li>
-<li>
-<del>strikethrough</del> - <code>~~strikethrough~~</code>
-</li>
+  <li><strong>bold</strong> - <code>**bold**</code></li>
+  <li><em>italics</em> - <code>*italics*</code></li>
+  <li><a href="https://atom.io/">links</a> - <code>[links](https://atom.io)</code></li>
+  <li><code>code spans</code> - <code>`code spans`</code></li>
+  <li>line breaks - <code>line breaks&lt;br/&gt;</code></li>
+  <li><del>strikethrough</del> - <code>~~strikethrough~~</code></li>
 </ul>
-<h4>
-<a id="order" class="anchor" href="#order" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>order</h4>
+
+<h4 id="order">order</h4>
+
 <p>The settings view orders your settings alphabetically. You can override this
 ordering with the order key.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>zSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>4</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>order</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>1</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>aSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>integer</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>4</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>order</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>2</span></span></span></div></pre>
 
-<h2>
-<a id="manipulating-values-outside-your-configuration-schema" class="anchor" href="#manipulating-values-outside-your-configuration-schema" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manipulating values outside your configuration schema</h2>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+  <span class="na">zSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="mi">4</span>
+    <span class="na">order</span><span class="o">:</span> <span class="mi">1</span>
+  <span class="na">aSetting</span><span class="o">:</span>
+    <span class="na">type</span><span class="o">:</span> <span class="s">&apos;integer&apos;</span>
+    <span class="na">default</span><span class="o">:</span> <span class="mi">4</span>
+    <span class="na">order</span><span class="o">:</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<h2 id="manipulating-values-outside-your-configuration-schema">Manipulating values outside your configuration schema</h2>
+
 <p>It is possible to manipulate(<code>get</code>, <code>set</code>, <code>observe</code> etc) values that do not
 appear in your configuration schema. For example, if the config schema of the
-package &apos;some-package&apos; is</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>config</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>someSetting</span><span class="punctuation separator key-value"><span>:</span></span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>type</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>boolean</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>default</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="constant language boolean false coffee"><span>false</span></span></span></div></pre>
+package &#x2018;some-package&#x2019; is</p>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">config</span><span class="o">:</span>
+<span class="na">someSetting</span><span class="o">:</span>
+  <span class="na">type</span><span class="o">:</span> <span class="s">&apos;boolean&apos;</span>
+  <span class="na">default</span><span class="o">:</span> <span class="no">false</span>
+</code></pre></div></div>
 
 <p>You can still do the following</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="keyword reserved coffee"><span>let</span></span><span>&#xA0;</span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>otherSetting&#xA0;&#xA0;</span><span class="keyword operator coffee"><span>=</span></span></span></span><span>&#xA0;atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>some-package.otherSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>some-package.stillAnotherSetting</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span>otherSetting&#xA0;</span><span class="keyword operator coffee"><span>*</span></span><span>&#xA0;</span><span class="constant numeric coffee"><span>5</span></span><span class="meta brace round coffee"><span>)</span></span></span></div></pre>
 
-<p>In other words, if a function asks for a <code>key-path</code>, that path doesn&apos;t have to
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">let</span> <span class="nx">otherSetting</span>  <span class="o">=</span> <span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;some-package.otherSetting&apos;</span><span class="p">)</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;some-package.stillAnotherSetting&apos;</span><span class="p">,</span> <span class="nx">otherSetting</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In other words, if a function asks for a <code>key-path</code>, that path doesn&#x2019;t have to
 be described in the config schema for the package or any package. However, as
 highlighted in the best practices section, you are advised against doing the
 above.</p>
-<h2>
-<a id="best-practices" class="anchor" href="#best-practices" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Best practices</h2>
+
+<h2 id="best-practices">Best practices</h2>
+
 <ul>
-<li>Don&apos;t depend on (or write to) configuration keys outside of your keypath.</li>
+  <li>Don&#x2019;t depend on (or write to) configuration keys outside of your keypath.</li>
 </ul>
+
 </div>
+<h2 class="detail-section">Config Subscription</h2>
 
 
-
-
-
-
-  <a name="section-Config Subscription"></a>
-  <h2 class="detail-section">Config Subscription</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-observe">
   <h3 class="name">
     <a href="#instance-observe" class="js-api-name method-signature" name="instance-observe">
-      <span class="operator operator-instance">::</span>observe<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">[options]</span>, <span class="argument">callback</span>)</span>
+      ::observe<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">options</span>, <span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L497"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L497">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Add a listener for changes to a given key path. This is different
-than <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-onDidChange"><span class="operator">::</span>onDidChange</a> in that it will immediately call your callback with the
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Add a listener for changes to a given key path. This is different
+than <a href="#instance-onDidChange">::onDidChange</a> in that it will immediately call your callback with the
 current value of the config entry.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      <h3>
-<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
-<p>You might want to be notified when the themes change. We&apos;ll watch
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+<h3 id="examples">Examples</h3>
+
+<p>You might want to be notified when the themes change. We&#x2019;ll watch
 <code>core.themes</code> for changes</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>observe&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>core.themes</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="meta inline function coffee"><span class="variable parameter function coffee"><span>(value)</span></span><span>&#xA0;</span><span class="storage type function coffee"><span>-&gt;</span></span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;do&#xA0;stuff&#xA0;with&#xA0;value</span><span>&#xA0;</span></span></span></div></pre>
 
-    </div>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">observe</span> <span class="s">&apos;core.themes&apos;</span><span class="p">,</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="c1"># do stuff with value</span>
+</code></pre></div></div>
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>keyPath</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of the key to observe</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.scope</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="ScopeDescriptor.html">ScopeDescriptor<span class="operator"></span></a> describing a path from the root of the syntax tree to a token. Get one by calling {editor.getLastCursor().getScopeDescriptor()}. See <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-get"><span class="operator">::</span>get</a> for examples. See <a href="http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">the scopes docs</a> for more information.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>keyPath</code></p>
 
-  <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">value</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to call when the value of the key changes.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>value</code></td>
-    <td>
-      <p>the new value of the key</p>
-    </td>
-  </tr>
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> name of the key to observe</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>scope</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="../ScopeDescriptor/index.html">ScopeDescriptor</a> describing a path from the root of the syntax tree to a token. Get one by calling {editor.getLastCursor().getScopeDescriptor()}. See <a href="#instance-get">::get</a> for examples. See <a href="http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">the scopes docs</a> for more information.</p>
+
+  </td>
+</tr>
 
 
-    </table>
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
 
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to call when the value of the key changes.</p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>value</code></p>
+
+  </td>
+  <td>
+    
+    <p>the new value of the key</p>
+
+  </td>
+</tr>
+
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> with the following keys on which you can call
-<code>.dispose()</code> to unsubscribe.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> with the following keys on which you can call
+<code>.dispose()</code> to unsubscribe.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-onDidChange">
   <h3 class="name">
     <a href="#instance-onDidChange" class="js-api-name method-signature" name="instance-onDidChange">
-      <span class="operator operator-instance">::</span>onDidChange<span class="argument-list">(<span class="argument">[keyPath]</span>, <span class="argument">[options]</span>, <span class="argument">callback</span>)</span>
+      ::onDidChange<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">options</span>, <span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L543"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L543">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Add a listener for changes to a given key path. If <code>keyPath</code> is
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Add a listener for changes to a given key path. If <code>keyPath</code> is
 not specified, your callback will be called on changes to any key.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>keyPath</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of the key to observe. Must be specified if <code>scopeDescriptor</code> is specified.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.scope</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="ScopeDescriptor.html">ScopeDescriptor<span class="operator"></span></a> describing a path from the root of the syntax tree to a token. Get one by calling {editor.getLastCursor().getScopeDescriptor()}. See <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-get"><span class="operator">::</span>get</a> for examples. See <a href="http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">the scopes docs</a> for more information.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>keyPath</code></p>
 
-  <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">(<span class="argument">event</span>)</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to call when the value of the key changes.</p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>event</code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-2">
-    <td><code>.newValue</code></td>
-    <td>
-      <p>the new value of the key</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-2">
-    <td><code>.oldValue</code></td>
-    <td>
-      <p>the prior value of the key.</p>
-    </td>
-  </tr>
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> name of the key to observe. Must be specified if <code>scopeDescriptor</code> is specified.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>scope</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="../ScopeDescriptor/index.html">ScopeDescriptor</a> describing a path from the root of the syntax tree to a token. Get one by calling {editor.getLastCursor().getScopeDescriptor()}. See <a href="#instance-get">::get</a> for examples. See <a href="http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">the scopes docs</a> for more information.</p>
+
+  </td>
+</tr>
 
 
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to call when the value of the key changes.</p>
 
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>event</code></p>
+
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>newValue</code></p>
+
+  </td>
+  <td>
+    
+    <p>the new value of the key</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-2">
+  <td>
+    <p><code>oldValue</code></p>
+
+  </td>
+  <td>
+    
+    <p>the prior value of the key.</p>
+
+  </td>
+</tr>
+
+
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a class="reference-link" data-skip-pjax="yeahokiguess" href="Disposable.html">Disposable<span class="operator"></span></a> with the following keys on which you can call
-<code>.dispose()</code> to unsubscribe.</p></td>
-      </tr>
-    </table>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="../Disposable/index.html">Disposable</a> with the following keys on which you can call
+<code>.dispose()</code> to unsubscribe.</p>
+
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
 </div>
 
-</div>
+
+<h2 class="detail-section">Managing Settings</h2>
 
 
-
-  <a name="section-Managing Settings"></a>
-  <h2 class="detail-section">Managing Settings</h2>
-
-    
-
-
-    
-
-    
 <div class="api-entry js-api-entry essential" id="instance-get">
   <h3 class="name">
     <a href="#instance-get" class="js-api-name method-signature" name="instance-get">
-      <span class="operator operator-instance">::</span>get<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">[options]</span>)</span>
+      ::get<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">options</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L621"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L621">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Retrieves the setting for the given key.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Retrieves the setting for the given key.</p>
-  </div>
+</div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      <h3>
-<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
+    <div class="body markdown-body">
+  <div class="description">
+    
+<h3 id="examples">Examples</h3>
+
 <p>You might want to know what themes are enabled, so check <code>core.themes</code></p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>core.themes</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;core.themes&apos;</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>With scope descriptors you can get settings within a specific editor
 scope. For example, you might want to know <code>editor.tabLength</code> for ruby
 files.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scope</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>source.ruby</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace square coffee"><span>]</span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;2</span><span>&#xA0;</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="na">scope</span><span class="o">:</span> <span class="p">[</span><span class="s">&apos;source.ruby&apos;</span><span class="p">])</span> <span class="c1"># =&gt; 2</span>
+</code></pre></div></div>
 
 <p>This setting in ruby files might be different than the global tabLength setting</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;4</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scope</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>source.ruby</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace square coffee"><span>]</span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;2</span><span>&#xA0;</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">)</span> <span class="c1"># =&gt; 4</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="na">scope</span><span class="o">:</span> <span class="p">[</span><span class="s">&apos;source.ruby&apos;</span><span class="p">])</span> <span class="c1"># =&gt; 2</span>
+</code></pre></div></div>
 
 <p>You can get the language scope descriptor via
-<a class="reference-link" data-skip-pjax="yeahokiguess" href="TextEditor.html#instance-getRootScopeDescriptor">TextEditor<span class="operator">::</span>getRootScopeDescriptor</a>. This will get the setting specifically
-for the editor&apos;s language.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scope</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="variable other readwrite instance coffee"><span>@editor</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span>getRootScopeDescriptor</span><span class="meta brace round coffee"><span>(</span><span>)</span><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;2</span><span>&#xA0;</span></span></span></div></pre>
+<a href="../TextEditor/index.html#instance-getRootScopeDescriptor">TextEditor::getRootScopeDescriptor</a>. This will get the setting specifically
+for the editor&#x2019;s language.</p>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="na">scope</span><span class="o">:</span> <span class="vi">@</span><span class="na">editor</span><span class="p">.</span><span class="na">getRootScopeDescriptor</span><span class="p">())</span> <span class="c1"># =&gt; 2</span>
+</code></pre></div></div>
 
 <p>Additionally, you can get the setting at the specific cursor position.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scopeDescriptor&#xA0;</span><span class="keyword operator coffee"><span>=</span></span></span></span><span>&#xA0;</span><span class="variable other readwrite instance coffee"><span>@editor</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span>getLastCursor</span><span class="meta brace round coffee"><span>(</span><span>)</span></span><span class="meta delimiter method period coffee"><span>.</span></span><span>getScopeDescriptor</span><span class="meta brace round coffee"><span>(</span><span>)</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scope</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;scopeDescriptor</span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;2</span><span>&#xA0;</span></span></span></div></pre>
 
-    </div>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">scopeDescriptor</span> <span class="o">=</span> <span class="vi">@</span><span class="na">editor</span><span class="p">.</span><span class="na">getLastCursor</span><span class="p">().</span><span class="na">getScopeDescriptor</span><span class="p">()</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="na">scope</span><span class="o">:</span> <span class="nx">scopeDescriptor</span><span class="p">)</span> <span class="c1"># =&gt; 2</span>
+</code></pre></div></div>
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>keyPath</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of the key to retrieve.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.sources</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> source names. If provided, only values that were associated with these sources during <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-set"><span class="operator">::</span>set</a> will be used.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.excludeSources</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> source names. If provided, values that  were associated with these sources during <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-set"><span class="operator">::</span>set</a> will not be used.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.scope</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a class="reference-link" data-skip-pjax="yeahokiguess" href="ScopeDescriptor.html">ScopeDescriptor<span class="operator"></span></a> describing a path from the root of the syntax tree to a token. Get one by calling {editor.getLastCursor().getScopeDescriptor()} See <a href="http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">the scopes docs</a> for more information.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>keyPath</code></p>
+
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> name of the key to retrieve.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>sources</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> source names. If provided, only values that were associated with these sources during <a href="#instance-set">::set</a> will be used.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>excludeSources</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> source names. If provided, values that  were associated with these sources during <a href="#instance-set">::set</a> will not be used.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>scope</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="../ScopeDescriptor/index.html">ScopeDescriptor</a> describing a path from the root of the syntax tree to a token. Get one by calling {editor.getLastCursor().getScopeDescriptor()} See <a href="http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">the scopes docs</a> for more information.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns the value from Atom&apos;s default settings, the user&apos;s configuration
-file in the type specified by the configuration schema.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns the value from Atom&#x2019;s default settings, the user&#x2019;s configuration
+file in the type specified by the configuration schema.</p>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-set">
   <h3 class="name">
     <a href="#instance-set" class="js-api-name method-signature" name="instance-set">
-      <span class="operator operator-instance">::</span>set<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">value</span>, <span class="argument">[options]</span>)</span>
+      ::set<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">value</span>, <span class="argument">options</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L731"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L731">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Sets the value for a configuration setting.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Sets the value for a configuration setting.</p>
-  </div>
+</div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      <p>This value is stored in Atom&apos;s internal configuration file.</p>
-<h3>
-<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
+    <div class="body markdown-body">
+  <div class="description">
+    
+<p>This value is stored in Atom&#x2019;s internal configuration file.</p>
+
+<h3 id="examples">Examples</h3>
+
 <p>You might want to change the themes programmatically:</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>core.themes</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="meta brace square coffee"><span>[</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>atom-light-ui</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>atom-light-syntax</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace square coffee"><span>]</span></span><span class="meta brace round coffee"><span>)</span></span></span></div></pre>
+
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;core.themes&apos;</span><span class="p">,</span> <span class="p">[</span><span class="s">&apos;atom-light-ui&apos;</span><span class="p">,</span> <span class="s">&apos;atom-light-syntax&apos;</span><span class="p">])</span>
+</code></pre></div></div>
 
 <p>You can also set scoped settings. For example, you might want change the
 <code>editor.tabLength</code> only for ruby files.</p>
-<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;4</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scope</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>source.ruby</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace square coffee"><span>]</span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;4</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scope</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>source.js</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace square coffee"><span>]</span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;4</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Set&#xA0;ruby&#xA0;to&#xA0;2</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>set</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="constant numeric coffee"><span>2</span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scopeSelector</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>.source.ruby</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;true</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>&#xA0;</span></span></div><div class="line"><span class="source coffee"><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;Notice&#xA0;it&apos;s&#xA0;only&#xA0;set&#xA0;to&#xA0;2&#xA0;in&#xA0;the&#xA0;case&#xA0;of&#xA0;ruby</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;4</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scope</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>source.ruby</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace square coffee"><span>]</span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;2</span><span>&#xA0;</span></span></span></div><div class="line"><span class="source coffee"><span>atom</span><span class="meta delimiter method period coffee"><span>.</span></span><span>config</span><span class="meta delimiter method period coffee"><span>.</span></span><span>get</span><span class="meta brace round coffee"><span>(</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>editor.tabLength</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta delimiter object comma coffee"><span>,&#xA0;</span></span><span class="variable assignment coffee"><span class="variable assignment coffee"><span>scope</span><span class="punctuation separator key-value"><span>:</span></span></span></span><span>&#xA0;</span><span class="meta brace square coffee"><span>[</span></span><span class="string quoted single coffee"><span class="punctuation definition string begin coffee"><span>&apos;</span></span><span>source.js</span><span class="punctuation definition string end coffee"><span>&apos;</span></span></span><span class="meta brace square coffee"><span>]</span></span><span class="meta brace round coffee"><span>)</span></span><span>&#xA0;</span><span class="comment line number-sign coffee"><span class="punctuation definition comment coffee"><span>#</span></span><span>&#xA0;=&gt;&#xA0;4</span><span>&#xA0;</span></span></span></div></pre>
 
-    </div>
+<div class="language-coffee highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">)</span> <span class="c1"># =&gt; 4</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="na">scope</span><span class="o">:</span> <span class="p">[</span><span class="s">&apos;source.ruby&apos;</span><span class="p">])</span> <span class="c1"># =&gt; 4</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="na">scope</span><span class="o">:</span> <span class="p">[</span><span class="s">&apos;source.js&apos;</span><span class="p">])</span> <span class="c1"># =&gt; 4</span>
+
+<span class="c1"># Set ruby to 2</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="na">scopeSelector</span><span class="o">:</span> <span class="s">&apos;.source.ruby&apos;</span><span class="p">)</span> <span class="c1"># =&gt; true</span>
+
+<span class="c1"># Notice it&apos;s only set to 2 in the case of ruby</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">)</span> <span class="c1"># =&gt; 4</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="na">scope</span><span class="o">:</span> <span class="p">[</span><span class="s">&apos;source.ruby&apos;</span><span class="p">])</span> <span class="c1"># =&gt; 2</span>
+<span class="nx">atom</span><span class="p">.</span><span class="na">config</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&apos;editor.tabLength&apos;</span><span class="p">,</span> <span class="na">scope</span><span class="o">:</span> <span class="p">[</span><span class="s">&apos;source.js&apos;</span><span class="p">])</span> <span class="c1"># =&gt; 4</span>
+</code></pre></div></div>
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>keyPath</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of the key.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>value</code></td>
-    <td>
-      <p>The value of the setting. Passing <code>undefined</code> will revert the setting to the default value.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.scopeSelector</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>. eg. &apos;.source.ruby&apos; See <a href="http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">the scopes docs</a> for more information.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.source</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> The name of a file with which the setting is associated. Defaults to the user&apos;s config file.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>keyPath</code></p>
+
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> name of the key.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>value</code></p>
+
+  </td>
+  <td>
+    
+    <p>The value of the setting. Passing <code>undefined</code> will revert the setting to the default value.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>scopeSelector</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>. eg. &#x2018;.source.ruby&#x2019; See <a href="http://flight-manual.atom.io/behind-atom/sections/scoped-settings-scopes-and-scope-descriptors/">the scopes docs</a> for more information.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>source</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> The name of a file with which the setting is associated. Defaults to the user&#x2019;s config file.</p>
+
+  </td>
+</tr>
 
 
-    </table>
 
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns a <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Boolean" class="external-link reference-link">Boolean</a></p>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></p>
+
 <ul>
-<li>
-<code>true</code> if the value was set.</li>
-<li>
-<code>false</code> if the value was not able to be coerced to the type specified in the setting&apos;s schema.</li>
-</ul></td>
-      </tr>
-    </table>
-</div>
+  <li><code>true</code> if the value was set.</li>
+  <li><code>false</code> if the value was not able to be coerced to the type specified in the setting&#x2019;s schema.</li>
+</ul>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry essential" id="instance-unset">
   <h3 class="name">
     <a href="#instance-unset" class="js-api-name method-signature" name="instance-unset">
-      <span class="operator operator-instance">::</span>unset<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">[options]</span>)</span>
+      ::unset<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">options</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L779"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L779">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Restore the setting at <code>keyPath</code> to its default value.</p>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Restore the setting at <code>keyPath</code> to its default value.</p>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
+
   </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>keyPath</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of the key.</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a></p>
-    </td>
-  </tr>
-      <tr class="markdown-body argument-depth-1">
-    <td><code>.scopeSelector</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>. See <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-set"><span class="operator">::</span>set</a></p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-1">
-    <td><code>.source</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>. See <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-set"><span class="operator">::</span>set</a></p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>keyPath</code></p>
+
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> name of the key.</p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+  </td>
+</tr>
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>scopeSelector</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>. See <a href="#instance-set">::set</a></p>
+
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-1">
+  <td>
+    <p><code>source</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>. See <a href="#instance-set">::set</a></p>
+
+  </td>
+</tr>
 
 
-    </table>
 
-
-</div>
-
-</div>
-
-
-
-    <div class="extended-methods-container">
-      <a href="#" class="extended-toggle js-toggle-extended" data-skip-pjax="">
-        <span class="octicon octicon-chevron-right"></span>
-        Extended Methods
-      </a>
-      <div class="extended-methods">
-        
-
-
-        
+  </tbody>
+</table>
 
     
-<div class="api-entry js-api-entry extended" id="instance-getAll">
+  </div>
+</div>
+<h4>Extended Methods</h4><div class="api-entry js-api-entry extended" id="instance-getAll">
   <h3 class="name">
     <a href="#instance-getAll" class="js-api-name method-signature" name="instance-getAll">
-      <span class="operator operator-instance">::</span>getAll<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">[options]</span>)</span>
+      ::getAll<span class="argument-list">(<span class="argument">keyPath</span>, <span class="argument">options</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L649"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L649">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get all of the values for the given key-path, along with their
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get all of the values for the given key-path, along with their
 associated scope selector.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>keyPath</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of the key to retrieve</p>
-    </td>
-  </tr>
-  <tr class="markdown-body argument-depth-0">
-    <td><code>options</code></td>
-    <td>
-        <span class="optional">optional</span>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> see the <code>options</code> argument to <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-get"><span class="operator">::</span>get</a></p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>keyPath</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> name of the key to retrieve</p>
 
+  </td>
+</tr>
+
+<tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>options</code></p>
+
+  </td>
+  <td>
+    <span class="optional">optional</span>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> see the <code>options</code> argument to <a href="#instance-get">::get</a></p>
+
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a>s with the following keys:</p>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>s with the following keys:</p>
+
 <ul>
-<li>
-<code>scopeDescriptor</code> The <a class="reference-link" data-skip-pjax="yeahokiguess" href="ScopeDescriptor.html">ScopeDescriptor<span class="operator"></span></a> with which the value is associated</li>
-<li>
-<code>value</code> The value for the key-path</li>
-</ul></td>
-      </tr>
-    </table>
-</div>
+  <li><code>scopeDescriptor</code> The <a href="../ScopeDescriptor/index.html">ScopeDescriptor</a> with which the value is associated</li>
+  <li><code>value</code> The value for the key-path</li>
+</ul>
 
-</div>
+  </td>
+</tr>
 
-    
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-getSources">
   <h3 class="name">
     <a href="#instance-getSources" class="js-api-name method-signature" name="instance-getSources">
-      <span class="operator operator-instance">::</span>getSources<span class="argument-list">()</span>
+      ::getSources<span class="argument-list">()</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L840"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L840">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Get an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array" class="external-link reference-link">Array</a> of all of the <code>source</code> <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a>s with which
-settings have been added via <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-set"><span class="operator">::</span>set</a>.</p>
-  </div>
-
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
-
-  </div>
-
-
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Get an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> of all of the <code>source</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>s with which
+settings have been added via <a href="#instance-set">::set</a>.</p>
 
 </div>
 
+    <div class="body markdown-body">
+  <div class="description">
+    
+
+  </div>
 </div>
 
     
+    
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-getSchema">
   <h3 class="name">
     <a href="#instance-getSchema" class="js-api-name method-signature" name="instance-getSchema">
-      <span class="operator operator-instance">::</span>getSchema<span class="argument-list">(<span class="argument">keyPath</span>)</span>
-    </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L855"><span class="octicon octicon-file-code"></span></a>
-  </h3>
+      ::getSchema<span class="argument-list">(<span class="argument">keyPath</span>)</span>
 
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Retrieve the schema for a specific key path. The schema will tell
+    </a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L855">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
+  </h3>
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Retrieve the schema for a specific key path. The schema will tell
 you what type the keyPath expects, and other metadata about the config
 option.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>keyPath</code></td>
-    <td>
-      <p>The <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String" class="external-link reference-link">String</a> name of the key.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>keyPath</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> name of the key.</p>
 
+  </td>
+</tr>
+
+
+  </tbody>
+</table>
 
     <table class="return-values">
-      <thead>
-        <tr>
-          <th>Return values</th>
-        </tr>
-      </thead>
-      <tr>
-        <td class="markdown-body"><p>Returns an <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object" class="external-link reference-link">Object</a> eg. <code>{type: &apos;integer&apos;, default: 23, minimum: 1}</code>.</p></td>
-      </tr>
-      <tr>
-        <td class="markdown-body"><p>Returns <code>null</code> when the keyPath has no schema specified, but is accessible
-from the root schema.</p></td>
-      </tr>
-    </table>
-</div>
+  <thead>
+    <tr>
+      <th>Return values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+  <td class="markdown-body">
+    <p>Returns an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> eg. <code>{type: &apos;integer&apos;, default: 23, minimum: 1}</code>.</p>
 
-</div>
+  </td>
+</tr>
+<tr>
+  <td class="markdown-body">
+    <p>Returns <code>null</code> when the keyPath has no schema specified, but is accessible
+from the root schema.</p>
 
-    
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+  </div>
+</div>
 <div class="api-entry js-api-entry extended" id="instance-transact">
   <h3 class="name">
     <a href="#instance-transact" class="js-api-name method-signature" name="instance-transact">
-      <span class="operator operator-instance">::</span>transact<span class="argument-list">(<span class="argument">callback</span>)</span>
+      ::transact<span class="argument-list">(<span class="argument">callback</span>)</span>
+
     </a>
-    <a class="source-link" href="https://github.com/atom/atom/blob/v1.39.1/src/config.js#L889"><span class="octicon octicon-file-code"></span></a>
+    <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/config.js#L889">
+  <span class="octicon octicon-file-code"></span>
+</a>
+
   </h3>
-
-  <div class="method-summary-wrapper js-method-summary-wrapper">
-  <div class="summary markdown-body">
-    <p>Suppress calls to handler functions registered with <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-onDidChange"><span class="operator">::</span>onDidChange</a>
-and <a class="reference-link" data-skip-pjax="yeahokiguess" href="#instance-observe"><span class="operator">::</span>observe</a> for the duration of <code>callback</code>. After <code>callback</code> executes,
+  <div class="method-summary-wrapper">
+    <div class="summary markdown-body">
+  <p>Suppress calls to handler functions registered with <a href="#instance-onDidChange">::onDidChange</a>
+and <a href="#instance-observe">::observe</a> for the duration of <code>callback</code>. After <code>callback</code> executes,
 handlers will be called once if the value for their key-path has changed.</p>
-  </div>
 
-  <div class="body markdown-body">
-    <div class="description">
-      
-    </div>
+</div>
+
+    <div class="body markdown-body">
+  <div class="description">
+    
 
   </div>
+</div>
 
     <table class="arguments">
-      <thead>
-        <tr>
-          <th>Argument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-        <tr class="markdown-body argument-depth-0">
-    <td><code>callback<span class="argument-list">()</span></code></td>
-    <td>
-      <p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function" class="external-link reference-link">Function</a> to execute while suppressing calls to handlers.</p>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Argument</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="markdown-body argument-depth-0">
+  <td>
+    <p><code>callback</code></p>
 
-    </table>
+  </td>
+  <td>
+    
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> to execute while suppressing calls to handlers.</p>
+
+  </td>
+</tr>
 
 
-</div>
-
-</div>
-
-
-      </div>
-    </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-    </div>
+  </tbody>
+</table>
 
     
   </div>
+</div>
 
-  
 
-</body>
+          </div>
+        </div>
 
-<!-- Mirrored from atom.io/docs/api/v1.39.1/Config by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 04:32:49 GMT -->
+      </div>
+
+      
+    </div>
+    
+
+  </body>
+
+<!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Config/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 12:44:36 GMT -->
 </html>

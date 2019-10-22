@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 (22/10/2019)
+
+- Update all dependencies
+- Use Prettier for code formatting
+- Update scraper for new flight-manual-atom.io docs location
+- Build Atom docset v1.40.1
+
 ## 1.0.55 (26/07/2019)
 
 - Build Atom docset v1.39.1

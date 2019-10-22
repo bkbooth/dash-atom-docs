@@ -1,12 +1,9 @@
 /* use local octicons */
 @font-face {
   font-family: 'octicons';
-  src:
-    url(octicons.eot?#iefix) format("embedded-opentype"),
-    url(octicons.woff) format("woff"),
-    url(octicons.ttf) format("truetype"),
-    url(octicons.svg#octicons) format("svg");
-  font-weight: normal;
+  src: url(octicons.eot?#iefix) format('embedded-opentype'), url(octicons.woff) format('woff'),
+    url(octicons.ttf) format('truetype'), url(octicons.svg#octicons) format('svg');
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -26,22 +23,23 @@
 body {
   min-width: initial;
 }
-.documents.content-push {
-  margin: initial;
-}
-.documents .wrapper {
+.documents.wrapper.content-push {
   width: initial;
+  height: initial;
   margin: 40px auto;
-  padding: 0 24px;
+  padding: 0 30px;
 }
-.documents .column.main-column {
+.documents .content-column {
   width: initial;
-  padding: initial;
+  float: initial;
+}
+.documents .document-content {
+  padding: 0;
 }
 
 /* undo footer push */
 .footer-push {
   height: initial !important;
   min-height: initial;
-  margin: initial;
+  margin: 0;
 }
