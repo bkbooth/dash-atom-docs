@@ -13,9 +13,12 @@ module.exports = {
   selectorsToRemove: [
     'head',
     'meta',
+    'script',
     '.top-bar',
-    '.documents > .wrapper > form',
-    '.column.sidebar',
+    '.documents-search',
+    '.autocomplete-results',
+    '.toc',
+    '.document-title',
     '.footer-pad',
     'footer',
   ],
@@ -24,11 +27,26 @@ module.exports = {
 
   // Static files to be copied into docset
   staticFiles: [
-    { name: 'styles-dash.css', dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'styles-dash.css') },
-    { name: 'octicons.eot', dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'octicons.eot') },
-    { name: 'octicons.woff', dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'octicons.woff') },
-    { name: 'octicons.ttf', dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'octicons.ttf') },
-    { name: 'octicons.svg', dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'octicons.svg') },
+    {
+      name: 'styles-dash.css',
+      dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'styles-dash.css'),
+    },
+    {
+      name: 'octicons.eot',
+      dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'octicons.eot'),
+    },
+    {
+      name: 'octicons.woff',
+      dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'octicons.woff'),
+    },
+    {
+      name: 'octicons.ttf',
+      dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'octicons.ttf'),
+    },
+    {
+      name: 'octicons.svg',
+      dest: path.join(basePath, 'Contents', 'Resources', 'Documents', 'assets', 'octicons.svg'),
+    },
     { name: 'Info.plist', dest: path.join(basePath, 'Contents', 'Info.plist') },
     { name: 'icon.png', dest: path.join(basePath, 'icon.png') },
   ],

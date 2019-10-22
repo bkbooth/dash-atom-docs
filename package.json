@@ -13,14 +13,14 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm-run-all scrape build:docs build:db",
+    "build": "run-s scrape build:docs build:db",
     "build:db": "node ./modules/build-db",
     "prebuild:db": "npm run clean:db",
     "clean:db": "rimraf Atom.docset/Contents/Resources/docSet.dsidx",
     "build:docs": "node ./modules/build-docs",
     "prebuild:docs": "npm run clean:docs",
     "clean:docs": "rimraf Atom.docset/*",
-    "scrape": "httrack https://atom.io/docs/api/v$npm_package_atom_version/ -O ./scraped +https://atom.io/docs/api/* +*github-atom-io-herokuapp-com.freetls.fastly.net/*",
+    "scrape": "httrack https://flight-manual.atom.io/api/v$npm_package_atom_version/ -O ./scraped +https://flight-manual.atom.io/api/* +https://flight-manual.atom.io/assets/*",
     "prescrape": "node ./modules/check-httrack && npm run clean:scrape",
     "clean:scrape": "rimraf scraped"
   },
@@ -43,7 +43,7 @@
     }
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "atom_version": "1.39.1"
 }

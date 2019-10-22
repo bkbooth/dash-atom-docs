@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const config = require('./config');
 
 const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database(config.dbFile, (err) => {
+const db = new sqlite3.Database(config.dbFile, err => {
   if (err) {
     console.error(`Error opening database ${config.dbFile}`, err.message);
     process.exit(1);
@@ -24,31 +24,36 @@ db.serialize(() => {
 
   // Create and insert the entries
   const insertStmt = db.prepare('INSERT INTO searchIndex(name, type, path) VALUES ($name, $type, $path)');
-  docItems.forEach((docItem) => insertStmt.run({
-    $name: docItem.name,
-    $type: docItem.type,
-    $path: docItem.path,
-  }));
+  docItems.forEach(docItem =>
+    insertStmt.run({
+      $name: docItem.name,
+      $type: docItem.type,
+      $path: docItem.path,
+    })
+  );
   insertStmt.finalize();
 });
 
 // Close the database connection
 db.close();
 
-
 // Search through HTML docs for classes, methods, events and properties
 function loadDocItems(config) {
-  return fs.readdirSync(config.docsDir)
+  return fs
+    .readdirSync(config.docsDir)
     .filter(isDocFile)
     .reduce((docItems, docFileName) => {
-      const className = docFileName.split('.')[0];
+      const [className] = docFileName.split('.');
       console.log(`Processing class ${className}...`);
       const fileData = fs.readFileSync(path.join(config.docsDir, docFileName));
       const $ = cheerio.load(fileData);
       const items = $('.api-entry > h3 > a:first-child')
-        .map((idx, item) => {
+        .map((_index, item) => {
           const itemNameRegex = /^(\.|:{2})([a-zA-Z0-9]+)\(?/;
-          const [,,itemName] = $(item).text().trim().match(itemNameRegex);
+          const [, , itemName] = $(item)
+            .text()
+            .trim()
+            .match(itemNameRegex);
           const itemType = getItemType($, item, itemName);
           const itemPath = $(item).attr('href');
 
@@ -61,28 +66,32 @@ function loadDocItems(config) {
         .toArray();
 
       console.log(`Found ${items.length + 1} items.`);
-      return [...docItems, ...items, {
-        name: className,
-        type: 'Class',
-        path: docFileName,
-      }];
+      return [
+        ...docItems,
+        ...items,
+        {
+          name: className,
+          type: 'Class',
+          path: docFileName,
+        },
+      ];
     }, []);
+}
 
-  function getItemType($, item, itemName) {
-    if ($(item).hasClass('method-signature')) {
-      if (itemName === 'constructor') {
-        return 'Constructor';
-      } else if (/^on[A-Z]/.test(itemName)) {
-        return 'Event';
-      } else {
-        return 'Method';
-      }
+function getItemType($, item, itemName) {
+  if ($(item).hasClass('method-signature')) {
+    if (itemName === 'constructor') {
+      return 'Constructor';
+    } else if (/^on[A-Z]/.test(itemName)) {
+      return 'Event';
     } else {
-      return 'Property';
+      return 'Method';
     }
+  } else {
+    return 'Property';
   }
+}
 
-  function isDocFile(fileName) {
-    return /^[A-Z][a-zA-Z0-9]*\.html$/.test(fileName);
-  }
+function isDocFile(fileName) {
+  return /^[A-Z][a-zA-Z0-9]*\.html$/.test(fileName);
 }
