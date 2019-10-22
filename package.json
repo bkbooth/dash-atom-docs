@@ -29,8 +29,8 @@
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.0.2",
-    "rimraf": "^2.6.1",
-    "sqlite3": "^4.0.2"
+    "rimraf": "^3.0.0",
+    "sqlite3": "^4.1.0"
   },
   "engines": {
     "node": ">=6"
