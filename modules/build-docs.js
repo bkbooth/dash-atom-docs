@@ -23,14 +23,19 @@ transformDocsHtml(config);
 
 // Find, process and copy all docs HTML into docset
 function transformDocsHtml(config) {
-  const docsFilesDir = path.join(config.scrapeDir, 'flight-manual.atom.io', 'api', `v${config.atomVersion}`);
+  const docsFilesDir = path.join(
+    config.scrapeDir,
+    'flight-manual.atom.io',
+    'api',
+    `v${config.atomVersion}`
+  );
   fs.readdirSync(docsFilesDir)
     .filter(fileName => fs.lstatSync(path.join(docsFilesDir, fileName)).isDirectory())
-    .forEach(docsFileName => {
-      const fileData = fs.readFileSync(path.join(docsFilesDir, docsFileName, 'index.html'));
+    .forEach(docsFolderName => {
+      const fileData = fs.readFileSync(path.join(docsFilesDir, docsFolderName, 'index.html'));
       const $ = cheerio.load(fileData);
 
-      console.log(`Processing ${docsFileName}...`);
+      console.log(`Processing ${docsFolderName}...`);
 
       // Remove unwanted elements
       config.selectorsToRemove.forEach(selectorToRemove => $(selectorToRemove).remove());
@@ -39,14 +44,16 @@ function transformDocsHtml(config) {
       $.root().prepend(`
         <head>
           <meta charset="utf-8">
-          <title>${docsFileName.split('.')[0]}</title>
-          <link rel="stylesheet" href="assets/${config.atomCssFilename}">
-          <link rel="stylesheet" href="assets/${config.staticFiles[0].name}">
+          <title>${docsFolderName}</title>
+          <link rel="stylesheet" href="../assets/${config.atomCssFilename}">
+          <link rel="stylesheet" href="../assets/${config.staticFiles[0].name}">
         </head>
       `);
 
       // Write the transformed file
-      fs.writeFileSync(path.join(config.docsDir, `${docsFileName}.html`), $.html());
+      const docsFilePath = path.join(config.docsDir, docsFolderName);
+      mkdirp.sync(docsFilePath);
+      fs.writeFileSync(path.join(docsFilePath, 'index.html'), $.html());
     });
 }
 
@@ -62,7 +69,9 @@ function copyDocsCss(config) {
     'application.css'
   );
   const readStream = fs.createReadStream(docsAssetsPath);
-  const writeStream = fs.createWriteStream(path.join(config.docsDir, 'assets', config.atomCssFilename));
+  const writeStream = fs.createWriteStream(
+    path.join(config.docsDir, 'assets', config.atomCssFilename)
+  );
   readStream.once('error', handleFailedCssCopy);
   writeStream.once('error', handleFailedCssCopy);
   readStream.pipe(writeStream);

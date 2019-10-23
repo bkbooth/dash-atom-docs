@@ -39,43 +39,41 @@ db.close();
 
 // Search through HTML docs for classes, methods, events and properties
 function loadDocItems(config) {
-  return fs
-    .readdirSync(config.docsDir)
-    .filter(isDocFile)
-    .reduce((docItems, docFileName) => {
-      const [className] = docFileName.split('.');
-      console.log(`Processing class ${className}...`);
-      const fileData = fs.readFileSync(path.join(config.docsDir, docFileName));
-      const $ = cheerio.load(fileData);
-      const items = $('.api-entry > h3 > a:first-child')
-        .map((_index, item) => {
-          const itemNameRegex = /^(\.|:{2})([a-zA-Z0-9]+)\(?/;
-          const [, , itemName] = $(item)
-            .text()
-            .trim()
-            .match(itemNameRegex);
-          const itemType = getItemType($, item, itemName);
-          const itemPath = $(item).attr('href');
+  return fs.readdirSync(config.docsDir).reduce((docItems, docFolderName) => {
+    const docFilePath = path.join(config.docsDir, docFolderName, 'index.html');
+    if (!fs.existsSync(docFilePath)) return docItems;
+    console.log(`Processing class ${docFolderName}...`);
+    const fileData = fs.readFileSync(docFilePath);
+    const $ = cheerio.load(fileData);
+    const items = $('.api-entry > h3 > a:first-child')
+      .map((_index, item) => {
+        const itemNameRegex = /^(\.|:{2})([a-zA-Z0-9]+)\(?/;
+        const [, , itemName] = $(item)
+          .text()
+          .trim()
+          .match(itemNameRegex);
+        const itemType = getItemType($, item, itemName);
+        const itemPath = $(item).attr('href');
 
-          return {
-            name: itemName === 'constructor' ? className : `${className}.${itemName}`,
-            type: itemType,
-            path: docFileName + itemPath,
-          };
-        })
-        .toArray();
+        return {
+          name: itemName === 'constructor' ? docFolderName : `${docFolderName}.${itemName}`,
+          type: itemType,
+          path: path.join(docFolderName, 'index.html') + itemPath,
+        };
+      })
+      .toArray();
 
-      console.log(`Found ${items.length + 1} items.`);
-      return [
-        ...docItems,
-        ...items,
-        {
-          name: className,
-          type: 'Class',
-          path: docFileName,
-        },
-      ];
-    }, []);
+    console.log(`Found ${items.length + 1} items.`);
+    return [
+      ...docItems,
+      ...items,
+      {
+        name: docFolderName,
+        type: 'Class',
+        path: path.join(docFolderName, 'index.html'),
+      },
+    ];
+  }, []);
 }
 
 function getItemType($, item, itemName) {
@@ -90,8 +88,4 @@ function getItemType($, item, itemName) {
   } else {
     return 'Property';
   }
-}
-
-function isDocFile(fileName) {
-  return /^[A-Z][a-zA-Z0-9]*\.html$/.test(fileName);
 }
