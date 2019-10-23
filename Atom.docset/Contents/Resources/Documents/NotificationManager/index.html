@@ -1,0 +1,1462 @@
+<head>
+  <meta charset="utf-8" />
+  <title>NotificationManager</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/NotificationManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              NotificationManager
+              <span class="label label-essential" title="This class is in the essential API">
+                Essential
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L9"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>
+                A notification manager used to create <a href="../Notification/index.html">Notification</a>s to be shown
+                to the user.
+              </p>
+
+              <p>An instance of this class is always available as the <code>atom.notifications</code> global.</p>
+            </div>
+            <h2 class="detail-section">Events</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-onDidAddNotification">
+              <h3 class="name">
+                <a
+                  href="#instance-onDidAddNotification"
+                  class="js-api-name method-signature"
+                  name="instance-onDidAddNotification"
+                >
+                  ::onDidAddNotification<span class="argument-list">(<span class="argument">callback</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L25"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Invoke the given callback after a notification has been added.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>callback</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          to be called after the notification is added.
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>notification</code></p>
+                      </td>
+                      <td>
+                        <p>The <a href="../Notification/index.html">Notification</a> that was added.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to unsubscribe.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-onDidClearNotifications">
+              <h3 class="name">
+                <a
+                  href="#instance-onDidClearNotifications"
+                  class="js-api-name method-signature"
+                  name="instance-onDidClearNotifications"
+                >
+                  ::onDidClearNotifications<span class="argument-list">(<span class="argument">callback</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L34"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Invoke the given callback after the notifications have been cleared.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>callback</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          to be called after the notifications are cleared.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to unsubscribe.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Adding Notifications</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-addSuccess">
+              <h3 class="name">
+                <a href="#instance-addSuccess" class="js-api-name method-signature" name="instance-addSuccess">
+                  ::addSuccess<span class="argument-list"
+                    >(<span class="argument">message</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L66"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Add a success notification.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>message</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          message
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An options
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with the following keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>buttons</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          where each
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          has the following options:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>className</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          a class name to add to the button&#x2019;s default class name (<code>btn btn-success</code>).
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>onDidClick</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          callback to call when the button has been clicked. The context will be set to the
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NotificationElement"
+                            >NotificationElement</a
+                          >
+                          instance.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>text</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          inner text for the button
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>description</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A Markdown
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing a longer description about the notification. By default, this
+                          <strong>will not</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>detail</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A plain-text
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing additional details about the notification. By default, this
+                          <strong>will</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>dismissable</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this notification can be dismissed by the user. Defaults to
+                          <code>false</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>icon</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          name of an icon from Octicons to display in the notification header. Defaults to
+                          <code>&apos;check&apos;</code>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the <a href="../Notification/index.html">Notification</a> that was added.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-addInfo">
+              <h3 class="name">
+                <a href="#instance-addInfo" class="js-api-name method-signature" name="instance-addInfo">
+                  ::addInfo<span class="argument-list"
+                    >(<span class="argument">message</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L94"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Add an informational notification.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>message</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          message
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An options
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with the following keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>buttons</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          where each
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          has the following options:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>className</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          a class name to add to the button&#x2019;s default class name (<code>btn btn-info</code>).
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>onDidClick</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          callback to call when the button has been clicked. The context will be set to the
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NotificationElement"
+                            >NotificationElement</a
+                          >
+                          instance.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>text</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          inner text for the button
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>description</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A Markdown
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing a longer description about the notification. By default, this
+                          <strong>will not</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>detail</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A plain-text
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing additional details about the notification. By default, this
+                          <strong>will</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>dismissable</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this notification can be dismissed by the user. Defaults to
+                          <code>false</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>icon</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          name of an icon from Octicons to display in the notification header. Defaults to
+                          <code>&apos;info&apos;</code>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the <a href="../Notification/index.html">Notification</a> that was added.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-addWarning">
+              <h3 class="name">
+                <a href="#instance-addWarning" class="js-api-name method-signature" name="instance-addWarning">
+                  ::addWarning<span class="argument-list"
+                    >(<span class="argument">message</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L122"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Add a warning notification.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>message</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          message
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An options
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with the following keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>buttons</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          where each
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          has the following options:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>className</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          a class name to add to the button&#x2019;s default class name (<code>btn btn-warning</code>).
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>onDidClick</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          callback to call when the button has been clicked. The context will be set to the
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NotificationElement"
+                            >NotificationElement</a
+                          >
+                          instance.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>text</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          inner text for the button
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>description</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A Markdown
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing a longer description about the notification. By default, this
+                          <strong>will not</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>detail</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A plain-text
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing additional details about the notification. By default, this
+                          <strong>will</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>dismissable</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this notification can be dismissed by the user. Defaults to
+                          <code>false</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>icon</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          name of an icon from Octicons to display in the notification header. Defaults to
+                          <code>&apos;alert&apos;</code>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the <a href="../Notification/index.html">Notification</a> that was added.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-addError">
+              <h3 class="name">
+                <a href="#instance-addError" class="js-api-name method-signature" name="instance-addError">
+                  ::addError<span class="argument-list"
+                    >(<span class="argument">message</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L152"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Add an error notification.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>message</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          message
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An options
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with the following keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>buttons</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          where each
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          has the following options:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>className</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          a class name to add to the button&#x2019;s default class name (<code>btn btn-error</code>).
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>onDidClick</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          callback to call when the button has been clicked. The context will be set to the
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NotificationElement"
+                            >NotificationElement</a
+                          >
+                          instance.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>text</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          inner text for the button
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>description</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A Markdown
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing a longer description about the notification. By default, this
+                          <strong>will not</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>detail</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A plain-text
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing additional details about the notification. By default, this
+                          <strong>will</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>dismissable</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this notification can be dismissed by the user. Defaults to
+                          <code>false</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>icon</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          name of an icon from Octicons to display in the notification header. Defaults to
+                          <code>&apos;flame&apos;</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>stack</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A preformatted
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          with stack trace information describing the location of the error.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the <a href="../Notification/index.html">Notification</a> that was added.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-addFatalError">
+              <h3 class="name">
+                <a href="#instance-addFatalError" class="js-api-name method-signature" name="instance-addFatalError">
+                  ::addFatalError<span class="argument-list"
+                    >(<span class="argument">message</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L182"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Add a fatal error notification.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>message</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          message
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An options
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with the following keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>buttons</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          where each
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          has the following options:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>className</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          a class name to add to the button&#x2019;s default class name (<code>btn btn-error</code>).
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>onDidClick</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          callback to call when the button has been clicked. The context will be set to the
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NotificationElement"
+                            >NotificationElement</a
+                          >
+                          instance.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>text</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          inner text for the button
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>description</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A Markdown
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing a longer description about the notification. By default, this
+                          <strong>will not</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>detail</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A plain-text
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing additional details about the notification. By default, this
+                          <strong>will</strong> preserve newlines and whitespace when it is rendered.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>dismissable</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this notification can be dismissed by the user. Defaults to
+                          <code>false</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>icon</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          name of an icon from Octicons to display in the notification header. Defaults to
+                          <code>&apos;bug&apos;</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>stack</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A preformatted
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          with stack trace information describing the location of the error.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the <a href="../Notification/index.html">Notification</a> that was added.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Getting Notifications</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-getNotifications">
+              <h3 class="name">
+                <a
+                  href="#instance-getNotifications"
+                  class="js-api-name method-signature"
+                  name="instance-getNotifications"
+                >
+                  ::getNotifications<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L203"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Get all the notifications.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns an
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of <a href="../Notification/index.html">Notification</a>s.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Managing Notifications</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-clear">
+              <h3 class="name">
+                <a href="#instance-clear" class="js-api-name method-signature" name="instance-clear">
+                  ::clear<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/notification-manager.js#L212"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Clear all the notifications.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/NotificationManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+</html>

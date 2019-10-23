@@ -1,0 +1,309 @@
+<head>
+  <meta charset="utf-8" />
+  <title>ContextMenuManager</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/ContextMenuManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              ContextMenuManager
+              <span class="label label-extended" title="This class is in the extended API">
+                Extended
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/atom/blob/v1.40.1/src/context-menu-manager.coffee#L44"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>Provides a registry for commands that you&#x2019;d like to appear in the context menu.</p>
+
+              <p>An instance of this class is always available as the <code>atom.contextMenu</code> global.</p>
+
+              <h2 id="context-menu-cson-format">Context Menu CSON Format</h2>
+
+              <div class="language-coffee highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="s">&apos;atom-workspace&apos;</span><span class="o">:</span> <span class="p">[{</span><span class="na">label</span><span class="o">:</span> <span class="s">&apos;Help&apos;</span><span class="p">,</span> <span class="na">command</span><span class="o">:</span> <span class="s">&apos;application:open-documentation&apos;</span><span class="p">}]</span>
+<span class="s">&apos;atom-text-editor&apos;</span><span class="o">:</span> <span class="p">[{</span>
+  <span class="na">label</span><span class="o">:</span> <span class="s">&apos;History&apos;</span><span class="p">,</span>
+  <span class="na">submenu</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="na">label</span><span class="o">:</span> <span class="s">&apos;Undo&apos;</span><span class="p">,</span> <span class="na">command</span><span class="o">:</span><span class="s">&apos;core:undo&apos;</span><span class="p">}</span>
+    <span class="p">{</span><span class="na">label</span><span class="o">:</span> <span class="s">&apos;Redo&apos;</span><span class="p">,</span> <span class="na">command</span><span class="o">:</span><span class="s">&apos;core:redo&apos;</span><span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}]</span>
+</code></pre>
+                </div>
+              </div>
+
+              <p>
+                In your package&#x2019;s menu <code>.cson</code> file you need to specify it under a
+                <code>context-menu</code> key:
+              </p>
+
+              <div class="language-coffee highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="s">&apos;context-menu&apos;</span><span class="o">:</span>
+  <span class="s">&apos;atom-workspace&apos;</span><span class="o">:</span> <span class="p">[{</span><span class="na">label</span><span class="o">:</span> <span class="s">&apos;Help&apos;</span><span class="p">,</span> <span class="na">command</span><span class="o">:</span> <span class="s">&apos;application:open-documentation&apos;</span><span class="p">}]</span>
+  <span class="p">...</span>
+</code></pre>
+                </div>
+              </div>
+
+              <p>
+                The format for use in <a href="#instance-add">::add</a> is the same minus the
+                <code>context-menu</code> key. See <a href="#instance-add">::add</a> for more information.
+              </p>
+            </div>
+            <h2 class="detail-section">Methods</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-add">
+              <h3 class="name">
+                <a href="#instance-add" class="js-api-name method-signature" name="instance-add">
+                  ::add<span class="argument-list">(<span class="argument">itemsBySelector</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/context-menu-manager.coffee#L114"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Add context menu items scoped by CSS selectors.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>itemsBySelector</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          whose keys are CSS selectors and whose values are
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >s of item
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >s containing the following keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>label</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing the menu item&#x2019;s label.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>command</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing the command to invoke on the target of the right click that invoked the context
+                          menu.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>enabled</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether the menu item should be clickable. Disabled menu items typically appear
+                          grayed out. Defaults to <code>true</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>submenu</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of additional items.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>type</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          If you want to create a separator, provide an item with
+                          <code>type: &apos;separator&apos;</code> and no other keys.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>visible</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether the menu item should appear in the menu. Defaults to <code>true</code>.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>created</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          that is called on the item each time a context menu is created via a right click. You can
+                          assign properties to <code>this</code> to dynamically compute the command, label, etc. This
+                          method is actually called on a clone of the original item template to prevent state from
+                          leaking across context menu deployments. Called with the following argument:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>event</code></p>
+                      </td>
+                      <td>
+                        <p>The click event that deployed the context menu.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>shouldDisplay</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          that is called to determine whether to display this item on a given context menu deployment.
+                          Called with the following argument:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>event</code></p>
+                      </td>
+                      <td>
+                        <p>The click event that deployed the context menu.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to remove the added menu items.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/ContextMenuManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+</html>

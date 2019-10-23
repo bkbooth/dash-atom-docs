@@ -1,0 +1,1491 @@
+<head>
+  <meta charset="utf-8" />
+  <title>Range</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Range/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:24 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              Range
+              <span class="label label-essential" title="This class is in the essential API">
+                Essential
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L18"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>Represents a region in a buffer in row/column coordinates.</p>
+
+              <p>
+                Every public method that takes a range also accepts a <em>range-compatible</em>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                  >Array</a
+                >. This means a 2-element array containing <a href="../Point/index.html">Point</a>s or point-compatible
+                arrays. So the following are equivalent:
+              </p>
+            </div>
+            <h2 class="section">Examples</h2>
+            <div class="document-examples markdown-body">
+              <div class="example">
+                <div class="language-coffee highlighter-rouge">
+                  <div class="highlight">
+                    <pre
+                      class="highlight"
+                    ><code><span class="k">new</span> <span class="nx">Range</span><span class="p">(</span><span class="k">new</span> <span class="nx">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">new</span> <span class="nx">Range</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="c1"># Range compatible array</span>
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2 class="detail-section">Properties</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-start">
+              <h3 class="name">
+                <a href="#instance-start" class="js-api-name" name="instance-start">
+                  <span class="operator operator-instance">::</span>start
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L24"
+                  title="View property source"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    A <a href="../Point/index.html">Point</a> representing the start of the
+                    <a href="index.html">Range</a>.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-end">
+              <h3 class="name">
+                <a href="#instance-end" class="js-api-name" name="instance-end">
+                  <span class="operator operator-instance">::</span>end
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L27"
+                  title="View property source"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    A <a href="../Point/index.html">Point</a> representing the end of the
+                    <a href="index.html">Range</a>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Construction</h2>
+            <div class="api-entry js-api-entry essential" id="class-fromObject">
+              <h3 class="name">
+                <a href="#class-fromObject" class="js-api-name method-signature" name="class-fromObject">
+                  .fromObject<span class="argument-list"
+                    >(<span class="argument">object</span>, <span class="argument">copy</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L42"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Convert any range-compatible object to a <a href="index.html">Range</a>.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>object</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          This can be an object that&#x2019;s already a <a href="index.html">Range</a>, in which case
+                          it&#x2019;s simply returned, or an array containing two
+                          <a href="../Point/index.html">Point</a>s or point-compatible arrays.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>copy</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An optional boolean indicating whether to force the copying of objects that are already
+                          ranges.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns: A <a href="index.html">Range</a> based on the given object.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="api-entry js-api-entry essential" id="instance-constructor">
+              <h3 class="name">
+                <a href="#instance-constructor" class="js-api-name method-signature" name="instance-constructor">
+                  ::constructor<span class="argument-list"
+                    >(<span class="argument">pointA</span>, <span class="argument">pointB</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L116"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Construct a <a href="index.html">Range</a> object</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>pointA</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a href="../Point/index.html">Point</a> or Point compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          (default: [0,0])
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>pointB</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a href="../Point/index.html">Point</a> or Point compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          (default: [0,0])
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-copy">
+              <h3 class="name">
+                <a href="#instance-copy" class="js-api-name method-signature" name="instance-copy">
+                  ::copy<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L131"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns a new range with the same start and end positions.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-negate">
+              <h3 class="name">
+                <a href="#instance-negate" class="js-api-name method-signature" name="instance-negate">
+                  ::negate<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L135"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns a new range with the start and end positions negated.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Serialization and Deserialization</h2>
+            <div class="api-entry js-api-entry essential" id="class-deserialize">
+              <h3 class="name">
+                <a href="#class-deserialize" class="js-api-name method-signature" name="class-deserialize">
+                  .deserialize<span class="argument-list">(<span class="argument">array</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L102"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Call this with the result of <a href="index.html#instance-serialize">Range::serialize</a> to
+                    construct a new Range.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>array</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of params to pass to the <a href="#instance-constructor">::constructor</a>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="api-entry js-api-entry essential" id="instance-serialize">
+              <h3 class="name">
+                <a href="#instance-serialize" class="js-api-name method-signature" name="instance-serialize">
+                  ::serialize<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L143"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns a plain javascript object representation of the range.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Range Details</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-isEmpty">
+              <h3 class="name">
+                <a href="#instance-isEmpty" class="js-api-name method-signature" name="instance-isEmpty">
+                  ::isEmpty<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L153"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Is the start position of this range equal to the end position?</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-isSingleLine">
+              <h3 class="name">
+                <a href="#instance-isSingleLine" class="js-api-name method-signature" name="instance-isSingleLine">
+                  ::isSingleLine<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L158"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this range starts and ends on the same row.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-getRowCount">
+              <h3 class="name">
+                <a href="#instance-getRowCount" class="js-api-name method-signature" name="instance-getRowCount">
+                  ::getRowCount<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L164"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Get the number of rows in this range.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-getRows">
+              <h3 class="name">
+                <a href="#instance-getRows" class="js-api-name method-signature" name="instance-getRows">
+                  ::getRows<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L168"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns an array of all rows in the range.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Operations</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-freeze">
+              <h3 class="name">
+                <a href="#instance-freeze" class="js-api-name method-signature" name="instance-freeze">
+                  ::freeze<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L179"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Freezes the range and its start and end point so it becomes immutable and returns itself.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns an immutable version of this <a href="index.html">Range</a></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-union">
+              <h3 class="name">
+                <a href="#instance-union" class="js-api-name method-signature" name="instance-union">
+                  ::union<span class="argument-list">(<span class="argument">otherRange</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L187"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherRange</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A <a href="index.html">Range</a> or range-compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns a new range that contains this range and the given range.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-translate">
+              <h3 class="name">
+                <a href="#instance-translate" class="js-api-name method-signature" name="instance-translate">
+                  ::translate<span class="argument-list"
+                    >(<span class="argument">startDelta</span>, <span class="argument">endDelta</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L200"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Build and return a new range by translating this range&#x2019;s start and end points by the given
+                    delta(s).
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>startDelta</code></p>
+                      </td>
+                      <td>
+                        <p>A <a href="../Point/index.html">Point</a> by which to translate the start of this range.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>endDelta</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          A <a href="../Point/index.html">Point</a> to by which to translate the end of this range. If
+                          omitted, the <code>startDelta</code> will be used instead.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns a <a href="index.html">Range</a>.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-traverse">
+              <h3 class="name">
+                <a href="#instance-traverse" class="js-api-name method-signature" name="instance-traverse">
+                  ::traverse<span class="argument-list">(<span class="argument">delta</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L212"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Build and return a new range by traversing this range&#x2019;s start and end points by the given
+                    delta.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>
+                      See <a href="../Point/index.html#instance-traverse">Point::traverse</a> for details of how
+                      traversal differs from translation.
+                    </p>
+                  </div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>delta</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A <a href="../Point/index.html">Point</a> containing the rows and columns to traverse to
+                          derive the new range.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns a <a href="index.html">Range</a>.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Comparison</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-compare">
+              <h3 class="name">
+                <a href="#instance-compare" class="js-api-name method-signature" name="instance-compare">
+                  ::compare<span class="argument-list">(<span class="argument">otherRange</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L226"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Compare two Ranges</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherRange</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A <a href="index.html">Range</a> or range-compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns <code>-1</code> if this range starts before the argument or contains it.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns <code>0</code> if this range is equivalent to the argument.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns <code>1</code> if this range starts after the argument or is contained by it.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-isEqual">
+              <h3 class="name">
+                <a href="#instance-isEqual" class="js-api-name method-signature" name="instance-isEqual">
+                  ::isEqual<span class="argument-list">(<span class="argument">otherRange</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L237"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherRange</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A <a href="index.html">Range</a> or range-compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this range has the same start and end points as the given
+                          <a href="index.html">Range</a> or range-compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-coversSameRows">
+              <h3 class="name">
+                <a href="#instance-coversSameRows" class="js-api-name method-signature" name="instance-coversSameRows">
+                  ::coversSameRows<span class="argument-list">(<span class="argument">otherRange</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L246"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherRange</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A <a href="index.html">Range</a> or range-compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this range starts and ends on the same row as the argument.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-intersectsWith">
+              <h3 class="name">
+                <a href="#instance-intersectsWith" class="js-api-name method-signature" name="instance-intersectsWith">
+                  ::intersectsWith<span class="argument-list"
+                    >(<span class="argument">otherRange</span>, <span class="argument">exclusive</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L256"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Determines whether this range intersects with the argument.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherRange</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A <a href="index.html">Range</a> or range-compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>exclusive</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether to exclude endpoints when testing for intersection. Defaults to
+                          <code>false</code>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-containsRange">
+              <h3 class="name">
+                <a href="#instance-containsRange" class="js-api-name method-signature" name="instance-containsRange">
+                  ::containsRange<span class="argument-list"
+                    >(<span class="argument">otherRange</span>, <span class="argument">exclusive</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L268"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherRange</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A <a href="index.html">Range</a> or range-compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>exclusive</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          including that the containment should be exclusive of endpoints. Defaults to false.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this range contains the given range.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-containsPoint">
+              <h3 class="name">
+                <a href="#instance-containsPoint" class="js-api-name method-signature" name="instance-containsPoint">
+                  ::containsPoint<span class="argument-list"
+                    >(<span class="argument">point</span>, <span class="argument">exclusive</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L278"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>point</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A <a href="../Point/index.html">Point</a> or point-compatible
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>exclusive</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          including that the containment should be exclusive of endpoints. Defaults to false.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this range contains the given point.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-intersectsRow">
+              <h3 class="name">
+                <a href="#instance-intersectsRow" class="js-api-name method-signature" name="instance-intersectsRow">
+                  ::intersectsRow<span class="argument-list">(<span class="argument">row</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L289"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>row</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          Row
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this range intersects the given row
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-intersectsRowRange">
+              <h3 class="name">
+                <a
+                  href="#instance-intersectsRowRange"
+                  class="js-api-name method-signature"
+                  name="instance-intersectsRowRange"
+                >
+                  ::intersectsRowRange<span class="argument-list"
+                    >(<span class="argument">startRow</span>, <span class="argument">endRow</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L297"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>startRow</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >
+                          start row
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>endRow</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >
+                          end row
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether this range intersects the row range indicated by the given startRow and
+                          endRow
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >s.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Conversion</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-toString">
+              <h3 class="name">
+                <a href="#instance-toString" class="js-api-name method-signature" name="instance-toString">
+                  ::toString<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/text-buffer/blob/v13.17.0/src/range.coffee#L317"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns a string representation of the range.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Range/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:24 GMT -->
+</html>

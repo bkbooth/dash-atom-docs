@@ -1,0 +1,237 @@
+<head>
+  <meta charset="utf-8" />
+  <title>MenuManager</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/MenuManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              MenuManager
+              <span class="label label-extended" title="This class is in the extended API">
+                Extended
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/atom/blob/v1.40.1/src/menu-manager.coffee#L61"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>Provides a registry for menu items that you&#x2019;d like to appear in the application menu.</p>
+
+              <p>An instance of this class is always available as the <code>atom.menu</code> global.</p>
+
+              <h2 id="menu-cson-format">Menu CSON Format</h2>
+
+              <p>
+                Here is an example from the
+                <a href="https://github.com/atom/tree-view/blob/master/menus/tree-view.cson">tree-view</a>:
+              </p>
+
+              <div class="language-coffee highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;View&apos;</span>
+    <span class="s">&apos;submenu&apos;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;Toggle Tree View&apos;</span><span class="p">,</span> <span class="s">&apos;command&apos;</span><span class="o">:</span> <span class="s">&apos;tree-view:toggle&apos;</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+  <span class="p">{</span>
+    <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;Packages&apos;</span>
+    <span class="s">&apos;submenu&apos;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;Tree View&apos;</span>
+      <span class="s">&apos;submenu&apos;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;Focus&apos;</span><span class="p">,</span> <span class="s">&apos;command&apos;</span><span class="o">:</span> <span class="s">&apos;tree-view:toggle-focus&apos;</span> <span class="p">}</span>
+        <span class="p">{</span> <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;Toggle&apos;</span><span class="p">,</span> <span class="s">&apos;command&apos;</span><span class="o">:</span> <span class="s">&apos;tree-view:toggle&apos;</span> <span class="p">}</span>
+        <span class="p">{</span> <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;Reveal Active File&apos;</span><span class="p">,</span> <span class="s">&apos;command&apos;</span><span class="o">:</span> <span class="s">&apos;tree-view:reveal-active-file&apos;</span> <span class="p">}</span>
+        <span class="p">{</span> <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;Toggle Tree Side&apos;</span><span class="p">,</span> <span class="s">&apos;command&apos;</span><span class="o">:</span> <span class="s">&apos;tree-view:toggle-side&apos;</span> <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+                </div>
+              </div>
+
+              <p>
+                Use in your package&#x2019;s menu <code>.cson</code> file requires that you place your menu structure
+                under a <code>menu</code> key.
+              </p>
+
+              <div class="language-coffee highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="s">&apos;menu&apos;</span><span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;View&apos;</span>
+    <span class="s">&apos;submenu&apos;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="s">&apos;label&apos;</span><span class="o">:</span> <span class="s">&apos;Toggle Tree View&apos;</span><span class="p">,</span> <span class="s">&apos;command&apos;</span><span class="o">:</span> <span class="s">&apos;tree-view:toggle&apos;</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+                </div>
+              </div>
+
+              <p>See <a href="#instance-add">::add</a> for more info about adding menu&#x2019;s directly.</p>
+            </div>
+            <h2 class="detail-section">Methods</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-add">
+              <h3 class="name">
+                <a href="#instance-add" class="js-api-name method-signature" name="instance-add">
+                  ::add<span class="argument-list">(<span class="argument">items</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/menu-manager.coffee#L94">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Adds the given items to the application menu.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>items</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of menu item
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >s containing the keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>label</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          The
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          menu label.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>submenu</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An optional
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of sub menu items.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>command</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An optional
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          command to trigger when the item is clicked.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to remove the added menu items.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-update">
+              <h3 class="name">
+                <a href="#instance-update" class="js-api-name method-signature" name="instance-update">
+                  ::update<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/menu-manager.coffee#L149"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Refreshes the currently visible menu.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/MenuManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+</html>

@@ -1,0 +1,454 @@
+<head>
+  <meta charset="utf-8" />
+  <title>Emitter</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Emitter/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              Emitter
+              <span class="label label-essential" title="This class is in the essential API">
+                Essential
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/event-kit/blob/v2.5.3/lib/emitter.js#L31"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>
+                Utility class to be used when implementing event-based APIs that allows for handlers registered via
+                <code>::on</code> to be invoked with calls to <code>::emit</code>. Instances of this class are intended
+                to be used internally by classes that expose an event-based API.
+              </p>
+
+              <p>For example:</p>
+
+              <div class="language-js highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="kd">class</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">emitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Emitter</span><span class="p">()</span>
+  <span class="p">}</span>
+
+  <span class="nx">onDidChangeName</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">emitter</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&apos;did-change-name&apos;</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nx">setName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">!==</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">emitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&apos;did-change-name&apos;</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+                </div>
+              </div>
+            </div>
+            <h2 class="detail-section">Construction and Destruction</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-constructor">
+              <h3 class="name">
+                <a href="#instance-constructor" class="js-api-name method-signature" name="instance-constructor">
+                  ::constructor<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.5.3/lib/emitter.js#L73">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Construct an emitter.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <div class="language-js highlighter-rouge">
+                      <div class="highlight">
+                        <pre
+                          class="highlight"
+                        ><code><span class="k">this</span><span class="p">.</span><span class="nx">emitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Emitter</span><span class="p">()</span>
+</code></pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-clear">
+              <h3 class="name">
+                <a href="#instance-clear" class="js-api-name method-signature" name="instance-clear">
+                  ::clear<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.5.3/lib/emitter.js#L79">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Clear out any existing subscribers.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-dispose">
+              <h3 class="name">
+                <a href="#instance-dispose" class="js-api-name method-signature" name="instance-dispose">
+                  ::dispose<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.5.3/lib/emitter.js#L88">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Unsubscribe all handlers.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Event Subscription</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-on">
+              <h3 class="name">
+                <a href="#instance-on" class="js-api-name method-signature" name="instance-on">
+                  ::on<span class="argument-list"
+                    >(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.5.3/lib/emitter.js#L107">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Register the given handler function to be invoked whenever events by the given name are emitted via
+                    <a href="#instance-emit">::emit</a>.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>eventName</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          naming the event that you want to invoke the handler when emitted.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>handler</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          to invoke when <a href="#instance-emit">::emit</a> is called with the given event name.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to unsubscribe.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-once">
+              <h3 class="name">
+                <a href="#instance-once" class="js-api-name method-signature" name="instance-once">
+                  ::once<span class="argument-list"
+                    >(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.5.3/lib/emitter.js#L152">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Register the given handler function to be invoked the next time an events with the given name is
+                    emitted via <a href="#instance-emit">::emit</a>.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>eventName</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          naming the event that you want to invoke the handler when emitted.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>handler</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          to invoke when <a href="#instance-emit">::emit</a> is called with the given event name.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to unsubscribe.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-preempt">
+              <h3 class="name">
+                <a href="#instance-preempt" class="js-api-name method-signature" name="instance-preempt">
+                  ::preempt<span class="argument-list"
+                    >(<span class="argument">eventName</span>, <span class="argument">handler</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.5.3/lib/emitter.js#L183">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Register the given handler function to be invoked <em>before</em> all other handlers existing at the
+                    time of subscription whenever events by the given name are emitted via
+                    <a href="#instance-emit">::emit</a>.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>
+                      Use this method when you need to be the first to handle a given event. This could be required when
+                      a data structure in a parent object needs to be updated before third-party event handlers
+                      registered on a child object via a public API are invoked. Your handler could itself be preempted
+                      via subsequent calls to this method, but this can be controlled by keeping methods based on
+                      <code>::preempt</code> private.
+                    </p>
+                  </div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>eventName</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          naming the event that you want to invoke the handler when emitted.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>handler</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          to invoke when <a href="#instance-emit">::emit</a> is called with the given event name.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to unsubscribe.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Event Emission</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-emit">
+              <h3 class="name">
+                <a href="#instance-emit" class="js-api-name method-signature" name="instance-emit">
+                  ::emit<span class="argument-list"
+                    >(<span class="argument">eventName</span>, <span class="argument">value</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/event-kit/blob/v2.5.3/lib/emitter.js#L214">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Invoke handlers registered via <a href="#instance-on">::on</a> for the given event name.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>eventName</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          The name of the event to emit. Handlers registered with <a href="#instance-on">::on</a> for
+                          the same name will be invoked.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>value</code></p>
+                      </td>
+                      <td>
+                        <p>Callbacks will be invoked with this value as an argument.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Emitter/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+</html>

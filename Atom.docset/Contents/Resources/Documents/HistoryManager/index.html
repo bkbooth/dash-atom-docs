@@ -1,0 +1,187 @@
+<head>
+  <meta charset="utf-8" />
+  <title>HistoryManager</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/HistoryManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              HistoryManager
+              <span class="label label-extended" title="This class is in the extended API">
+                Extended
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/atom/blob/v1.40.1/src/history-manager.js#L8"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>History manager for remembering which projects have been opened.</p>
+
+              <p>An instance of this class is always available as the <code>atom.history</code> global.</p>
+
+              <p>The project history is used to enable the &#x2018;Reopen Project&#x2019; menu.</p>
+            </div>
+            <h2 class="detail-section">Methods</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-getProjects">
+              <h3 class="name">
+                <a href="#instance-getProjects" class="js-api-name method-signature" name="instance-getProjects">
+                  ::getProjects<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/history-manager.js#L33">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Obtain a list of previously opened projects.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns an
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/HistoryProject"
+                            >HistoryProject</a
+                          >
+                          objects, most recent first.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-clearProjects">
+              <h3 class="name">
+                <a href="#instance-clearProjects" class="js-api-name method-signature" name="instance-clearProjects">
+                  ::clearProjects<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/history-manager.js#L44">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Clear all projects from the history.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>Note: This is not a privacy function - other traces will still exist, e.g. window state.</p>
+
+                    <p>
+                      Return a
+                      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+                        >Promise</a
+                      >
+                      that resolves when the history has been successfully cleared.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-onDidChangeProjects">
+              <h3 class="name">
+                <a
+                  href="#instance-onDidChangeProjects"
+                  class="js-api-name method-signature"
+                  name="instance-onDidChangeProjects"
+                >
+                  ::onDidChangeProjects<span class="argument-list">(<span class="argument">callback</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/history-manager.js#L55">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Invoke the given callback when the list of projects changes.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>callback</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to unsubscribe.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/HistoryManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:23 GMT -->
+</html>

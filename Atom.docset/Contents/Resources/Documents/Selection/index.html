@@ -1,0 +1,3265 @@
+<head>
+  <meta charset="utf-8" />
+  <title>Selection</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Selection/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:24 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              Selection
+              <span class="label label-extended" title="This class is in the extended API">
+                Extended
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L9"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>Represents a selection in the <a href="../TextEditor/index.html">TextEditor</a>.</p>
+            </div>
+            <h2 class="detail-section">Event Subscription</h2>
+
+            <p class="no-methods-message">This section only has Extended methods.</p>
+            <h4>Extended Methods</h4>
+            <div class="api-entry js-api-entry extended" id="instance-onDidChangeRange">
+              <h3 class="name">
+                <a
+                  href="#instance-onDidChangeRange"
+                  class="js-api-name method-signature"
+                  name="instance-onDidChangeRange"
+                >
+                  ::onDidChangeRange<span class="argument-list">(<span class="argument">callback</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L50">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Calls your <code>callback</code> when the selection was moved.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>callback</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>event</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>oldBufferRange</code></p>
+                      </td>
+                      <td>
+                        <p><a href="../Range/index.html">Range</a></p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>oldScreenRange</code></p>
+                      </td>
+                      <td>
+                        <p><a href="../Range/index.html">Range</a></p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>newBufferRange</code></p>
+                      </td>
+                      <td>
+                        <p><a href="../Range/index.html">Range</a></p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>newScreenRange</code></p>
+                      </td>
+                      <td>
+                        <p><a href="../Range/index.html">Range</a></p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-2">
+                      <td>
+                        <p><code>selection</code></p>
+                      </td>
+                      <td>
+                        <p><a href="index.html">Selection</a> that triggered the event</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to unsubscribe.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry extended" id="instance-onDidDestroy">
+              <h3 class="name">
+                <a href="#instance-onDidDestroy" class="js-api-name method-signature" name="instance-onDidDestroy">
+                  ::onDidDestroy<span class="argument-list">(<span class="argument">callback</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L59">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Calls your <code>callback</code> when the selection was destroyed</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>callback</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to unsubscribe.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Managing the selection range</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-getScreenRange">
+              <h3 class="name">
+                <a href="#instance-getScreenRange" class="js-api-name method-signature" name="instance-getScreenRange">
+                  ::getScreenRange<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L68">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the screen <a href="../Range/index.html">Range</a> for the selection.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-setScreenRange">
+              <h3 class="name">
+                <a href="#instance-setScreenRange" class="js-api-name method-signature" name="instance-setScreenRange">
+                  ::setScreenRange<span class="argument-list"
+                    >(<span class="argument">screenRange</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L76">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Modifies the screen range for the selection.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>screenRange</code></p>
+                      </td>
+                      <td>
+                        <p>The new <a href="../Range/index.html">Range</a> to use.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          options matching those found in <a href="#instance-setBufferRange">::setBufferRange</a>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-getBufferRange">
+              <h3 class="name">
+                <a href="#instance-getBufferRange" class="js-api-name method-signature" name="instance-getBufferRange">
+                  ::getBufferRange<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L84">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the buffer <a href="../Range/index.html">Range</a> for the selection.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-setBufferRange">
+              <h3 class="name">
+                <a href="#instance-setBufferRange" class="js-api-name method-signature" name="instance-setBufferRange">
+                  ::setBufferRange<span class="argument-list"
+                    >(<span class="argument">bufferRange</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L99">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Modifies the buffer <a href="../Range/index.html">Range</a> for the selection.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>bufferRange</code></p>
+                      </td>
+                      <td>
+                        <p>The new <a href="../Range/index.html">Range</a> to select.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with the keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>reversed</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether to set the selection in a reversed orientation.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>preserveFolds</code></p>
+                      </td>
+                      <td>
+                        <p>if <code>true</code>, the fold settings are preserved after the selection moves.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>autoscroll</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether to autoscroll to the new range. Defaults to <code>true</code> if this is
+                          the most recently added selection, <code>false</code> otherwise.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-getBufferRowRange">
+              <h3 class="name">
+                <a
+                  href="#instance-getBufferRowRange"
+                  class="js-api-name method-signature"
+                  name="instance-getBufferRowRange"
+                >
+                  ::getBufferRowRange<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L125">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the starting and ending buffer rows the selection is highlighting.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns an
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of two
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >s: the starting row, and the ending row.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Info about the selection</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-isEmpty">
+              <h3 class="name">
+                <a href="#instance-isEmpty" class="js-api-name method-signature" name="instance-isEmpty">
+                  ::isEmpty<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L154">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Determines if the selection contains anything.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-isReversed">
+              <h3 class="name">
+                <a href="#instance-isReversed" class="js-api-name method-signature" name="instance-isReversed">
+                  ::isReversed<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L162">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Determines if the ending position of a marker is greater than the starting position.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>
+                      This can happen when, for example, you highlight text &#x201C;up&#x201D; in a
+                      <a href="../TextBuffer/index.html">TextBuffer</a>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-isSingleScreenLine">
+              <h3 class="name">
+                <a
+                  href="#instance-isSingleScreenLine"
+                  class="js-api-name method-signature"
+                  name="instance-isSingleScreenLine"
+                >
+                  ::isSingleScreenLine<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L167">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns whether the selection is a single line or not.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-getText">
+              <h3 class="name">
+                <a href="#instance-getText" class="js-api-name method-signature" name="instance-getText">
+                  ::getText<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L172">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body"></div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns the text in the selection.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-intersectsBufferRange">
+              <h3 class="name">
+                <a
+                  href="#instance-intersectsBufferRange"
+                  class="js-api-name method-signature"
+                  name="instance-intersectsBufferRange"
+                >
+                  ::intersectsBufferRange<span class="argument-list">(<span class="argument">bufferRange</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L181">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Identifies if a selection intersects with a given buffer range.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>bufferRange</code></p>
+                      </td>
+                      <td>
+                        <p>A <a href="../Range/index.html">Range</a> to check against.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-intersectsWith">
+              <h3 class="name">
+                <a href="#instance-intersectsWith" class="js-api-name method-signature" name="instance-intersectsWith">
+                  ::intersectsWith<span class="argument-list">(<span class="argument">otherSelection</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L198">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Identifies if a selection intersects with another selection.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherSelection</code></p>
+                      </td>
+                      <td>
+                        <p>A <a href="index.html">Selection</a> to check against.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Modifying the selected range</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-clear">
+              <h3 class="name">
+                <a href="#instance-clear" class="js-api-name method-signature" name="instance-clear">
+                  ::clear<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L215">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Clears the selection, moving the marker to the head.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with the following keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>autoscroll</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          indicating whether to autoscroll to the new range. Defaults to <code>true</code> if this is
+                          the most recently added selection, <code>false</code> otherwise.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToScreenPosition">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToScreenPosition"
+                  class="js-api-name method-signature"
+                  name="instance-selectToScreenPosition"
+                >
+                  ::selectToScreenPosition<span class="argument-list">(<span class="argument">position</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L230">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects the text from the current cursor position to a given screen position.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>position</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An instance of <a href="../Point/index.html">Point</a>, with a given <code>row</code> and
+                          <code>column</code>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToBufferPosition">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToBufferPosition"
+                  class="js-api-name method-signature"
+                  name="instance-selectToBufferPosition"
+                >
+                  ::selectToBufferPosition<span class="argument-list">(<span class="argument">position</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L261">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects the text from the current cursor position to a given buffer position.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>position</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An instance of <a href="../Point/index.html">Point</a>, with a given <code>row</code> and
+                          <code>column</code>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectRight">
+              <h3 class="name">
+                <a href="#instance-selectRight" class="js-api-name method-signature" name="instance-selectRight">
+                  ::selectRight<span class="argument-list">(<span class="argument">columnCount</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L268">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects the text one position right of the cursor.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>columnCount</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >
+                          number of columns to select (default: 1)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectLeft">
+              <h3 class="name">
+                <a href="#instance-selectLeft" class="js-api-name method-signature" name="instance-selectLeft">
+                  ::selectLeft<span class="argument-list">(<span class="argument">columnCount</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L275">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects the text one position left of the cursor.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>columnCount</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >
+                          number of columns to select (default: 1)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectUp">
+              <h3 class="name">
+                <a href="#instance-selectUp" class="js-api-name method-signature" name="instance-selectUp">
+                  ::selectUp<span class="argument-list">(<span class="argument">rowCount</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L282">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text one position above the cursor.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>rowCount</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >
+                          number of rows to select (default: 1)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectDown">
+              <h3 class="name">
+                <a href="#instance-selectDown" class="js-api-name method-signature" name="instance-selectDown">
+                  ::selectDown<span class="argument-list">(<span class="argument">rowCount</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L289">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text one position below the cursor.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>rowCount</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >
+                          number of rows to select (default: 1)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToTop">
+              <h3 class="name">
+                <a href="#instance-selectToTop" class="js-api-name method-signature" name="instance-selectToTop">
+                  ::selectToTop<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L295">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the top of the buffer.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToBottom">
+              <h3 class="name">
+                <a href="#instance-selectToBottom" class="js-api-name method-signature" name="instance-selectToBottom">
+                  ::selectToBottom<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L301">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the bottom of the buffer.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectAll">
+              <h3 class="name">
+                <a href="#instance-selectAll" class="js-api-name method-signature" name="instance-selectAll">
+                  ::selectAll<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L306">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text in the buffer.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToBeginningOfLine">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToBeginningOfLine"
+                  class="js-api-name method-signature"
+                  name="instance-selectToBeginningOfLine"
+                >
+                  ::selectToBeginningOfLine<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L312">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the beginning of the line.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToFirstCharacterOfLine">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToFirstCharacterOfLine"
+                  class="js-api-name method-signature"
+                  name="instance-selectToFirstCharacterOfLine"
+                >
+                  ::selectToFirstCharacterOfLine<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L318">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the first character of the line.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToEndOfLine">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToEndOfLine"
+                  class="js-api-name method-signature"
+                  name="instance-selectToEndOfLine"
+                >
+                  ::selectToEndOfLine<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L324">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the end of the screen line.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToEndOfBufferLine">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToEndOfBufferLine"
+                  class="js-api-name method-signature"
+                  name="instance-selectToEndOfBufferLine"
+                >
+                  ::selectToEndOfBufferLine<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L330">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the end of the buffer line.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToBeginningOfWord">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToBeginningOfWord"
+                  class="js-api-name method-signature"
+                  name="instance-selectToBeginningOfWord"
+                >
+                  ::selectToBeginningOfWord<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L336">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the beginning of the word.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToEndOfWord">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToEndOfWord"
+                  class="js-api-name method-signature"
+                  name="instance-selectToEndOfWord"
+                >
+                  ::selectToEndOfWord<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L342">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the end of the word.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToBeginningOfNextWord">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToBeginningOfNextWord"
+                  class="js-api-name method-signature"
+                  name="instance-selectToBeginningOfNextWord"
+                >
+                  ::selectToBeginningOfNextWord<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L348">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the beginning of the next word.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToPreviousWordBoundary">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToPreviousWordBoundary"
+                  class="js-api-name method-signature"
+                  name="instance-selectToPreviousWordBoundary"
+                >
+                  ::selectToPreviousWordBoundary<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L353">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects text to the previous word boundary.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToNextWordBoundary">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToNextWordBoundary"
+                  class="js-api-name method-signature"
+                  name="instance-selectToNextWordBoundary"
+                >
+                  ::selectToNextWordBoundary<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L358">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects text to the next word boundary.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToPreviousSubwordBoundary">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToPreviousSubwordBoundary"
+                  class="js-api-name method-signature"
+                  name="instance-selectToPreviousSubwordBoundary"
+                >
+                  ::selectToPreviousSubwordBoundary<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L363">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects text to the previous subword boundary.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToNextSubwordBoundary">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToNextSubwordBoundary"
+                  class="js-api-name method-signature"
+                  name="instance-selectToNextSubwordBoundary"
+                >
+                  ::selectToNextSubwordBoundary<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L368">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects text to the next subword boundary.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToBeginningOfNextParagraph">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToBeginningOfNextParagraph"
+                  class="js-api-name method-signature"
+                  name="instance-selectToBeginningOfNextParagraph"
+                >
+                  ::selectToBeginningOfNextParagraph<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L374">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects all the text from the current cursor position to the beginning of the next paragraph.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectToBeginningOfPreviousParagraph">
+              <h3 class="name">
+                <a
+                  href="#instance-selectToBeginningOfPreviousParagraph"
+                  class="js-api-name method-signature"
+                  name="instance-selectToBeginningOfPreviousParagraph"
+                >
+                  ::selectToBeginningOfPreviousParagraph<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L380">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Selects all the text from the current cursor position to the beginning of the previous paragraph.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectWord">
+              <h3 class="name">
+                <a href="#instance-selectWord" class="js-api-name method-signature" name="instance-selectWord">
+                  ::selectWord<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L389">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Modifies the selection to encompass the current word.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>Returns a <a href="../Range/index.html">Range</a>.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-expandOverWord">
+              <h3 class="name">
+                <a href="#instance-expandOverWord" class="js-api-name method-signature" name="instance-expandOverWord">
+                  ::expandOverWord<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L405">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Expands the newest selection to include the entire word on which the cursors rests.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-selectLine">
+              <h3 class="name">
+                <a href="#instance-selectLine" class="js-api-name method-signature" name="instance-selectLine">
+                  ::selectLine<span class="argument-list">(<span class="argument">row</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L420">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Selects an entire line in the buffer.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>row</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          The line
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                            >Number</a
+                          >
+                          to select (default: the row of the cursor).
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-expandOverLine">
+              <h3 class="name">
+                <a href="#instance-expandOverLine" class="js-api-name method-signature" name="instance-expandOverLine">
+                  ::expandOverLine<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L446">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Expands the newest selection to include the entire line on which the cursor currently rests.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>It also includes the newline character.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Modifying the selected text</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-insertText">
+              <h3 class="name">
+                <a href="#instance-insertText" class="js-api-name method-signature" name="instance-insertText">
+                  ::insertText<span class="argument-list"
+                    >(<span class="argument">text</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L501">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Replaces text at the current selection.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>text</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          representing the text to add
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>select</code></p>
+                      </td>
+                      <td>
+                        <p>If <code>true</code>, selects the newly added text.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>autoIndent</code></p>
+                      </td>
+                      <td>
+                        <p>If <code>true</code>, indents all inserted text appropriately.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>autoIndentNewline</code></p>
+                      </td>
+                      <td>
+                        <p>If <code>true</code>, indent newline appropriately.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>autoDecreaseIndent</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          If <code>true</code>, decreases indent level appropriately (for example, when a closing
+                          bracket is inserted).
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>preserveTrailingLineIndentation</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          By default, when pasting multiple lines, Atom attempts to preserve the relative indent level
+                          between the first line and trailing lines, even if the indent level of the first line has
+                          changed from the copied text. If this option is <code>true</code>, this behavior is
+                          suppressed. level between the first lines and the trailing lines.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>normalizeLineEndings</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          (default: true)
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>undo</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <em>Deprecated</em> If <code>skip</code>, skips the undo stack for this operation. This
+                          property is deprecated. Call groupLastChanges() on the
+                          <a href="../TextBuffer/index.html">TextBuffer</a> afterward instead.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-backspace">
+              <h3 class="name">
+                <a href="#instance-backspace" class="js-api-name method-signature" name="instance-backspace">
+                  ::backspace<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L594">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes the first character before the selection if the selection is empty otherwise it deletes the
+                    selection.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteToPreviousWordBoundary">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteToPreviousWordBoundary"
+                  class="js-api-name method-signature"
+                  name="instance-deleteToPreviousWordBoundary"
+                >
+                  ::deleteToPreviousWordBoundary<span class="argument-list"
+                    >(<span class="argument">options</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L606">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes the selection or, if nothing is selected, then all characters from the start of the
+                    selection back to the previous word boundary.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteToNextWordBoundary">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteToNextWordBoundary"
+                  class="js-api-name method-signature"
+                  name="instance-deleteToNextWordBoundary"
+                >
+                  ::deleteToNextWordBoundary<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L618">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes the selection or, if nothing is selected, then all characters from the start of the
+                    selection up to the next word boundary.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteToBeginningOfWord">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteToBeginningOfWord"
+                  class="js-api-name method-signature"
+                  name="instance-deleteToBeginningOfWord"
+                >
+                  ::deleteToBeginningOfWord<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L629">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes from the start of the selection to the beginning of the current word if the selection is
+                    empty otherwise it deletes the selection.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteToBeginningOfLine">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteToBeginningOfLine"
+                  class="js-api-name method-signature"
+                  name="instance-deleteToBeginningOfLine"
+                >
+                  ::deleteToBeginningOfLine<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L640">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes from the beginning of the line which the selection begins on all the way through to the end
+                    of the selection.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-delete">
+              <h3 class="name">
+                <a href="#instance-delete" class="js-api-name method-signature" name="instance-delete">
+                  ::delete<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L655">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes the selection or the next character after the start of the selection if the selection is
+                    empty.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteToEndOfLine">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteToEndOfLine"
+                  class="js-api-name method-signature"
+                  name="instance-deleteToEndOfLine"
+                >
+                  ::deleteToEndOfLine<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L668">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    If the selection is empty, removes all text from the cursor to the end of the line. If the cursor is
+                    already at the end of the line, it removes the following newline. If the selection isn&#x2019;t
+                    empty, only deletes the contents of the selection.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteToEndOfWord">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteToEndOfWord"
+                  class="js-api-name method-signature"
+                  name="instance-deleteToEndOfWord"
+                >
+                  ::deleteToEndOfWord<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L685">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes the selection or all characters from the start of the selection to the end of the current
+                    word if nothing is selected.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteToBeginningOfSubword">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteToBeginningOfSubword"
+                  class="js-api-name method-signature"
+                  name="instance-deleteToBeginningOfSubword"
+                >
+                  ::deleteToBeginningOfSubword<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L696">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes the selection or all characters from the start of the selection to the end of the current
+                    word if nothing is selected.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteToEndOfSubword">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteToEndOfSubword"
+                  class="js-api-name method-signature"
+                  name="instance-deleteToEndOfSubword"
+                >
+                  ::deleteToEndOfSubword<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L707">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes the selection or all characters from the start of the selection to the end of the current
+                    word if nothing is selected.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteSelectedText">
+              <h3 class="name">
+                <a
+                  href="#instance-deleteSelectedText"
+                  class="js-api-name method-signature"
+                  name="instance-deleteSelectedText"
+                >
+                  ::deleteSelectedText<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L717">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Removes only the selected text.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-deleteLine">
+              <h3 class="name">
+                <a href="#instance-deleteLine" class="js-api-name method-signature" name="instance-deleteLine">
+                  ::deleteLine<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L730">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>
+                    Removes the line at the beginning of the selection if the selection is empty unless the selection
+                    spans multiple lines in which case all lines are removed.
+                  </p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-joinLines">
+              <h3 class="name">
+                <a href="#instance-joinLines" class="js-api-name method-signature" name="instance-joinLines">
+                  ::joinLines<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L761">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Joins the current line with the one below it. Lines will be separated by a single space.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>If there selection spans more than one line, all the lines are joined together.</p>
+                  </div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-outdentSelectedRows">
+              <h3 class="name">
+                <a
+                  href="#instance-outdentSelectedRows"
+                  class="js-api-name method-signature"
+                  name="instance-outdentSelectedRows"
+                >
+                  ::outdentSelectedRows<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L820">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Removes one level of indent from the currently selected rows.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-autoIndentSelectedRows">
+              <h3 class="name">
+                <a
+                  href="#instance-autoIndentSelectedRows"
+                  class="js-api-name method-signature"
+                  name="instance-autoIndentSelectedRows"
+                >
+                  ::autoIndentSelectedRows<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L840">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Sets the indentation level of all selected rows to values suggested by the relevant grammars.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-toggleLineComments">
+              <h3 class="name">
+                <a
+                  href="#instance-toggleLineComments"
+                  class="js-api-name method-signature"
+                  name="instance-toggleLineComments"
+                >
+                  ::toggleLineComments<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L853">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Wraps the selected lines in comments if they aren&#x2019;t currently part of a comment.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>Removes the comment if they are currently wrapped in a comment.</p>
+                  </div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-cutToEndOfLine">
+              <h3 class="name">
+                <a href="#instance-cutToEndOfLine" class="js-api-name method-signature" name="instance-cutToEndOfLine">
+                  ::cutToEndOfLine<span class="argument-list"
+                    >(<span class="argument">maintainClipboard</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L867">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Cuts the selection until the end of the screen line.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>maintainClipboard</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-cutToEndOfBufferLine">
+              <h3 class="name">
+                <a
+                  href="#instance-cutToEndOfBufferLine"
+                  class="js-api-name method-signature"
+                  name="instance-cutToEndOfBufferLine"
+                >
+                  ::cutToEndOfBufferLine<span class="argument-list"
+                    >(<span class="argument">maintainClipboard</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L878">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Cuts the selection until the end of the buffer line.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>maintainClipboard</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-cut">
+              <h3 class="name">
+                <a href="#instance-cut" class="js-api-name method-signature" name="instance-cut">
+                  ::cut<span class="argument-list"
+                    >(<span class="argument">maintainClipboard</span>, <span class="argument">fullLine</span>,
+                    <span class="argument">bypassReadOnly</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L889">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Copies the selection to the clipboard and then deletes it.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>maintainClipboard</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          (default: false) See <a href="#instance-copy">::copy</a>
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>fullLine</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          (default: false) See <a href="#instance-copy">::copy</a>
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          (default: false) Must be <code>true</code> to modify text within a read-only editor.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-copy">
+              <h3 class="name">
+                <a href="#instance-copy" class="js-api-name method-signature" name="instance-copy">
+                  ::copy<span class="argument-list"
+                    >(<span class="argument">maintainClipboard</span>, <span class="argument">fullLine</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L904">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Copies the current selection to the clipboard.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>maintainClipboard</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          if <code>true</code>, a specific metadata property is created to store each content copied to
+                          the clipboard. The clipboard <code>text</code> still contains the concatenation of the
+                          clipboard with the current selection. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>fullLine</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          if <code>true</code>, the copied text will always be pasted at the beginning of the line
+                          containing the cursor, regardless of the cursor&#x2019;s horizontal position. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-fold">
+              <h3 class="name">
+                <a href="#instance-fold" class="js-api-name method-signature" name="instance-fold">
+                  ::fold<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L944">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Creates a fold containing the current selection.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-indentSelectedRows">
+              <h3 class="name">
+                <a
+                  href="#instance-indentSelectedRows"
+                  class="js-api-name method-signature"
+                  name="instance-indentSelectedRows"
+                >
+                  ::indentSelectedRows<span class="argument-list">(<span class="argument">options</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L1011">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>If the selection spans multiple rows, indent all of them.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          with the keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>bypassReadOnly</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          Must be <code>true</code> to modify text within a read-only editor. (default: false)
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Managing multiple selections</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-addSelectionBelow">
+              <h3 class="name">
+                <a
+                  href="#instance-addSelectionBelow"
+                  class="js-api-name method-signature"
+                  name="instance-addSelectionBelow"
+                >
+                  ::addSelectionBelow<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L1026">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Moves the selection down one row.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-addSelectionAbove">
+              <h3 class="name">
+                <a
+                  href="#instance-addSelectionAbove"
+                  class="js-api-name method-signature"
+                  name="instance-addSelectionAbove"
+                >
+                  ::addSelectionAbove<span class="argument-list">()</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L1060">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Moves the selection up one row.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-merge">
+              <h3 class="name">
+                <a href="#instance-merge" class="js-api-name method-signature" name="instance-merge">
+                  ::merge<span class="argument-list"
+                    >(<span class="argument">otherSelection</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L1094">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Combines the given selection into this selection and then destroys the given selection.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherSelection</code></p>
+                      </td>
+                      <td>
+                        <p>A <a href="index.html">Selection</a> to merge with.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <span class="optional">optional</span>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          options matching those found in <a href="#instance-setBufferRange">::setBufferRange</a>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h2 class="detail-section">Comparing to other selections</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-compare">
+              <h3 class="name">
+                <a href="#instance-compare" class="js-api-name method-signature" name="instance-compare">
+                  ::compare<span class="argument-list">(<span class="argument">otherSelection</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/selection.js#L1124">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Compare this selection&#x2019;s buffer range to another selection&#x2019;s buffer range.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>See <a href="../Range/index.html#instance-compare">Range::compare</a> for more details.</p>
+                  </div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>otherSelection</code></p>
+                      </td>
+                      <td>
+                        <p>A <a href="index.html">Selection</a> to compare against</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Selection/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:24 GMT -->
+</html>

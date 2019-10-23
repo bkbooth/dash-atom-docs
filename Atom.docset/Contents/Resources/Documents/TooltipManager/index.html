@@ -1,0 +1,407 @@
+<head>
+  <meta charset="utf-8" />
+  <title>TooltipManager</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/TooltipManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:24 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              TooltipManager
+              <span class="label label-essential" title="This class is in the essential API">
+                Essential
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/atom/blob/v1.40.1/src/tooltip-manager.js#L47"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>Associates tooltips with HTML elements.</p>
+
+              <p>You can get the <code>TooltipManager</code> via <code>atom.tooltips</code>.</p>
+            </div>
+            <h2 class="section">Examples</h2>
+            <div class="document-examples markdown-body">
+              <div class="example">
+                <div class="description markdown-body">
+                  <p>The essence of displaying a tooltip</p>
+                </div>
+
+                <div class="language-js highlighter-rouge">
+                  <div class="highlight">
+                    <pre class="highlight"><code><span class="c1">// display it</span>
+<span class="kd">const</span> <span class="nx">disposable</span> <span class="o">=</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">tooltips</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">div</span><span class="p">,</span> <span class="p">{</span><span class="na">title</span><span class="p">:</span> <span class="s1">&apos;This is a tooltip&apos;</span><span class="p">})</span>
+
+<span class="c1">// remove it</span>
+<span class="nx">disposable</span><span class="p">.</span><span class="nx">dispose</span><span class="p">()</span>
+</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <div class="example">
+                <div class="description markdown-body">
+                  <p>In practice there are usually multiple tooltips. So we add them to a CompositeDisposable</p>
+                </div>
+
+                <div class="language-js highlighter-rouge">
+                  <div class="highlight">
+                    <pre
+                      class="highlight"
+                    ><code><span class="kd">const</span> <span class="p">[</span><span class="nx">CompositeDisposable</span><span class="p">](..</span><span class="o">/</span><span class="nx">CompositeDisposable</span><span class="o">/</span><span class="p">)</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&apos;atom&apos;</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">subscriptions</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CompositeDisposable</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">div1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&apos;div&apos;</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">div2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&apos;div&apos;</span><span class="p">)</span>
+<span class="nx">subscriptions</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">atom</span><span class="p">.</span><span class="nx">tooltips</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">div1</span><span class="p">,</span> <span class="p">{</span><span class="na">title</span><span class="p">:</span> <span class="s1">&apos;This is a tooltip&apos;</span><span class="p">}))</span>
+<span class="nx">subscriptions</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">atom</span><span class="p">.</span><span class="nx">tooltips</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">div2</span><span class="p">,</span> <span class="p">{</span><span class="na">title</span><span class="p">:</span> <span class="s1">&apos;Another tooltip&apos;</span><span class="p">}))</span>
+
+<span class="c1">// remove them all</span>
+<span class="nx">subscriptions</span><span class="p">.</span><span class="nx">dispose</span><span class="p">()</span>
+</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <div class="example">
+                <div class="description markdown-body">
+                  <p>
+                    You can display a key binding in the tooltip as well with the <code>keyBindingCommand</code> option.
+                  </p>
+                </div>
+
+                <div class="language-js highlighter-rouge">
+                  <div class="highlight">
+                    <pre
+                      class="highlight"
+                    ><code><span class="nx">disposable</span> <span class="o">=</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">tooltips</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">caseOptionButton</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">title</span><span class="p">:</span> <span class="s1">&apos;Match Case&apos;</span><span class="p">,</span>
+  <span class="na">keyBindingCommand</span><span class="p">:</span> <span class="s1">&apos;find-and-replace:toggle-case-option&apos;</span><span class="p">,</span>
+  <span class="na">keyBindingTarget</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">findEditor</span><span class="p">.</span><span class="nx">element</span>
+<span class="p">})</span>
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2 class="detail-section">Methods</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-add">
+              <h3 class="name">
+                <a href="#instance-add" class="js-api-name method-signature" name="instance-add">
+                  ::add<span class="argument-list"
+                    >(<span class="argument">target</span>, <span class="argument">options</span>)</span
+                  >
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/tooltip-manager.js#L113">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Add a tooltip to the given element.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>target</code></p>
+                      </td>
+                      <td>
+                        <p>An <code>HTMLElement</code></p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>options</code></p>
+                      </td>
+                      <td>
+                        <p>An object with one or more of the following options:</p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>title</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          or
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          to use for the text in the tip. If a function is passed, <code>this</code> will be set to the
+                          <code>target</code> element. This option is mutually exclusive with the
+                          <code>item</code> option.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>html</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+                            >Boolean</a
+                          >
+                          affecting the interpretation of the <code>title</code> option. If <code>true</code> (the
+                          default), the <code>title</code> string will be interpreted as HTML. Otherwise it will be
+                          interpreted as plain text.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>item</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A view (object with an <code>.element</code> property) or a DOM element containing custom
+                          content for the tooltip. This option is mutually exclusive with the <code>title</code> option.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>class</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          with a class to apply to the tooltip element to enable custom styling.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>placement</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          or
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          returning a string to indicate the position of the tooltip relative to <code>element</code>.
+                          Can be <code>&apos;top&apos;</code>, <code>&apos;bottom&apos;</code>,
+                          <code>&apos;left&apos;</code>, <code>&apos;right&apos;</code>, or
+                          <code>&apos;auto&apos;</code>. When <code>&apos;auto&apos;</code> is specified, it will
+                          dynamically reorient the tooltip. For example, if placement is
+                          <code>&apos;auto left&apos;</code>, the tooltip will display to the left when possible,
+                          otherwise it will display right. When a function is used to determine the placement, it is
+                          called with the tooltip DOM node as its first argument and the triggering element DOM node as
+                          its second. The <code>this</code> context is set to the tooltip instance.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>trigger</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          indicating how the tooltip should be displayed. Choose from one of the following options:
+                        </p>
+                        <ul>
+                          <li>
+                            <code>&apos;hover&apos;</code> Show the tooltip when the mouse hovers over the element. This
+                            is the default.
+                          </li>
+                          <li>
+                            <code>&apos;click&apos;</code> Show the tooltip when the element is clicked. The tooltip
+                            will be hidden after clicking the element again or anywhere else outside of the tooltip
+                            itself.
+                          </li>
+                          <li><code>&apos;focus&apos;</code> Show the tooltip when the element is focused.</li>
+                          <li>
+                            <code>&apos;manual&apos;</code> Show the tooltip immediately and only hide it when the
+                            returned disposable is disposed.
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>delay</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An object specifying the show and hide delay in milliseconds. Defaults to
+                          <code>{show: 1000, hide: 100}</code> if the <code>trigger</code> is <code>hover</code> and
+                          otherwise defaults to <code>0</code> for both values.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>keyBindingCommand</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          A
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          containing a command name. If you specify this option and a key binding exists that matches
+                          the command, it will be appended to the title or rendered alone if no title is specified.
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>keyBindingTarget</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An <code>HTMLElement</code> on which to look up the key binding. If this option is not
+                          supplied, the first of all matching key bindings for the given command will be rendered.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to remove the tooltip.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry extended" id="instance-findTooltips">
+              <h3 class="name">
+                <a href="#instance-findTooltips" class="js-api-name method-signature" name="instance-findTooltips">
+                  ::findTooltips<span class="argument-list">(<span class="argument">target</span>)</span>
+                </a>
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/tooltip-manager.js#L188">
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Find the tooltips that have been applied to the given element.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>target</code></p>
+                      </td>
+                      <td>
+                        <p>The <code>HTMLElement</code> to find tooltips on.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns an
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of <code>Tooltip</code> objects that match the <code>target</code>.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/TooltipManager/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:24 GMT -->
+</html>

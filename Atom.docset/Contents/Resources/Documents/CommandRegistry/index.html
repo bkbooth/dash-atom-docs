@@ -1,0 +1,418 @@
+<head>
+  <meta charset="utf-8" />
+  <title>CommandRegistry</title>
+  <link rel="stylesheet" href="../assets/styles-atom.css" />
+  <link rel="stylesheet" href="../assets/styles-dash.css" />
+</head>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/CommandRegistry/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:20 GMT -->
+  <!-- Added by HTTrack --><!-- /Added by HTTrack -->
+
+  <body class="layout-api-class">
+    <div class="footer-push">
+      <div class="wrapper documents content-push wide">
+        <div class="content-column">
+          <div class="document-content">
+            <h2 class="page-title">
+              CommandRegistry
+              <span class="label label-essential" title="This class is in the essential API">
+                Essential
+              </span>
+
+              <a
+                class="document-source"
+                href="https://github.com/atom/atom/blob/v1.40.1/src/command-registry.js#L47"
+                title="View class source"
+              >
+                <span class="octicon octicon-file-code"></span>
+              </a>
+            </h2>
+            <div class="markdown-body">
+              <p>
+                Associates listener functions with commands in a context-sensitive way using CSS selectors. You can
+                access a global instance of this class via <code>atom.commands</code>, and commands registered there
+                will be presented in the command palette.
+              </p>
+
+              <p>
+                The global command registry facilitates a style of event handling known as
+                <em>event delegation</em> that was popularized by jQuery. Atom commands are expressed as custom DOM
+                events that can be invoked on the currently focused element via a key binding or manually via the
+                command palette. Rather than binding listeners for command events directly to DOM nodes, you instead
+                register command event listeners globally on <code>atom.commands</code> and constrain them to specific
+                kinds of elements with CSS selectors.
+              </p>
+
+              <p>
+                Command names must follow the <code>namespace:action</code> pattern, where <code>namespace</code> will
+                typically be the name of your package, and <code>action</code> describes the behavior of your command.
+                If either part consists of multiple words, these must be separated by hyphens. E.g.
+                <code>awesome-package:turn-it-up-to-eleven</code>. All words should be lowercased.
+              </p>
+
+              <p>
+                As the event bubbles upward through the DOM, all registered event listeners with matching selectors are
+                invoked in order of specificity. In the event of a specificity tie, the most recently registered
+                listener is invoked first. This mirrors the &#x201C;cascade&#x201D; semantics of CSS. Event listeners
+                are invoked in the context of the current DOM node, meaning <code>this</code> always points at
+                <code>event.currentTarget</code>. As is normally the case with DOM events,
+                <code>stopPropagation</code> and <code>stopImmediatePropagation</code> can be used to terminate the
+                bubbling process and prevent invocation of additional listeners.
+              </p>
+
+              <h2 id="example">Example</h2>
+
+              <p>Here is a command that inserts the current date in an editor:</p>
+
+              <div class="language-coffee highlighter-rouge">
+                <div class="highlight">
+                  <pre
+                    class="highlight"
+                  ><code><span class="nx">atom</span><span class="p">.</span><span class="na">commands</span><span class="p">.</span><span class="na">add</span> <span class="s">&apos;atom-text-editor&apos;</span><span class="p">,</span>
+  <span class="s">&apos;user:insert-date&apos;</span><span class="o">:</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">editor</span> <span class="o">=</span> <span class="vi">@</span><span class="na">getModel</span><span class="p">()</span>
+    <span class="nx">editor</span><span class="p">.</span><span class="na">insertText</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="na">toLocaleString</span><span class="p">())</span>
+</code></pre>
+                </div>
+              </div>
+            </div>
+            <h2 class="detail-section">Methods</h2>
+
+            <div class="api-entry js-api-entry essential" id="instance-add">
+              <h3 class="name">
+                <a href="#instance-add" class="js-api-name method-signature" name="instance-add">
+                  ::add<span class="argument-list">()</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/command-registry.js#L130"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Add one or more command listeners associated with a selector.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns a <a href="../Disposable/index.html">Disposable</a> on which
+                          <code>.dispose()</code> can be called to remove the added command handler(s).
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-findCommands">
+              <h3 class="name">
+                <a href="#instance-findCommands" class="js-api-name method-signature" name="instance-findCommands">
+                  ::findCommands<span class="argument-list">(<span class="argument">params</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/command-registry.js#L242"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Find all registered commands matching a query.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>params</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          An
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >
+                          containing one or more of the following keys:
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>target</code></p>
+                      </td>
+                      <td>
+                        <p>A DOM node that is the hypothetical target of a given command.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="return-values">
+                  <thead>
+                    <tr>
+                      <th>Return values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="markdown-body">
+                        <p>
+                          Returns an
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                            >Array</a
+                          >
+                          of <code>CommandDescriptor</code>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"
+                            >Object</a
+                          >s containing the following keys:
+                        </p>
+
+                        <ul>
+                          <li>
+                            <code>name</code> The name of the command. For example, <code>user:insert-date</code>.
+                          </li>
+                          <li>
+                            <code>displayName</code> The display name of the command. For example,
+                            <code>User: Insert Date</code>. Additional metadata may also be present in the returned
+                            descriptor:
+                          </li>
+                          <li>
+                            <code>description</code> a
+                            <a
+                              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                              >String</a
+                            >
+                            describing the function of the command in more detail than the title
+                          </li>
+                          <li>
+                            <code>tags</code> an
+                            <a
+                              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                              >Array</a
+                            >
+                            of
+                            <a
+                              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                              >String</a
+                            >s that describe keywords related to the command Any additional nonstandard metadata
+                            provided when the command was <code>add</code>ed may also be present in the returned
+                            descriptor.
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-dispatch">
+              <h3 class="name">
+                <a href="#instance-dispatch" class="js-api-name method-signature" name="instance-dispatch">
+                  ::dispatch<span class="argument-list"
+                    >(<span class="argument">target</span>, <span class="argument">commandName</span>)</span
+                  >
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/command-registry.js#L289"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Simulate the dispatch of a command on a DOM node.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description">
+                    <p>
+                      This can be useful for testing when you want to simulate the invocation of a command on a detached
+                      DOM node. Otherwise, the DOM node in question needs to be attached to the document so the event
+                      bubbles up to the root node to be processed.
+                    </p>
+                  </div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>target</code></p>
+                      </td>
+                      <td>
+                        <p>The DOM node at which to start bubbling the command event.</p>
+                      </td>
+                    </tr>
+
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>commandName</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                            >String</a
+                          >
+                          indicating the name of the command to dispatch.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-onWillDispatch">
+              <h3 class="name">
+                <a href="#instance-onWillDispatch" class="js-api-name method-signature" name="instance-onWillDispatch">
+                  ::onWillDispatch<span class="argument-list">(<span class="argument">callback</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/command-registry.js#L299"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Invoke the given callback before dispatching a command event.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>callback</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          to be called before dispatching each command
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>event</code></p>
+                      </td>
+                      <td>
+                        <p>The Event that will be dispatched</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="api-entry js-api-entry essential" id="instance-onDidDispatch">
+              <h3 class="name">
+                <a href="#instance-onDidDispatch" class="js-api-name method-signature" name="instance-onDidDispatch">
+                  ::onDidDispatch<span class="argument-list">(<span class="argument">callback</span>)</span>
+                </a>
+                <a
+                  class="document-source"
+                  href="https://github.com/atom/atom/blob/v1.40.1/src/command-registry.js#L307"
+                >
+                  <span class="octicon octicon-file-code"></span>
+                </a>
+              </h3>
+              <div class="method-summary-wrapper">
+                <div class="summary markdown-body">
+                  <p>Invoke the given callback after dispatching a command event.</p>
+                </div>
+
+                <div class="body markdown-body">
+                  <div class="description"></div>
+                </div>
+
+                <table class="arguments">
+                  <thead>
+                    <tr>
+                      <th>Argument</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="markdown-body argument-depth-0">
+                      <td>
+                        <p><code>callback</code></p>
+                      </td>
+                      <td>
+                        <p>
+                          <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"
+                            >Function</a
+                          >
+                          to be called after dispatching each command
+                        </p>
+                      </td>
+                    </tr>
+                    <tr class="markdown-body argument-depth-1">
+                      <td>
+                        <p><code>event</code></p>
+                      </td>
+                      <td>
+                        <p>The Event that was dispatched</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/CommandRegistry/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:20 GMT -->
+</html>

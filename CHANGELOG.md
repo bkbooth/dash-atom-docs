@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0 (23/10/2019)
+
+- Fix building docs and db for new docs folder layout (eg. ClassName/index.html)
+- Format docset HTML files with Prettier
+- Enable grouping of methods in Dash search
+
 ## 1.1.0 (22/10/2019)
 
 - Update all dependencies
