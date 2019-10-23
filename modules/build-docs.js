@@ -3,6 +3,8 @@ const path = require('path');
 const argv = require('minimist')(process.argv.slice(2), { alias: { 'atom-version': 'a' } });
 const mkdirp = require('mkdirp');
 const cheerio = require('cheerio');
+const prettier = require('prettier');
+const prettierConfig = require('../prettier.config');
 const config = require('./config');
 
 config.atomVersion = argv['atom-version'] || process.env.npm_package_atom_version;
@@ -23,12 +25,7 @@ transformDocsHtml(config);
 
 // Find, process and copy all docs HTML into docset
 function transformDocsHtml(config) {
-  const docsFilesDir = path.join(
-    config.scrapeDir,
-    'flight-manual.atom.io',
-    'api',
-    `v${config.atomVersion}`
-  );
+  const docsFilesDir = path.join(config.scrapeDir, 'flight-manual.atom.io', 'api', `v${config.atomVersion}`);
   fs.readdirSync(docsFilesDir)
     .filter(fileName => fs.lstatSync(path.join(docsFilesDir, fileName)).isDirectory())
     .forEach(docsFolderName => {
@@ -53,7 +50,8 @@ function transformDocsHtml(config) {
       // Write the transformed file
       const docsFilePath = path.join(config.docsDir, docsFolderName);
       mkdirp.sync(docsFilePath);
-      fs.writeFileSync(path.join(docsFilePath, 'index.html'), $.html());
+      const html = prettier.format($.html(), { ...prettierConfig, parser: 'html' });
+      fs.writeFileSync(path.join(docsFilePath, 'index.html'), html);
     });
 }
 
@@ -69,9 +67,7 @@ function copyDocsCss(config) {
     'application.css'
   );
   const readStream = fs.createReadStream(docsAssetsPath);
-  const writeStream = fs.createWriteStream(
-    path.join(config.docsDir, 'assets', config.atomCssFilename)
-  );
+  const writeStream = fs.createWriteStream(path.join(config.docsDir, 'assets', config.atomCssFilename));
   readStream.once('error', handleFailedCssCopy);
   writeStream.once('error', handleFailedCssCopy);
   readStream.pipe(writeStream);
