@@ -6,7 +6,7 @@
 </head>
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Workspace/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:24 GMT -->
+  <!-- Mirrored from flight-manual.atom.io/api/v1.41.0/Workspace/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Oct 2019 11:20:29 GMT -->
   <!-- Added by HTTrack --><!-- /Added by HTTrack -->
 
   <body class="layout-api-class">
@@ -22,7 +22,7 @@
 
               <a
                 class="document-source"
-                href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L176"
+                href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L176"
                 title="View class source"
               >
                 <span class="octicon octicon-file-code"></span>
@@ -52,19 +52,218 @@
               <h3 id="required-methods">Required Methods</h3>
 
               <h4 id="gettitle"><code>getTitle()</code></h4>
+
+              <p>
+                Returns a
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                  >String</a
+                >
+                containing the title of the item to display on its associated tab.
+              </p>
+
+              <h3 id="optional-methods">Optional Methods</h3>
+
+              <h4 id="getelement"><code>getElement()</code></h4>
+
+              <p>
+                If your item already <em>is</em> a DOM element, you do not need to implement this method. Otherwise it
+                should return the element you want to display to represent this item.
+              </p>
+
+              <h4 id="destroy"><code>destroy()</code></h4>
+
+              <p>Destroys the item. This will be called when the item is removed from its parent pane.</p>
+
+              <h4 id="ondiddestroycallback"><code>onDidDestroy(callback)</code></h4>
+
+              <p>
+                Called by the workspace so it can be notified when the item is destroyed. Must return a
+                <a href="../Disposable/index.html">Disposable</a>.
+              </p>
+
+              <h4 id="serialize"><code>serialize()</code></h4>
+
+              <p>
+                Serialize the state of the item. Must return an object that can be passed to
+                <code>JSON.stringify</code>. The state should include a field called <code>deserializer</code>, which
+                names a deserializer declared in your <code>package.json</code>. This method is invoked on items when
+                serializing the workspace so they can be restored to the same location later.
+              </p>
+
+              <h4 id="geturi"><code>getURI()</code></h4>
+
+              <p>Returns the URI associated with the item.</p>
+
+              <h4 id="getlongtitle"><code>getLongTitle()</code></h4>
+
+              <p>
+                Returns a
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                  >String</a
+                >
+                containing a longer version of the title to display in places like the window title or on tabs their
+                short titles are ambiguous.
+              </p>
+
+              <h4 id="ondidchangetitlecallback"><code>onDidChangeTitle(callback)</code></h4>
+
+              <p>
+                Called by the workspace so it can be notified when the item&#x2019;s title changes. Must return a
+                <a href="../Disposable/index.html">Disposable</a>.
+              </p>
+
+              <h4 id="geticonname"><code>getIconName()</code></h4>
+
+              <p>
+                Return a
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                  >String</a
+                >
+                with the name of an icon. If this method is defined and returns a string, the item&#x2019;s tab element
+                will be rendered with the <code>icon</code> and
+                <code
+                  >icon-$[iconName](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/iconName)</code
+                >
+                CSS classes.
+              </p>
+
+              <h3 id="ondidchangeiconcallback"><code>onDidChangeIcon(callback)</code></h3>
+
+              <p>
+                Called by the workspace so it can be notified when the item&#x2019;s icon changes. Must return a
+                <a href="../Disposable/index.html">Disposable</a>.
+              </p>
+
+              <h4 id="getdefaultlocation"><code>getDefaultLocation()</code></h4>
+
+              <p>
+                Tells the workspace where your item should be opened in absence of a user override. Items can appear in
+                the center or in a dock on the left, right, or bottom of the workspace.
+              </p>
+
+              <p>
+                Returns a
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+                  >String</a
+                >
+                with one of the following values: <code>&apos;center&apos;</code>, <code>&apos;left&apos;</code>,
+                <code>&apos;right&apos;</code>, <code>&apos;bottom&apos;</code>. If this method is not defined,
+                <code>&apos;center&apos;</code> is the default.
+              </p>
+
+              <h4 id="getallowedlocations"><code>getAllowedLocations()</code></h4>
+
+              <p>
+                Tells the workspace where this item can be moved. Returns an
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                  >Array</a
+                >
+                of one or more of the following values: <code>&apos;center&apos;</code>, <code>&apos;left&apos;</code>,
+                <code>&apos;right&apos;</code>, or <code>&apos;bottom&apos;</code>.
+              </p>
+
+              <h4 id="ispermanentdockitem"><code>isPermanentDockItem()</code></h4>
+
+              <p>
+                Tells the workspace whether or not this item can be closed by the user by clicking an <code>x</code> on
+                its tab. Use of this feature is discouraged unless there&#x2019;s a very good reason not to allow users
+                to close your item. Items can be made permanent <em>only</em> when they are contained in docks. Center
+                pane items can always be removed. Note that it is currently still possible to close dock items via the
+                <code>Close Pane</code> option in the context menu and via Atom APIs, so you should still be prepared to
+                handle your dock items being destroyed by the user even if you implement this method.
+              </p>
+
+              <h4 id="save"><code>save()</code></h4>
+
+              <p>Saves the item.</p>
+
+              <h4 id="saveaspath"><code>saveAs(path)</code></h4>
+
+              <p>Saves the item to the specified path.</p>
+
+              <h4 id="getpath"><code>getPath()</code></h4>
+
+              <p>
+                Returns the local path associated with this item. This is only used to set the initial location of the
+                &#x201C;save as&#x201D; dialog.
+              </p>
+
+              <h4 id="ismodified"><code>isModified()</code></h4>
+
+              <p>Returns whether or not the item is modified to reflect modification in the UI.</p>
+
+              <h4 id="ondidchangemodified"><code>onDidChangeModified()</code></h4>
+
+              <p>
+                Called by the workspace so it can be notified when item&#x2019;s modified status changes. Must return a
+                <a href="../Disposable/index.html">Disposable</a>.
+              </p>
+
+              <h4 id="copy"><code>copy()</code></h4>
+
+              <p>
+                Create a copy of the item. If defined, the workspace will call this method to duplicate the item when
+                splitting panes via certain split commands.
+              </p>
+
+              <h4 id="getpreferredheight"><code>getPreferredHeight()</code></h4>
+
+              <p>
+                If this item is displayed in the bottom <a href="../Dock/index.html">Dock</a>, called by the workspace
+                when initially displaying the dock to set its height. Once the dock has been resized by the user, their
+                height will override this value.
+              </p>
+
+              <p>
+                Returns a
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                  >Number</a
+                >.
+              </p>
+
+              <h4 id="getpreferredwidth"><code>getPreferredWidth()</code></h4>
+
+              <p>
+                If this item is displayed in the left or right <a href="../Dock/index.html">Dock</a>, called by the
+                workspace when initially displaying the dock to set its width. Once the dock has been resized by the
+                user, their width will override this value.
+              </p>
+
+              <p>
+                Returns a
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"
+                  >Number</a
+                >.
+              </p>
+
+              <h4 id="ondidterminatependingstatecallback"><code>onDidTerminatePendingState(callback)</code></h4>
+
+              <p>
+                If the workspace is configured to use <em>pending pane items</em>, the workspace will subscribe to this
+                method to terminate the pending state of the item. Must return a
+                <a href="../Disposable/index.html">Disposable</a>.
+              </p>
+
+              <h4 id="shouldprompttosave"><code>shouldPromptToSave()</code></h4>
+
+              <p>
+                This method indicates whether Atom should prompt the user to save this item when the user closes or
+                reloads the window. Returns a boolean.
+              </p>
             </div>
             <h2 class="detail-section">Event Subscription</h2>
 
             <div class="api-entry js-api-entry essential" id="instance-observeTextEditors">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/observeTextEditors" class="dashAnchor"></a
+                ><a
                   href="#instance-observeTextEditors"
                   class="js-api-name method-signature"
                   name="instance-observeTextEditors"
                 >
                   ::observeTextEditors<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L765">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L765">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -135,14 +334,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-observePaneItems">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/observePaneItems" class="dashAnchor"></a
+                ><a
                   href="#instance-observePaneItems"
                   class="js-api-name method-signature"
                   name="instance-observePaneItems"
                 >
                   ::observePaneItems<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L780">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L780">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -212,14 +412,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-onDidChangeActivePaneItem">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onDidChangeActivePaneItem" class="dashAnchor"></a
+                ><a
                   href="#instance-onDidChangeActivePaneItem"
                   class="js-api-name method-signature"
                   name="instance-onDidChangeActivePaneItem"
                 >
                   ::onDidChangeActivePaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L799">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L799">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -293,7 +494,8 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-onDidStopChangingActivePaneItem">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onDidStopChangingActivePaneItem" class="dashAnchor"></a
+                ><a
                   href="#instance-onDidStopChangingActivePaneItem"
                   class="js-api-name method-signature"
                   name="instance-onDidStopChangingActivePaneItem"
@@ -302,7 +504,7 @@
                     >(<span class="argument">callback</span>)</span
                   >
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L817">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L817">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -377,7 +579,8 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-onDidChangeActiveTextEditor">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onDidChangeActiveTextEditor" class="dashAnchor"></a
+                ><a
                   href="#instance-onDidChangeActiveTextEditor"
                   class="js-api-name method-signature"
                   name="instance-onDidChangeActiveTextEditor"
@@ -386,7 +589,7 @@
                     >(<span class="argument">callback</span>)</span
                   >
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L829">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L829">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -459,14 +662,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-observeActivePaneItem">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/observeActivePaneItem" class="dashAnchor"></a
+                ><a
                   href="#instance-observeActivePaneItem"
                   class="js-api-name method-signature"
                   name="instance-observeActivePaneItem"
                 >
                   ::observeActivePaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L840">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L840">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -536,14 +740,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-observeActiveTextEditor">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/observeActiveTextEditor" class="dashAnchor"></a
+                ><a
                   href="#instance-observeActiveTextEditor"
                   class="js-api-name method-signature"
                   name="instance-observeActiveTextEditor"
                 >
                   ::observeActiveTextEditor<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L854">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L854">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -616,10 +821,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-onDidOpen">
               <h3 class="name">
-                <a href="#instance-onDidOpen" class="js-api-name method-signature" name="instance-onDidOpen">
+                <a name="//apple_ref/cpp/Event/onDidOpen" class="dashAnchor"></a
+                ><a href="#instance-onDidOpen" class="js-api-name method-signature" name="instance-onDidOpen">
                   ::onDidOpen<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L872">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L872">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -738,10 +944,11 @@
             <h4>Extended Methods</h4>
             <div class="api-entry js-api-entry extended" id="instance-onDidAddPane">
               <h3 class="name">
-                <a href="#instance-onDidAddPane" class="js-api-name method-signature" name="instance-onDidAddPane">
+                <a name="//apple_ref/cpp/Event/onDidAddPane" class="dashAnchor"></a
+                ><a href="#instance-onDidAddPane" class="js-api-name method-signature" name="instance-onDidAddPane">
                   ::onDidAddPane<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L883">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L883">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -822,14 +1029,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-onWillDestroyPane">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onWillDestroyPane" class="dashAnchor"></a
+                ><a
                   href="#instance-onWillDestroyPane"
                   class="js-api-name method-signature"
                   name="instance-onWillDestroyPane"
                 >
                   ::onWillDestroyPane<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L899">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L899">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -910,14 +1118,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-onDidDestroyPane">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onDidDestroyPane" class="dashAnchor"></a
+                ><a
                   href="#instance-onDidDestroyPane"
                   class="js-api-name method-signature"
                   name="instance-onDidDestroyPane"
                 >
                   ::onDidDestroyPane<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L915">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L915">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -998,10 +1207,11 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-observePanes">
               <h3 class="name">
-                <a href="#instance-observePanes" class="js-api-name method-signature" name="instance-observePanes">
+                <a name="//apple_ref/cpp/Method/observePanes" class="dashAnchor"></a
+                ><a href="#instance-observePanes" class="js-api-name method-signature" name="instance-observePanes">
                   ::observePanes<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L931">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L931">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1072,14 +1282,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-onDidChangeActivePane">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onDidChangeActivePane" class="dashAnchor"></a
+                ><a
                   href="#instance-onDidChangeActivePane"
                   class="js-api-name method-signature"
                   name="instance-onDidChangeActivePane"
                 >
                   ::onDidChangeActivePane<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L945">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L945">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1149,14 +1360,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-observeActivePane">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/observeActivePane" class="dashAnchor"></a
+                ><a
                   href="#instance-observeActivePane"
                   class="js-api-name method-signature"
                   name="instance-observeActivePane"
                 >
                   ::observeActivePane<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L957">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L957">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1226,14 +1438,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-onDidAddPaneItem">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onDidAddPaneItem" class="dashAnchor"></a
+                ><a
                   href="#instance-onDidAddPaneItem"
                   class="js-api-name method-signature"
                   name="instance-onDidAddPaneItem"
                 >
                   ::onDidAddPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L972">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L972">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1338,14 +1551,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-onWillDestroyPaneItem">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onWillDestroyPaneItem" class="dashAnchor"></a
+                ><a
                   href="#instance-onWillDestroyPaneItem"
                   class="js-api-name method-signature"
                   name="instance-onWillDestroyPaneItem"
                 >
                   ::onWillDestroyPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L992">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L992">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1457,14 +1671,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-onDidDestroyPaneItem">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onDidDestroyPaneItem" class="dashAnchor"></a
+                ><a
                   href="#instance-onDidDestroyPaneItem"
                   class="js-api-name method-signature"
                   name="instance-onDidDestroyPaneItem"
                 >
                   ::onDidDestroyPaneItem<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1010">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1010">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1569,14 +1784,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-onDidAddTextEditor">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Event/onDidAddTextEditor" class="dashAnchor"></a
+                ><a
                   href="#instance-onDidAddTextEditor"
                   class="js-api-name method-signature"
                   name="instance-onDidAddTextEditor"
                 >
                   ::onDidAddTextEditor<span class="argument-list">(<span class="argument">callback</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1029">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1029">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1684,12 +1900,13 @@
 
             <div class="api-entry js-api-entry essential" id="instance-open">
               <h3 class="name">
-                <a href="#instance-open" class="js-api-name method-signature" name="instance-open">
+                <a name="//apple_ref/cpp/Method/open" class="dashAnchor"></a
+                ><a href="#instance-open" class="js-api-name method-signature" name="instance-open">
                   ::open<span class="argument-list"
                     >(<span class="argument">uri</span>, <span class="argument">options</span>)</span
                   >
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1076">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1076">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1913,10 +2130,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-hide">
               <h3 class="name">
-                <a href="#instance-hide" class="js-api-name method-signature" name="instance-hide">
+                <a name="//apple_ref/cpp/Method/hide" class="dashAnchor"></a
+                ><a href="#instance-hide" class="js-api-name method-signature" name="instance-hide">
                   ::hide<span class="argument-list">(<span class="argument">itemOrURI</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1256">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1256">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -1980,10 +2198,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-toggle">
               <h3 class="name">
-                <a href="#instance-toggle" class="js-api-name method-signature" name="instance-toggle">
+                <a name="//apple_ref/cpp/Method/toggle" class="dashAnchor"></a
+                ><a href="#instance-toggle" class="js-api-name method-signature" name="instance-toggle">
                   ::toggle<span class="argument-list">(<span class="argument">itemOrURI</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1293">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1293">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2044,14 +2263,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-createItemForURI">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/createItemForURI" class="dashAnchor"></a
+                ><a
                   href="#instance-createItemForURI"
                   class="js-api-name method-signature"
                   name="instance-createItemForURI"
                 >
                   ::createItemForURI<span class="argument-list">(<span class="argument">uri</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1361">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1361">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2121,10 +2341,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-isTextEditor">
               <h3 class="name">
-                <a href="#instance-isTextEditor" class="js-api-name method-signature" name="instance-isTextEditor">
+                <a name="//apple_ref/cpp/Method/isTextEditor" class="dashAnchor"></a
+                ><a href="#instance-isTextEditor" class="js-api-name method-signature" name="instance-isTextEditor">
                   ::isTextEditor<span class="argument-list">(<span class="argument">object</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1463">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1463">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2186,10 +2407,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-reopenItem">
               <h3 class="name">
-                <a href="#instance-reopenItem" class="js-api-name method-signature" name="instance-reopenItem">
+                <a name="//apple_ref/cpp/Method/reopenItem" class="dashAnchor"></a
+                ><a href="#instance-reopenItem" class="js-api-name method-signature" name="instance-reopenItem">
                   ::reopenItem<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1481">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1481">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2229,10 +2451,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-addOpener">
               <h3 class="name">
-                <a href="#instance-addOpener" class="js-api-name method-signature" name="instance-addOpener">
+                <a name="//apple_ref/cpp/Method/addOpener" class="dashAnchor"></a
+                ><a href="#instance-addOpener" class="js-api-name method-signature" name="instance-addOpener">
                   ::addOpener<span class="argument-list">(<span class="argument">opener</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1523">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1523">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2319,14 +2542,15 @@
             <h4>Extended Methods</h4>
             <div class="api-entry js-api-entry extended" id="instance-buildTextEditor">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/buildTextEditor" class="dashAnchor"></a
+                ><a
                   href="#instance-buildTextEditor"
                   class="js-api-name method-signature"
                   name="instance-buildTextEditor"
                 >
                   ::buildTextEditor<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1470">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1470">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2360,10 +2584,11 @@
 
             <div class="api-entry js-api-entry essential" id="instance-getPaneItems">
               <h3 class="name">
-                <a href="#instance-getPaneItems" class="js-api-name method-signature" name="instance-getPaneItems">
+                <a name="//apple_ref/cpp/Method/getPaneItems" class="dashAnchor"></a
+                ><a href="#instance-getPaneItems" class="js-api-name method-signature" name="instance-getPaneItems">
                   ::getPaneItems<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1541">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1541">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2401,14 +2626,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getActivePaneItem">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/getActivePaneItem" class="dashAnchor"></a
+                ><a
                   href="#instance-getActivePaneItem"
                   class="js-api-name method-signature"
                   name="instance-getActivePaneItem"
                 >
                   ::getActivePaneItem<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1550">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1550">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2445,10 +2671,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getTextEditors">
               <h3 class="name">
-                <a href="#instance-getTextEditors" class="js-api-name method-signature" name="instance-getTextEditors">
+                <a name="//apple_ref/cpp/Method/getTextEditors" class="dashAnchor"></a
+                ><a href="#instance-getTextEditors" class="js-api-name method-signature" name="instance-getTextEditors">
                   ::getTextEditors<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1557">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1557">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2486,14 +2713,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getActiveTextEditor">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/getActiveTextEditor" class="dashAnchor"></a
+                ><a
                   href="#instance-getActiveTextEditor"
                   class="js-api-name method-signature"
                   name="instance-getActiveTextEditor"
                 >
                   ::getActiveTextEditor<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1565">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1565">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2536,14 +2764,15 @@
             <h4>Extended Methods</h4>
             <div class="api-entry js-api-entry extended" id="instance-getActivePaneContainer">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/getActivePaneContainer" class="dashAnchor"></a
+                ><a
                   href="#instance-getActivePaneContainer"
                   class="js-api-name method-signature"
                   name="instance-getActivePaneContainer"
                 >
                   ::getActivePaneContainer<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1623">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1623">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2577,10 +2806,11 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-getPanes">
               <h3 class="name">
-                <a href="#instance-getPanes" class="js-api-name method-signature" name="instance-getPanes">
+                <a name="//apple_ref/cpp/Method/getPanes" class="dashAnchor"></a
+                ><a href="#instance-getPanes" class="js-api-name method-signature" name="instance-getPanes">
                   ::getPanes<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1630">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1630">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2618,10 +2848,11 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-getActivePane">
               <h3 class="name">
-                <a href="#instance-getActivePane" class="js-api-name method-signature" name="instance-getActivePane">
+                <a name="//apple_ref/cpp/Method/getActivePane" class="dashAnchor"></a
+                ><a href="#instance-getActivePane" class="js-api-name method-signature" name="instance-getActivePane">
                   ::getActivePane<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1645">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1645">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2652,14 +2883,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-activateNextPane">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/activateNextPane" class="dashAnchor"></a
+                ><a
                   href="#instance-activateNextPane"
                   class="js-api-name method-signature"
                   name="instance-activateNextPane"
                 >
                   ::activateNextPane<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1650">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1650">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2675,14 +2907,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-activatePreviousPane">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/activatePreviousPane" class="dashAnchor"></a
+                ><a
                   href="#instance-activatePreviousPane"
                   class="js-api-name method-signature"
                   name="instance-activatePreviousPane"
                 >
                   ::activatePreviousPane<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1655">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1655">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2698,14 +2931,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-paneContainerForURI">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/paneContainerForURI" class="dashAnchor"></a
+                ><a
                   href="#instance-paneContainerForURI"
                   class="js-api-name method-signature"
                   name="instance-paneContainerForURI"
                 >
                   ::paneContainerForURI<span class="argument-list">(<span class="argument">uri</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1666">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1666">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2765,14 +2999,15 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-paneContainerForItem">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/paneContainerForItem" class="dashAnchor"></a
+                ><a
                   href="#instance-paneContainerForItem"
                   class="js-api-name method-signature"
                   name="instance-paneContainerForItem"
                 >
                   ::paneContainerForItem<span class="argument-list">(<span class="argument">item</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1678">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1678">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2826,10 +3061,11 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-paneForURI">
               <h3 class="name">
-                <a href="#instance-paneForURI" class="js-api-name method-signature" name="instance-paneForURI">
+                <a name="//apple_ref/cpp/Method/paneForURI" class="dashAnchor"></a
+                ><a href="#instance-paneForURI" class="js-api-name method-signature" name="instance-paneForURI">
                   ::paneForURI<span class="argument-list">(<span class="argument">uri</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1689">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1689">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2888,10 +3124,11 @@
             </div>
             <div class="api-entry js-api-entry extended" id="instance-paneForItem">
               <h3 class="name">
-                <a href="#instance-paneForItem" class="js-api-name method-signature" name="instance-paneForItem">
+                <a name="//apple_ref/cpp/Method/paneForItem" class="dashAnchor"></a
+                ><a href="#instance-paneForItem" class="js-api-name method-signature" name="instance-paneForItem">
                   ::paneForItem<span class="argument-list">(<span class="argument">item</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1703">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1703">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2947,10 +3184,11 @@
 
             <div class="api-entry js-api-entry essential" id="instance-getCenter">
               <h3 class="name">
-                <a href="#instance-getCenter" class="js-api-name method-signature" name="instance-getCenter">
+                <a name="//apple_ref/cpp/Method/getCenter" class="dashAnchor"></a
+                ><a href="#instance-getCenter" class="js-api-name method-signature" name="instance-getCenter">
                   ::getCenter<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1800">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1800">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2969,10 +3207,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getLeftDock">
               <h3 class="name">
-                <a href="#instance-getLeftDock" class="js-api-name method-signature" name="instance-getLeftDock">
+                <a name="//apple_ref/cpp/Method/getLeftDock" class="dashAnchor"></a
+                ><a href="#instance-getLeftDock" class="js-api-name method-signature" name="instance-getLeftDock">
                   ::getLeftDock<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1805">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1805">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -2988,10 +3227,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getRightDock">
               <h3 class="name">
-                <a href="#instance-getRightDock" class="js-api-name method-signature" name="instance-getRightDock">
+                <a name="//apple_ref/cpp/Method/getRightDock" class="dashAnchor"></a
+                ><a href="#instance-getRightDock" class="js-api-name method-signature" name="instance-getRightDock">
                   ::getRightDock<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1810">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1810">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3007,10 +3247,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getBottomDock">
               <h3 class="name">
-                <a href="#instance-getBottomDock" class="js-api-name method-signature" name="instance-getBottomDock">
+                <a name="//apple_ref/cpp/Method/getBottomDock" class="dashAnchor"></a
+                ><a href="#instance-getBottomDock" class="js-api-name method-signature" name="instance-getBottomDock">
                   ::getBottomDock<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1815">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1815">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3029,14 +3270,15 @@
 
             <div class="api-entry js-api-entry essential" id="instance-getBottomPanels">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/getBottomPanels" class="dashAnchor"></a
+                ><a
                   href="#instance-getBottomPanels"
                   class="js-api-name method-signature"
                   name="instance-getBottomPanels"
                 >
                   ::getBottomPanels<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1850">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1850">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3058,10 +3300,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-addBottomPanel">
               <h3 class="name">
-                <a href="#instance-addBottomPanel" class="js-api-name method-signature" name="instance-addBottomPanel">
+                <a name="//apple_ref/cpp/Method/addBottomPanel" class="dashAnchor"></a
+                ><a href="#instance-addBottomPanel" class="js-api-name method-signature" name="instance-addBottomPanel">
                   ::addBottomPanel<span class="argument-list">(<span class="argument">options</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1866">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1866">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3166,10 +3409,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getLeftPanels">
               <h3 class="name">
-                <a href="#instance-getLeftPanels" class="js-api-name method-signature" name="instance-getLeftPanels">
+                <a name="//apple_ref/cpp/Method/getLeftPanels" class="dashAnchor"></a
+                ><a href="#instance-getLeftPanels" class="js-api-name method-signature" name="instance-getLeftPanels">
                   ::getLeftPanels<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1871">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1871">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3191,10 +3435,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-addLeftPanel">
               <h3 class="name">
-                <a href="#instance-addLeftPanel" class="js-api-name method-signature" name="instance-addLeftPanel">
+                <a name="//apple_ref/cpp/Method/addLeftPanel" class="dashAnchor"></a
+                ><a href="#instance-addLeftPanel" class="js-api-name method-signature" name="instance-addLeftPanel">
                   ::addLeftPanel<span class="argument-list">(<span class="argument">options</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1887">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1887">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3299,10 +3544,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getRightPanels">
               <h3 class="name">
-                <a href="#instance-getRightPanels" class="js-api-name method-signature" name="instance-getRightPanels">
+                <a name="//apple_ref/cpp/Method/getRightPanels" class="dashAnchor"></a
+                ><a href="#instance-getRightPanels" class="js-api-name method-signature" name="instance-getRightPanels">
                   ::getRightPanels<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1892">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1892">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3324,10 +3570,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-addRightPanel">
               <h3 class="name">
-                <a href="#instance-addRightPanel" class="js-api-name method-signature" name="instance-addRightPanel">
+                <a name="//apple_ref/cpp/Method/addRightPanel" class="dashAnchor"></a
+                ><a href="#instance-addRightPanel" class="js-api-name method-signature" name="instance-addRightPanel">
                   ::addRightPanel<span class="argument-list">(<span class="argument">options</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1908">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1908">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3432,10 +3679,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getTopPanels">
               <h3 class="name">
-                <a href="#instance-getTopPanels" class="js-api-name method-signature" name="instance-getTopPanels">
+                <a name="//apple_ref/cpp/Method/getTopPanels" class="dashAnchor"></a
+                ><a href="#instance-getTopPanels" class="js-api-name method-signature" name="instance-getTopPanels">
                   ::getTopPanels<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1913">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1913">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3457,10 +3705,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-addTopPanel">
               <h3 class="name">
-                <a href="#instance-addTopPanel" class="js-api-name method-signature" name="instance-addTopPanel">
+                <a name="//apple_ref/cpp/Method/addTopPanel" class="dashAnchor"></a
+                ><a href="#instance-addTopPanel" class="js-api-name method-signature" name="instance-addTopPanel">
                   ::addTopPanel<span class="argument-list">(<span class="argument">options</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1929">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1929">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3565,14 +3814,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getHeaderPanels">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/getHeaderPanels" class="dashAnchor"></a
+                ><a
                   href="#instance-getHeaderPanels"
                   class="js-api-name method-signature"
                   name="instance-getHeaderPanels"
                 >
                   ::getHeaderPanels<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1934">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1934">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3594,10 +3844,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-addHeaderPanel">
               <h3 class="name">
-                <a href="#instance-addHeaderPanel" class="js-api-name method-signature" name="instance-addHeaderPanel">
+                <a name="//apple_ref/cpp/Method/addHeaderPanel" class="dashAnchor"></a
+                ><a href="#instance-addHeaderPanel" class="js-api-name method-signature" name="instance-addHeaderPanel">
                   ::addHeaderPanel<span class="argument-list">(<span class="argument">options</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1950">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1950">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3702,14 +3953,15 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getFooterPanels">
               <h3 class="name">
-                <a
+                <a name="//apple_ref/cpp/Method/getFooterPanels" class="dashAnchor"></a
+                ><a
                   href="#instance-getFooterPanels"
                   class="js-api-name method-signature"
                   name="instance-getFooterPanels"
                 >
                   ::getFooterPanels<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1955">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1955">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3731,10 +3983,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-addFooterPanel">
               <h3 class="name">
-                <a href="#instance-addFooterPanel" class="js-api-name method-signature" name="instance-addFooterPanel">
+                <a name="//apple_ref/cpp/Method/addFooterPanel" class="dashAnchor"></a
+                ><a href="#instance-addFooterPanel" class="js-api-name method-signature" name="instance-addFooterPanel">
                   ::addFooterPanel<span class="argument-list">(<span class="argument">options</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1971">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1971">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3839,10 +4092,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-getModalPanels">
               <h3 class="name">
-                <a href="#instance-getModalPanels" class="js-api-name method-signature" name="instance-getModalPanels">
+                <a name="//apple_ref/cpp/Method/getModalPanels" class="dashAnchor"></a
+                ><a href="#instance-getModalPanels" class="js-api-name method-signature" name="instance-getModalPanels">
                   ::getModalPanels<span class="argument-list">()</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1976">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1976">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3864,10 +4118,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-addModalPanel">
               <h3 class="name">
-                <a href="#instance-addModalPanel" class="js-api-name method-signature" name="instance-addModalPanel">
+                <a name="//apple_ref/cpp/Method/addModalPanel" class="dashAnchor"></a
+                ><a href="#instance-addModalPanel" class="js-api-name method-signature" name="instance-addModalPanel">
                   ::addModalPanel<span class="argument-list">(<span class="argument">options</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L1997">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L1997">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -3995,10 +4250,11 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-panelForItem">
               <h3 class="name">
-                <a href="#instance-panelForItem" class="js-api-name method-signature" name="instance-panelForItem">
+                <a name="//apple_ref/cpp/Method/panelForItem" class="dashAnchor"></a
+                ><a href="#instance-panelForItem" class="js-api-name method-signature" name="instance-panelForItem">
                   ::panelForItem<span class="argument-list">(<span class="argument">item</span>)</span>
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L2005">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L2005">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -4054,13 +4310,14 @@
 
             <div class="api-entry js-api-entry essential" id="instance-scan">
               <h3 class="name">
-                <a href="#instance-scan" class="js-api-name method-signature" name="instance-scan">
+                <a name="//apple_ref/cpp/Method/scan" class="dashAnchor"></a
+                ><a href="#instance-scan" class="js-api-name method-signature" name="instance-scan">
                   ::scan<span class="argument-list"
                     >(<span class="argument">regex</span>, <span class="argument">options</span>,
                     <span class="argument">iterator</span>)</span
                   >
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L2048">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L2048">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -4217,13 +4474,14 @@
             </div>
             <div class="api-entry js-api-entry essential" id="instance-replace">
               <h3 class="name">
-                <a href="#instance-replace" class="js-api-name method-signature" name="instance-replace">
+                <a name="//apple_ref/cpp/Method/replace" class="dashAnchor"></a
+                ><a href="#instance-replace" class="js-api-name method-signature" name="instance-replace">
                   ::replace<span class="argument-list"
                     >(<span class="argument">regex</span>, <span class="argument">replacementText</span>,
                     <span class="argument">filePaths</span>, <span class="argument">iterator</span>)</span
                   >
                 </a>
-                <a class="document-source" href="https://github.com/atom/atom/blob/v1.40.1/src/workspace.js#L2186">
+                <a class="document-source" href="https://github.com/atom/atom/blob/v1.41.0/src/workspace.js#L2186">
                   <span class="octicon octicon-file-code"></span>
                 </a>
               </h3>
@@ -4351,5 +4609,5 @@
     </div>
   </body>
 
-  <!-- Mirrored from flight-manual.atom.io/api/v1.40.1/Workspace/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Oct 2019 09:19:24 GMT -->
+  <!-- Mirrored from flight-manual.atom.io/api/v1.41.0/Workspace/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Oct 2019 11:20:29 GMT -->
 </html>

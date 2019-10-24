@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 (24/10/2019)
+
+- Rewrite the scraper using async methods
+- Add table of content support
+- Build Atom docset v1.41.0
+
 ## 1.2.0 (23/10/2019)
 
 - Fix building docs and db for new docs folder layout (eg. ClassName/index.html)
