@@ -1,8 +1,9 @@
 {
   "name": "dash-atom-docs",
   "version": "1.2.0",
+  "atom_version": "1.40.1",
   "description": "Generate Dash docset for Atom.io API docs",
-  "author": "Ben Booth <bkbooth@gmail.com>",
+  "author": "Ben Booth <bkbooth@gmail.com> (https://benbooth.dev)",
   "repository": "git@github.com:bkbooth/dash-atom-docs.git",
   "keywords": [
     "Dash",
@@ -13,21 +14,17 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "run-s scrape build:docs build:db",
-    "build:db": "node ./modules/build-db",
-    "prebuild:db": "npm run clean:db",
-    "clean:db": "rimraf Atom.docset/Contents/Resources/docSet.dsidx",
-    "build:docs": "node ./modules/build-docs",
-    "prebuild:docs": "npm run clean:docs",
-    "clean:docs": "rimraf Atom.docset/*",
+    "build": "run-s scrape build:docset",
+    "build:docset": "node --no-warnings ./lib/build-docset",
+    "prebuild:docset": "npm run clean:docset",
+    "clean:docset": "rimraf Atom.docset/*",
     "scrape": "httrack https://flight-manual.atom.io/api/v$npm_package_atom_version/ -O ./scraped +https://flight-manual.atom.io/api/* +https://flight-manual.atom.io/assets/*",
-    "prescrape": "node ./modules/check-httrack && npm run clean:scrape",
+    "prescrape": "node ./lib/check-httrack && npm run clean:scrape",
     "clean:scrape": "rimraf scraped"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
     "minimist": "^1.2.0",
-    "mkdirp": "^0.5.1",
     "npm-run-all": "^4.0.2",
     "rimraf": "^3.0.0",
     "sqlite3": "^4.1.0"
@@ -44,6 +41,5 @@
   },
   "engines": {
     "node": ">=8"
-  },
-  "atom_version": "1.40.1"
+  }
 }
