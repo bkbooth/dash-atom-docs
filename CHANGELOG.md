@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1 (01/01/2020)
+
+- Build Atom docset v1.42.0
+
 ## 1.3.0 (24/10/2019)
 
 - Rewrite the scraper using async methods
