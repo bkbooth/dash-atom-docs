@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "cheerio": "^0.22.0",
-    "minimist": "^1.2.2",
+    "minimist": "^1.2.3",
     "npm-run-all": "^4.0.2",
     "rimraf": "^3.0.0",
     "sqlite3": "^4.1.0"
