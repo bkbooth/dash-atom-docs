@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.4 (24/06/2020)
+
+- Build Atom docset v1.48.0
+- Build Atom docset v1.47.0
+- Build Atom docset v1.46.0
+- Build Atom docset v1.45.0
+- Bump dependencies
+
 ## 1.3.3 (02/03/2020)
 
 - Build Atom docset v1.44.0
